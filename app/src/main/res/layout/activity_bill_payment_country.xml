@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:fontFamily="@font/lato_semibold"
+            android:padding="@dimen/margin_15dp"
+            android:text="@string/plz_select_country_for_payment"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_20sp" />
+
+
+        <EditText
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_search_icon"
+            android:drawablePadding="@dimen/margin_10dp"
+            android:fontFamily="@font/lato_regular"
+            android:hint="@string/search"
+            android:inputType="text"
+            android:padding="@dimen/margin_15dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_20sp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/country_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_10dp" />
+
+
+    </LinearLayout>
+</layout>

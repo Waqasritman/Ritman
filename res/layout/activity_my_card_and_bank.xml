@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/tool_bar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tool_bar"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:scrollbarAlwaysDrawVerticalTrack="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/my_cards_and_bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/available_cards"
+                        android:textColor="@color/black_80"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/add_new_cards_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/add_new"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/blue_color"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_130sdp"
+                            android:layout_height="100dp"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/card_blue" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_130sdp"
+                            android:layout_height="100dp"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/black_card" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_130sdp"
+                            android:layout_height="100dp"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/card_blue" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_130sdp"
+                            android:layout_height="100dp"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/black_card" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_130sdp"
+                            android:layout_height="100dp"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/black_card" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_130sdp"
+                            android:layout_height="100dp"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/card_blue" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Swipe to see more"
+                    android:textColor="@color/black_50" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="Available Banks"
+                        android:textColor="@color/black_80"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/add_new_card_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/add_new"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/blue_color"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="250dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:elevation="@dimen/_5sdp"
+                            app:cardBackgroundColor="@color/gray_lite"
+                            app:cardCornerRadius="@dimen/_5sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_10sdp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_5sdp"
+                                    android:src="@drawable/ic_canara_bank" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="Canera Bank \n xxxx xxxx xxxx 1234"
+                                    android:textColor="@color/black_80" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="250dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:elevation="@dimen/_5sdp"
+                            app:cardBackgroundColor="@color/gray_lite"
+                            app:cardCornerRadius="@dimen/_5sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_10sdp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_5sdp"
+                                    android:src="@drawable/ic_canara_bank" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="Canera Bank \n xxxx xxxx xxxx 1234"
+                                    android:textColor="@color/black_80" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Swipe to see more"
+                    android:textColor="@color/black_50" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="More platforms"
+                    android:textColor="@color/black_80" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:drawableLeft="@drawable/ic_gpau"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="Google Pay"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="Link"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:drawableLeft="@drawable/ic_paytm"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="Paytm"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="$250"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>

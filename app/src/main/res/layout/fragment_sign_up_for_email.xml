@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image3" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/backgtound_round_up"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginEnd="20sp"
+                    android:text="@string/Please_Enter_email_txt"
+                    android:textColor="@color/blakish"
+                    android:textSize="@dimen/text_size_20sp"
+                    >
+
+                </TextView>
+
+                <EditText
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:id="@+id/mobilesignupb"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_marginStart="@dimen/margin_15dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/margin_15dp"
+                    android:background="@android:color/white"
+                    android:fontFamily="@font/lato_medium"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="10dp"
+                    android:textSize="@dimen/_14ssp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/gray_lite" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15dp"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:layout_marginEnd="@dimen/margin_15dp"
+                    android:layout_marginBottom="20sp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/submitting_txt"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="@dimen/text_size_15sp">
+
+                </TextView>
+
+                <Button
+                    android:id="@+id/continuesighupb"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/gradient_btn"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/accept_continue"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_18sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="@string/or"
+                    android:textSize="@dimen/_14ssp" />
+
+
+                <Button
+                    android:id="@+id/sent_otp_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/btn_gradient_with_border"
+                    android:text="@string/send_otp_mobile"
+                    android:textColor="@color/colorPrimary" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

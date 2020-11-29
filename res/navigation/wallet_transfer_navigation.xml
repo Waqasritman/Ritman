@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/wallet_transfer_navigation"
+    app:startDestination="@id/walletTransferFirstActivity">
+    <fragment
+        android:id="@+id/walletTransferFirstActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferFirstActivity"
+        android:label="WalletTransferFirstActivity" >
+        <action
+            android:id="@+id/action_walletTransferFirstActivity_to_local_transfer_navigation"
+            app:destination="@id/local_transfer_navigation" />
+        <action
+            android:id="@+id/action_walletTransferFirstActivity_to_international_transfer"
+            app:destination="@id/international_transfer" />
+    </fragment>
+    <include app:graph="@navigation/local_transfer_navigation" />
+    <include app:graph="@navigation/international_transfer_navigation" />
+</navigation>

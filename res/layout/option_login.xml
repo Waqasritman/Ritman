@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15dp"
+                    android:layout_marginTop="@dimen/margin_15dp"
+                    android:layout_marginEnd="@dimen/margin_15dp"
+                    android:layout_marginBottom="@dimen/margin_15dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/how_would_you_like_to_login"
+                    android:textColor="@color/blakish"
+                    android:textSize="@dimen/text_size_20sp">
+
+                </TextView>
+
+                <Button
+                    android:id="@+id/umobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:background="@drawable/edittext_grey"
+                    android:drawableLeft="@drawable/ic_sim"
+                    android:drawableRight="@drawable/arrow_menu"
+                    android:drawablePadding="@dimen/margin_10dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/margin_15dp"
+                    android:paddingEnd="@dimen/margin_15dp"
+                    android:text="@string/using_mobile"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_18sp">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/ufinger"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:background="@drawable/edittext_grey"
+                    android:drawableLeft="@drawable/ic_thumbcolour"
+                    android:drawableRight="@drawable/arrow_menu"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/margin_10dp"
+                    android:paddingEnd="@dimen/margin_10dp"
+                    android:text="@string/using_finger"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_18sp">
+
+                </Button>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="5"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:gravity="start"
+                    android:text="@string/already_have_an_account"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_18sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5dp"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/sign_up"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_18sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

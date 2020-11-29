@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/wallet_transfer_navigation"
+    app:startDestination="@id/walletTransferFirstActivity">
+    <fragment
+        android:id="@+id/walletTransferFirstActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferFirstActivity"
+        android:label="WalletTransferFirstActivity" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_walletTransferFirstActivity_to_local_transfer_navigation"
+            app:destination="@id/local_transfer_navigation" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_walletTransferFirstActivity_to_walletTransferActivity2"
+            app:destination="@id/walletTransferActivity2" />
+    </fragment>
+    <include app:graph="@navigation/local_transfer_navigation" />
+    <fragment
+        android:id="@+id/walletTransferActivity2"
+        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferActivity"
+        android:label="WalletTransferActivity" />
+</navigation>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/inculde_layout"
+            layout="@layout/tool_bar" />
+
+
+        <LinearLayout
+            android:id="@+id/option_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inculde_layout"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/transactionHistory"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_margin="@dimen/margin_15dp"
+                android:background="@drawable/edittext_grey"
+                android:drawableEnd="@drawable/arrow_menu"
+                android:fontFamily="@font/lato_medium"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/margin_10dp"
+                android:paddingEnd="@dimen/margin_15dp"
+                android:text="@string/transaction_history"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_18sp" />
+
+
+            <TextView
+                android:id="@+id/wallet_history"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginStart="@dimen/margin_15dp"
+                android:layout_marginEnd="@dimen/margin_15dp"
+                android:background="@drawable/edittext_grey"
+                android:drawableEnd="@drawable/arrow_menu"
+                android:fontFamily="@font/lato_medium"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/margin_10dp"
+                android:paddingEnd="@dimen/margin_15dp"
+                android:text="@string/wallet_traansaction_histry"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_18sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

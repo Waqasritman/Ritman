@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/beneficairy_list_navigation"
+    app:startDestination="@id/beneficiaryListFragment">
+
+    <fragment
+        android:id="@+id/beneficiaryListFragment"
+        android:name="totipay.wallet.beneficiary_list_module.fragments.BeneficiaryListFragment"
+        android:label="fragment_beneficiary_list"
+        tools:layout="@layout/fragment_beneficiary_list">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_beneficiaryListFragment_to_showBankBeneficiaryFragment"
+            app:destination="@id/showBankBeneficiaryFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_beneficiaryListFragment_to_showCashBeneficiaryFragment"
+            app:destination="@id/showCashBeneficiaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showBankBeneficiaryFragment"
+        android:name="totipay.wallet.beneficiary_list_module.fragments.ShowBankBeneficiaryFragment"
+        android:label="ShowBankBeneficiaryFragment"
+        tools:layout="@layout/fragment_edit_beneficiary" />
+    <fragment
+        android:id="@+id/showCashBeneficiaryFragment"
+        android:name="totipay.wallet.beneficiary_list_module.fragments.ShowCashBeneficiaryFragment"
+        android:label="ShowCashBeneficiaryFragment"
+        tools:layout="@layout/fragment_show_cash_beneficairy">
+        <action
+            android:id="@+id/action_showCashBeneficiaryFragment_to_updateCashBeneficiaryFragment"
+            app:destination="@id/updateCashBeneficiaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateCashBeneficiaryFragment"
+        android:name="totipay.wallet.beneficiary_list_module.fragments.UpdateCashBeneficiaryFragment"
+        android:label="UpdateCashBeneficiaryFragment"
+        tools:layout="@layout/fragment_update_cash_beneficiary" />
+</navigation>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainSettingsLinearLayout"
+    android:orientation="vertical">
+
+  <include
+      layout="@layout/my_header2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+  </include>
+
+  <LinearLayout
+      android:id="@+id/pushLinearLayoutMoreActivity"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/_10sdp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/textviewpushnotification"
+        android:text="@string/push_notifications"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_12ssp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/pushSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/smsLinearLayoutMoreActivity"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/_10sdp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/sms_notifications"
+        android:id="@+id/textviewsmsnotification"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_12ssp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/smsSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/emailLinearLayoutMoreActivity"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/_10sdp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/email_notifications"
+        android:id="@+id/textviewemailnotification"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_12ssp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/emailSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+  </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="_10ssp">20.00sp</dimen>
+    <dimen name="_12ssp">24.00sp</dimen>
+	<dimen name="_13ssp">26.00sp</dimen>
+	<dimen name="_14ssp">28.00sp</dimen>
+	<dimen name="_15ssp">30.00sp</dimen>
+    <dimen name="_20ssp">40.00sp</dimen>
+</resources>

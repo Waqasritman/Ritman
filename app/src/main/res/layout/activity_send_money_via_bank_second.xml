@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <TextView
+                    android:id="@+id/page_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/enter_bank_details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+
+                <LinearLayout
+                    android:id="@+id/bank_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/bank_name" />
+
+                    <TextView
+                        android:id="@+id/bank_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:drawableEnd="@drawable/dropdown_arrow"
+                        android:fontFamily="@font/lato_medium"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_bank_name"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/city_name_m" />
+
+                    <EditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:id="@+id/city_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:fontFamily="@font/lato_medium"
+                        android:gravity="center_vertical"
+                        android:hint="@string/enter_city_name"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/location_txt_m" />
+
+                    <EditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:fontFamily="@font/lato_medium"
+                        android:gravity="center_vertical"
+                        android:hint="@string/enter_location"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14sp" />
+
+
+                    <Button
+                        android:id="@+id/search_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/gradient_btn"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/search_branch"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/main_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/branch_id_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/branch" />
+
+                    <TextView
+                        android:id="@+id/branch_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:drawableEnd="@drawable/dropdown_arrow"
+                        android:gravity="center_vertical"
+                        android:hint="@string/branch_name"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/account_no_txt" />
+
+                    <EditText
+                        android:id="@+id/account_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:hint="@string/account_no_hint"
+                        android:inputType="numberPassword"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/re_enter_account_no_m" />
+
+                    <EditText
+                        android:id="@+id/re_enter_account_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:hint="@string/account_no_hint"
+                        android:inputType="number"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:id="@+id/next_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:background="@drawable/background_button"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:padding="@dimen/_3sdp"
+                            android:text="@string/next"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_15sdp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>

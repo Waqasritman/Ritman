@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true">
+
+
+        <totipay.wallet.scanqrcodemodule.camera.CameraSourcePreview
+
+            android:id="@+id/preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <totipay.wallet.scanqrcodemodule.camera.GraphicOverlay
+                android:id="@+id/graphicOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#44000000" />
+
+
+        </totipay.wallet.scanqrcodemodule.camera.CameraSourcePreview>
+
+
+        <totipay.wallet.scanqrcodemodule.ScannerOverlay
+            android:id="@+id/scan_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            app:line_color="#7323DC"
+            app:line_speed="6"
+            app:line_width="5"
+            app:square_height="250"
+            app:square_width="250" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_25dp"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:weightSum="2">
+
+
+            <TextView
+                android:id="@+id/gallery_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height_60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="@dimen/margin_25dp"
+                android:drawableTop="@drawable/ic_photo_album"
+                android:drawablePadding="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/gallery"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_14sp" />
+
+
+            <TextView
+                android:id="@+id/flash_text"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height_60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/margin_25dp"
+                android:drawableTop="@drawable/ic_flash_on"
+                android:drawablePadding="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/on_text"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_14sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/e_gift_navigation"
+    app:startDestination="@id/giftReceiverFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_gift_receiver"
+        android:id="@+id/giftReceiverFragment"
+        android:name="totipay.wallet.e_gift.fragments.GiftReceiverFragment"
+        android:label="GiftReceiverFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_giftReceiverFragment_to_SendEGiftActivity"
+            app:destination="@id/SendEGiftActivity" />
+    </fragment>
+
+
+    <fragment
+        tools:layout="@layout/activity_send_e_gift"
+        android:id="@+id/SendEGiftActivity"
+        android:name="totipay.wallet.e_gift.fragments.SendEGiftActivity"
+        android:label="GiftReceiverFragment" />
+</navigation>

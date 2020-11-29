@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutWalletSummaryAdapter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackGrey"
+    android:orientation="vertical"
+    android:padding="@dimen/_5sdp">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/transactionStatusImageViewSummaryAdapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:src="@drawable/successful_icon"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/transactionStatusTextViewSummaryAdapter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/_3sdp"
+        android:text=""
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/transactionDateTextViewSummaryAdapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:paddingRight="@dimen/_15sdp"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_12ssp" />
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/navigation_white"
+      android:orientation="horizontal"
+      android:padding="@dimen/_10sdp">
+
+    <ImageView
+        android:id="@+id/transactionForImageViewSummaryAdapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:contentDescription="TODO" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/transactionForTextViewSummaryAdapter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text=""
+          android:textColor="@color/colorBlack"
+          android:textSize="@dimen/_12ssp" />
+
+      <TextView
+          android:id="@+id/transactionForDetailTextViewSummaryAdapter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text=""
+          android:textColor="@color/colorBlack"
+          android:textSize="@dimen/_10ssp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/transactionAmountTextViewSummaryAdapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_12ssp" />
+  </LinearLayout>
+</LinearLayout>

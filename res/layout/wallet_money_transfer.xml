@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainWalletSummaryTransferLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/amountSendMoneyEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/amount"
+        android:inputType="number|numberDecimal"
+        android:maxLength="10"
+        android:paddingLeft="@dimen/_5sdp"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_11ssp"
+        app:met_baseColor="@color/colorBlack"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelTextSize="@dimen/_10ssp"
+        app:met_primaryColor="@color/colorGreen"
+        app:met_singleLineEllipsis="false" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp">
+
+        <AutoCompleteTextView
+            android:id="@+id/mobileNoSendMoneyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:inputType="number|textAutoComplete"
+            android:maxLength="15"
+            android:paddingLeft="@dimen/_5sdp"
+            android:text=""
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_11ssp" />
+
+        <!--<EditText-->
+        <!--android:id="@+id/mobileNoSendMoneyEditText"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/_20sdp"-->
+        <!--android:layout_marginEnd="@dimen/_20sdp"-->
+        <!--android:layout_marginTop="@dimen/_15sdp"-->
+        <!--android:hint="@string/mobile_number"-->
+        <!--android:inputType="number|textAutoComplete"-->
+        <!--android:maxLength="13"-->
+        <!--android:paddingLeft="@dimen/_5sdp"-->
+        <!--android:text=""-->
+        <!--android:textColor="@color/colorBlack"-->
+        <!--android:textSize="@dimen/_11ssp"-->
+        <!--app:met_baseColor="@color/colorBlack"-->
+        <!--app:met_floatingLabel="highlight"-->
+        <!--app:met_floatingLabelTextSize="@dimen/_10ssp"-->
+        <!--app:met_primaryColor="@color/colorGreen"-->
+        <!--app:met_singleLineEllipsis="false" />-->
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <EditText
+        android:id="@+id/walletNameSendMoneyEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/wallet_name"
+        android:inputType="text"
+        android:maxLength="25"
+        android:paddingLeft="@dimen/_5sdp"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_11ssp"
+        app:met_baseColor="@color/colorBlack"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelTextSize="@dimen/_10ssp"
+        app:met_primaryColor="@color/colorGreen"
+        app:met_singleLineEllipsis="false" />
+
+    <EditText
+        android:id="@+id/descriptionSendMoneyEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/description"
+        android:inputType="text"
+        android:maxLength="25"
+        android:paddingLeft="@dimen/_5sdp"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_11ssp"
+        app:met_baseColor="@color/colorBlack"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelTextSize="@dimen/_10ssp"
+        app:met_primaryColor="@color/colorGreen"
+        app:met_singleLineEllipsis="false" />
+
+    <CheckBox
+        android:id="@+id/saveWalletDetailsCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:text="@string/save_wallet_details"
+        android:textColor="@color/colorGrey"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/sendNowWalletMoneyTransfer"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:background="@drawable/yellow_btn"
+        android:text="@string/send_now" />
+</LinearLayout>

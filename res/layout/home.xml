@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainHomeActivityLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <totipay.wallet.utils.SlideHolder
+        android:id="@+id/slideHolderHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <view
+            class="totipay.wallet.utils.DrawerMenu"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackGreen"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    layout="@layout/main_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </include>
+
+                <ImageView
+                    android:id="@+id/appImageViewHeader2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/todo"
+                    android:padding="@dimen/_7sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:src="@drawable/workerapp_home_label1" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/ForestGreen"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_15sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/homeUserProfileImageView"
+                                android:layout_width="@dimen/_50sdp"
+                                android:layout_height="@dimen/_50sdp"
+                                android:contentDescription="TODO"
+                                android:src="@drawable/user_profile_home" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/nameTextViewHomeActivity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/hi"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_20sdp" />
+
+                                <TextView
+                                    android:id="@+id/goodtohavetextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/good_to_have_you_back"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_11ssp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0"
+                            android:background="@color/colorWhite" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="start"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/homeUserRefreshImageView"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_25sdp"
+                                android:contentDescription="TODO"
+                                android:gravity="start"
+                                android:src="@drawable/ic_replay_white" />
+
+                            <TextView
+                                android:id="@+id/textbalance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:text="@string/balance"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <TextView
+                                android:id="@+id/walletAmountTextViewHomeActivity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:text=""
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_15ssp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textviewpointbalance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/point_balance"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_11ssp" />
+
+                                <TextView
+                                    android:id="@+id/pointsTextViewHomeActivity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" 0"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_11ssp" />
+
+                                <TextView
+                                    android:id="@+id/textviewpoints"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/_points"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_11ssp"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/ForestGreen">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/send_money_bg"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/loadMoneyLinearLayoutHome"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_5sdp">
+
+                            <TextView
+                                android:id="@+id/textviewloadmoney"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/load_money"
+                                android:textColor="@color/ForestGreen"
+                                android:textSize="@dimen/_12ssp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_weight="0"
+                            android:background="@color/ForestGreen" />
+
+                        <LinearLayout
+                            android:id="@+id/walletTransferLinearLayoutHome"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_5sdp">
+
+                            <TextView
+                                android:id="@+id/textviewmoneytransfer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wallet_transfer"
+                                android:textColor="@color/ForestGreen"
+                                android:textSize="@dimen/_12ssp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recharge_or_pay"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="@dimen/_14ssp" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/homeRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/colorWhite">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+            <include
+                layout="@layout/my_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </include>
+        </LinearLayout>
+    </totipay.wallet.utils.SlideHolder>
+</LinearLayout>

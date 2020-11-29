@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image3" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/lato_medium"
+                android:gravity="end"
+                android:padding="8dp"
+                android:text="@string/skip"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_14sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/backgtound_round_up"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginEnd="20sp"
+                    android:layout_marginBottom="20sp"
+                    android:text="@string/setup_password"
+                    android:textColor="@color/blakish"
+                    android:textSize="20sp"
+                    >
+
+                </TextView>
+
+                <Button
+                    android:id="@+id/fingersignup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/edittext_grey"
+                    android:drawableRight="@drawable/ic_black_arrow"
+                    android:gravity="start"
+                    android:padding="15sp"
+                    android:text="@string/using_finger"
+                    android:textAllCaps="false">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/createpinsignup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/edittext_grey"
+                    android:drawableRight="@drawable/ic_black_arrow"
+                    android:gravity="left"
+                    android:padding="15sp"
+                    android:text="@string/create_new_account_pin"
+                    android:textAllCaps="false">
+
+                </Button>
+
+                <TextView
+                    android:id="@+id/skipsignup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:padding="15sp"
+                    android:text="@string/skip_for_now"
+                    android:textAllCaps="false">
+
+                </TextView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

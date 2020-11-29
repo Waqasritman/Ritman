@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:textSize="@dimen/text_size_16sp"
+                        android:fontFamily="@font/lato_semibold"
+                        android:textColor="@color/black"
+                        android:id="@+id/sending_currency"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_select_mood"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:text="GBP"
+                        app:drawableEndCompat="@drawable/dropdown_arrow"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_black_arrow"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:textSize="@dimen/text_size_16sp"
+                        android:fontFamily="@font/lato_semibold"
+
+                        android:textColor="@color/black"
+                        android:id="@+id/receiving_currency"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_select_mood"
+                        android:drawableRight="@drawable/dropdown_arrow"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:hint="SAR" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <EditText
+                        android:id="@+id/sending_amount_field"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_select_mood"
+                        android:hint="2000"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/_10sdp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_black_arrow" />
+
+                    <TextView
+                        android:id="@+id/pay_out_amount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_select_mood"
+                        android:padding="@dimen/_10sdp"
+                        android:hint="0123" />
+                </LinearLayout>
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:text="@string/lock_rate"
+                    android:textColor="@color/colour_accent" />
+
+                <Button
+                    android:id="@+id/convert_now"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/background_colour_border"
+                    android:fontFamily="@font/lato_semibold"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/convert_string"
+                    android:textColor="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:id="@+id/after_convert_rates_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/border_background"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="2"
+                            android:background="@null"
+                            android:hint="@string/enter_promo_code"
+                            android:padding="@dimen/_5sdp" />
+
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/background_select_mood"
+                            android:text="@string/apply_txt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/sending_amount" />
+
+                        <TextView
+
+                            android:id="@+id/sending_amount_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:padding="@dimen/_5sdp"
+                            android:hint="--" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/view_price_break_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/view_price_break_down"
+                        android:textColor="@color/colour_accent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/total_payable"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/total_payable_amount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:padding="@dimen/_5sdp"
+                            android:text="--"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/commission_amount" />
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:id="@+id/commission_amount_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:padding="@dimen/_5sdp"
+                            android:hint="--" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5dp"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/source_income"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:gravity="center_vertical"
+                            android:id="@+id/source_of_income"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5dp"
+                            android:background="@drawable/background_select_mood"
+                            android:drawableRight="@drawable/dropdown_arrow"
+                            android:padding="@dimen/_8sdp"
+                            android:hint="@string/select_source_income"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5dp"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/purpose_of_transfer"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:gravity="center_vertical"
+                            android:id="@+id/purpose_of_transfer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5dp"
+                            android:background="@drawable/background_select_mood"
+                            android:drawableEnd="@drawable/dropdown_arrow"
+                            android:padding="@dimen/_8sdp"
+                            android:hint="@string/select_the_purpose_txt"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/send_now_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:background="@drawable/background_button"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:padding="@dimen/_3sdp"
+                            android:text="@string/send_now"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_15sdp"
+                            app:drawableStartCompat="@drawable/ic_white_send" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>

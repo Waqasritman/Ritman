@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <include
+            android:id="@+id/inculde_layout"
+            layout="@layout/app_bar_new_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/colorWhite"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="@dimen/_220sdp"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottom_layout"
+                android:background="@color/colorWhite"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_75sdp"
+                            android:layout_height="@dimen/_75sdp"
+                            android:layout_margin="@dimen/_5sdp"
+                            app:cardCornerRadius="@dimen/_5sdp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/image6" />
+                        </androidx.cardview.widget.CardView>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/user_email_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/ic_arrow_white"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:text="Sachin Mittal"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_15sdp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="start"
+                                android:text="Edit Profile"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/colorWhite" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:drawableRight="@drawable/ic_arrow_white"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_semibold"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Balance :200000 INR"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10sdp" />
+
+
+
+                    <TextView
+                        android:id="@+id/change_pin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:drawableLeft="@drawable/ic_forward"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/change_pin"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/pay_qr_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:drawableLeft="@drawable/ic_pay_via_qr_code"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Pay via QR Code"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/about_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_qr"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="My QR Code"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/money_transfer_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_money_transfer"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Money Transfer"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/bill_payment_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_bill_info"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Bill Payment"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+
+                    <TextView
+                        android:id="@+id/new_atm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_atm_near_me"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="ATM near me"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/share_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_loyality_point"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Loyalty Points"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+
+                    <TextView
+                        android:id="@+id/logoutItemNav"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_share"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Refer to Friends"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/about_new_us"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_info"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="About"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_help_support"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Help and Support"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:drawableLeft="@drawable/ic_logout"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Logout"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLinearLayoutSignUpSubmit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/my_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/firstNameEditTextSignUpSubmit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:hint="@string/first_name"
+                    android:inputType="text|textCapSentences"
+                    android:maxLength="25"
+                    android:nextFocusDown="@+id/lastNameEditTextSignUpSubmit"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:met_baseColor="@color/colorBlack"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextSize="@dimen/_10ssp"
+                    app:met_primaryColor="@color/colorGreen"
+                    app:met_singleLineEllipsis="false" />
+
+                <EditText
+                    android:id="@+id/lastNameEditTextSignUpSubmit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:hint="@string/last_name"
+                    android:inputType="text|textCapSentences"
+                    android:maxLength="25"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:met_baseColor="@color/colorBlack"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextSize="@dimen/_10ssp"
+                    app:met_primaryColor="@color/colorGreen"
+                    app:met_singleLineEllipsis="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+
+                    <LinearLayout
+                        android:id="@+id/countrySpinnerSignUp"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/countryCodeTextViewSignUp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:text="@string/_91"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:id="@+id/countryCodeImageViewSignUp"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_19sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_1sdp"
+                            android:contentDescription="TODO" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_1sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/dropdown_arrow" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="@dimen/_65sdp"
+                        android:layout_height="0.3dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@color/colorSpinner" />
+                </FrameLayout>
+
+                <EditText
+                    android:id="@+id/mobileNoEditTextSignUpSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/mobile_number"
+                    android:inputType="number"
+                    android:maxLength="15"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:met_baseColor="@color/colorBlack"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextSize="@dimen/_10ssp"
+                    app:met_primaryColor="@color/colorGreen"
+                    app:met_singleLineEllipsis="false" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/emailEditTextSignUpSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/dateOfBirthEditTextSignUpSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableRight="@drawable/dropdown_arrow"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/date_of_birth"
+                    android:inputType="none"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:met_baseColor="@color/colorBlack"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextSize="@dimen/_10ssp"
+                    app:met_primaryColor="@color/colorGreen"
+                    app:met_singleLineEllipsis="false" />
+
+                <TextView
+                    android:id="@+id/dateOfBirthTextViewSignUpSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_5sdp" />
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textviewgender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text="@string/gender" />
+
+                <RadioGroup
+                    android:id="@+id/maleFemaleRadioGroupSignUpSubmit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:checkedButton="@id/maleRadioButtonSignUpSubmit"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/maleRadioButtonSignUpSubmit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="@string/male"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/femaleRadioButtonSignUpSubmit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="@string/female"
+                        android:textSize="@dimen/_12ssp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/countryOfResidenceSpinnerSignUpSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_10ssp"
+                app:ms_alignLabels="true"
+                app:ms_arrowColor="@color/colorGreen"
+                app:ms_arrowSize="@dimen/_12sdp"
+                app:ms_baseColor="@color/colorSpinner"
+                app:ms_enableErrorLabel="false"
+                app:ms_enableFloatingLabel="true"
+                app:ms_floatingLabelColor="@color/colorSpinnerText"
+                app:ms_floatingLabelText="@string/country_of_residence"
+                app:ms_highlightColor="@color/colorGreen"
+                app:ms_hint="@string/country_of_residence"
+                app:ms_hintColor="@color/colorSpinnerText"
+                app:ms_hintTextSize="@dimen/_10ssp"
+                app:ms_multiline="false"
+                app:ms_thickness="0.5dp" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/stateSpinnerSignUpSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_10ssp"
+                app:ms_alignLabels="true"
+                app:ms_arrowColor="@color/colorGreen"
+                app:ms_arrowSize="@dimen/_12sdp"
+                app:ms_baseColor="@color/colorSpinner"
+                app:ms_enableErrorLabel="false"
+                app:ms_enableFloatingLabel="true"
+                app:ms_floatingLabelColor="@color/colorSpinnerText"
+                app:ms_floatingLabelText="@string/state"
+                app:ms_highlightColor="@color/colorGreen"
+                app:ms_hint="@string/state"
+                app:ms_hintColor="@color/colorSpinnerText"
+                app:ms_hintTextSize="@dimen/_10ssp"
+                app:ms_multiline="false"
+                app:ms_thickness="0.5dp" />
+
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/citySpinnerSignUpSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_10ssp"
+                app:ms_alignLabels="true"
+                app:ms_arrowColor="@color/colorGreen"
+                app:ms_arrowSize="@dimen/_12sdp"
+                app:ms_baseColor="@color/colorSpinner"
+                app:ms_enableErrorLabel="false"
+                app:ms_enableFloatingLabel="true"
+                app:ms_floatingLabelColor="@color/colorSpinnerText"
+                app:ms_floatingLabelText="@string/city"
+                app:ms_highlightColor="@color/colorGreen"
+                app:ms_hint="@string/city"
+                app:ms_hintColor="@color/colorSpinnerText"
+                app:ms_hintTextSize="@dimen/_10ssp"
+                app:ms_multiline="false"
+                app:ms_thickness="0.5dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <!--<android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:hint="@string/address"/>
+
+                </android.support.design.widget.TextInputLayout>-->
+
+                <EditText
+                    android:id="@+id/addressEditTextSignUpSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/address"
+                    android:inputType=""
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:met_baseColor="@color/colorBlack"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextSize="@dimen/_10ssp"
+                    app:met_primaryColor="@color/colorGreen"
+                    app:met_singleLineEllipsis="false" />
+
+                <TextView
+                    android:id="@+id/addressTextViewSignUpSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp" />
+            </FrameLayout>
+
+            <EditText
+                android:id="@+id/addressEditTextSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/address"
+                android:inputType="textPostalAddress"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <EditText
+                android:id="@+id/streetEditTextSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/street"
+                android:inputType="textPostalAddress"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <EditText
+                android:id="@+id/landmarkEditTextSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/landmark"
+                android:inputType="textPostalAddress"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <EditText
+                android:id="@+id/zipcodeEditTextSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/zipcode"
+                android:inputType="text"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+
+            <EditText
+                android:id="@+id/passportNoEditTextSignUpSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/passport_no"
+                android:inputType=""
+                android:maxLength="10"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <EditText
+                android:id="@+id/emiratesIdEditTextSignUpSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/second_id"
+                android:inputType=""
+                android:maxLength="25"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/securityLinearLayout"
+                android:orientation="vertical"
+                >
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Fill Any One Security Details"-->
+                    <!--android:textColor="@color/colorSpinnerText"-->
+                    <!--android:textSize="@dimen/_11ssp"-->
+
+                    <!--android:layout_marginTop="@dimen/_10ssp"/>-->
+
+                <!--<android.support.v7.widget.RecyclerView-->
+                    <!--android:id="@+id/securityQuestionsRecyclerView"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_marginTop="@dimen/_3sdp">-->
+
+                <!--</android.support.v7.widget.RecyclerView>-->
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/securityQuestionsSpinnerSignUpSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_10ssp"
+                    app:ms_alignLabels="true"
+                    app:ms_arrowColor="@color/colorGreen"
+                    app:ms_arrowSize="@dimen/_12sdp"
+                    app:ms_baseColor="@color/colorSpinner"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorSpinnerText"
+                    app:ms_floatingLabelText="@string/security_questions"
+                    app:ms_highlightColor="@color/colorGreen"
+                    app:ms_hint="@string/security_questions"
+                    app:ms_hintColor="@color/colorSpinnerText"
+                    app:ms_hintTextSize="@dimen/_10ssp"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0.5dp" />
+                <EditText
+                    android:id="@+id/securityQuestionsEditTextSignUpSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/security_questions"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="50"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text=""
+                    android:maxLines="5"
+                    android:visibility="gone"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:met_baseColor="@color/colorBlack"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextSize="@dimen/_10ssp"
+                    app:met_primaryColor="@color/colorGreen"
+                    app:met_singleLineEllipsis="false" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvCreateAccountSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/_9ssp" />
+
+            <TextView
+                android:id="@+id/submitTextViewSignUpSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/yellow_btn"
+                android:gravity="center"
+                android:text="@string/next"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wallet_blur_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/background_round_up_colour"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
+
+            <View
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="@dimen/_2sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@color/white" />
+
+            <Button
+                android:id="@+id/send_money_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/border_background_green_colour"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/send_money_txt"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/request_money_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/border_background_green_colour"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/request_money_btn"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

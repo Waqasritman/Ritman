@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/home_bg_image"
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
+
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="Hello,"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/customer_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Sachin Mittal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="Indiviual account"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <TextView
+                    android:textSize="@dimen/text_size_14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Balance :20000 INR"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_marginTop="-200dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/top_layout"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:paddingBottom="50dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/backgtound_round_up"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/kyc_layouts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:background="@drawable/border_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:weightSum="3.5">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="3"
+                        android:paddingStart="10dp"
+                        android:text="Complete Your KYC"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.4"
+                        android:padding="@dimen/_8sdp"
+                        android:src="@drawable/ic_arraow_asset_colour"
+
+                        android:tint="@color/color_toti" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/money_transfer_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:background="@drawable/border_background"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:weightSum="3.5">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="3"
+                        android:paddingStart="10dp"
+                        android:text="Money Transfer"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.4"
+                        android:src="@drawable/next_arrow"
+
+                        android:tint="@color/color_toti" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:weightSum="3">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/add_money_cardview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:elevation="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        app:cardCornerRadius="@dimen/_5sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_5sdp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_top_up_mobile" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="center"
+                                android:text="Add \nMoney"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10sdp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/my_walllet_cardview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_5sdp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_wallet_black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="center"
+                                android:text="My \nWallet"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10sdp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/check_rates_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_5sdp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_exchange" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="center"
+                                android:text="Check \nRates"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10sdp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:weightSum="3">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/mobile_top_up_carview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:elevation="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        app:cardCornerRadius="@dimen/_5sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_5sdp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_mobile_recharge" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="center"
+                                android:text="Mobile \nTop-up"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10sdp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/bill_payment_carview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_5sdp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_cash_out_payment_icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="center"
+                                android:text="Bill \nPayment"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10sdp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/e_gift"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_5sdp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_gift" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="center"
+                                android:text="Send \nE-Gift"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10sdp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Offers for you"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/offer_rcv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

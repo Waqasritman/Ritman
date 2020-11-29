@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/international_transfer"
+    app:startDestination="@id/selectedBeneficiaryForBankTransferFragment">
+    <fragment
+        android:id="@+id/selectedBeneficiaryForBankTransferFragment"
+        android:name="totipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
+        android:label="fragment_selected_beneficiary_for_bank_transfer"
+        tools:layout="@layout/activity_select_beneficialy" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_selectedBeneficiaryForBankTransferFragment_to_sendMoneyToWalletActivity"
+            app:destination="@id/sendMoneyToWalletActivity" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/activity_send_money_to_wallet"
+        android:id="@+id/sendMoneyToWalletActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.international.SendMoneyToWalletActivity"
+        android:label="SendMoneyToWalletActivity" />
+</navigation>

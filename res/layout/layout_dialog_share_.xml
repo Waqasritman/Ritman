@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout
+    android:background="#24695C1A"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:paddingBottom="@dimen/height_40dp"
+        android:paddingEnd="@dimen/margin_30dp"
+        android:paddingStart="@dimen/margin_30dp"
+        android:id="@+id/cancel_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/top_borders_module"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/view"
+            android:layout_width="70dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_30dp"
+            app:cardBackgroundColor="@color/colorBlueSkyTwo"
+            app:cardCornerRadius="3dp" />
+
+        <LinearLayout
+            android:paddingTop="@dimen/height_40dp"
+            android:id="@+id/save_as_pdf"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:src="@drawable/ic_save_pdf_icon"
+                android:layout_width="@dimen/height_40dp"
+                android:layout_height="@dimen/height_40dp"/>
+
+
+            <TextView
+                android:layout_marginStart="@dimen/margin_15dp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/lato_bold"
+                android:layout_gravity="center_vertical"
+                android:text="@string/save_as_pdf_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/send_as_email"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:src="@drawable/ic_send_email_icon"
+                android:layout_width="@dimen/height_40dp"
+                android:layout_height="@dimen/height_40dp"/>
+
+
+            <TextView
+                android:layout_marginStart="@dimen/margin_15dp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/lato_bold"
+                android:layout_gravity="center_vertical"
+                android:text="@string/send_to_e_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+</layout>

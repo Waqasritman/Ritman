@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="scanner_rect_width">230</integer>
+    <integer name="scanner_rect_height">230</integer>
+    <integer name="line_width">4</integer>
+
+
+    <item name="dialog_height_point" format="float" type="integer">.6</item>
+    <item name="circle_weight_097"  type="integer">0.97</item>
+</resources>

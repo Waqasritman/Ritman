@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <totipay.wallet.utils.SlideHolder
+      android:id="@+id/slideHolderMore"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <view
+        class="totipay.wallet.utils.DrawerMenu"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+      <include
+          layout="@layout/my_header2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+      <LinearLayout
+          android:id="@+id/aboutLinearLayoutMoreActivity"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/about"
+            android:id="@+id/textviewabout"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_orange"
+            android:tint="@color/Black"
+            android:contentDescription="TODO" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:id="@+id/termsLinearLayoutMoreActivity"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/terms"
+            android:id="@+id/textviewterms"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_orange"
+            android:tint="@color/Black"
+            android:contentDescription="TODO" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:id="@+id/privacyLinearLayoutMoreActivity"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/privacy"
+            android:id="@+id/textviewprivacypolicy"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_orange"
+            android:tint="@color/Black"
+            android:contentDescription="TODO" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:id="@+id/settingsLinearLayoutMoreActivity"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/settings"
+            android:id="@+id/textviewsetting"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_orange"
+            android:tint="@color/Black"
+            android:contentDescription="TODO" />
+      </LinearLayout>
+    </LinearLayout>
+  </totipay.wallet.utils.SlideHolder>
+</LinearLayout>

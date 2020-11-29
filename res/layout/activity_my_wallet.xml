@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wallet Balance"
+        android:textColor="@color/white"
+        android:fontFamily="@font/lato_semibold"
+        android:textSize="@dimen/_15sdp"
+        android:layout_below="@+id/tool_bar"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+   android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_centerInParent="true">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_130sdp">
+
+        <ImageView
+            android:layout_margin="@dimen/_30sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/ic_wallet_colorful"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$2000"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_5sdp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wallet Balance"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/_5sdp"
+        android:textSize="@dimen/_15sdp"
+        android:textColor="@color/white"/>
+
+</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_10sdp">
+            
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_money_to_wallet"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/background_white_border"
+                android:text="Add Money To Wallet"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/colorPrimary"/>
+
+
+
+                <TextView
+                    android:id="@+id/transfer_money_to_wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer Money To Bank"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:padding="@dimen/_10sdp"
+                    android:background="@drawable/background_border_only"/>
+
+
+
+
+            
+            
+            
+            
+        </LinearLayout>
+        
+        
+        
+        
+        
+    </RelativeLayout>
+
+
+
+
+
+
+
+</RelativeLayout>
+</layout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/main_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="5">
+
+
+
+            <RelativeLayout
+
+                android:id="@+id/countrySpinnerSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_icon"
+                    android:layout_width="@dimen/margin_20dp"
+                    android:layout_height="@dimen/margin_20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_united_kingdom" />
+
+                <TextView
+
+                    android:id="@+id/countryCodeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:layout_toEndOf="@id/image_icon"
+                    android:drawableEnd="@drawable/dropdown_arrow"
+                    android:gravity="center"
+                    android:hint="@string/_91"
+                    android:maxLines="1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </RelativeLayout>
+
+        <EditText
+            android:textColor="@color/black"
+            android:id="@+id/mobilesignupb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_weight="4"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:hint="@string/phone_number_hint"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </LinearLayout>
+</layout>

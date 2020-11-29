@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/image3" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            >
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgtound_round_up"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="20sp"
+                android:text="Enter your mobile number"
+                android:textColor="@color/blakish"
+                android:textSize="20sp"
+                >
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/underline_grey"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="5">
+
+                <com.rilixtech.CountryCodePicker
+                    android:id="@+id/ccpsignupb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:visibility="gone" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:id="@+id/countrySpinnerSignIn"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/countryCodeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:text="@string/_91"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:id="@+id/countryCodeImageView"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_19sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_1sdp"
+                            android:contentDescription="TODO" />
+
+                        <ImageView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_1sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/dropdown_arrow" />
+                    </LinearLayout>
+
+                </FrameLayout>
+
+
+                <EditText
+                    android:gravity="center"
+                    android:id="@+id/mobilesignupb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="4"
+                    android:background="@android:color/white"
+                    android:hint="980000000"
+                    android:inputType="phone" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="25sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginBottom="20sp"
+                android:text="By submitting you confirm that you are 18 years of age and agree to the T&amp;C and Private policy."
+                android:textColor="@color/darkgrey"
+                android:textSize="15dp">
+
+            </TextView>
+
+            <Button
+                android:id="@+id/continuesighupb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="16dp"
+                android:background="@drawable/gradient_btn"
+                android:text="Accept and Continue"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/or"
+                android:textSize="@dimen/_14ssp" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_margin="16dp"
+                android:background="@drawable/btn_gradient_with_border"
+                android:text="@string/send_otp_email"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+</layout>

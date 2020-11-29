@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mobile_Top_Up.fragments.MobileTopUpFirstActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_margin="@dimen/_5sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_5sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile Top-Up"
+                android:textColor="@color/black"
+                android:fontFamily="@font/lato_semibold"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile Number"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginTop="@dimen/_10sdp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginTop="@dimen/_5sdp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.6"
+                    android:text="+91"
+                    android:singleLine="true"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/ic_flag_in"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableRight="@drawable/dropdown_arrow"
+                    android:background="@drawable/background_select_mood"
+                    android:padding="16dp"/>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.4"
+                    android:background="@drawable/background_select_mood"
+                    android:text="9827543210"
+                    android:padding="16dp"
+                    android:layout_marginStart="@dimen/_5sdp"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Operator"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_15sdp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_5sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_select_mood"
+                    android:text="Airtel"
+                    android:drawableRight="@drawable/dropdown_arrow"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:padding="15dp"
+                    android:layout_marginStart="@dimen/_5sdp"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Browse Plans"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_10sdp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_5sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_select_mood"
+                    android:text="USD 2.86"
+                    android:drawableRight="@drawable/arrow_menu"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:padding="15dp"
+                    android:layout_marginStart="@dimen/_5sdp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Amount"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.5"
+                    android:text="USD 2.86"
+                    android:textSize="16sp"
+
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_regular"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Receiving"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.5"
+                    android:textSize="16sp"
+
+                    android:text="1gb/day"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_regular"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Validity"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.5"
+                    android:text="56 Days"
+                    android:textSize="16sp"
+
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_regular"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:id="@+id/next_layout"
+                android:background="@drawable/background_button">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="Proceed to Pay"
+                    android:drawableLeft="@drawable/ic_white_send"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:padding="@dimen/_3sdp"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
+</layout>

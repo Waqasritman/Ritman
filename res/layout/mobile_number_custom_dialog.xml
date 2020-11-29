@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_8sdp"
+    android:id="@+id/customDialogLayput"
+    android:padding="@dimen/_20sdp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/MobileNoEditTextSignUpActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:hint="@string/mobile_number"
+        android:paddingLeft="@dimen/_5sdp"
+        android:text=""
+        app:met_floatingLabelText="@string/mobile_number"
+        android:inputType="number"
+        android:maxLength="15"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_11ssp"
+        app:met_baseColor="@color/colorBlack"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelTextSize="@dimen/_10ssp"
+        app:met_primaryColor="@color/colorGreen"
+        app:met_singleLineEllipsis="false"
+        app:met_errorColor="@color/Red"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center">
+
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            style="@style/CustomButtonStyle"
+            android:layout_marginBottom="8dp"
+            android:textAllCaps="false"
+            android:text="@string/submit"
+          />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            style="@style/CustomButtonStyle"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textAllCaps="false"
+            android:text="@string/cancel"
+           />
+    </LinearLayout>
+
+</LinearLayout>

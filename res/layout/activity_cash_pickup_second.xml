@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryAddressDetailsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_below="@+id/tool_bar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_money_via_cash"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/lato_semibold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_3sdp"/>
+            <EditText
+                android:id="@+id/city_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_select_mood"
+                android:text="gurgaon"
+                android:textColor="@color/black"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/availiable_agents"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_3sdp"/>
+            <TextView
+                android:id="@+id/agents_for_cash"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_select_mood"
+                android:text="@string/Please_select_agents"
+                android:drawableRight="@drawable/dropdown_arrow"
+                android:drawablePadding="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"/>
+
+               
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:id="@+id/next_layout"
+                android:background="@drawable/background_button">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@string/add_beneficiary"
+                    android:padding="@dimen/_3sdp"
+                    android:textSize="@dimen/_15sdp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+</layout>

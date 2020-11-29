@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/footer_bg"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
+
+  <LinearLayout
+      android:id="@+id/homeLinearLayoutFooter"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/homeImageViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp"
+        android:src="@drawable/footer_icon_home_unselected"
+        android:contentDescription="TODO" />
+
+      <TextView
+          android:id="@+id/homeTextViewFooter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/home"
+          android:gravity="center"
+          android:textColor="@color/colorGreen"
+          android:textSize="@dimen/_13ssp" />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/kycLinearLayoutFooter"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:visibility="gone"
+      android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/kycImageViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp"
+        android:src="@drawable/footer_icon_kyc_unselected"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/kycTextViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kyc"
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/_13ssp" />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/quickPayLinearLayoutFooter"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/quickPayImageViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_1sdp"
+        android:src="@drawable/footer_icon_quick_pay_unselected"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/quickPayTextViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quick_pay"
+        android:gravity="center"
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/_13ssp" />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/beneficiaryLinearLayoutFooter"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/beneficiaryImageViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_3sdp"
+        android:src="@drawable/footer_icon_beneficiary_unselected"
+        android:contentDescription="TODO" />
+
+      <TextView
+          android:id="@+id/beneficiaryTextViewFooter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/beneficiary"
+          android:gravity="center"
+          android:textColor="@color/colorGreen"
+          android:textSize="@dimen/_13ssp" />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/historyLinearLayoutFooter"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/historyImageViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_3sdp"
+        android:src="@drawable/footer_icon_history_unselected"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/historyTextViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/history"
+        android:gravity="center"
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/_13ssp" />
+  </LinearLayout>
+</LinearLayout>

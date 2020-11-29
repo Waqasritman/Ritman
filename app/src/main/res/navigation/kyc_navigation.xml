@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/kyc_navigation"
+    app:startDestination="@id/takeKYCDataFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_take_kyc_data"
+        android:id="@+id/takeKYCDataFragment"
+        android:name="totipay.wallet.KYC.fragments.TakeKYCDataFragment"
+        android:label="TakeKYCDataFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_takeKYCDataFragment_to_takeKYCIdPictureFragment"
+            app:destination="@id/takeKYCIdPictureFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/kyc_picture_layout"
+        android:id="@+id/takeKYCIdPictureFragment"
+        android:name="totipay.wallet.KYC.fragments.TakeKYCFrontIdPictureFragment"
+        android:label="TakeKYCIdPictureFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_takeKYCIdPictureFragment_to_KYCBackPictureFragment"
+            app:destination="@id/KYCBackPictureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/KYCBackPictureFragment"
+        android:name="totipay.wallet.KYC.fragments.KYCBackPictureFragment"
+        android:label="KYCBackPictureFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_KYCBackPictureFragment_to_KYCCustomerPicture"
+            app:destination="@id/KYCCustomerPicture" />
+    </fragment>
+    <fragment
+        android:id="@+id/KYCCustomerPicture"
+        android:name="totipay.wallet.KYC.fragments.KYCCustomerPicture"
+        android:label="KYCCustomerPicture" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_KYCCustomerPicture_to_finalKYCFragment"
+            app:destination="@id/finalKYCFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/finalKYCFragment"
+        android:name="totipay.wallet.KYC.fragments.FinalKYCFragment"
+        android:label="FinalKYCFragment" />
+</navigation>

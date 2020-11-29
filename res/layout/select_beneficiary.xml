@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainSelectBeneficiaryLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <totipay.wallet.utils.SlideHolder
+        android:id="@+id/slideHolderSelectBeneficiary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <view
+            class="totipay.wallet.utils.DrawerMenu"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/my_header2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/inputSearch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search Beneficiary.."
+                android:padding="@dimen/_5sdp"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:inputType="text"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selectBeneficiaryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/_2sdp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/textviewNoprecordFound"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorGreen"
+                android:textSize="@dimen/_20sdp"
+                android:text="@string/no_record_found"/>
+
+            <LinearLayout
+                android:id="@+id/footerlinerselectbeneficiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    layout="@layout/my_footer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </totipay.wallet.utils.SlideHolder>
+</LinearLayout>

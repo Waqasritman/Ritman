@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swift_transfer_navigation"
+    app:startDestination="@id/swiftBeneficiaryDetailFragment">
+
+    <fragment
+        android:id="@+id/swiftBeneficiaryDetailFragment"
+        android:name="totipay.wallet.swift_transfer_module.fragments.SwiftBeneficiaryDetailFragment"
+        android:label="SwiftBeneficiaryDetailFragment"
+        tools:layout="@layout/fragment_swift_beneficairy_detail">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_swiftBeneficiaryDetailFragment_to_swiftTransferPaymentDetailFragment"
+            app:destination="@id/swiftTransferPaymentDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/swiftTransferPaymentDetailFragment"
+        android:name="totipay.wallet.swift_transfer_module.fragments.SwiftTransferPaymentDetailFragment"
+        android:label="SwiftTransferPaymentDetailFragment"
+        tools:layout="@layout/fragment_swift_transfer_payment_detail">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_swiftTransferPaymentDetailFragment_to_swiftTransferBeneficiaryBankDetailsFragment"
+            app:destination="@id/swiftTransferBeneficiaryBankDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/swiftTransferBeneficiaryBankDetailsFragment"
+        android:name="totipay.wallet.swift_transfer_module.fragments.SwiftTransferBeneficiaryBankDetailsFragment"
+        android:label="SwiftTransferBeneficiaryBankDetailsFragment"
+        tools:layout="@layout/fragment_swift_transfer_beneficiary_bank_details">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_swiftTransferBeneficiaryBankDetailsFragment_to_swiftTransferPreferredCorrespondentDetailsFragment"
+            app:destination="@id/swiftTransferPreferredCorrespondentDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/swiftTransferPreferredCorrespondentDetailsFragment"
+        android:name="totipay.wallet.swift_transfer_module.fragments.SwiftTransferPreferredCorrespondentDetailsFragment"
+        android:label="SwiftTransferPreferredCorrespondentDetailsFragment"
+        tools:layout="@layout/fragment_swift_transfer_preferred_correspondent_details" />
+</navigation>

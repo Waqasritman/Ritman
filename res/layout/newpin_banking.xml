@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:background="@drawable/image3"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/backgtound_round_up"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginEnd="20sp"
+                    android:gravity="center"
+                    android:text="@string/setup_new_pin"
+                    android:textColor="@color/blakish"
+                    android:textSize="20sp"
+                    >
+
+                </TextView>
+
+                <me.philio.pinentry.PinEntryView
+                    android:id="@+id/signuppin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000000"
+                    app:digitBackground="@color/grey"
+
+                    app:digitTextColor="@color/black"
+                    app:pinInputType="number" />
+
+                <Button
+                    android:id="@+id/signuppinconfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="16sp"
+                    android:background="@drawable/button_design"
+                    android:text="@string/confirm_pin_txt"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/skipsignuppin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:gravity="center"
+                    android:padding="@dimen/margin_15dp"
+                    android:text="@string/skip_for_now"
+                    android:textAllCaps="false">
+
+                </TextView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

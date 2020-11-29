@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainlinearlayoutadapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@color/colorBackGrey">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:id="@+id/closeiconimageview"
+            android:src="@drawable/close_icon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/documentNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_12ssp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/documentImageView"
+                        android:layout_width="@dimen/_130sdp"
+                        android:layout_height="@dimen/height_50dp"
+                        android:contentDescription="TODO" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start">
+
+
+                        <FrameLayout
+                            android:id="@+id/uploadSignImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="65dp"
+                                android:layout_height="65dp"
+                                android:contentDescription="TODO"
+                                android:src="@drawable/upload_btn_language" />
+
+                            <TextView
+                                android:id="@+id/textviewupload"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:gravity="center"
+                                android:text="Upload"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_9ssp" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/removeSignImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:layout_width="65dp"
+                                android:layout_height="65dp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:contentDescription="TODO"
+                                android:src="@drawable/remove_btn_language" />
+
+                            <TextView
+                                android:id="@+id/textviewremove"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:gravity="center"
+                                android:text="Remove"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_9ssp" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/uploadStatusTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:textColor="@color/Green"
+                        android:textSize="@dimen/_12ssp" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/approvedStatusTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/Green"
+                android:textSize="@dimen/_12ssp"
+                android:layout_margin="@dimen/_5sdp"
+                android:text=""
+                android:visibility="gone"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/inculde_layout"
+            layout="@layout/tool_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inculde_layout"
+            android:layout_margin="@dimen/margin_10dp"
+            android:scrollbarAlwaysDrawVerticalTrack="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/my_cards_and_bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/lato_regular"
+                        android:padding="@dimen/margin_10dp"
+                        android:text="@string/available_cards"
+                        android:textColor="@color/black_80"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/add_new_cards_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_10dp"
+                        android:text="@string/add_card"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/card_details_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:id="@+id/load_cards"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="end"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="@string/load_cards"
+                    android:textColor="@color/colorGrayTwo" />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="@string/swipe_to_see"
+                    android:textColor="@color/black_50"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="@string/more_platform"
+                    android:textColor="@color/black_80" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:drawableLeft="@drawable/ic_gpau"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/google_play_txt"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="@string/link_txt"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:drawableLeft="@drawable/ic_paytm"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/paytm_txt"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="---"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

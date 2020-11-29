@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="@drawable/image3"
+            android:layout_height="match_parent">
+
+        </ImageView>
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="@android:color/transparent"
+            android:layout_height="match_parent">
+
+        </ImageView>
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textSize="25sp"
+            android:textColor="@android:color/white"
+
+            android:gravity="start"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/backgtound_round_up"
+        >
+        <LinearLayout
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Your mobile number"
+                android:textSize="20sp"
+
+                android:textColor="@color/blakish"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginStart="20sp"
+                >
+
+            </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:padding="10dp"
+            android:background="@drawable/underline_grey"
+            android:layout_margin="15dp"
+            >
+            <com.rilixtech.CountryCodePicker
+                android:layout_weight="1"
+                android:id="@+id/ccp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                />
+
+            <EditText
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="980000000"
+                android:layout_marginStart="10dp"
+                android:background="@android:color/white"
+                android:inputType="phone"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="By submitting you confirm that you are 18 years of age and agree to the T&amp;C and Private policy."
+                android:textSize="15dp"
+                android:textColor="@color/darkgrey"
+                android:layout_marginTop="25sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginBottom="20sp"
+                >
+
+            </TextView>
+            <Button
+                android:id="@+id/buttonCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/next"
+                android:layout_gravity="bottom"
+                android:layout_margin="16sp"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:background="@drawable/button_design"
+                android:text="Accept and Continue"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

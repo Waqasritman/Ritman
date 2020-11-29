@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/width_100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/share_and_earn"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_18sp"
+                    android:visibility="visible" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/margin_20dp"
+                    android:paddingEnd="@dimen/margin_20dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:src="@drawable/ic_share_and_earn" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/text_Referral"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/text_size_12sp" />
+
+                    <TextView
+                        android:id="@+id/tvReferralCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:background="@drawable/selector_shape_drawable"
+                        android:padding="@dimen/margin_10dp"
+                        android:text="@string/text_empty_string"
+                        android:textColor="@color/color_app_text"
+                        android:textSize="@dimen/text_36sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/msg_share_referral"
+                        android:textSize="@dimen/text_18sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/margin_30dp"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:layout_marginEnd="@dimen/margin_30dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:gravity="center"
+                        android:text="@string/share_message"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <Button
+                        android:id="@+id/btnShareReferral"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="@dimen/margin_30dp"
+                        android:background="@drawable/background_button"
+                        android:fontFamily="@font/lato_bold"
+                        android:textAllCaps="false"
+                        android:text="@string/text_share_with_friend"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/text_18sp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

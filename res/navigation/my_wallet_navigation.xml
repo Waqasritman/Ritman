@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_wallet_navigation"
+    app:startDestination="@id/MyWalletActivity">
+
+
+    <fragment
+        tools:layout="@layout/activity_my_wallet"
+        android:id="@+id/MyWalletActivity"
+        android:name="totipay.wallet.mywalletmoduleV.fragments.MyWalletBalanceFragment"
+        android:label="MyWalletActivity" >
+
+        <action
+            android:id="@+id/action_MyWalletActivity_to_AddMoneyWalletActivity"
+            app:destination="@id/AddMoneyWalletActivity" />
+    </fragment>
+
+
+    <fragment
+        tools:layout="@layout/activity_add_money_wallet"
+        android:id="@+id/AddMoneyWalletActivity"
+        android:name="totipay.wallet.mywalletmoduleV.fragments.LoadWalletFragment"
+        android:label="AddMoneyWalletActivity" >
+
+        <action
+            android:id="@+id/action_AddMoneyWalletActivity_to_addedMoneyWalletActivity"
+            app:destination="@id/addedMoneyWalletActivity"
+            app:popUpTo="@id/my_wallet_navigation" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/activity_added_money_wallet"
+        android:id="@+id/addedMoneyWalletActivity"
+        android:name="totipay.wallet.mywalletmoduleV.fragments.AddedMoneyWalletActivity"
+        android:label="AddedMoneyWalletActivity" />
+</navigation>

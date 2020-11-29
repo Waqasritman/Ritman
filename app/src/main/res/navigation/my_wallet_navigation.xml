@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_wallet_navigation"
+    app:startDestination="@id/MyWalletActivity">
+
+
+    <fragment
+        android:id="@+id/MyWalletActivity"
+        android:name="totipay.wallet.mywalletmoduleV.fragments.MyWalletBalanceFragment"
+        android:label="MyWalletActivity"
+        tools:layout="@layout/activity_my_wallet">
+
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_MyWalletActivity_to_AddMoneyWalletActivity"
+            app:destination="@id/AddMoneyWalletActivity" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/AddMoneyWalletActivity"
+        android:name="totipay.wallet.mywalletmoduleV.fragments.LoadWalletFragment"
+        android:label="AddMoneyWalletActivity"
+        tools:layout="@layout/activity_add_money_wallet">
+
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_AddMoneyWalletActivity_to_choosePaymentMethodForWalletLoadFragment"
+            app:destination="@id/choosePaymentMethodForWalletLoadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choosePaymentMethodForWalletLoadFragment"
+        android:name="totipay.wallet.mywalletmoduleV.fragments.ChoosePaymentMethodForWalletLoadFragment"
+        android:label="ChoosePaymentMethodForWalletLoadFragment"
+        tools:layout="@layout/activity_select_card" />
+</navigation>

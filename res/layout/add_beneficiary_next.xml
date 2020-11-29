@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainAddBeneficiaryNextActivityLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/my_header2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <EditText
+            android:id="@+id/bankAccountNumberEditTextAddBeneficiaryNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="@string/bank_account_number"
+            android:inputType="numberPassword"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/_5sdp"
+            android:text=""
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_11ssp"
+            app:met_baseColor="@color/colorBlack"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/_5sdp"
+            app:met_floatingLabelTextSize="@dimen/_10ssp"
+            app:met_primaryColor="@color/colorGreen"
+            app:met_singleLineEllipsis="false" />
+
+            <EditText
+                android:id="@+id/bankReAccountNumberEditTextAddBeneficiaryNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/re_enter_bank_account_number"
+                android:inputType="number"
+                android:maxLength="20"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelPadding="@dimen/_5sdp"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+            <EditText
+            android:id="@+id/accountHolderNameEditTextAddBeneficiaryNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="@string/account_holder_name"
+            android:inputType="text"
+            android:maxLength="30"
+            android:paddingLeft="@dimen/_5sdp"
+            android:text=""
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_11ssp"
+            app:met_baseColor="@color/colorBlack"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/_5sdp"
+            app:met_floatingLabelTextSize="@dimen/_10ssp"
+            app:met_primaryColor="@color/colorGreen"
+            app:met_singleLineEllipsis="false" />
+            <EditText
+                android:id="@+id/ifscCodeEditTextAddBeneficiaryNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/ifsc_code"
+                android:inputType="text"
+                android:maxLength="30"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelPadding="@dimen/_5sdp"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+
+
+            <EditText
+                android:id="@+id/bankCodeEditTextAddBeneficiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/bank_code"
+                android:inputType="text"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:visibility="gone"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelPadding="@dimen/_5sdp"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:visibility="gone"
+                android:id="@+id/autocompletelayout">
+
+                <AutoCompleteTextView
+                    android:id="@+id/bankNameEditTextAddBeneficiary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_11ssp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/bankNameSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_10ssp"
+                app:ms_alignLabels="true"
+                app:ms_arrowColor="@color/colorGreen"
+                app:ms_arrowSize="@dimen/_12sdp"
+                app:ms_baseColor="@color/colorSpinner"
+                app:ms_enableErrorLabel="false"
+                app:ms_enableFloatingLabel="true"
+                app:ms_floatingLabelColor="@color/colorSpinnerText"
+                app:ms_floatingLabelText="@string/bank_name"
+                app:ms_highlightColor="@color/colorGreen"
+                app:ms_hint="@string/bank_name"
+                android:visibility="gone"
+                app:ms_hintColor="@color/colorSpinnerText"
+                app:ms_hintTextSize="@dimen/_10ssp"
+                app:ms_multiline="false"
+                app:ms_thickness="0.5dp" />
+
+            <EditText
+                android:id="@+id/bankNameNewEditTextAddBeneficiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/bank_name"
+                android:visibility="visible"
+                android:inputType="none"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:editable="false"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelPadding="@dimen/_5sdp"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <EditText
+                android:id="@+id/bankAddressEditTextAddBeneficiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/bank_address"
+                android:inputType="none"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:editable="false"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelPadding="@dimen/_5sdp"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+            <EditText
+                android:id="@+id/phoneNumberEditTextAddBeneficiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/phone_number"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:visibility="gone"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/purposeOfTransferSpinnerAddBeneficiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_10ssp"
+                app:ms_alignLabels="true"
+                app:ms_arrowColor="@color/colorGreen"
+                app:ms_arrowSize="@dimen/_12sdp"
+                app:ms_baseColor="@color/colorSpinner"
+                app:ms_enableErrorLabel="false"
+                app:ms_enableFloatingLabel="true"
+                app:ms_floatingLabelColor="@color/colorSpinnerText"
+                app:ms_floatingLabelText="@string/purpose_of_transfer"
+                app:ms_highlightColor="@color/colorGreen"
+                app:ms_hint="@string/purpose_of_transfer"
+                app:ms_hintColor="@color/colorSpinnerText"
+                app:ms_hintTextSize="@dimen/_10ssp"
+                app:ms_multiline="false"
+                app:ms_thickness="0.5dp" />
+            <EditText
+                android:id="@+id/otherPurposeOfTransferEditTextAddBeneficiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/phone_number"
+                android:inputType="text"
+                android:maxLength="10"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text=""
+                android:visibility="gone"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                app:met_baseColor="@color/colorBlack"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextSize="@dimen/_10ssp"
+                app:met_primaryColor="@color/colorGreen"
+                app:met_singleLineEllipsis="false" />
+
+            <TextView
+                android:id="@+id/addTextViewAddBeneficiary"
+                style="@style/CustomButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/yellow_btn"
+                android:text="@string/add" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

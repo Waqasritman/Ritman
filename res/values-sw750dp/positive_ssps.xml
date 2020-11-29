@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="_3ssp">7.50sp</dimen>
+    <dimen name="_9ssp">22.50sp</dimen>
+	<dimen name="_10ssp">25.00sp</dimen>
+	<dimen name="_11ssp">27.50sp</dimen>
+	<dimen name="_12ssp">30.00sp</dimen>
+	<dimen name="_13ssp">32.50sp</dimen>
+	<dimen name="_14ssp">35.00sp</dimen>
+	<dimen name="_15ssp">37.50sp</dimen>
+    <dimen name="margin_20dp">50.00sp</dimen>
+</resources>

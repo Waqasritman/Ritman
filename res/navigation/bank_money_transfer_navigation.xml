@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bank_money_transfer_navigation"
+    app:startDestination="@id/selectMoneyTransferTypeActivity">
+    <fragment
+        android:id="@+id/selectedBeneficiaryForBankTransferFragment"
+        android:name="totipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
+        android:label="fragment_selected_beneficiary_for_bank_transfer"
+        tools:layout="@layout/activity_select_beneficialy" >
+        <action
+            android:id="@+id/action_selectedBeneficiaryForBankTransferFragment_to_sendMoneyViaBankFirstActivity"
+            app:destination="@id/sendMoneyViaBankFirstActivity" />
+        <action
+            android:id="@+id/action_selectedBeneficiaryForBankTransferFragment_to_sendMoneyViaBankThirdActivity"
+            app:destination="@id/sendMoneyViaBankThirdActivity"
+            app:popUpTo="@id/selectedBeneficiaryForBankTransferFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/activity_select_type"
+        android:id="@+id/selectMoneyTransferTypeActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.SelectMoneyTransferTypeActivity"
+        android:label="SelectMoneyTransferTypeActivity" >
+        <action
+            android:id="@+id/action_selectMoneyTransferTypeActivity_to_selectedBeneficiaryForBankTransferFragment"
+            app:destination="@id/selectedBeneficiaryForBankTransferFragment" />
+        <action
+            android:id="@+id/action_selectMoneyTransferTypeActivity_to_wallet_transfer_navigation"
+            app:destination="@id/wallet_transfer_navigation" />
+        <action
+            android:id="@+id/action_selectMoneyTransferTypeActivity_to_cash_transfer_navigation"
+            app:destination="@id/cash_transfer_navigation" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/activity_send_money_via_bank_first"
+        android:id="@+id/sendMoneyViaBankFirstActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferPersonalDetailFragment"
+        android:label="SendMoneyViaBankFirstActivity" >
+        <action
+            android:id="@+id/action_sendMoneyViaBankFirstActivity_to_sendMoneyViaBankSecondActivity"
+            app:destination="@id/sendMoneyViaBankSecondActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendMoneyViaBankSecondActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferBankDetailFragment"
+        android:label="SendMoneyViaBankSecondActivity" >
+        <action
+            android:id="@+id/action_sendMoneyViaBankSecondActivity_to_sendMoneyViaBankThirdActivity"
+            app:destination="@id/sendMoneyViaBankThirdActivity"
+            app:popUpTo="@id/selectedBeneficiaryForBankTransferFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendMoneyViaBankThirdActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankThirdActivity"
+        android:label="SendMoneyViaBankThirdActivity" >
+        <action
+            android:id="@+id/action_sendMoneyViaBankThirdActivity_to_cashPaymentFourthActivity2"
+            app:destination="@id/cashPaymentFourthActivity2"
+            app:popUpTo="@id/selectMoneyTransferTypeActivity" />
+    </fragment>
+    <include app:graph="@navigation/wallet_transfer_navigation" />
+    <include app:graph="@navigation/cash_transfer_navigation" />
+    <fragment
+        tools:layout="@layout/activity_send_money_via_bankfourth"
+        android:id="@+id/cashPaymentFourthActivity2"
+        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankFourthActivity"
+        android:label="CashPaymentFourthActivity" />
+</navigation>

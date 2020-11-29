@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="@drawable/image3"
+            android:layout_height="match_parent">
+
+        </ImageView>
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="@android:color/transparent"
+            android:layout_height="match_parent">
+
+        </ImageView>
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textSize="25sp"
+            android:text="1/2"
+            android:textColor="@android:color/white"
+
+            android:gravity="start"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:background="@drawable/backgtound_round_up"
+        >
+        <LinearLayout
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create your profile"
+                android:textSize="25sp"
+
+                android:textColor="@color/blakish"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginStart="20sp"
+                >
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Iqma Number"
+                android:textSize="15dp"
+                android:textColor="@color/darkgrey"
+                android:layout_marginTop="25sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginStart="20sp"
+                >
+
+            </TextView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/edittext_grey"
+                android:hint="Enter your iqma Number"
+                android:id="@+id/bankAiqmano"
+                android:padding="15sp">
+
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date of Birth"
+                android:textSize="15dp"
+                android:textColor="@color/darkgrey"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginStart="20sp"
+                >
+
+            </TextView>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="15sp"
+                android:hint="dd/mm/yy"
+                android:id="@+id/bankAdob"
+                android:background="@drawable/edittext_grey"
+                >
+
+            </EditText>
+        </LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="5"
+    >
+    <Button
+    android:id="@+id/bankAnext"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+        android:layout_margin="10sp"
+    android:background="@drawable/button_design"
+    android:text="Next"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+    android:textColor="@android:color/white" /></LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".bank_transfer.SelectReciptTypeActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backgtound_round_up"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical">
+    <View
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="1dp"
+        android:background="@color/colorTransparent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/_5sdp"/>
+    <TextView
+        android:id="@+id/save_as_pdf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save as PDF"
+        android:fontFamily="@font/lato_regular"
+        android:drawableLeft="@drawable/ic_pdf"
+        android:drawablePadding="@dimen/_15sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/save_to_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save to E-Mail"
+        android:fontFamily="@font/lato_regular"
+        android:drawableLeft="@drawable/ic_mail"
+        android:drawablePadding="@dimen/_15sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/send_to_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send to Message"
+        android:fontFamily="@font/lato_regular"
+        android:drawableLeft="@drawable/ic_pdf"
+        android:drawablePadding="@dimen/_15sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/send_to_whatsapp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send to WhatsApp"
+        android:fontFamily="@font/lato_regular"
+        android:drawableLeft="@drawable/ic_whatsapp"
+        android:drawablePadding="@dimen/_15sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/black"/>
+</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tool_bar" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/wallet_to_wallet_summary"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:text="@string/sending_currency" />
+
+                <TextView
+                    android:id="@+id/sending_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:fontFamily="@font/lato_medium"
+                    android:hint="@string/amount_hint"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:text="@string/receiving__currency_txt" />
+
+                <TextView
+                    android:id="@+id/receiving_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@drawable/background_select_mood"
+                    android:hint="@string/wallet_des_hint"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:text="@string/mobile_number_txt" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@drawable/background_select_mood"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/receiver_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:hint="@string/phone_number_hint"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:text="@string/wallet_name_txt" />
+
+                <TextView
+                    android:id="@+id/receiver_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@drawable/background_select_mood"
+                    android:hint="@string/name_hint"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:text="@string/amount_text_" />
+
+                <TextView
+                    android:id="@+id/sending_amount_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:fontFamily="@font/lato_medium"
+                    android:hint="@string/amount_hint"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <TextView
+                    android:id="@+id/description_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:text="@string/description_txt_optional" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@drawable/background_select_mood"
+                    android:hint="@string/wallet_des_hint"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black" />
+
+
+                <Button
+                    android:id="@+id/edit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:background="@drawable/button_design"
+                    android:text="@string/edit"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_18sp" />
+
+                <Button
+                    android:id="@+id/confirm_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:background="@drawable/background_colour_border"
+                    android:text="@string/confirm_text"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_18sp" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

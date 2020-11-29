@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tool_bar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_50dp"
+            android:src="@drawable/ic_material_locked"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_25dp"
+            android:fontFamily="@font/lato_semibold"
+            android:text="@string/talfie_locked"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_20sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="@dimen/margin_15dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginEnd="@dimen/margin_15dp"
+            android:fontFamily="@font/lato_medium"
+            android:gravity="center"
+            android:text="@string/toti_logout_auto_text"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_15dp"
+            android:layout_marginEnd="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_30dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/close_talfie"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="@dimen/margin_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_colour_border"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/close_text"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_16sp" />
+
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginStart="@dimen/margin_5dp"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_button"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/login_text"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_16sp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MoneyTransferModuleV.wallettransfer.local.WalletTransferFirstActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tool_bar"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/how_send_money"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <LinearLayout
+                    android:id="@+id/internatinal_transfer_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_8sdp"
+                    android:visibility="visible"
+                    android:weightSum="3.5">
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="3"
+                        android:drawableLeft="@drawable/ic_global"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/to_own_account"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/arrow_menu" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/local_transfer_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_8sdp"
+                    android:weightSum="3.5">
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="3"
+                        android:drawableLeft="@drawable/ic_transfer"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/local_transfer"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/arrow_menu" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

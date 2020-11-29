@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainDrawerMenuLinearLayout"
+    android:layout_width="@dimen/_200sdp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <LinearLayout
+          android:id="@+id/profileLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:padding="@dimen/_5sdp">
+
+        <ImageView
+            android:id="@+id/userProfileImageViewDrawerMenu"
+            android:layout_width="@dimen/height_50dp"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_margin="@dimen/_5sdp"
+            android:src="@drawable/user_profile_circle"
+            android:contentDescription="TODO" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+          <TextView
+              android:id="@+id/nameTextViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text=""
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_14ssp" />
+
+          <TextView
+              android:id="@+id/accountBalanceTextViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/balance"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pointdrawermenutextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/points"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/pointsTextViewDrawerMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGreen"
+                android:paddingLeft="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:text="0"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_12ssp" />
+          </LinearLayout>
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+      <LinearLayout
+          android:id="@+id/homeLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon8"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:id="@+id/Hometextview"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/home"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+      </LinearLayout>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+      <LinearLayout
+          android:id="@+id/legalDocumentLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon_legaldocuments"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/legal_documents"
+              android:id="@+id/LegaldocTextview"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+      <LinearLayout
+          android:id="@+id/mobileRechargeLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:id="@+id/mobileRechargeImageViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon2"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:id="@+id/mobileRechargeTextViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/mobile_recharge"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+
+
+      <LinearLayout
+          android:id="@+id/moneyTransferLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:id="@+id/moneyTransferImageViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon1"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:id="@+id/moneyTransferTextViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/money_transfer"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:id="@+id/prepaiedcardLinearLayoutDrawerMenu"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/prepaid_card_menu"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:id="@+id/TextviewBalancePrepaidCarddrawermenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/prepaid_card"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+
+      <LinearLayout
+          android:id="@+id/billPaymentLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:id="@+id/billPaymentImageViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon3"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:id="@+id/billPaymentTextViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/bill_pay"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+
+      <LinearLayout
+          android:id="@+id/walletLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:id="@+id/walletImageViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon4"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:id="@+id/walletTextViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/wallet"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+
+      <LinearLayout
+          android:id="@+id/loyaltyProgramLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:id="@+id/loyaltyProgramImageViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon5"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:id="@+id/loyaltyProgramTextViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/loyalty_program"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+
+      <LinearLayout
+          android:id="@+id/notificationLinearLayoutDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:id="@+id/notificationImageViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon6"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+          <TextView
+              android:id="@+id/notificationTextViewDrawerMenu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/notification"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+
+      <LinearLayout
+          android:id="@+id/moreLinearLayoutMoreActivity"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center|left"
+          android:orientation="horizontal"
+          android:padding="@dimen/_10sdp"
+          android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:gravity="center">
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/menu_icon7"
+              android:contentDescription="TODO" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/more"
+              android:id="@+id/moretextviewdrawermenu"
+              android:textColor="@color/colorGrey"
+              android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/aboutsettingTextview"
+                android:text="@string/about_settings_etc"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/_11ssp" />
+        </LinearLayout>
+      </LinearLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/colorBackGrey" />
+
+      <TextView
+          android:id="@+id/helpNSupportTextView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/_12sdp"
+          android:text="@string/help_support"
+          android:textColor="@color/colorGrey"
+          android:textSize="@dimen/_12ssp" />
+
+      <TextView
+          android:id="@+id/inviteTextViewDrawerMenu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/_12sdp"
+          android:text="@string/invite"
+          android:textColor="@color/colorGrey"
+          android:textSize="@dimen/_12ssp" />
+
+      <TextView
+          android:id="@+id/logoutTextViewDrawerMenu"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginBottom="@dimen/_20sdp"
+          android:layout_marginTop="@dimen/_30sdp"
+          android:background="@drawable/logout_btn"
+          android:gravity="center"
+          android:text="@string/logout"
+          android:textColor="@color/colorGrey"
+          android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+  </ScrollView>
+</LinearLayout>

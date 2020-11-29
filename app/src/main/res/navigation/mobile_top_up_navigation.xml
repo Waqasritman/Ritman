@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_top_up_navigation"
+    app:startDestination="@id/mobileTopUpFirstActivity">
+
+    <fragment
+        android:id="@+id/mobileTopUpFirstActivity"
+        android:name="totipay.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
+        android:label="MobileTopUpFirstActivity"
+        tools:layout="@layout/activity_mobile_top_up_first">
+        <action
+            android:id="@+id/action_mobileTopUpFirstActivity_to_WRBillerNamesFragment"
+            app:destination="@id/WRBillerNamesFragment"
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/WRBillerNamesFragment"
+        android:name="totipay.wallet.Mobile_Top_Up.fragments.WRBillerPlansFragment"
+        android:label="WRBillerNamesFragment">
+        <action
+            android:id="@+id/action_WRBillerNamesFragment_to_WRBillerPaymentFragment"
+            app:destination="@id/WRBillerPaymentFragment"
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_WRBillerNamesFragment_to_MobileTopupBillDetailsFragment"
+            app:destination="@id/MobileTopupBillDetailsFragment"
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/WRBillerPaymentFragment"
+        android:name="totipay.wallet.Mobile_Top_Up.fragments.WRBillerPaymentFragment"
+        android:label="WRBillerPaymentFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_WRBillerPaymentFragment_to_mobileTopupStatusFragment"
+            app:destination="@id/mobileTopupStatusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/MobileTopupBillDetailsFragment"
+        android:name="totipay.wallet.Mobile_Top_Up.fragments.MobileTopupBillDetailsFragment"
+        android:label="MobileTopupBillDetailsFragment"
+        tools:layout="@layout/fragment_utility_biller_details">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_MobileTopupBillDetailsFragment_to_WRBillerPaymentFragment"
+            app:destination="@id/WRBillerPaymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mobileTopupStatusFragment"
+        android:name="totipay.wallet.Mobile_Top_Up.fragments.MobileTopupStatusFragment"
+        android:label="MobileTopupStatusFragment" />
+</navigation>

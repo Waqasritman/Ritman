@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/rootBottomSheet1">
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:gravity="center|left"
+        android:padding="@dimen/_10ssp"
+        android:id="@+id/labelselectcountryTextView"
+        android:text="@string/select_country"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_13ssp"
+         />
+
+    <ImageView
+        android:id="@+id/closeCountrySelectionImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center"
+        android:gravity="center|right"
+        android:padding="@dimen/_3ssp"
+        android:src="@drawable/close_icon"
+        android:contentDescription="TODO" />
+
+  </FrameLayout>
+  <EditText
+      android:id="@+id/inputSearch"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:hint="Search Country.."
+      android:padding="@dimen/_10ssp"
+      android:inputType="textVisiblePassword"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/countrySelectionRecyclerView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+    >
+
+  </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:id="@+id/rootBottomSheet2">
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/e_gift_background"
+        android:orientation="vertical"
+        tools:context=".e_gift.fragments.EGiftSentActivity">
+
+
+        <TextView
+            android:id="@+id/egift_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tool_bar"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:text="@string/e_gift_txt"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp" />
+
+
+        <ImageView
+            android:id="@+id/send_icon"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+
+            android:backgroundTint="@color/white"
+            android:padding="@dimen/_19sdp"
+            android:src="@drawable/egift_image" />
+
+
+        <TextView
+            android:id="@+id/gift_sent_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/send_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/e_gft_sent"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gift_sent_text"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="To Clint"
+            android:textColor="@color/white" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/view_reciept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/round_bg"
+                android:backgroundTint="@color/white"
+                android:text="@string/view_reciept"
+                android:textColor="#ECA751" />
+
+
+            <TextView
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/back"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

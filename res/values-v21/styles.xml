@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomButtonStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:backgroundTint">@color/colorGreen</item>
+    </style>
+</resources>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/utility_bill_"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/select_country"
+                    android:textSize="@dimen/_12ssp" />
+
+                <RelativeLayout
+                    android:id="@+id/country_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+
+
+
+                    <TextView
+                        android:id="@+id/country_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+
+                        android:layout_weight="1.6"
+                        android:background="@drawable/background_select_mood"
+                        android:drawableEnd="@drawable/dropdown_arrow"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_country"
+                        android:paddingStart="@dimen/margin_10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/select_type"
+                    android:textSize="@dimen/_12ssp" />
+
+                <RelativeLayout
+                    android:id="@+id/utility_type_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+
+
+                    <TextView
+                        android:id="@+id/operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+
+                        android:background="@drawable/background_select_mood"
+                        android:drawableRight="@drawable/dropdown_arrow"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_type"
+                        android:paddingStart="@dimen/margin_10dp"
+                        android:paddingEnd="@dimen/margin_10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/darkgrey" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/select_category"
+                    android:textSize="@dimen/_12ssp" />
+
+                <RelativeLayout
+                    android:id="@+id/category_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                 <TextView
+                        android:id="@+id/select_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+
+                        android:background="@drawable/background_select_mood"
+                        android:drawableEnd="@drawable/dropdown_arrow"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_category"
+                        android:paddingStart="@dimen/margin_10dp"
+                        android:paddingEnd="@dimen/margin_10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/darkgrey" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/select_operator"
+                    android:textSize="@dimen/_12ssp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/select_operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+                        android:background="@drawable/background_select_mood"
+                        android:drawableEnd="@drawable/dropdown_arrow"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_operator"
+                        android:paddingStart="@dimen/margin_10dp"
+                        android:paddingEnd="@dimen/margin_10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/darkgrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/next_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/background_button"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:drawableLeft="@drawable/ic_white_send"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/choose_plan"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

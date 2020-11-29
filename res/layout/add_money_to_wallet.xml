@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainAddMoneyToWalletLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <include
+      layout="@layout/my_header"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+  </include>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorGreen"
+      android:gravity="center"
+      android:padding="@dimen/_5sdp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="@dimen/_5sdp">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Balance:"
+          android:id="@+id/textviewbalnce"
+          android:textColor="@color/colorWhite"
+          android:textSize="@dimen/_12ssp" />
+
+      <TextView
+          android:id="@+id/accountBalanceTextViewAddMoney"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginStart="@dimen/_5sdp"
+          android:text="0"
+          android:textColor="@color/colorWhite"
+          android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="start"
+        android:padding="@dimen/_5sdp">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:gravity="start"
+          android:text="@string/points"
+          android:id="@+id/textviewpoints"
+          android:textColor="@color/colorWhite"
+          android:textSize="@dimen/_12ssp" />
+
+      <TextView
+          android:id="@+id/pointsTextViewAddMoney"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center|right"
+          android:gravity="start"
+          android:text="0"
+          android:textColor="@color/colorWhite"
+          android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+  </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_20sdp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_weight="0.3"
+            android:layout_gravity="center"
+            android:gravity="left|center">
+        <ImageView
+            android:id="@+id/image_SenderflagLoadMoney"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@drawable/close_icon"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/text_SenderCountryNameLoadMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="IND"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_11ssp" />
+        </LinearLayout>
+  <EditText
+      android:id="@+id/addMoneyAmountEditText"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:hint="@string/enter_amount"
+      android:inputType="number|numberDecimal"
+      android:maxLength="25"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+    </LinearLayout>
+  <TextView
+      android:id="@+id/addMoneyTextViewToWallet"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="@dimen/_25sdp"
+      android:background="@drawable/yellow_btn"
+      android:text="@string/add_money"
+      style="@style/CustomButtonStyle" />
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Please contact your agent"
+            android:textSize="22dp"
+            android:textColor="@color/Green"/>
+
+    </LinearLayout>
+
+</LinearLayout>

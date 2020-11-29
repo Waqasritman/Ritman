@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_light">#1E9AED</color>
+    <color name="pink_light">#C19AE3</color>
+    <color name="pinkblue_light">#9581F0</color>
+    <color name="scanner_line">#00ceff</color>
+    <color name="colorBlueSkyTwo">#DBE4F2</color>
+    <color name="colorGreen">#931E55</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorLightGrey">#F4F4F4</color>
+    <color name="colorYellow">#F1A104</color>
+    <color name="colorSpinner">#BFBFBF</color>
+    <color name="colorDarkGray">#FF000000</color>
+    <color name="colorTransparent">#80000000</color>
+    <color name="Red">#FF0000</color>
+    <color name="Remoce_card_color">#C71D1D</color>
+    <color name="Green">#008000</color>
+    <color name="Black">#000000</color>
+    <color name="gray_lite">#E2E2E2</color>
+    <color name="gray_miner_lite">#F7F7F7</color>
+    <color name="color_app_text">#1a1a19</color>
+    <color name="color_toti">#931D55</color>
+    <color name="colorPrimary">#931E55</color>
+    <color name="colorPrimaryDark">#3a40de</color>
+    <color name="darkgrey">#707070</color>
+    <color name="grey">#F6F6F6</color>
+    <color name="blakish">#505050</color>
+    <color name="black">#000000</color>
+    <color name="black_80">#80000000</color>
+    <color name="blue_color">#4E72E6</color>
+    <color name="black_50">#50000000</color>
+    <color name="white">#ffffff</color>
+    <color name="colour_accent">#1889AC</color>
+    <color name="shadow_new">#24695C1A</color>
+    <color name="colorGrayTwo">#77869E</color>
+</resources>

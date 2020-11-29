@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/mobile_top_up"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/mobile_number"
+                    android:textSize="@dimen/_12ssp" />
+
+                <include
+                    android:id="@+id/number_layout"
+                    layout="@layout/number_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/select_type"
+                    android:textSize="@dimen/_12ssp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+                        android:background="@drawable/background_select_mood"
+                        android:drawableRight="@drawable/dropdown_arrow"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_type"
+                        android:paddingStart="@dimen/margin_10dp"
+                        android:paddingEnd="@dimen/margin_10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/darkgrey" />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:orientation="vertical"
+                    android:id="@+id/postpaid_plan_decide_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/select_category"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/select_category"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_45dp"
+                            android:background="@drawable/background_select_mood"
+                            android:drawableEnd="@drawable/dropdown_arrow"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/select_category"
+                            android:paddingStart="@dimen/margin_10dp"
+                            android:paddingEnd="@dimen/margin_10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/darkgrey" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/select_operator"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/select_operator"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_45dp"
+                            android:background="@drawable/background_select_mood"
+                            android:drawableEnd="@drawable/dropdown_arrow"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/select_operator"
+                            android:paddingStart="@dimen/margin_10dp"
+                            android:paddingEnd="@dimen/margin_10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/darkgrey" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/prepaid_operator_layout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/select_operator"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/prepaid_operator"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_45dp"
+                            android:background="@drawable/background_select_mood"
+                            android:drawableEnd="@drawable/dropdown_arrow"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/select_operator"
+                            android:paddingStart="@dimen/margin_10dp"
+                            android:paddingEnd="@dimen/margin_10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/darkgrey" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/next_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/background_button"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:drawableLeft="@drawable/ic_white_send"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/next"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

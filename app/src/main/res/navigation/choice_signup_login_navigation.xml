@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/choice_signup_login_navigation"
+    app:startDestination="@id/newLoginCheck">
+
+    <fragment
+        android:id="@+id/newLoginCheck"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewLoginCheck"
+        android:label="NewLoginCheck"
+        tools:layout="@layout/new_signup_login">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_newLoginCheck_to_signUpMobileNoFragment"
+            app:destination="@id/signUpMobileNoFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_newLoginCheck_to_newLoginOption"
+            app:destination="@id/newLoginOption" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpMobileNoFragment"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.SignUpMobileNoFragment"
+        android:label="SignUpMobileNoFragment"
+        tools:layout="@layout/fragment_sign_up_mobile_no">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_signUpMobileNoFragment_to_signUpOtpMobileFragment"
+            app:destination="@id/signUpOtpMobileFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_signUpMobileNoFragment_to_fragmentSignUpForEmail"
+            app:destination="@id/fragmentSignUpForEmail" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpOtpMobileFragment"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.SignUpOtpMobileFragment"
+        android:label="SignUpOtpMobileFragment"
+        tools:layout="@layout/enter_otp_banking">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_signUpOtpMobileFragment_to_newSignupCreateProfile"
+            app:destination="@id/newSignupCreateProfile"
+            app:popUpTo="@id/newLoginCheck" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_signUpOtpMobileFragment_to_fragmentSignUpForEmail"
+            app:destination="@id/fragmentSignUpForEmail" />
+    </fragment>
+    <fragment
+        android:id="@+id/newSignupCreateProfile"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewSignupCreateProfile"
+        android:label="NewSignupCreateProfile"
+        tools:layout="@layout/complete_profile_nonb">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_newSignupCreateProfile_to_fragmentSignupCompleteProfile"
+            app:destination="@id/fragmentSignupCompleteProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSignupCompleteProfile"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.FragmentSignupCompleteProfile"
+        android:label="FragmentSignupCompleteProfile"
+        tools:layout="@layout/complete_profile_nonb2">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_fragmentSignupCompleteProfile_to_newSignupSetupPass"
+            app:destination="@id/newSignupSetupPass" />
+    </fragment>
+    <fragment
+        android:id="@+id/newSignupSetupPass"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewSignupSetupPass"
+        android:label="NewSignupSetupPass"
+        tools:layout="@layout/setup_pass_nonb">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_newSignupSetupPass_to_newSignupCreatepin"
+            app:destination="@id/newSignupCreatepin" />
+    </fragment>
+    <fragment
+        android:id="@+id/newSignupCreatepin"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewSignupCreatepin"
+        android:label="NewSignupCreatepin"
+        tools:layout="@layout/newpin_banking" />
+    <fragment
+        android:id="@+id/fragmentSignUpForEmail"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.FragmentSignUpForEmail"
+        android:label="FragmentSignUpForEmail"
+        tools:layout="@layout/fragment_sign_up_for_email">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_fragmentSignUpForEmail_to_signUpOtpMobileFragment"
+            app:destination="@id/signUpOtpMobileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newLoginOption"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewLoginOption"
+        android:label="NewLoginOption">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_newLoginOption_to_signUpMobileNoFragment"
+            app:destination="@id/signUpMobileNoFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_newLoginOption_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_newLoginOption_to_loginWithNumber"
+            app:destination="@id/loginWithNumber" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.LoginWithEmailFragment"
+        android:label="LoginFragment">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_loginFragment_to_forgotPinNumberFragment"
+            app:destination="@id/forgotPinNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPinNumberFragment"
+        android:name="totipay.wallet.login_signup_module.forgot_pin.ForgotPinNumberFragment"
+        android:label="ForgotPinNumberFragment"
+        tools:layout="@layout/forgot_pin_number_email_layout" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_forgotPinNumberFragment_to_forgotPinOTPFragment"
+            app:destination="@id/forgotPinOTPFragment"
+            app:popUpTo="@id/choice_signup_login_navigation" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_forgotPinNumberFragment_to_forgotPinUserSecurityDataFragment"
+            app:destination="@id/forgotPinUserSecurityDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPinOTPFragment"
+        android:name="totipay.wallet.login_signup_module.forgot_pin.ForgotPinOTPFragment"
+        android:label="ForgotPinOTPFragment"
+        tools:layout="@layout/enter_otp_banking" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_forgotPinOTPFragment_to_forgotPasswordCreateNewPinFragment"
+            app:destination="@id/forgotPasswordCreateNewPinFragment"
+            app:popUpTo="@id/choice_signup_login_navigation" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordCreateNewPinFragment"
+        android:name="totipay.wallet.login_signup_module.forgot_pin.ForgotPasswordCreateNewPinFragment"
+        android:label="ForgotPasswordCreateNewPinFragment"
+        tools:layout="@layout/activity_change_pin" />
+    <fragment
+        android:id="@+id/forgotPinUserSecurityDataFragment"
+        android:name="totipay.wallet.login_signup_module.forgot_pin.ForgotPinUserSecurityDataFragment"
+        android:label="ForgotPinUserSecurityDataFragment"
+        tools:layout="@layout/forgot_pin_user_security_data">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_forgotPinUserSecurityDataFragment_to_forgotPinOTPFragment"
+            app:destination="@id/forgotPinOTPFragment"
+            app:popUpTo="@id/choice_signup_login_navigation" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginWithNumber"
+        android:name="totipay.wallet.login_signup_module.fragments_sign_up.LoginWithNumber"
+        android:label="LoginWithNumber">
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_loginWithNumber_to_forgotPinNumberFragment"
+            app:destination="@id/forgotPinNumberFragment" />
+    </fragment>
+</navigation>

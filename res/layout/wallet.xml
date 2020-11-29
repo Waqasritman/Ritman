@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/mainWalletLinearLayout"
+android:orientation="vertical">
+
+<include
+    layout="@layout/my_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</include>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/_20sdp"
+    android:gravity="center"
+    android:id="@+id/walletsuretextview"
+    android:text="@string/are_you_sure_want_to_deduct_money_from_wallet"
+    android:textColor="@color/colorGrey"
+    android:textSize="@dimen/_10ssp" />
+
+<TextView
+    android:id="@+id/amountNeedToTransferTextViewWallet"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:text="₹ 0"
+    android:textColor="@color/colorGreen"
+    android:textSize="@dimen/_12ssp" />
+
+<EditText
+    android:id="@+id/pinEditTextWallet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_20sdp"
+    android:layout_marginEnd="@dimen/_20sdp"
+    android:layout_marginTop="@dimen/_20sdp"
+    android:hint="@string/enter_wallet_pin"
+    android:inputType="numberPassword"
+    android:maxLength="6"
+    android:paddingLeft="@dimen/_5sdp"
+    android:text=""
+    android:textColor="@color/colorBlack"
+    android:textSize="@dimen/_11ssp"
+    app:met_baseColor="@color/colorBlack"
+    app:met_floatingLabel="highlight"
+    app:met_floatingLabelTextSize="@dimen/_10ssp"
+    app:met_primaryColor="@color/colorGreen"
+    app:met_singleLineEllipsis="false" />
+
+<TextView
+    android:id="@+id/payNowTextViewWallet"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/_25sdp"
+    android:background="@drawable/yellow_btn"
+    android:text="@string/pay_now"
+    style="@style/CustomButtonStyle" />
+</LinearLayout>

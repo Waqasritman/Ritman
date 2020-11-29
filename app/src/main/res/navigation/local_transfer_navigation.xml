@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/local_transfer_navigation"
+    app:startDestination="@id/sendMoneyTypeActivity">
+
+    <fragment
+        tools:layout="@layout/activity_send_money_type"
+        android:id="@+id/sendMoneyTypeActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.SendMoneyTypeActivity"
+        android:label="SendMoneyTypeActivity" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_sendMoneyTypeActivity_to_walletTransferActivity"
+            app:destination="@id/walletTransferActivity" />
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_sendMoneyTypeActivity_to_requestMoneyActivity"
+            app:destination="@id/requestMoneyActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/walletTransferActivity"
+        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferActivity"
+        android:label="WalletTransferActivity" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_walletTransferActivity_to_selectCardActivity_walletTransfer"
+            app:destination="@id/selectCardActivity_walletTransfer" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectCardActivity_walletTransfer"
+        android:name="totipay.wallet.SendMoney.SelectCardActivity_walletTransfer"
+        android:label="SelectCardActivity_walletTransfer" />
+    <fragment
+        android:id="@+id/requestMoneyActivity"
+        android:name="totipay.wallet.SendMoney.RequestMoneyActivity"
+        android:label="RequestMoneyActivity" />
+</navigation>

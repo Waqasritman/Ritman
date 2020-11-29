@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:background="@color/white"
+     android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:scaleType="centerInside"
+        android:src="@drawable/close_icon"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/close_dialog"
+        android:layout_width="@dimen/height_50dp"
+        android:layout_height="@dimen/height_50dp"/>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progress_bar"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/close_dialog"
+        android:id="@+id/transfer_purpose_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
+</layout>

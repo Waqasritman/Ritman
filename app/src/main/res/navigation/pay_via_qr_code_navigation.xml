@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pay_via_qr_code_navigation"
+    app:startDestination="@id/barcodeReaderFragment">
+
+    <fragment
+        android:id="@+id/barcodeReaderFragment"
+        android:name="totipay.wallet.scanqrcodemodule.BarcodeReaderFragment"
+        android:label="BarcodeReaderFragment"
+        tools:layout="@layout/fragment_barcode_reader" >
+        <action
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            android:id="@+id/action_barcodeReaderFragment_to_walletToWalletViaQrCode"
+            app:destination="@id/walletToWalletViaQrCode" />
+    </fragment>
+    <fragment
+        android:id="@+id/walletToWalletViaQrCode"
+        android:name="totipay.wallet.payviaqrcode.WalletToWalletViaQrCode"
+        android:label="WalletToWalletViaQrCode" />
+</navigation>

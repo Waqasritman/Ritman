@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <include
+      layout="@layout/my_header"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_20sdp"
+      android:hint="@string/bank_name"
+      android:inputType="text"
+      android:maxLength="25"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:hint="@string/bank_account_number"
+      android:inputType="text"
+      android:maxLength="25"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:hint="@string/account_holder_name"
+      android:inputType="text"
+      android:maxLength="25"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:hint="@string/enter_bvn"
+      android:inputType="text"
+      android:maxLength="25"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:hint="@string/date_of_birth"
+      android:inputType="text"
+      android:maxLength="25"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+
+  <CheckBox
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_20sdp"
+      android:text="@string/save_account_details"
+      android:textColor="@color/colorGrey"
+      android:textSize="@dimen/_12ssp" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="@dimen/_25sdp"
+      android:background="@drawable/yellow_btn"
+      android:text="@string/pay_now"
+      style="@style/CustomButtonStyle" />
+</LinearLayout>

@@ -1,0 +1,51 @@
+<layout>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:apps="http://schemas.android.com/tools"
+    android:id="@+id/tool_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize">
+    <!--androidx.appcompat.widget.Toolbar-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar_final"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentTop="true"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:textAlignment="center"
+        app:contentInsetStart="0dp"
+        app:layout_collapseMode="pin">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/back_btn"
+                app:tint="@color/colorPrimary"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_white_icon"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"/>
+
+
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/title_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
+                apps:text="@string/app_name"
+                android:fontFamily="@font/lato_regular"/>
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+</RelativeLayout>
+</layout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/kyc_navigation"
+    app:startDestination="@id/takeKYCDataFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_take_kyc_data"
+        android:id="@+id/takeKYCDataFragment"
+        android:name="totipay.wallet.KYC.fragments.TakeKYCDataFragment"
+        android:label="TakeKYCDataFragment" >
+        <action
+            android:id="@+id/action_takeKYCDataFragment_to_takeKYCIdPictureFragment"
+            app:destination="@id/takeKYCIdPictureFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/kyc_picture_layout"
+        android:id="@+id/takeKYCIdPictureFragment"
+        android:name="totipay.wallet.KYC.fragments.TakeKYCFrontIdPictureFragment"
+        android:label="TakeKYCIdPictureFragment" />
+</navigation>

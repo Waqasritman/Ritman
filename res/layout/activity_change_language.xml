@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainChangeLanguageLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/my_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:id="@+id/linearlanguagechange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:contentDescription="TODO"
+            android:src="@drawable/login_logo2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/select_your_language"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_12sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="10dp">
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/languageSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_12sdp"
+            app:ms_alignLabels="true"
+            app:ms_arrowColor="@color/colorGreen"
+            app:ms_arrowSize="@dimen/_12sdp"
+            app:ms_baseColor="@color/colorSpinner"
+            app:ms_enableErrorLabel="false"
+            app:ms_enableFloatingLabel="false"
+            app:ms_floatingLabelColor="@color/colorSpinnerText"
+            app:ms_floatingLabelText="@string/your_language"
+            app:ms_highlightColor="@color/colorGreen"
+            app:ms_hint="@string/your_language"
+            app:ms_hintColor="@color/colorSpinnerText"
+            app:ms_hintTextSize="@dimen/_10ssp"
+            app:ms_multiline="false"
+            app:ms_thickness="0.5dp" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/savelanguageTextView"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:background="@drawable/yellow_btn"
+        android:text="@string/save" />
+</LinearLayout>

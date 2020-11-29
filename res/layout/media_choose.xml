@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackGrey"
+    android:orientation="vertical">
+
+  <TextView
+      android:id="@+id/takePhotoTextView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorWhite"
+      android:padding="@dimen/_12ssp"
+      android:text="@string/take_photo"
+      android:textColor="@color/Black"
+      android:textSize="@dimen/_12ssp" />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp" />
+
+  <TextView
+      android:id="@+id/chooseGalleryTextView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorWhite"
+      android:padding="@dimen/_12ssp"
+      android:text="@string/choose_from_gallery"
+      android:textColor="@color/Black"
+      android:textSize="@dimen/_12ssp" />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp" />
+
+  <TextView
+      android:id="@+id/cancelTextView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorWhite"
+      android:padding="@dimen/_12ssp"
+      android:text="@string/cancel"
+      android:textColor="@color/Black"
+      android:textSize="@dimen/_12ssp" />
+
+</LinearLayout>

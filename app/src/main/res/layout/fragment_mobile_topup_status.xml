@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="@dimen/height_50dp"
+            android:layout_height="@dimen/height_50dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/back_white_icon" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/wallet_bg" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/status"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:src="@drawable/ic_send_bg_white" />
+
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/lato_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_24sp" />
+
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/transfer_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/status"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:fontFamily="@font/lato_medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18sp" />
+
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/operator_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/transfer_amount"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/lato_medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18sp" />/
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <totipay.wallet.utils.SlideHolder
+        android:id="@+id/slideHolderPrepaiedCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <view
+            class="totipay.wallet.utils.DrawerMenu"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/my_header2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </include>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Coming soon"
+                    android:textSize="22dp"
+                    android:textColor="@color/Green"/>
+
+            </LinearLayout>
+
+
+            <include
+                layout="@layout/my_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </include>
+        </LinearLayout>
+
+    </totipay.wallet.utils.SlideHolder>
+</LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/_10sdp"-->
+        <!--android:layout_marginEnd="@dimen/_15sdp"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="@dimen/_5sdp"-->
+            <!--android:layout_marginTop="@dimen/_10sdp"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Balance :"-->
+                <!--android:visibility="gone"-->
+                <!--android:id="@+id/textviewbalance"-->
+                <!--android:textSize="@dimen/_12ssp" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/TextviewBalancePrepaidCard"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=""-->
+                <!--android:textSize="@dimen/_12ssp" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="@dimen/_10sdp"-->
+            <!--android:background="@drawable/credit_card"-->
+            <!--android:orientation="vertical"-->
+            <!--android:id="@+id/linearcard"-->
+            <!--android:visibility="gone">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="@dimen/_5sdp"-->
+                <!--android:layout_weight="1"></LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginStart="@dimen/_5sdp"-->
+                <!--android:layout_marginTop="@dimen/_10sdp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="left|center"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="@dimen/_10sdp">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingLeft="@dimen/_15sdp"-->
+                    <!--android:text="@string/card_no"-->
+                    <!--android:id="@+id/textviewcardnumber"-->
+                    <!--android:textColor="@color/colorWhite"-->
+                    <!--android:textSize="@dimen/_14ssp" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/TextviewCardNumber"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingLeft="@dimen/_2sdp"-->
+                    <!--android:textColor="@color/colorWhite"-->
+                    <!--android:textSize="@dimen/_14ssp" />-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="@dimen/_10sdp"-->
+            <!--android:visibility="gone">-->
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:id="@+id/card_recycleview"-->
+                <!--android:layout_height="match_parent">-->
+            <!--</android.support.v7.widget.RecyclerView>-->
+        <!--</LinearLayout>-->
+        <!--&lt;!&ndash;<FrameLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_10sdp">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:src="@drawable/credit_card" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginStart="@dimen/_5sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_25sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:gravity="center|start"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:orientation="horizontal"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:padding="@dimen/_10sdp">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:paddingLeft="@dimen/_15sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:text="Card No:"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="@color/colorWhite"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textSize="@dimen/_14ssp" />&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/TextviewCardNumber"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:paddingLeft="@dimen/_2sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="@color/colorWhite"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textSize="@dimen/_14ssp" />&ndash;&gt;-->
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+        <!--&lt;!&ndash;</FrameLayout>&ndash;&gt;-->
+
+
+    <!--<TextView-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="@dimen/margin_30dp"-->
+        <!--android:layout_marginBottom="@dimen/_10sdp"-->
+        <!--android:layout_marginTop="@dimen/_20sdp" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/AddCardTextView"-->
+        <!--style="@style/CustomButtonStyle"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="@dimen/_15sdp"-->
+        <!--android:background="@drawable/yellow_btn"-->
+        <!--android:text="Add Your Card" />-->

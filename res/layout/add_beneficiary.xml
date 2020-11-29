@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/addBeneficiaryActivityLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <totipay.wallet.utils.SlideHolder
+        android:id="@+id/slideHolderAddBeneficiary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <view
+            class="totipay.wallet.utils.DrawerMenu"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/my_header2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/firstNameEditTextAddBeneficiary"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/first_name"
+                            android:inputType="text|textCapSentences"
+                            android:maxLength="25"
+                            android:nextFocusDown="@+id/middleNameEditTextAddBeneficiary"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_11ssp"
+                            app:met_baseColor="@color/colorBlack"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelPadding="@dimen/_5sdp"
+                            app:met_floatingLabelTextSize="@dimen/_10ssp"
+                            app:met_primaryColor="@color/colorGreen"
+                            app:met_singleLineEllipsis="false" />
+
+                        <EditText
+                            android:id="@+id/middleNameEditTextAddBeneficiary"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:hint="@string/middle_name"
+                            android:inputType="text|textCapSentences"
+                            android:maxLength="25"
+                            android:nextFocusDown="@+id/lastNameEditTextAddBeneficiary"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textSize="@dimen/_11ssp"
+                            app:met_baseColor="@color/colorBlack"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelTextSize="@dimen/_10ssp"
+                            app:met_primaryColor="@color/colorGreen"
+                            app:met_singleLineEllipsis="false" />
+
+                        <EditText
+                            android:id="@+id/lastNameEditTextAddBeneficiary"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:hint="@string/last_name"
+                            android:inputType="text|textCapSentences"
+                            android:maxLength="25"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textSize="@dimen/_11ssp"
+                            app:met_baseColor="@color/colorBlack"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelTextSize="@dimen/_10ssp"
+                            app:met_primaryColor="@color/colorGreen"
+                            app:met_singleLineEllipsis="false" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/nickNameEditTextAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="@string/nick_name"
+                        android:inputType="text|textCapSentences"
+                        android:maxLength="25"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text=""
+                        android:textSize="@dimen/_11ssp"
+                        app:met_baseColor="@color/colorBlack"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextSize="@dimen/_10ssp"
+                        app:met_primaryColor="@color/colorGreen"
+                        app:met_singleLineEllipsis="false" />
+
+                    <EditText
+                        android:id="@+id/emailEditTextAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_11ssp"
+                        app:met_baseColor="@color/colorBlack"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextSize="@dimen/_10ssp"
+                        app:met_primaryColor="@color/colorGreen"
+                        app:met_singleLineEllipsis="false" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom">
+
+                            <LinearLayout
+                                android:id="@+id/countrySpinnerSignUp"
+                                android:layout_width="@dimen/_75sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/countryCodeTextViewSignUp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:text="@string/_91"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <ImageView
+                                    android:id="@+id/countryCodeImageViewSignUp"
+                                    android:layout_width="@dimen/_25sdp"
+                                    android:layout_height="@dimen/_19sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/_1sdp"
+                                    android:contentDescription="TODO" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/_1sdp"
+                                    android:contentDescription="TODO"
+                                    android:src="@drawable/dropdown_arrow" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="@dimen/_65sdp"
+                                android:layout_height="0.3dp"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:background="@color/colorSpinner" />
+                        </FrameLayout>
+
+                        <EditText
+                            android:id="@+id/mobileNumberEditTextAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:hint="@string/mobile_number"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="15"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_11ssp"
+                            app:met_baseColor="@color/colorBlack"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelTextSize="@dimen/_10ssp"
+                            app:met_primaryColor="@color/colorGreen"
+                            app:met_singleLineEllipsis="false" />
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/dateOfBirthEditTextAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:drawableRight="@drawable/dropdown_arrow"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:hint="@string/date_of_birth"
+                            android:inputType="none"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_11ssp"
+                            app:met_baseColor="@color/colorBlack"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelTextSize="@dimen/_10ssp"
+                            app:met_primaryColor="@color/colorGreen"
+                            app:met_singleLineEllipsis="false" />
+
+                        <TextView
+                            android:id="@+id/dateOfBirthTextViewAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:paddingLeft="@dimen/_5sdp" />
+                    </FrameLayout>
+
+
+                    <!--<FrameLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/addressEditTextAddBeneficiary"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_10sdp"-->
+                    <!--android:hint="@string/address"-->
+                    <!--android:inputType="textPostalAddress"-->
+                    <!--android:paddingLeft="@dimen/_5sdp"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="@dimen/_11ssp"-->
+                    <!--app:met_baseColor="@color/colorBlack"-->
+                    <!--app:met_floatingLabel="highlight"-->
+                    <!--app:met_floatingLabelTextSize="@dimen/_10ssp"-->
+                    <!--app:met_primaryColor="@color/colorGreen"-->
+                    <!--app:met_singleLineEllipsis="false" />-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/addressTextViewAddBeneficiary"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_20sdp"-->
+                    <!--android:padding="@dimen/_5sdp"-->
+                    <!--android:paddingLeft="@dimen/_5sdp" />-->
+                    <!--</FrameLayout>-->
+
+                    <!--<fr.ganfra.materialspinner.MaterialSpinner-->
+                    <!--android:id="@+id/nationalitySpinnerAddBeneficiary"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_20sdp"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="@dimen/_10ssp"-->
+                    <!--app:ms_alignLabels="true"-->
+                    <!--app:ms_arrowColor="@color/colorGreen"-->
+                    <!--app:ms_arrowSize="@dimen/_12sdp"-->
+                    <!--app:ms_baseColor="@color/colorSpinner"-->
+                    <!--app:ms_enableErrorLabel="false"-->
+                    <!--app:ms_enableFloatingLabel="false"-->
+                    <!--app:ms_floatingLabelColor="@color/colorSpinnerText"-->
+                    <!--app:ms_floatingLabelText="@string/nationality"-->
+                    <!--app:ms_highlightColor="@color/colorGreen"-->
+                    <!--app:ms_hint="@string/nationality"-->
+                    <!--app:ms_hintColor="@color/colorSpinnerText"-->
+                    <!--app:ms_hintTextSize="@dimen/_10ssp"-->
+                    <!--app:ms_multiline="false"-->
+                    <!--app:ms_thickness="0.5dp" />-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/countryEditTextAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:drawableRight="@drawable/dropdown_arrow"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:inputType="none"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_11ssp"
+                            app:met_baseColor="@color/colorBlack"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelText="@string/country"
+                            app:met_floatingLabelTextSize="@dimen/_10ssp"
+                            app:met_primaryColor="@color/colorGreen"
+                            app:met_singleLineEllipsis="false" />
+
+                        <TextView
+                            android:id="@+id/countryTextViewAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:paddingLeft="@dimen/_5sdp" />
+                    </FrameLayout>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/stateSpinnerAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:ms_alignLabels="true"
+                        app:ms_alwaysShowFloatingLabel="true"
+                        app:ms_arrowColor="@color/colorGreen"
+                        app:ms_arrowSize="@dimen/_12sdp"
+                        app:ms_baseColor="@color/colorSpinner"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="true"
+                        app:ms_floatingLabelColor="@color/colorSpinnerText"
+                        app:ms_floatingLabelText="@string/state"
+                        app:ms_highlightColor="@color/colorGreen"
+                        app:ms_hint="@string/state"
+                        app:ms_hintColor="@color/colorSpinnerText"
+                        app:ms_hintTextSize="@dimen/_10ssp"
+                        app:ms_multiline="false" />
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/citySpinnerAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:ms_alignLabels="true"
+                        app:ms_alwaysShowFloatingLabel="true"
+                        app:ms_arrowColor="@color/colorGreen"
+                        app:ms_arrowSize="@dimen/_12sdp"
+                        app:ms_baseColor="@color/colorSpinner"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="true"
+                        app:ms_floatingLabelColor="@color/colorSpinnerText"
+                        app:ms_floatingLabelText="@string/city"
+                        app:ms_highlightColor="@color/colorGreen"
+                        app:ms_hint="@string/city"
+                        app:ms_hintColor="@color/colorSpinnerText"
+                        app:ms_hintTextSize="@dimen/_10ssp"
+                        app:ms_multiline="false"
+                        app:ms_thickness="0.5dp" />
+
+                    <EditText
+                        android:id="@+id/addressEditTextAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="@string/address"
+                        android:inputType="textPostalAddress"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_11ssp"
+                        app:met_baseColor="@color/colorBlack"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextSize="@dimen/_10ssp"
+                        app:met_primaryColor="@color/colorGreen"
+                        app:met_singleLineEllipsis="false" />
+
+                    <EditText
+                        android:id="@+id/landmarkEditTextAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="@string/landmark"
+                        android:inputType="textPostalAddress"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_11ssp"
+                        app:met_baseColor="@color/colorBlack"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextSize="@dimen/_10ssp"
+                        app:met_primaryColor="@color/colorGreen"
+                        app:met_singleLineEllipsis="false" />
+
+                    <EditText
+                        android:id="@+id/zipcodeEditTextAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="@string/zipcode"
+                        android:inputType="textPostalAddress"
+                        android:maxLength="25"
+                        android:paddingLeft="@dimen/_5sdp"
+
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_11ssp"
+                        app:met_baseColor="@color/colorBlack"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextSize="@dimen/_10ssp"
+                        app:met_primaryColor="@color/colorGreen"
+                        app:met_singleLineEllipsis="false" />
+
+                    <!--<fr.ganfra.materialspinner.MaterialSpinner-->
+                    <!--android:id="@+id/nationalitySpinnerAddBeneficiary"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/_20sdp"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="@dimen/_10ssp"-->
+                    <!--app:ms_alignLabels="true"-->
+                    <!--app:ms_arrowColor="@color/colorGreen"-->
+                    <!--app:ms_arrowSize="@dimen/_12sdp"-->
+                    <!--app:ms_baseColor="@color/colorSpinner"-->
+                    <!--app:ms_enableErrorLabel="false"-->
+                    <!--app:ms_enableFloatingLabel="false"-->
+                    <!--app:ms_floatingLabelColor="@color/colorSpinnerText"-->
+                    <!--app:ms_floatingLabelText="@string/nationality"-->
+                    <!--app:ms_highlightColor="@color/colorGreen"-->
+                    <!--app:ms_hint="@string/nationality"-->
+                    <!--app:ms_hintColor="@color/colorSpinnerText"-->
+                    <!--app:ms_hintTextSize="@dimen/_10ssp"-->
+                    <!--app:ms_multiline="false"-->
+                    <!--app:ms_thickness="0.5dp" />-->
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/idTypeSpinnerAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:ms_alignLabels="true"
+                        app:ms_alwaysShowFloatingLabel="true"
+                        app:ms_arrowColor="@color/colorGreen"
+                        app:ms_arrowSize="@dimen/_12sdp"
+                        app:ms_baseColor="@color/colorSpinner"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="true"
+                        app:ms_floatingLabelColor="@color/colorSpinnerText"
+                        app:ms_floatingLabelText="@string/id_type"
+                        app:ms_highlightColor="@color/colorGreen"
+                        app:ms_hint="@string/id_type"
+                        app:ms_hintColor="@color/colorSpinnerText"
+                        app:ms_hintTextSize="@dimen/_10ssp"
+                        app:ms_multiline="false"
+                        app:ms_thickness="0.5dp" />
+
+                    <EditText
+                        android:id="@+id/idNumberEditTextAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="@string/id_number"
+                        android:inputType=""
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_11ssp"
+                        app:met_baseColor="@color/colorBlack"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextSize="@dimen/_10ssp"
+                        app:met_primaryColor="@color/colorGreen"
+                        app:met_singleLineEllipsis="false" />
+                    <!--android:maxLength="15"-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/idIssueDateEditTextAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:drawableRight="@drawable/dropdown_arrow"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:hint="@string/id_issue_date"
+                            android:inputType="none"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_11ssp"
+                            app:met_baseColor="@color/colorBlack"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelTextSize="@dimen/_10ssp"
+                            app:met_primaryColor="@color/colorGreen"
+                            app:met_singleLineEllipsis="false" />
+
+                        <TextView
+                            android:id="@+id/idIssueDateTextViewAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:paddingLeft="@dimen/_5sdp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/idExpireyDateEditTextAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:drawableRight="@drawable/dropdown_arrow"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:hint="@string/id_expirey_date"
+                            android:inputType="none"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_11ssp"
+                            app:met_baseColor="@color/colorBlack"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelTextSize="@dimen/_10ssp"
+                            app:met_primaryColor="@color/colorGreen"
+                            app:met_singleLineEllipsis="false" />
+
+                        <TextView
+                            android:id="@+id/idExpireyDateTextViewAddBeneficiary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:paddingLeft="@dimen/_5sdp" />
+                    </FrameLayout>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/customerRelationShipSpinnerAddBeneficiary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:ms_alignLabels="true"
+                        app:ms_alwaysShowFloatingLabel="true"
+                        app:ms_arrowColor="@color/colorGreen"
+                        app:ms_arrowSize="@dimen/_12sdp"
+                        app:ms_baseColor="@color/colorSpinner"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="true"
+                        app:ms_floatingLabelColor="@color/colorSpinnerText"
+                        app:ms_floatingLabelText="@string/relation_with_customer"
+                        app:ms_highlightColor="@color/colorGreen"
+                        app:ms_hint="@string/relation_with_customer"
+                        app:ms_hintColor="@color/colorSpinnerText"
+                        app:ms_hintTextSize="@dimen/_10ssp"
+                        app:ms_multiline="false"
+                        app:ms_thickness="0.5dp" />
+
+
+                    <TextView
+                        android:id="@+id/nextAddBeneficiaryTextView"
+                        style="@style/CustomButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:background="@drawable/yellow_btn"
+                        android:text="@string/next" />
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </totipay.wallet.utils.SlideHolder>
+</LinearLayout>

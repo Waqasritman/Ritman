@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/addBeneficiaryCustomerInfoLinearlayout"
+    android:orientation="vertical">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_10sdp"
+      android:layout_marginEnd="@dimen/_10sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/customerInfoTextView"
+        android:text="@string/customer_info"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/_13ssp"
+        android:textColor="@color/colorBlack"/>
+
+    <fr.ganfra.materialspinner.MaterialSpinner
+        android:id="@+id/idtypeSpinnerAddBeneficiaryCustomerInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_10ssp"
+        app:ms_alignLabels="true"
+        app:ms_arrowColor="@color/colorGreen"
+        app:ms_arrowSize="@dimen/_12sdp"
+        app:ms_baseColor="@color/colorSpinner"
+        app:ms_enableErrorLabel="false"
+        app:ms_enableFloatingLabel="true"
+        app:ms_floatingLabelColor="@color/colorSpinnerText"
+        app:ms_floatingLabelText="@string/id_type"
+        app:ms_highlightColor="@color/colorGreen"
+        app:ms_hint="@string/id_type"
+        app:ms_hintColor="@color/colorSpinnerText"
+        app:ms_hintTextSize="@dimen/_10ssp"
+        app:ms_multiline="false"
+        app:ms_thickness="0.5dp" />
+
+    <EditText
+        android:id="@+id/idNumberEditTextAddBeneficiaryCustomerInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:hint="@string/id_number"
+        android:inputType=""
+        android:maxLength="25"
+        android:paddingLeft="@dimen/_5sdp"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_11ssp"
+        app:met_baseColor="@color/colorBlack"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelTextSize="@dimen/_10ssp"
+        app:met_primaryColor="@color/colorGreen"
+        app:met_singleLineEllipsis="false" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+      <EditText
+          android:id="@+id/dateofBirthEditTextAddBeneficiaryCustomerInfo"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:drawableRight="@drawable/dropdown_arrow"
+          android:hint="@string/date_of_birth"
+          android:paddingLeft="@dimen/_5sdp"
+          android:text=""
+          android:inputType="none"
+          android:editable="false"
+          android:textColor="@color/colorBlack"
+          android:textSize="@dimen/_11ssp"
+          app:met_baseColor="@color/colorBlack"
+          app:met_floatingLabel="highlight"
+          app:met_floatingLabelTextSize="@dimen/_10ssp"
+          app:met_primaryColor="@color/colorGreen"
+          app:met_singleLineEllipsis="false" />
+
+      <TextView
+          android:id="@+id/dateofBirthTextViewAddBeneficiaryCustomerInfo"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/_20sdp"
+          android:padding="@dimen/_5sdp"
+          android:paddingLeft="@dimen/_5sdp" />
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <EditText
+          android:id="@+id/idExpireyDatecustomerEditTextAddBeneficiary"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:drawableRight="@drawable/dropdown_arrow"
+          android:editable="false"
+          android:focusable="false"
+          android:hint="@string/id_expirey_date"
+          android:inputType="none"
+          android:paddingLeft="@dimen/_5sdp"
+          android:text=""
+          android:textColor="@color/colorBlack"
+          android:textSize="@dimen/_11ssp"
+          app:met_baseColor="@color/colorBlack"
+          app:met_floatingLabel="highlight"
+          app:met_floatingLabelTextSize="@dimen/_10ssp"
+          app:met_primaryColor="@color/colorGreen"
+          app:met_singleLineEllipsis="false" />
+
+      <TextView
+          android:id="@+id/idExpireyDatecustomerTextViewAddBeneficiary"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/_20sdp"
+          android:padding="@dimen/_5sdp"
+          android:paddingLeft="@dimen/_5sdp" />
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/idDescriptionEditTextAddBeneficiaryCustomerInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:hint="@string/id_description"
+        android:inputType="text"
+        android:paddingLeft="@dimen/_5sdp"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_11ssp"
+        app:met_baseColor="@color/colorBlack"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelTextSize="@dimen/_10ssp"
+        app:met_primaryColor="@color/colorGreen"
+        app:met_singleLineEllipsis="false" />
+      <fr.ganfra.materialspinner.MaterialSpinner
+          android:id="@+id/findSourceSpinnerAddBeneficiary"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/colorBlack"
+          android:textSize="@dimen/_10ssp"
+          app:ms_alignLabels="true"
+          android:layout_marginTop="@dimen/_15sdp"
+          app:ms_alwaysShowFloatingLabel="true"
+          app:ms_arrowColor="@color/colorGreen"
+          app:ms_arrowSize="@dimen/_12sdp"
+          app:ms_baseColor="@color/colorSpinner"
+          app:ms_enableErrorLabel="false"
+          app:ms_enableFloatingLabel="true"
+          app:ms_floatingLabelColor="@color/colorSpinnerText"
+          app:ms_floatingLabelText="@string/source_fund"
+          app:ms_highlightColor="@color/colorGreen"
+          app:ms_hint="@string/source_fund"
+          app:ms_hintColor="@color/colorSpinnerText"
+          app:ms_hintTextSize="@dimen/_10ssp"
+          app:ms_multiline="false"
+          app:ms_thickness="0.5dp" />
+    <TextView
+        android:id="@+id/next_textview"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/yellow_btn"
+        android:text="@string/add" />
+  </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:id="@+id/main_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+
+            <EditText
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginStart="@dimen/margin_20dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:layout_marginEnd="@dimen/margin_20dp"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_search_icon"
+                android:drawablePadding="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_regular"
+                android:hint="@string/search"
+                android:inputType="text"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_20sp"
+                android:visibility="visible" />
+
+
+            <TextView
+
+                android:id="@+id/title_slect_bene"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchView"
+                android:layout_marginStart="@dimen/margin_20dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/select_beneficairy"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/beneficiary_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/title_slect_bene"
+                android:layout_margin="@dimen/_15sdp"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/_50sdp" />
+
+            <Button
+                android:id="@+id/send_mony_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/margin_20dp"
+                android:background="@drawable/background_button"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/add_beneficiary"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>

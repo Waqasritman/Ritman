@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_15dp"
+            android:fontFamily="@font/lato_semibold"
+            android:text="@string/please_select_wallet_account"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp" />
+
+
+        <totipay.wallet.utils.SnappyRecyclerView
+            android:id="@+id/userAccountrecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/home_account_card_height_157"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:clipToPadding="false"
+            android:elevation="0dp"
+            android:paddingStart="@dimen/margin_15dp"
+            android:paddingEnd="@dimen/margin_15dp"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+</layout>

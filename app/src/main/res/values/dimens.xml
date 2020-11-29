@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_24sp">24sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_18sp">18sp</dimen>
+    <dimen name="height_80dp">80dp</dimen>
+
+    <dimen name="height_40dp">40dp</dimen>
+    <dimen name="height_50dp">50dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="text_size_15sp">15sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="height_45dp">45dp</dimen>
+    <dimen name="corners_10dp">10dp</dimen>
+    <dimen name="line_space_5dp">5dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="margin_30dp">30dp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_34sp">34sp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="button_height_60dp">60dp</dimen>
+    <dimen name="text_36sp">36sp</dimen>
+    <dimen name="height_200dp">220dp</dimen>
+    <dimen name="margin_50dp">50dp</dimen>
+    <dimen name="width_100dp">100dp</dimen>
+    <dimen name="width_120dp">120dp</dimen>
+    <dimen name="height_150dp">150dp</dimen>
+    <dimen name="text_size_22sp">22sp</dimen>
+    <dimen name="home_account_card_height_157">147dp</dimen>
+    <dimen name="home_account_design_width">304dp</dimen>
+    <dimen name="text_size_26sp">26sp</dimen>
+    <dimen name="flag_size_33dp">33dp</dimen>
+    <dimen name="button_height_70dp">70dp</dimen>
+    <dimen name="min_height_circle_large_85dp">85dp</dimen>
+    <dimen name="circle_height_modules_56dp">56dp</dimen>
+
+</resources>

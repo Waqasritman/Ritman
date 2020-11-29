@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <include
+      layout="@layout/my_header"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_20sdp"
+      android:hint="@string/enter_card_number"
+      android:inputType="text"
+      android:maxLength="25"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:hint="@string/name_of_the_card"
+      android:inputType="text"
+      android:maxLength="25"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text="@string/expiry_date"
+      android:textSize="@dimen/_12ssp" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/margin_20dp"
+      android:layout_marginEnd="@dimen/margin_20dp"
+      android:orientation="horizontal">
+
+    <fr.ganfra.materialspinner.MaterialSpinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_10ssp"
+        app:ms_alignLabels="true"
+        app:ms_arrowColor="@color/colorGreen"
+        app:ms_arrowSize="@dimen/_12sdp"
+        app:ms_baseColor="@color/colorSpinner"
+        app:ms_enableErrorLabel="false"
+        app:ms_enableFloatingLabel="false"
+        app:ms_floatingLabelColor="@color/colorSpinnerText"
+        app:ms_floatingLabelText="@string/country_of_residence"
+        app:ms_highlightColor="@color/colorGreen"
+        app:ms_hint="@string/month"
+        app:ms_hintColor="@color/colorSpinnerText"
+        app:ms_hintTextSize="@dimen/_10ssp"
+        app:ms_multiline="false"
+        app:ms_thickness="0.5dp" />
+
+    <fr.ganfra.materialspinner.MaterialSpinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_10ssp"
+        app:ms_alignLabels="true"
+        app:ms_arrowColor="@color/colorGreen"
+        app:ms_arrowSize="@dimen/_12sdp"
+        app:ms_baseColor="@color/colorSpinner"
+        app:ms_enableErrorLabel="false"
+        app:ms_enableFloatingLabel="false"
+        app:ms_floatingLabelColor="@color/colorSpinnerText"
+        app:ms_floatingLabelText="@string/country_of_residence"
+        app:ms_highlightColor="@color/colorGreen"
+        app:ms_hint="@string/year"
+        app:ms_hintColor="@color/colorSpinnerText"
+        app:ms_hintTextSize="@dimen/_10ssp"
+        app:ms_multiline="false"
+        app:ms_thickness="0.5dp" />
+
+  </LinearLayout>
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginEnd="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:hint="@string/security_code_cvv"
+      android:inputType="text"
+      android:maxLength="25"
+      android:paddingLeft="@dimen/_5sdp"
+      android:text=""
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/_11ssp"
+      app:met_baseColor="@color/colorBlack"
+      app:met_floatingLabel="highlight"
+      app:met_floatingLabelTextSize="@dimen/_10ssp"
+      app:met_primaryColor="@color/colorGreen"
+      app:met_singleLineEllipsis="false" />
+
+  <CheckBox
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_20sdp"
+      android:text="@string/save_this_card"
+      android:textColor="@color/colorGrey"
+      android:textSize="@dimen/_12ssp" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="@dimen/_25sdp"
+      android:text="@string/pay_now"
+      android:background="@drawable/yellow_btn"
+      style="@style/CustomButtonStyle" />
+</LinearLayout>

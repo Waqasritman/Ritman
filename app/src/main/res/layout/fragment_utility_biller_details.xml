@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/bill_details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_20sp" />
+
+
+                <LinearLayout
+                    android:id="@+id/ifsc_layout_india"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/ifsc_text" />
+
+                    <EditText
+                        android:id="@+id/isfs_code_india"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:hint="@string/ifsc_code"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black" />
+
+
+                    <Button
+                        android:id="@+id/search_bank"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/gradient_btn"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/search_bank"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/main_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/number_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/mobile_number"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/customer_no_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/customer_name" />
+
+                    <TextView
+                        android:id="@+id/customer_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:gravity="center_vertical"
+                        android:hint="@string/customer_name"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/id_type_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/balance_text" />
+
+                    <TextView
+                        android:id="@+id/due_balance"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/background_select_mood"
+                        android:gravity="center_vertical"
+                        android:hint="@string/please_select_id_type"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/id_number_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/due_date" />
+
+                    <TextView
+                        android:id="@+id/due_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:autofillHints=""
+                        android:background="@drawable/background_select_mood"
+                        android:hint="01234"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black" />
+
+
+                    <Button
+                        android:id="@+id/toPayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_20dp"
+                        android:background="@drawable/background_button"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/next"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>

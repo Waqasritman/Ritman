@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".mywalletmoduleV.fragments.LoadWalletFragment">
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:id="@+id/center_layout">
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        app:cardCornerRadius="@dimen/_130sdp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_send_bg_white" />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/wallet_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/added_txt"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/wallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/to_wallet_txt"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/_5sdp"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@color/white"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/proced_pay_wallet"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <LinearLayout
+
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/view_wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTint="@color/colorPrimary"
+                android:drawablePadding="@dimen/_5sdp"
+                android:text="@string/view_wallet_txt"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/lato_regular"/>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_45dp"
+        android:text="@string/back"
+        android:layout_below="@+id/proced_pay_wallet"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/white"/>
+    </LinearLayout>
+
+</RelativeLayout>
+</layout>

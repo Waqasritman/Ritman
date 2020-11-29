@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/background_select_mood"
+    android:padding="@dimen/_10sdp">
+
+
+    <TextView
+        android:id="@+id/bene_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/lato_regular"
+        android:text="Sachine Mittal"
+        android:textColor="@color/black" />
+
+
+    <TextView
+        android:id="@+id/bene_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bene_name"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/lato_regular"
+        android:text="Sachine Mittal"
+        android:textColor="@color/black" />
+
+
+
+    <ImageView
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrow_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>
+</layout>
