@@ -14,37 +14,263 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_10dp"
                 android:orientation="vertical"
-                android:padding="@dimen/margin_15dp">
+                android:padding="@dimen/margin_10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:gravity="center"
-                    android:text="@string/about_us"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_36sp" />
-
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"
-                    android:id="@+id/terms_text"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_medium"
-                    android:gravity="start"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
                     android:lineSpacingExtra="@dimen/margin_5dp"
-                    android:text="@string/terms_txt_message"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_14sp" />
+                    android:text="@string/faq_ans_2"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q3"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_3"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q4"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_4"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_q5"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_5"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q6"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_6"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q7"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_7"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q8"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_8"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q10"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_10"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q11"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_11"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q12"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_12"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@string/faq_q13"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="@dimen/margin_5dp"
+                    android:text="@string/faq_ans_13"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_15sp" />
+
 
 
             </LinearLayout>

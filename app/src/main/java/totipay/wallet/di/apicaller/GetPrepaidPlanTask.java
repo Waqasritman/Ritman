@@ -56,14 +56,14 @@ public class GetPrepaidPlanTask extends
 
     @Override
     protected List<GetPrepaidPlansResponse> doInBackground(GetWRPrepaidPlansRequest... getWRPrepaidPlansRequests) {
-        Log.e("doInBackground: ",getWRPrepaidPlansRequests[0].getXML() );
+        Log.e("doInBackground: ", getWRPrepaidPlansRequests[0].getXML());
         String responseString = HTTPHelper.getResponse(getWRPrepaidPlansRequests[0].getXML(),
                 SoapActionHelper.ACTION_GET_PREPAID_PLAN
                 , ApiHelper.METHOD_POST);
         XmlToJson xmlToJson = new XmlToJson.Builder(responseString).build();
         // convert to a JSONObject
         JSONObject jsonObject = xmlToJson.toJson();
-        Log.e("doInBackground: ",jsonObject.toString());
+        Log.e("doInBackground: ", jsonObject.toString());
         List<GetPrepaidPlansResponse> responseList = new ArrayList<>();
         try {
             jsonObject = jsonObject.getJSONObject("s:Envelope").getJSONObject("s:Body")
@@ -72,39 +72,63 @@ public class GetPrepaidPlanTask extends
             String message = jsonObject.getString("Description");
             if (responseCode.equals("101")) {
                 JSONArray array = null;
+                JSONArray rechargeArray = null;
 
                 try {
-                    array = jsonObject.getJSONObject("Obj").getJSONObject("plans")
-                            .getJSONObject("TOPUP").getJSONArray("plansdata");
+                    rechargeArray = jsonObject.getJSONObject("Obj").getJSONObject("rechargeSubTypes")
+                    .getJSONArray("string");
                 } catch (Exception e) {
-                    Log.e("TAG", "doInBackground: " + e.getLocalizedMessage());
+                    Log.e("TAG", "rechaargeerro: " + e.getLocalizedMessage());
                 }
 
+                List<String> typesValues = new ArrayList<>();
 
-                if (array != null) {
-                    for (int i = 0; i < array.length(); i++) {
-                        jsonObject = array.getJSONObject(i);
-                        GetPrepaidPlansResponse response = new GetPrepaidPlansResponse();
-                        response.planId = jsonObject.getString("planId");
-                        response.rechargeSubType = jsonObject.getString("rechargeSubType");
-                        response.mrp = jsonObject.getString("MRP");
-                        response.rechargeAmount = jsonObject.getString("rechargeAmount");
-                        response.benefits = jsonObject.getString("benefits");
-                        response.talkTime = jsonObject.getString("talktime");
-                        responseList.add(response);
+                if (rechargeArray != null) {
+                    for (int i = 0; i < rechargeArray.length(); i++) {
+                        typesValues.add(rechargeArray.getJSONObject(i).getString("content"));
                     }
                 } else {
-                    jsonObject = jsonObject.getJSONObject("Obj").getJSONObject("plans")
-                            .getJSONObject("TOPUP").getJSONObject("plansdata");
-                    GetPrepaidPlansResponse response = new GetPrepaidPlansResponse();
-                    response.planId = jsonObject.getString("planId");
-                    response.rechargeSubType = jsonObject.getString("rechargeSubType");
-                    response.mrp = jsonObject.getString("MRP");
-                    response.rechargeAmount = jsonObject.getString("rechargeAmount");
-                    response.benefits = jsonObject.getString("benefits");
-                    response.talkTime = jsonObject.getString("talktime");
-                    responseList.add(response);
+                    typesValues.add(jsonObject.getJSONObject("Obj").getJSONObject("rechargeSubTypes")
+                            .getString("string"));
                 }
+
+
+                for(int j = 0 ; j <typesValues.size() ; j++) {
+                    try {
+                        array = jsonObject.getJSONObject("Obj").getJSONObject("plans")
+                                .getJSONObject(typesValues.get(j)).getJSONArray("plansdata");
+                    } catch (Exception e) {
+                        Log.e("TAG", "doInBackground: " + e.getLocalizedMessage());
+                    }
+
+
+                    if (array != null) {
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject object = array.getJSONObject(i);
+                            GetPrepaidPlansResponse response = new GetPrepaidPlansResponse();
+                            response.planId = object.getString("planId");
+                            response.rechargeSubType = object.getString("rechargeSubType");
+                            response.mrp = object.getString("MRP");
+                            response.rechargeAmount = object.getString("rechargeAmount");
+                            response.benefits = object.getString("benefits");
+                            response.talkTime = object.getString("talktime");
+                            responseList.add(response);
+                        }
+                    } else {
+                        JSONObject object = jsonObject.getJSONObject("Obj").getJSONObject("plans")
+                                .getJSONObject(typesValues.get(j)).getJSONObject("plansdata");
+                        GetPrepaidPlansResponse response = new GetPrepaidPlansResponse();
+                        response.planId = object.getString("planId");
+                        response.rechargeSubType = object.getString("rechargeSubType");
+                        response.mrp = object.getString("MRP");
+                        response.rechargeAmount = object.getString("rechargeAmount");
+                        response.benefits = object.getString("benefits");
+                        response.talkTime = object.getString("talktime");
+                        responseList.add(response);
+                    }
+                }
+
+
             } else {
                 prepaidPlans.onResponseMessage(message);
                 responseList.clear();

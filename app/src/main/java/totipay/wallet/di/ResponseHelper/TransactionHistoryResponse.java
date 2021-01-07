@@ -7,6 +7,8 @@ public class TransactionHistoryResponse {
     public String bankName;
     public String transactionNumber;
     public String senderName;
+    public int statusID;
+    public int paymentTypeID;
     public String receiverName;
     public String sendingAmount;
     public String receiverAmount;

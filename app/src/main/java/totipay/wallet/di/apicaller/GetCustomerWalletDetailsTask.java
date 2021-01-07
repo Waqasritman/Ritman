@@ -102,23 +102,17 @@ public class GetCustomerWalletDetailsTask extends
                         }
 
                         response.currencyShortName = jsonObject.getString("CurrencyShortName");
-                        response.imageURL = jsonObject.getString("Image_URL");
-                        if (response.currencyShortName.equalsIgnoreCase("gbp")) {
-                            response.currencyFullName = context.getString(R.string.british_pound);
-                        } else if (response.currencyShortName.equalsIgnoreCase("eur")) {
-                            response.currencyFullName = context.getString(R.string.euro);
-                        } else if (response.currencyShortName.equalsIgnoreCase("usd")) {
-                            response.currencyFullName = context.getString(R.string.un_dollar);
-                        } else if(response.currencyShortName.equalsIgnoreCase("yer")) {
-                            response.currencyFullName = context.getString(R.string.yemini_riyal);
-                        } else if(response.currencyShortName.equalsIgnoreCase("GLD")) {
-                            response.currencyFullName = context.getString(R.string.gold);
+                        try{
+                            response.imageURL = jsonObject.getString("Image_URL");
+                        }catch (Exception e) {
+
                         }
 
-                        else {
-                            response.currencyFullName = "";
-                        }
+                        try {
+                            response.currencyFullName = jsonObject.getString("CurrencyName");
+                        }catch (Exception e) {
 
+                        }
                         responseList.add(response);
                     }
                 }

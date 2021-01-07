@@ -15,6 +15,7 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 
 import totipay.wallet.KYC.KYCMainActivity;
+import totipay.wallet.LoyalityPointsActivity;
 import totipay.wallet.Mobile_Top_Up.MobileTopUpMainActivity;
 import totipay.wallet.MoneyTransferModuleV.MoneyTransferMainLayout;
 import totipay.wallet.OffersActivity;
@@ -113,8 +114,14 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
                 .into(binding.userImageHome);
 
 
-        binding.mobileTopUpCarview.setOnClickListener(view -> startActivity(new Intent(getActivity(), MobileTopUpMainActivity.class)));
-        binding.billPaymentCarview.setOnClickListener(view -> startActivity(new Intent(getActivity(), BillPaymentMainActivity.class)));
+        binding.mobileTopUpCarview.setOnClickListener(view ->
+              //  startActivity(new Intent(getActivity(), MobileTopUpMainActivity.class))
+                startActivity(new Intent(getActivity(), LoyalityPointsActivity.class))
+        );
+        binding.billPaymentCarview.setOnClickListener(view ->
+              //  startActivity(new Intent(getActivity(), BillPaymentMainActivity.class))
+                startActivity(new Intent(getActivity(), LoyalityPointsActivity.class))
+        );
         binding.eGift.setOnClickListener(view -> startActivity(new Intent(getActivity(), PrepaidCardsActivity.class)));
     }
 
@@ -235,8 +242,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
 
     @Override
     public void onCustomerWalletDetails(List<GetCustomerWalletDetailsResponse> walletList) {
-        ((NewDashboardActivity) getBaseActivity()).homeViewModel.walletDetailsResponses.clear();
-        ((NewDashboardActivity) getBaseActivity()).homeViewModel.walletDetailsResponses.addAll(walletList);
+        if (((NewDashboardActivity) getBaseActivity()).homeViewModel != null) {
+            ((NewDashboardActivity) getBaseActivity()).homeViewModel.walletDetailsResponses.clear();
+            ((NewDashboardActivity) getBaseActivity()).homeViewModel.walletDetailsResponses.addAll(walletList);
+        }
+
+
         Log.e("onCustomer ", String.valueOf(walletList.size()));
         getSessionManager().putWalletNeedToUpdate(false);
         adapter.notifyDataSetChanged();

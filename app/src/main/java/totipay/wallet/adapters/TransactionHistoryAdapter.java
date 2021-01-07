@@ -64,6 +64,14 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<RecyclerView
                     .setOnClickListener(v -> {
                         onSelectTransaction.onSelectTransactionReceipt(response.transactionNumber);
                     });
+
+
+
+            if (response.paymentTypeID == 1 || response.paymentTypeID == 2) {
+                ((TransactionHistoryListHolder) holder).binding.viewReciept.setVisibility(View.VISIBLE);
+            } else {
+                ((TransactionHistoryListHolder) holder).binding.viewReciept.setVisibility(View.GONE);
+            }
         } else if (holder instanceof EmptyBeneficiaryListViewHolder) {
             ((EmptyBeneficiaryListViewHolder) holder).binding.errorEmpty
                     .setText(context.getResources().getString(R.string.no_history_found));

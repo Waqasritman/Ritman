@@ -21,7 +21,7 @@ public class NewSplash extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.splash_login);
-
+        startService(new Intent(getBaseContext(), OnClearFromRecentService.class));
         mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             @Override

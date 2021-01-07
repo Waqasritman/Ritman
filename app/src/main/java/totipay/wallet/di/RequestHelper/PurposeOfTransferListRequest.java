@@ -5,6 +5,7 @@ import totipay.wallet.di.StaticHelper;
 
 public class PurposeOfTransferListRequest {
     public String languageId = "1";
+
     public String getXML(String shortCountryName) {
         String xml = Params.ENVELOP_OPENER
                 + Params.HEADER_EMPTY +

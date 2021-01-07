@@ -55,7 +55,8 @@ public class CustomerBeneficiaryListAdapter extends RecyclerView.Adapter<Recycle
         if (holder instanceof BeneficiaryListViewHolder) {
             Log.e("onBindViewHolder: ", String.valueOf(position));
             GetBeneficiaryListResponse response = listFiltered.get(position);
-            ((BeneficiaryListViewHolder) holder).binding.beneName.setText(response.firstName);
+            ((BeneficiaryListViewHolder) holder).binding.beneName.setText(response.firstName
+            .concat(" ").concat(response.lastName).concat( " (").concat(response.payOutCurrency).concat(")"));
             if (response.paymentMode.equalsIgnoreCase("bank")) {
                 ((BeneficiaryListViewHolder) holder).binding.beneNumber.setText(response.accountNumber);
                 ((BeneficiaryListViewHolder) holder).binding.accountTitle.setText("Account no: ");

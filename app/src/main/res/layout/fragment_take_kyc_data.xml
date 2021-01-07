@@ -164,7 +164,8 @@
                         android:text="@string/id_issue_date" />
 
                     <TextView
-                        android:id="@+id/id_expire_date"
+                        android:id="@+id/id_issue_date"
+
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
                         android:layout_marginTop="@dimen/_5sdp"
@@ -183,7 +184,7 @@
                         android:text="@string/id_expirey_date" />
 
                     <TextView
-                        android:id="@+id/id_issue_date"
+                        android:id="@+id/id_expire_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"

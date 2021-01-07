@@ -46,7 +46,7 @@ public class SwiftPurposeOfTransferDialog extends BaseDialogFragment<CustomPurpo
 
         binding.otherTitle.setOnClickListener(v -> {
             onSwiftPurposeTransferSelection.onSwiftPurpose(
-                    binding.trade.getText().toString(), 1
+                    binding.otherTitle.getText().toString(), 1
             );
             cancelUpload();
         });

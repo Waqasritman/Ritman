@@ -12,6 +12,7 @@ import totipay.wallet.di.apicaller.AddCustomerCardTask;
 import totipay.wallet.di.apicaller.GetCustomerCardNoTask;
 import totipay.wallet.fragments.BaseFragment;
 import totipay.wallet.interfaces.OnCustomerCardNo;
+import totipay.wallet.prepaid_cards_module.PrepaidCardsActivity;
 import totipay.wallet.utils.IsNetworkConnection;
 
 
@@ -27,10 +28,10 @@ public class ShowPrepaidCardFragment extends BaseFragment<FragmentShowPrepaidCar
     protected void setUp(Bundle savedInstanceState) {
 
 
-        if (getSessionManager().getVirtualCardNo().isEmpty()) {
+        if (((PrepaidCardsActivity) getBaseActivity()).virtualCardNo.isEmpty()) {
             createCustomerCard();
         } else {
-            onGetCustomerCardNo(getSessionManager().getVirtualCardNo());
+            onGetCustomerCardNo(((PrepaidCardsActivity) getBaseActivity()).virtualCardNo);
         }
 
         binding.cardTxt.setText(getSessionManager().getUserName());
@@ -75,6 +76,7 @@ public class ShowPrepaidCardFragment extends BaseFragment<FragmentShowPrepaidCar
         addDishes(customerCardNo);
         binding.generate.setVisibility(View.GONE);
         binding.cardDetails.setVisibility(View.VISIBLE);
+       // ((PrepaidCardsActivity) getBaseActivity()).addNewView();
     }
 
     @Override

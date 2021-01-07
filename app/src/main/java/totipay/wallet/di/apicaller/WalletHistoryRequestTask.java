@@ -82,12 +82,17 @@ public class WalletHistoryRequestTask extends AsyncTask<WalletHistoryRequest, Vo
                         WalletTransferHistoryResponse response = new WalletTransferHistoryResponse();
                         JSONObject object = array.getJSONObject(i);
                         response.transactionDate = object.getString("TRANSACTIONDATE");
-                        response.paymentType = object.getString("PAYMENTTYPE");
+                        response.paymentTypeID = object.getInt("PAYMENTTYPEID");
                         response.transactionNumber = object.getString("TRANSACTIONNUMBER");
                         response.sendingCurrency = object.getString("SENDINGCURRENCY");
                         response.customerNo = object.getString("CUSTOMERNO");
                         response.status = object.getString("STATUS");
 
+                        try{
+                            response.paymentType = object.getString("PAYMENTTYPE");
+                        }catch (Exception e) {
+                            Log.e("doInBackground: ", e.getLocalizedMessage());
+                        }
 
                         response.sendingAmount = object.getString("SENDINGAMOUNT");
                         response.receivingAmount = object.getString("RECEIVINGAMOUNT");
@@ -110,7 +115,12 @@ public class WalletHistoryRequestTask extends AsyncTask<WalletHistoryRequest, Vo
                     WalletTransferHistoryResponse response = new WalletTransferHistoryResponse();
 
                     response.transactionDate = jsonObject.getString("TRANSACTIONDATE");
-                    response.paymentType = jsonObject.getString("PAYMENTTYPE");
+                    try{
+                        response.paymentType = jsonObject.getString("PAYMENTTYPE");
+                    }catch (Exception e) {
+                        Log.e("doInBackground: ", e.getLocalizedMessage());
+                    }
+                    response.paymentTypeID = jsonObject.getInt("PAYMENTTYPEID");
                     response.transactionNumber = jsonObject.getString("TRANSACTIONNUMBER");
                     response.sendingCurrency = jsonObject.getString("SENDINGCURRENCY");
                     response.customerNo = jsonObject.getString("CUSTOMERNO");

@@ -64,7 +64,7 @@ public class TransactionHistoryTask extends AsyncTask<TransactionHistoryRequest,
         List<TransactionHistoryResponse> responseList = new ArrayList<>();
         try {
             jsonObject = jsonObject.getJSONObject("s:Envelope").getJSONObject("s:Body")
-                    .getJSONObject("TransactionHistoryResponse").getJSONObject("TransactionHistoryResult");
+                        .getJSONObject("TransactionHistoryResponse").getJSONObject("TransactionHistoryResult");
             String responseCode = jsonObject.getString("ResponseCode");
             String message = jsonObject.getString("Description");
             Log.e("doInBackground: ", jsonObject.toString());
@@ -85,8 +85,7 @@ public class TransactionHistoryTask extends AsyncTask<TransactionHistoryRequest,
                         TransactionHistoryResponse response = new TransactionHistoryResponse();
                         response.transactionDate = jsonObject.getString("TRANSACTIONDATE");
                         response.purposeOfTransfer = jsonObject.getString("PURPOSEOFTRANSFER");
-
-                        response.bankName = jsonObject.getString("BANKNAME");
+                        response.paymentTypeID = jsonObject.getInt("PAYMENTTYPEID");
                         response.transactionNumber = jsonObject.getString("TRANSACTIONNUMBER");
                         response.senderName = jsonObject.getString("SENDERNAME");
                         response.receiverName = jsonObject.getString("RECEIVERNAME");
@@ -99,7 +98,13 @@ public class TransactionHistoryTask extends AsyncTask<TransactionHistoryRequest,
                             response.paymentType = jsonObject.getString("PAYMENTTYPE");
 
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            Log.e("doInBackground: ", e.getLocalizedMessage());
+                        }
+
+                        try {
+                            response.bankName = jsonObject.getString("BANKNAME");
+                        }catch (Exception e) {
+                            Log.e("doInBackground: ", e.getLocalizedMessage());
                         }
 
                         responseList.add(response);
@@ -112,9 +117,15 @@ public class TransactionHistoryTask extends AsyncTask<TransactionHistoryRequest,
                     response.transactionDate = jsonObject.getString("TRANSACTIONDATE");
                     response.purposeOfTransfer = jsonObject.getString("PURPOSEOFTRANSFER");
                     response.paymentType = jsonObject.getString("PAYMENTTYPE");
-                    response.bankName = jsonObject.getString("BANKNAME");
+                    try {
+                        response.bankName = jsonObject.getString("BANKNAME");
+                    }catch (Exception e) {
+                        Log.e("doInBackground: ", e.getLocalizedMessage());
+                    }
                     response.transactionNumber = jsonObject.getString("TRANSACTIONNUMBER");
                     response.senderName = jsonObject.getString("SENDERNAME");
+                    response.paymentTypeID = jsonObject.getInt("PaymentTypeID");
+                    response.statusID = jsonObject.getInt("STATUSID");
                     response.receiverName = jsonObject.getString("RECEIVERNAME");
                     response.sendingAmount = jsonObject.getString("SENDINGAMOUNT");
                     response.receiverAmount = jsonObject.getString("RECEIVINGAMOUNT");
@@ -123,7 +134,7 @@ public class TransactionHistoryTask extends AsyncTask<TransactionHistoryRequest,
                     try {
                         response.paymentType = jsonObject.getString("PAYMENTTYPE");
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                        Log.e("doInBackground: ", e.getLocalizedMessage());
                     }
 
                     responseList.add(response);

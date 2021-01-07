@@ -4,14 +4,14 @@ import totipay.wallet.di.Params;
 import totipay.wallet.di.StaticHelper;
 
 public class LoadWalletRequest {
-    public String customerNo;
-    public String transferAmount;
-    public String cardNumber = "";
-    public String expireDate = "";
-    public String securityNumber = "";
-    public String walletCurrency;
-    public String languageId = "1";
-    public Integer paymentType;
+        public String customerNo;
+        public String transferAmount;
+        public String cardNumber = "";
+        public String expireDate = "";
+        public String securityNumber = "";
+        public String walletCurrency;
+        public String languageId = "1";
+        public Integer paymentType;
 
     public String getXML() {
         return Params.ENVELOP_OPENER

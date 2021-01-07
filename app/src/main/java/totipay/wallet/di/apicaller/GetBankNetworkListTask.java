@@ -69,7 +69,7 @@ public class GetBankNetworkListTask extends AsyncTask<GetBankNetworkListRequest,
         List<GetBankNetworkListResponse> responseList = new ArrayList<>();
         try {
             jsonObject = jsonObject.getJSONObject("s:Envelope").getJSONObject("s:Body")
-                    .getJSONObject("GetBankNetworkListResponse").getJSONObject("GetBankNetworkListResult");
+                        .getJSONObject("GetBankNetworkListResponse").getJSONObject("GetBankNetworkListResult");
             String responseCode = jsonObject.getString("ResponseCode");
             String message = jsonObject.getString("Description");
             if (responseCode.equals("101")) {

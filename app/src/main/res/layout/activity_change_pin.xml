@@ -11,7 +11,7 @@
             android:id="@+id/tool_bar_final"
             layout="@layout/tool_bar" />
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/backgtound_round_up"
@@ -132,7 +132,7 @@
             </LinearLayout>
 
 
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
 
     </LinearLayout>

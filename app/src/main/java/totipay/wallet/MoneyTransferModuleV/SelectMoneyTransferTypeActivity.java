@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.navigation.Navigation;
 
 
+import totipay.wallet.LoyalityPointsActivity;
 import totipay.wallet.R;
 import totipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferFirstActivity;
 import totipay.wallet.databinding.ActivitySelectTypeBinding;
@@ -32,11 +33,11 @@ implements View.OnClickListener {
     protected void setUp(Bundle savedInstanceState) {
 
         binding.bankTransferLayout.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putInt("transfer_type" , BeneficiarySelector.BANK_TRANSFER);
-            Navigation.findNavController(v).navigate( R.id
-                    .action_selectMoneyTransferTypeActivity_to_selectedBeneficiaryForBankTransferFragment , bundle);
-            // startActivity(new Intent(getApplicationContext(), SelectBeneficialyActivity.class));
+//            Bundle bundle = new Bundle();
+//            bundle.putInt("transfer_type" , BeneficiarySelector.BANK_TRANSFER);
+//            Navigation.findNavController(v).navigate( R.id
+//                    .action_selectMoneyTransferTypeActivity_to_selectedBeneficiaryForBankTransferFragment , bundle);
+            startActivity(new Intent(getActivity(), LoyalityPointsActivity.class));
         });
 
 

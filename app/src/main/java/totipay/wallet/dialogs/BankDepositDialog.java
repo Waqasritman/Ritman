@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import totipay.wallet.R;
 import totipay.wallet.base.BaseDialogFragment;
 import totipay.wallet.databinding.BankTransferAlertDesignBinding;
@@ -19,6 +22,17 @@ public class BankDepositDialog extends BaseDialogFragment<BankTransferAlertDesig
     public BankDepositDialog(String referenceNo, OnDecisionMade onDecisionMade) {
         this.referenceNo = referenceNo;
         this.onDecisionMade = onDecisionMade;
+    }
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        return new Dialog(getActivity(), getTheme()){
+            @Override
+            public void onBackPressed() {
+                //do your stuff
+            }
+        };
     }
 
     @Override
@@ -51,5 +65,7 @@ public class BankDepositDialog extends BaseDialogFragment<BankTransferAlertDesig
             dialog.getWindow().setLayout((int) (width * .8), WindowManager.LayoutParams.WRAP_CONTENT);
         }
     }
+
+
 
 }

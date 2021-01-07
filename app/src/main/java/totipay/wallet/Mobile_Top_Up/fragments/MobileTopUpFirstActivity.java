@@ -141,7 +141,6 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
         wrBillerCategoryList = new ArrayList<>();
         wrBillerOperatorsList = new ArrayList<>();
         binding.nextLayout.setOnClickListener(v -> {
-
             if (((MobileTopUpMainActivity) getBaseActivity()).topUpType.equals(MobileTopUpType.PRE_PAID)) {
                 onPrePaidPlans();
             } else if (((MobileTopUpMainActivity) getBaseActivity()).topUpType.equals(MobileTopUpType.POST_PAID)) {
@@ -149,8 +148,6 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
             } else {
                 onMessage(getString(R.string.some_thing_wrong));
             }
-
-
         });
 
 
@@ -230,7 +227,6 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
 
 
         binding.selectOperator.setOnClickListener(v -> {
-
             if (billerCategoryId.isEmpty()) {
                 onMessage(getString(R.string.select_category));
             } else if (countryCode.isEmpty()) {
@@ -373,6 +369,7 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
 
         ((MobileTopUpMainActivity) getBaseActivity()).payBillRequest.payoutCurrency = country.countryCurrency;
         ((MobileTopUpMainActivity) getBaseActivity()).payBillRequest.countryCode = country.countryShortName;
+
         ((MobileTopUpMainActivity) getBaseActivity()).prepaidRechargeRequest.payoutCurrency = country.countryCurrency;
         ((MobileTopUpMainActivity) getBaseActivity()).prepaidRechargeRequest.countryCode = country.countryShortName;
     }
@@ -398,16 +395,7 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
         billerTypeId = billerType.id;
         binding.selectCategory.setText("");
         binding.selectOperator.setText("");
-
-
-        if (Integer.parseInt(billerType.id) == MobileTopUpType.PRE_PAID) {
-            binding.prepaidOperatorLayout.setVisibility(View.VISIBLE);
-            binding.postpaidPlanDecideLayout.setVisibility(View.GONE);
-            getPrepaidOperator();
-        } else if (Integer.parseInt(billerType.id) == MobileTopUpType.POST_PAID) {
-            binding.prepaidOperatorLayout.setVisibility(View.GONE);
-            binding.postpaidPlanDecideLayout.setVisibility(View.VISIBLE);
-        }
+        getPrepaidOperator();
         ((MobileTopUpMainActivity) getBaseActivity()).topUpType = Integer.parseInt(billerType.id);
     }
 
@@ -440,9 +428,7 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
     public void onSelectBillerName(WRBillerNamesResponse billerName) {
         billerId = billerName.billerId;
         binding.selectOperator.setText(billerName.billerName);
-
     }
-
 
     public void setSendingCurrencyImage(String url) {
         Glide.with(this)
@@ -470,5 +456,28 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
                 .prepaidPlansRequest.operatorCode = operator.operatorCode;
         ((MobileTopUpMainActivity) getBaseActivity())
                 .prepaidPlansRequest.circleCode = operator.circleCode;
+
+
+        if(!billerTypeId.isEmpty()) {
+            if (Integer.parseInt(billerTypeId) == MobileTopUpType.PRE_PAID) {
+                binding.prepaidOperatorLayout.setVisibility(View.VISIBLE);
+                binding.postpaidPlanDecideLayout.setVisibility(View.GONE);
+
+            } else if (Integer.parseInt(billerTypeId) == MobileTopUpType.POST_PAID) {
+                binding.prepaidOperatorLayout.setVisibility(View.GONE);
+                binding.postpaidPlanDecideLayout.setVisibility(View.VISIBLE);
+            }
+        }
+
+    }
+
+    @Override
+    public void onErrorWithCode(String code, String error) {
+        if(code == "411" && error.replace(" " ,"")
+                .equalsIgnoreCase("operatornotdetected")) {
+
+        } else {
+            onMessage(error);
+        }
     }
 }

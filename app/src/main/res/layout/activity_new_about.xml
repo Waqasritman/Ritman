@@ -11,31 +11,7 @@
             android:id="@+id/tool_bar"
             layout="@layout/tool_bar" />
 
-        <LinearLayout
-            android:id="@+id/aboutus_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:padding="@dimen/_5sdp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_info" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/_5sdp"
-                android:text="@string/about_us"
-                android:textSize="@dimen/_15sdp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/terms_and_cond_layout"
@@ -88,7 +64,31 @@
                 android:textSize="@dimen/_15sdp" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/aboutus_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:padding="@dimen/_5sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_info" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/faq"
+                android:textSize="@dimen/_15sdp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </layout>

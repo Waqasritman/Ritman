@@ -20,7 +20,7 @@ import totipay.wallet.swift_transfer_module.SwiftTransferActivity;
 import totipay.wallet.utils.IsNetworkConnection;
 
 
-public class SwiftTransferPaymentDetailFragment extends
+public class    SwiftTransferPaymentDetailFragment extends
         BaseFragment<FragmentSwiftTransferPaymentDetailBinding>
         implements OnSwiftPurposeTransferSelection, OnSelectCountry {
 
@@ -119,6 +119,9 @@ public class SwiftTransferPaymentDetailFragment extends
         if (index == 1) {
             binding.otherTitle.setVisibility(View.VISIBLE);
             binding.otherPurposeOfTransfer.setVisibility(View.VISIBLE);
+        } else {
+            binding.otherTitle.setVisibility(View.GONE);
+            binding.otherPurposeOfTransfer.setVisibility(View.GONE);
         }
 
         binding.purposeOfTransfer.setText(text);

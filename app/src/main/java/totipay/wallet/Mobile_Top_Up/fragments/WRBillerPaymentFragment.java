@@ -105,27 +105,34 @@ public class WRBillerPaymentFragment extends BaseFragment<WrPaymentScreenBinding
 
 
         binding.processedToPay.setOnClickListener(v -> {
-            if (IsNetworkConnection.checkNetworkConnection(getContext())) {
 
-                if (TextUtils.isEmpty(binding.walletLayout.getText().toString())) {
-                    onMessage(getString(R.string.choose_wallet));
-                    return;
+            if (getSessionManager().getISKYCApproved()) {
+                if (IsNetworkConnection.checkNetworkConnection(getContext())) {
+
+                    if (TextUtils.isEmpty(binding.walletLayout.getText().toString())) {
+                        onMessage(getString(R.string.choose_wallet));
+                        return;
+                    }
+
+                    if (topUptype == MobileTopUpType.POST_PAID) {
+                        request.languageId = getSessionManager().getlanguageselection();
+                        request.paymentTypeId = paymentMode;
+                        postPaid();
+                    } else if (topUptype == MobileTopUpType.PRE_PAID) {
+                        prepaidRechargeRequest.languageId = getSessionManager().getlanguageselection();
+                        prepaidRechargeRequest.paymentTypeId = paymentMode;
+                        prepaid();
+                    }
+
+
+                } else {
+                    onMessage(getString(R.string.no_internet));
                 }
-
-                if (topUptype == MobileTopUpType.POST_PAID) {
-                    request.languageId = getSessionManager().getlanguageselection();
-                    request.paymentTypeId = paymentMode;
-                    postPaid();
-                } else if (topUptype == MobileTopUpType.PRE_PAID) {
-                    prepaidRechargeRequest.languageId = getSessionManager().getlanguageselection();
-                    prepaidRechargeRequest.paymentTypeId = paymentMode;
-                    prepaid();
-                }
-
-
             } else {
-                onMessage(getString(R.string.no_internet));
+                onMessage(getString(R.string.need_to_complete_kyc));
             }
+
+
         });
 
 
@@ -204,9 +211,11 @@ public class WRBillerPaymentFragment extends BaseFragment<WrPaymentScreenBinding
         if (topUptype == MobileTopUpType.POST_PAID) {
             calTransferRequest.TransferAmount = Double.parseDouble(request.payOutAmount);
             calTransferRequest.PayoutCurrency = request.payoutCurrency;
+            calTransferRequest.TransferCurrency = request.payoutCurrency;
         } else if (topUptype == MobileTopUpType.PRE_PAID) {
             calTransferRequest.TransferAmount = Double.parseDouble(prepaidRechargeRequest.payOutAmount);
             calTransferRequest.PayoutCurrency = prepaidRechargeRequest.payoutCurrency;
+            calTransferRequest.TransferCurrency = prepaidRechargeRequest.payoutCurrency;
         }
 
         if (IsNetworkConnection.checkNetworkConnection(getActivity())) {
@@ -227,7 +236,7 @@ public class WRBillerPaymentFragment extends BaseFragment<WrPaymentScreenBinding
         }
         paymentMode = PaymentTypeHelper.WALLET;
         calTransferRequest.PayInCurrency = response.currencyShortName;
-        calTransferRequest.TransferCurrency = response.currencyShortName;
+       // calTransferRequest.TransferCurrency = response.currencyShortName;
         calTransferRequest.languageId = getSessionManager().getlanguageselection();
         getTransferRates();
     }
@@ -282,6 +291,7 @@ public class WRBillerPaymentFragment extends BaseFragment<WrPaymentScreenBinding
             prepaidRechargeRequest.cardNumber = cardDetail.cardNumber;
             prepaidRechargeRequest.expireDate = cardDetail.cardExpireDate;
             prepaidRechargeRequest.paymentTypeId = PaymentTypeHelper.CREDIT_CARD;
+            prepaidRechargeRequest.payInCurrency = "GBP";
             prepaidRechargeRequest.languageId = getSessionManager().getlanguageselection();
 
         }
@@ -313,6 +323,7 @@ public class WRBillerPaymentFragment extends BaseFragment<WrPaymentScreenBinding
             postPaid();
         } else if (topUptype == MobileTopUpType.PRE_PAID) {
             prepaidRechargeRequest.securityCode = cvv;
+            prepaidRechargeRequest.payInCurrency = "GBP";
             prepaidRechargeRequest.paymentTypeId = PaymentTypeHelper.CREDIT_CARD;
             prepaid();
         }

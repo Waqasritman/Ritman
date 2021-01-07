@@ -58,7 +58,7 @@ public class SetNewPinTask extends AsyncTask<ForgotPinSetNewRequest, Void, Strin
         String message = "";
         try {
             jsonObject = jsonObject.getJSONObject("s:Envelope").getJSONObject("s:Body")
-                    .getJSONObject("SetNewPINResponse").getJSONObject("SetNewPINResult");
+                        .getJSONObject("SetNewPINResponse").getJSONObject("SetNewPINResult");
             String responseCode = jsonObject.getString("ResponseCode");
             message = jsonObject.getString("Description");
             if (responseCode.equals("101")) {

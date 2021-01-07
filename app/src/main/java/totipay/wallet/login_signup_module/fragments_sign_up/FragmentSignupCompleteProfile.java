@@ -124,6 +124,7 @@ public class FragmentSignupCompleteProfile extends BaseFragment<CompleteProfileN
                     .viewModel.registerUserRequest.nationality = country.countryShortName;
             binding.nationalitysignup.setText(country.countryName);
         } else {
+            //TODO sending GBR
             ((MainActivityLoginSignUp) getBaseActivity())
                     .viewModel.registerUserRequest.country = "GBR";
             binding.countrysignup.setText(country.countryName);

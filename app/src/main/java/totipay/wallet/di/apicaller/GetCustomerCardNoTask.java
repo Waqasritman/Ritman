@@ -75,7 +75,7 @@ public class GetCustomerCardNoTask extends AsyncTask<GetCustomerCardNoRequest
             if (responseCode.equals("101")) {
                 response = jsonObject.getString("VirtualCardNo");
 
-            } else if (responseCode.equalsIgnoreCase("302")) {
+            } else if (response.isEmpty()) {
                 response = "302";
             } else {
                 onCustomerCardNo.onResponseMessage(message);

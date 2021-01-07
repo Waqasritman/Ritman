@@ -6,6 +6,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import totipay.wallet.R;
 import totipay.wallet.base.BaseDialogFragment;
 import totipay.wallet.databinding.AlertDialogLayoutBinding;
@@ -17,6 +20,18 @@ public class SingleButtonMessageDialog extends BaseDialogFragment<AlertDialogLay
     String message;
     OnDecisionMade onDecisionMade;
     boolean isCancelable = true;
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        return new Dialog(getActivity(), getTheme()){
+            @Override
+            public void onBackPressed() {
+                //do your stuff
+            }
+        };
+    }
+
 
     public SingleButtonMessageDialog(String title, String message, OnDecisionMade onDecisionMade ,
                                       boolean isCancelable) {
@@ -43,6 +58,9 @@ public class SingleButtonMessageDialog extends BaseDialogFragment<AlertDialogLay
             cancelUpload();
             onDecisionMade.onProceed();
         });
+
+
+
     }
 
 

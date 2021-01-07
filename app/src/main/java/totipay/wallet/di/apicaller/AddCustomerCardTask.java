@@ -12,7 +12,6 @@ import totipay.wallet.R;
 import totipay.wallet.di.ApiHelper;
 import totipay.wallet.di.HTTPHelper;
 import totipay.wallet.di.RequestHelper.AddCustomerCardNoRequest;
-import totipay.wallet.di.ResponseHelper.AddBeneficiaryResponse;
 import totipay.wallet.di.SoapActionHelper;
 import totipay.wallet.interfaces.OnCustomerCardNo;
 import totipay.wallet.utils.ProgressBar;

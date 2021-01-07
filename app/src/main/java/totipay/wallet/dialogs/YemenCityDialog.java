@@ -46,7 +46,7 @@ public class YemenCityDialog extends BaseDialogFragment<TransferDialogPurposeBin
     protected void setUp(Bundle savedInstanceState) {
         setSearchView();
         setupRecyclerView();
-
+        binding.titleOfPage.setText(getString(R.string.select_city_txt));
         binding.closeDialog.setOnClickListener(v -> {
             cancelUpload();
         });

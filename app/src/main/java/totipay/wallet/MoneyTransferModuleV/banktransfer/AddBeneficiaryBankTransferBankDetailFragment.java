@@ -102,8 +102,10 @@ public class AddBeneficiaryBankTransferBankDetailFragment extends
 
         binding.bankName.setOnClickListener(v -> {
             if (IsNetworkConnection.checkNetworkConnection(getContext())) {
-                BankNameListDialog dialog = new BankNameListDialog(((MoneyTransferMainLayout) getBaseActivity()).bankTransferViewModel
-                        .beneficiaryAddRequest.PayoutCountryCode, this);
+                BankNameListDialog dialog = new BankNameListDialog(((MoneyTransferMainLayout)
+                        getBaseActivity()).bankTransferViewModel
+                        .beneficiaryAddRequest.PayoutCountryCode,
+                        this);
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 dialog.show(transaction, "");
             } else {

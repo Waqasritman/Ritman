@@ -10,6 +10,7 @@ import totipay.wallet.R;
 import totipay.wallet.base.TootiBaseActivity;
 import totipay.wallet.databinding.MainSignupLoginLayoutBinding;
 import totipay.wallet.login_signup_module.viewmodels.LoginRegisterViewModel;
+import totipay.wallet.utils.Constants;
 
 public class MainActivityLoginSignUp extends TootiBaseActivity<MainSignupLoginLayoutBinding> {
 

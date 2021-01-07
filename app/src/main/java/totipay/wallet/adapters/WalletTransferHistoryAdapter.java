@@ -60,32 +60,40 @@ public class WalletTransferHistoryAdapter extends RecyclerView.Adapter<RecyclerV
                     .concat(" ").concat(response.sendingCurrency));
             ((WalletTransferHistoryAdapterView) holder).binding.status.setText(response.status);
             ((WalletTransferHistoryAdapterView) holder).binding.viewReciept.setVisibility(View.GONE);
-
+                //underprocess
             if (response.status.equalsIgnoreCase("received")) {
                 ((WalletTransferHistoryAdapterView) holder).binding.titleStatus.setText(context
                 .getResources().getString(R.string.received_from));
                 ((WalletTransferHistoryAdapterView) holder).binding.beneficairyName.setText(response.senderName);
-            } else {
+            }
+//            else if (66 == 66) {
+//                ((WalletTransferHistoryAdapterView) holder).binding.titleStatus.setText(context
+//                        .getResources().getString(R.string.received_from));
+//                ((WalletTransferHistoryAdapterView) holder).binding.beneficairyName.setText(response.senderName);
+//            }
+            else {
                 ((WalletTransferHistoryAdapterView) holder).binding.titleStatus.setText(context.getString(R.string.transfer_to));
                 ((WalletTransferHistoryAdapterView) holder).binding.beneficairyName.setText(response.receiverName);
             }
 
-            if (response.paymentType.equalsIgnoreCase("Wallet transfer") && !response.status.equalsIgnoreCase("received")) {
-                ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.VISIBLE);
-                ((WalletTransferHistoryAdapterView) holder).binding.viewReciept.setVisibility(View.GONE);
-            } else {
-                ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.GONE);
-                ((WalletTransferHistoryAdapterView) holder).binding.viewReciept.setVisibility(View.VISIBLE);
+            if(!response.paymentType.isEmpty()) {
+                if (response.paymentType.equalsIgnoreCase("Wallet transfer")
+                        && !response.status.equalsIgnoreCase("received") ) {
+                    ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.VISIBLE);
+                } else if (response.paymentType.equalsIgnoreCase("Load Wallet")){
+                    ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.GONE);
+                } else  {
+                    ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.GONE);
+                }
+
+                if (response.paymentType.equalsIgnoreCase("Wallet transfer")) {
+                    ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.VISIBLE);
+                }
             }
 
-            if (response.paymentType.equalsIgnoreCase("Wallet transfer")) {
-                ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.VISIBLE);
-                ((WalletTransferHistoryAdapterView) holder).binding.viewReciept.setVisibility(View.GONE);
-            }
 
             if (response.status.equalsIgnoreCase("received")) {
                 ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.GONE);
-                ((WalletTransferHistoryAdapterView) holder).binding.viewReciept.setVisibility(View.GONE);
             }
 
             ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setOnClickListener(v -> {
@@ -96,6 +104,12 @@ public class WalletTransferHistoryAdapter extends RecyclerView.Adapter<RecyclerV
             ((WalletTransferHistoryAdapterView) holder).binding.viewReciept.setOnClickListener(v -> {
                 onSelectTransaction.onSelectReceipt(response);
             });
+
+            if (response.paymentTypeID == 66) {
+                ((WalletTransferHistoryAdapterView) holder).binding.repeatTranx.setVisibility(View.GONE);
+            }
+
+            ((WalletTransferHistoryAdapterView) holder).binding.viewReciept.setVisibility(View.GONE);
         } else if (holder instanceof EmptyBeneficiaryListViewHolder) {
             ((EmptyBeneficiaryListViewHolder) holder).binding.errorEmpty.setText(context
             .getResources().getString(R.string.no_history_found));

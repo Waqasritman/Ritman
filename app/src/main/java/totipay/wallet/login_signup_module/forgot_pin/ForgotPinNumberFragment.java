@@ -90,21 +90,56 @@ public class ForgotPinNumberFragment extends BaseFragment<ForgotPinNumberEmailLa
         binding.continuesighupb.setOnClickListener(v -> {
             if (isValidate()) {
                 if (IsNetworkConnection.checkNetworkConnection(getContext())) {
-                    GetCustomerProfileRequest request = new GetCustomerProfileRequest();
+
+
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putBoolean("is_with_number", isLoginWithNumber);
+                    ForgotPinRequestApprovedUserRequest request = new ForgotPinRequestApprovedUserRequest();
                     if (isLoginWithNumber) {
+                        request.mobileNumber = StringHelper.parseNumber(
+                                binding.numberLayout.countryCodeTextView.getText() +
+                                        binding.numberLayout.mobilesignupb.getText().toString()
+                        );
                         request.emailAddress = "";
-                        request.mobileNo = StringHelper.parseNumber(binding.numberLayout.countryCodeTextView.getText().toString()
+
+                    } else {
+                        request.mobileNumber = "";
+                        request.emailAddress = binding.mobilesignupb.getText().toString();
+                    }
+                    if (isLoginWithNumber) {
+                        bundle1.putString("user_number", binding.numberLayout.countryCodeTextView.getText().toString()
                                 + binding.numberLayout.mobilesignupb.getText().toString());
                     } else {
-                        request.emailAddress = binding.mobilesignupb.getText().toString();
-                        request.mobileNo = "";
+                        bundle1.putString("user_number", binding.mobilesignupb.getText().toString());
                     }
+                    request.idExpireDate = "";
+                    request.idNumber = "";
                     request.languageId = getSessionManager().getlanguageselection();
-                    GetCustomerProfileTask task = new GetCustomerProfileTask(getContext(), this);
-                    task.execute(request);
-                } else {
+                    bundle1.putParcelable("object_forgot", request);
+                    Navigation.findNavController(getView())
+                            .navigate(R.id.action_forgotPinNumberFragment_to_forgotPinOTPFragment
+                                    , bundle1);
+                                    } else {
                     onMessage(getString(R.string.no_internet));
                 }
+
+
+
+//
+//
+//                    GetCustomerProfileRequest request = new GetCustomerProfileRequest();
+//                    if (isLoginWithNumber) {
+//                        request.emailAddress = "";
+//                        request.mobileNo = StringHelper.parseNumber(binding.numberLayout.countryCodeTextView.getText().toString()
+//                                + binding.numberLayout.mobilesignupb.getText().toString());
+//                    } else {
+//                        request.emailAddress = binding.mobilesignupb.getText().toString();
+//                        request.mobileNo = "";
+//                    }
+//                    request.languageId = getSessionManager().getlanguageselection();
+//                    GetCustomerProfileTask task = new GetCustomerProfileTask(getContext(), this);
+//                    task.execute(request);
+
 
             }
         });
@@ -142,11 +177,11 @@ public class ForgotPinNumberFragment extends BaseFragment<ForgotPinNumberEmailLa
         } else {
             bundle.putString("user_number", binding.mobilesignupb.getText().toString());
         }
-        if (customerProfile.isApprovedKYC) {
-            Navigation.findNavController(getView())
-                    .navigate(R.id.action_forgotPinNumberFragment_to_forgotPinUserSecurityDataFragment
-                            , bundle);
-        } else {
+//        if (customerProfile.isApprovedKYC) {
+//            Navigation.findNavController(getView())
+//                    .navigate(R.id.action_forgotPinNumberFragment_to_forgotPinUserSecurityDataFragment
+//                            , bundle);
+//        } else {
 
             Bundle bundle1 = new Bundle();
             bundle1.putBoolean("is_with_number", isLoginWithNumber);
@@ -175,7 +210,7 @@ public class ForgotPinNumberFragment extends BaseFragment<ForgotPinNumberEmailLa
             Navigation.findNavController(getView())
                     .navigate(R.id.action_forgotPinNumberFragment_to_forgotPinOTPFragment
                             , bundle1);
-        }
+       // }
     }
 
     @Override

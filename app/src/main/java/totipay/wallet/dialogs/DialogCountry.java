@@ -159,8 +159,11 @@ public class DialogCountry extends BaseDialogFragment<TransferDialogPurposeBindi
             }
 
         }
-        Collections.sort(countryListResponses, (o1, o2) ->
-                o1.countryName.compareToIgnoreCase(o2.countryName));
+        if(countryListResponses != null) {
+            Collections.sort(countryListResponses, (o1, o2) ->
+                    o1.countryName.compareToIgnoreCase(o2.countryName));
+        }
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         adapter = new
                 CountryListAdapter(getContext() , countryListResponses, this, isCurrency, isShowShortCode);
@@ -192,7 +195,10 @@ public class DialogCountry extends BaseDialogFragment<TransferDialogPurposeBindi
             //  binding.transferPurposeList.setVisibility(View.VISIBLE);
             binding.progressBar.setVisibility(View.GONE);
             binding.searchView.setVisibility(View.VISIBLE);
-            setupRecyclerView();
+            if(responseList != null) {
+                setupRecyclerView();
+            }
+
         }
 
         @Override
@@ -206,12 +212,12 @@ public class DialogCountry extends BaseDialogFragment<TransferDialogPurposeBindi
             XmlToJson xmlToJson = new XmlToJson.Builder(responseString).build();
             // convert to a JSONObject
             JSONObject jsonObject = xmlToJson.toJson();
-
+            String message = "server error";
             try {
                 jsonObject = jsonObject.getJSONObject("s:Envelope").getJSONObject("s:Body")
                         .getJSONObject("GetCountryListResponse").getJSONObject("GetCountryListResult");
                 String responseCode = jsonObject.getString("ResponseCode");
-                String message = jsonObject.getString("Description");
+                message = jsonObject.getString("Description");
                 if (responseCode.equals("101")) {
                     jsonObject = jsonObject.getJSONObject("obj").getJSONObject("diffgr:diffgram")
                             .getJSONObject("GetCountryList");

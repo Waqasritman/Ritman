@@ -104,6 +104,7 @@ public class GetCustomerProfileTask extends AsyncTask<GetCustomerProfileRequest,
                 customerProfile.residenceCountry = jsonObject.getString("ResidenceCountry");
                 customerProfile.sourceOfDescription = jsonObject.getString("SourceOfFund_Desc");
                 //  }
+                customerProfile.isDocUploaded = jsonObject.getBoolean("isDocUploaded");
 
 
             } else {

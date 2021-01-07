@@ -22,6 +22,7 @@ public class PrepaidCardsActivity extends TootiBaseActivity<ActivityPrepaidCards
         implements OnCustomerCardNo {
 
     TabPagerAdapter adapter;
+    public String virtualCardNo = "";
 
     @Override
     public int getLayoutId() {
@@ -43,22 +44,22 @@ public class PrepaidCardsActivity extends TootiBaseActivity<ActivityPrepaidCards
         binding.toolBar.crossBtn.setVisibility(View.GONE);
 
 
-        if (sessionManager.getVirtualCardNo().isEmpty()) {
-            if (IsNetworkConnection.checkNetworkConnection(this)) {
-                GetCustomerCardNoRequest request = new GetCustomerCardNoRequest();
-                request.customerNo = sessionManager.getCustomerNo();
-                request.languageID = sessionManager.getlanguageselection();
+        //  if (sessionManager.getVirtualCardNo().isEmpty()) {
+        if (IsNetworkConnection.checkNetworkConnection(this)) {
+            GetCustomerCardNoRequest request = new GetCustomerCardNoRequest();
+            request.customerNo = sessionManager.getCustomerNo();
+            request.languageID = sessionManager.getlanguageselection();
 
-                GetCustomerCardNoTask task = new GetCustomerCardNoTask(this
-                        , this);
-                task.execute(request);
-            } else {
-                onMessage(getString(R.string.no_internet));
-            }
+            GetCustomerCardNoTask task = new GetCustomerCardNoTask(this
+                    , this);
+            task.execute(request);
         } else {
-            initViews();
+            onMessage(getString(R.string.no_internet));
         }
-
+//        } else {
+//            initViews();
+//        }
+       initViews();
     }
 
 
@@ -66,13 +67,14 @@ public class PrepaidCardsActivity extends TootiBaseActivity<ActivityPrepaidCards
         adapter = new TabPagerAdapter(getSupportFragmentManager()
                 , FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         adapter.addFragment(new ShowPrepaidCardFragment(), getString(R.string.my_card));
-        if (!sessionManager.getVirtualCardNo().isEmpty()) {
+        //if (virtualCardNo.isEmpty()) {
             adapter.addFragment(new LoadPrepaidCardFragment(), getString(R.string.load_card));
-        }
+        //}
 
         binding.viewPager.setAdapter(adapter);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
     }
+
 
     @Override
     public void onCreateCustomerCardNo(String customerCardNo) {
@@ -81,12 +83,13 @@ public class PrepaidCardsActivity extends TootiBaseActivity<ActivityPrepaidCards
 
     @Override
     public void createCustomerCard() {
-
+        initViews();
     }
 
     @Override
     public void onGetCustomerCardNo(String customerCardNo) {
-        sessionManager.setVirtualCardNo(customerCardNo);
+        //  sessionManager.setVirtualCardNo(customerCardNo);
+        virtualCardNo = customerCardNo;
         initViews();
     }
 }

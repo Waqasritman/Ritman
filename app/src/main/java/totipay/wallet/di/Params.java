@@ -10,5 +10,4 @@ public class Params {
     public static final String BODY_OPEN = "<soapenv:Body>";
     public static final String BODY_CLOSE = "</soapenv:Body>";
 
-
 }

@@ -28,6 +28,7 @@ import totipay.wallet.fragments.BaseFragment;
 import totipay.wallet.interfaces.OnCancelInterface;
 import totipay.wallet.interfaces.OnUserPin;
 import totipay.wallet.interfaces.SessionOutListener;
+import totipay.wallet.utils.Constants;
 import totipay.wallet.utils.SessionManager;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -97,6 +98,7 @@ public abstract class TootiBaseActivity<T extends ViewDataBinding>
         sessionManager = new SessionManager(this);
         performDataBinding();
         initUi(savedInstanceState);
+        Constants.hideKeyboard(this);
     }
 
     /**

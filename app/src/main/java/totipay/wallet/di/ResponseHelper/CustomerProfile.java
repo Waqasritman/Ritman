@@ -22,4 +22,5 @@ public class CustomerProfile {
     public String isActive;
     public String idTypeDescription;
     public String sourceOfDescription;
+    public boolean isDocUploaded;
 }

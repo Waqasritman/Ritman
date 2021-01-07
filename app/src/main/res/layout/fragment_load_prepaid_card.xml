@@ -156,6 +156,18 @@
 
                 </LinearLayout>
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_below="@id/quick_amount_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:text="@string/maximum_amount_of_top_is_2000"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
 
                 <Button
                     android:id="@+id/generate"

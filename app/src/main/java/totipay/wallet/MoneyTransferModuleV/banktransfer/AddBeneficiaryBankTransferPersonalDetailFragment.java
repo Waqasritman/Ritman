@@ -28,7 +28,8 @@ import java.util.List;
 
 import totipay.wallet.utils.CountryParser;
 
-public class AddBeneficiaryBankTransferPersonalDetailFragment extends BaseFragment<ActivitySendMoneyViaBankFirstBinding>
+public class AddBeneficiaryBankTransferPersonalDetailFragment
+        extends BaseFragment<ActivitySendMoneyViaBankFirstBinding>
         implements OnSelectCountry, OnSelectRelation, OnSelectCurrency {
 
     boolean isRelationSelected = false;

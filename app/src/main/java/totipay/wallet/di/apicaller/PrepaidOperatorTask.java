@@ -83,7 +83,7 @@ public class PrepaidOperatorTask extends
 
 
             } else {
-                onGetPrepaidOperator.onResponseMessage(message);
+                onGetPrepaidOperator.onErrorWithCode(responseCode , message);
                 operator = null;
             }
         } catch (JSONException e) {

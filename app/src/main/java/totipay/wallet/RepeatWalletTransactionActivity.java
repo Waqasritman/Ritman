@@ -62,7 +62,7 @@ public class RepeatWalletTransactionActivity extends TootiBaseActivity<ActivityR
     String customerNo;
 
     public boolean isValidate() {
-        if (TextUtils.isEmpty(binding.numberLayout.mobilesignupb.getText().toString())) {
+        if (TextUtils.isEmpty(binding.mobilesignupb.getText().toString())) {
             onMessage(getString(R.string.enter_mobile_no_error));
             return false;
         } else if (TextUtils.isEmpty(binding.receiverName.getText().toString())) {
@@ -101,12 +101,12 @@ public class RepeatWalletTransactionActivity extends TootiBaseActivity<ActivityR
     protected void initUi(Bundle savedInstanceState) {
         customerNo = getIntent().getStringExtra("customer_no");
         String receiverName = getIntent().getStringExtra("receiver_name");
-        binding.numberLayout.mobilesignupb.setVisibility(View.GONE);
-
-        binding.numberLayout.mobilesignupb.setText(customerNo);
+        binding.countrySpinnerSignIn.setVisibility(View.GONE);
+      //  binding.numberLayout.countrySpinnerSignIn.setVisibility(View.GONE);
+        binding.mobilesignupb.setText(customerNo);
         binding.receiverName.setText(receiverName);
 
-        binding.numberLayout.mobilesignupb.setEnabled(false);
+        binding.mobilesignupb.setEnabled(false);
         binding.receiverName.setEnabled(false);
 
         if (walletCurrency == null) {
@@ -234,7 +234,7 @@ public class RepeatWalletTransactionActivity extends TootiBaseActivity<ActivityR
         binding.sendNowBtn.setOnClickListener(v -> {
             if (isValidate()) {
                 if (sessionManager.getISKYCApproved()) {
-                    request.receiptMobileNo = binding.numberLayout.mobilesignupb.getText().toString();
+                    request.receiptMobileNo = binding.mobilesignupb.getText().toString();
                     request.customerNo = sessionManager.getCustomerNo();
                     request.description = binding.description.getText().toString();
                     request.transferAmount = NumberFormatter.removeCommas(

@@ -116,8 +116,7 @@ public class CashPickUpBeneficiaryPersonalDetailsFragment extends BaseFragment<A
                 request.FirstName = binding.firstName.getText().toString();
                 request.LastName = binding.lastName.getText().toString();
                 request.MiddleName = binding.middleName.getText().toString();
-                request.customerNo = ((MoneyTransferMainLayout) getBaseActivity())
-                        .sessionManager.getCustomerNo();
+                request.customerNo = getSessionManager().getCustomerNo();
                 request.Telephone = binding.mobileNumber.getText().toString();
                 request.Address = binding.address.getText().toString();
                 request.languageId = getSessionManager().getlanguageselection();

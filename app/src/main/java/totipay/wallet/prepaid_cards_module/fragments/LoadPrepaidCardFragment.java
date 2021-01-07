@@ -3,6 +3,7 @@ package totipay.wallet.prepaid_cards_module.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.InputFilter;
@@ -17,15 +18,19 @@ import totipay.wallet.R;
 import totipay.wallet.databinding.FragmentLoadPrepaidCardBinding;
 import totipay.wallet.di.RequestHelper.LoadVirtualCardRequest;
 import totipay.wallet.di.apicaller.LoadPrepaidCardTask;
+import totipay.wallet.dialogs.SingleButtonMessageDialog;
 import totipay.wallet.fragments.BaseFragment;
+import totipay.wallet.interfaces.OnDecisionMade;
 import totipay.wallet.interfaces.OnSuccessMessage;
+import totipay.wallet.prepaid_cards_module.PrepaidCardsActivity;
 import totipay.wallet.utils.IsNetworkConnection;
 import totipay.wallet.utils.MoneyValueFilter;
+import totipay.wallet.utils.NumberFormatter;
 
 import static totipay.wallet.utils.MoneyValueFilter.getDecimalFormattedString;
 
 public class LoadPrepaidCardFragment extends BaseFragment<FragmentLoadPrepaidCardBinding>
-        implements OnSuccessMessage {
+        implements OnSuccessMessage , OnDecisionMade {
 
 
     @Override
@@ -39,12 +44,24 @@ public class LoadPrepaidCardFragment extends BaseFragment<FragmentLoadPrepaidCar
         if (TextUtils.isEmpty(binding.sendingAmount.getText().toString())) {
             onMessage(getString(R.string.enter_the_amount));
             return false;
+        } else if (((PrepaidCardsActivity) getBaseActivity()).virtualCardNo.isEmpty()) {
+            onMessage(getString(R.string.plz_generate_your_card));
+            return false;
+        } else if(Double.parseDouble(NumberFormatter.removeCommas(binding.sendingAmount.getText().toString()))
+          < 100 || Double.parseDouble(NumberFormatter.removeCommas(binding.sendingAmount.getText().toString())) > 2000) {
+            onMessage(getString(R.string.maximum_amount_of_top_is_2000));
+            return false;
         }
         return true;
     }
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
+
+
+        binding.text.setText(getString(R.string.note).concat(" ")
+        .concat(getString(R.string.maximum_amount_of_top_is_2000)));
+
         binding.sendingAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -93,7 +110,6 @@ public class LoadPrepaidCardFragment extends BaseFragment<FragmentLoadPrepaidCar
             }
         });
 
-
         binding.amount100.setOnClickListener(v -> {
             onClickView(binding.amount100.getId());
         });
@@ -123,8 +139,8 @@ public class LoadPrepaidCardFragment extends BaseFragment<FragmentLoadPrepaidCar
             if (isValidate()) {
                 if (IsNetworkConnection.checkNetworkConnection(getContext())) {
                     LoadVirtualCardRequest request = new LoadVirtualCardRequest();
-                    request.loadAmount = binding.sendingAmount.getText().toString();
-                    request.virtualCardNo = getSessionManager().getVirtualCardNo();
+                    request.loadAmount = NumberFormatter.removeCommas(binding.sendingAmount.getText().toString());
+                    request.virtualCardNo = ((PrepaidCardsActivity) getBaseActivity()).virtualCardNo;
                     request.customerNo = getSessionManager().getCustomerNo();
                     request.languageID = getSessionManager().getlanguageselection();
 
@@ -217,10 +233,25 @@ public class LoadPrepaidCardFragment extends BaseFragment<FragmentLoadPrepaidCar
     @Override
     public void onSuccess(String s) {
         onMessage(s);
+        SingleButtonMessageDialog dialog = new SingleButtonMessageDialog(getString(R.string.successfully_tranfared)
+                , s, this,
+                false);
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        dialog.show(transaction, "");
     }
 
     @Override
     public void onResponseMessage(String message) {
         onMessage(message);
+    }
+
+    @Override
+    public void onProceed() {
+        getActivity().finish();
+    }
+
+    @Override
+    public void onCancel() {
+        getActivity().finish();
     }
 }

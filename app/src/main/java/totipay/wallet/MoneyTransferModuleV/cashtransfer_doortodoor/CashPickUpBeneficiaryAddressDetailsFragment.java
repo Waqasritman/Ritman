@@ -1,6 +1,7 @@
 package totipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.FragmentTransaction;
@@ -145,18 +146,23 @@ public class CashPickUpBeneficiaryAddressDetailsFragment
         });
 
         binding.yemenBranch.setOnClickListener(v -> {
-            if (IsNetworkConnection.checkNetworkConnection(getContext())) {
-                GetYBranchRequest request = new GetYBranchRequest();
-                request.locationID = addBeneficiaryRequest.locationID;
-                request.cityID = addBeneficiaryRequest.cityID;
-                request.languageID = getSessionManager().getlanguageselection();
+            if(addBeneficiaryRequest.locationID != -1) {
+                if (IsNetworkConnection.checkNetworkConnection(getContext())) {
+                    GetYBranchRequest request = new GetYBranchRequest();
+                    request.locationID = addBeneficiaryRequest.locationID;
+                    request.cityID = addBeneficiaryRequest.cityID;
+                    request.languageID = getSessionManager().getlanguageselection();
 
-                GetYBranchTask task = new GetYBranchTask(getContext(), this);
-                task.execute(request);
+                    GetYBranchTask task = new GetYBranchTask(getContext(), this);
+                    task.execute(request);
 
+                } else {
+                    onMessage(getString(R.string.no_internet));
+                }
             } else {
-            onMessage(getString(R.string.no_internet));
+                onMessage(getString(R.string.select_location));
             }
+
         });
     }
 
@@ -255,7 +261,9 @@ public class CashPickUpBeneficiaryAddressDetailsFragment
 
     @Override
     public void onGetYBranch(List<YBranchResponse> branchList) {
+
         if (branchList.size() == 1) {
+            Log.e("onGetYBranch: ", String.valueOf(branchList.get(0).branchID) );
             binding.yemenBranch.setText(branchList.get(0).branchName);
             addBeneficiaryRequest.PaymentMode = "cash";
             addBeneficiaryRequest.PayOutBranchCode = String.valueOf(branchList.get(0).branchID);
@@ -269,5 +277,6 @@ public class CashPickUpBeneficiaryAddressDetailsFragment
         addBeneficiaryRequest.PaymentMode = "cash";
         addBeneficiaryRequest.PayOutBranchCode = String.valueOf(branch.branchID);
         binding.yemenBranch.setText(branch.branchName);
+        Log.e("onGetYBranch: ", String.valueOf(branch.branchID) );
     }
 }

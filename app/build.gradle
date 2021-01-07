@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -65,7 +66,7 @@ dependencies {
     // Feature module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
     implementation 'com.google.zxing:core:3.4.0'
-    implementation 'com.android.volley:volley:1.1.1'
+   // implementation 'com.android.volley:volley:1.1.1'
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     implementation 'com.google.android.gms:play-services-vision:20.0.0'
@@ -77,8 +78,11 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.8.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.8.0'
     implementation "com.github.skydoves:powerspinner:1.1.5"
-    implementation "com.karumi:dexter:5.0.0"
+     implementation "com.karumi:dexter:5.0.0"
     implementation 'com.github.yalantis:ucrop:2.2.2'
     /* phone library for check number format */
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.11.4'
 }

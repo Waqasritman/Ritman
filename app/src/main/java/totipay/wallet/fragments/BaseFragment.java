@@ -20,6 +20,7 @@ import totipay.wallet.base.TootiBaseActivity;
 import totipay.wallet.dialogs.PinVerificationDialog;
 import totipay.wallet.interfaces.OnMessageInterface;
 import totipay.wallet.interfaces.OnUserPin;
+import totipay.wallet.utils.Constants;
 import totipay.wallet.utils.SessionManager;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -84,6 +85,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
         super.onCreate(savedInstanceState);
         injectView();
         setHasOptionsMenu(false);
+        Constants.hideKeyboard(getBaseActivity());
     }
 
     @Override

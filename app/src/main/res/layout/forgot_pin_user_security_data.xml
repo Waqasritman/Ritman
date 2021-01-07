@@ -106,7 +106,8 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:background="@drawable/background_select_mood"
                         android:hint="01234"
-                        android:inputType="number"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:inputType="text"
                         android:padding="@dimen/_10sdp"
                         android:textColor="@color/black" />
 

@@ -99,7 +99,10 @@ public class NewDashboardActivity extends TootiBaseActivity<ActivityNewDashboard
                 startActivity(new Intent(getApplicationContext(), WalletViaQRCodeActivity.class)));
 
         binding.billPaymentTv.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), BillPaymentMainActivity.class)));
+
+               // startActivity(new Intent(getApplicationContext(), BillPaymentMainActivity.class))
+                startActivity(new Intent(getApplicationContext(), LoyalityPointsActivity.class))
+        );
 
         binding.inculdeLayout.notifiacaitonBtn.setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), NotificationActivity.class));

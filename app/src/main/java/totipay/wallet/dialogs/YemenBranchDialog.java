@@ -47,7 +47,7 @@ public class YemenBranchDialog extends BaseDialogFragment<TransferDialogPurposeB
     protected void setUp(Bundle savedInstanceState) {
         setSearchView();
         setupRecyclerView();
-
+        binding.titleOfPage.setText(getString(R.string.select_location_txt));
         binding.closeDialog.setOnClickListener(v -> {
             cancelUpload();
         });

@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -57,7 +58,7 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
 
     Integer[] codeInputIds;
     ProgressBar progressBar;
-    String url;
+    String url = "";
 
     @Override
     protected void injectView() {
@@ -68,25 +69,26 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
     @Override
     public void onResume() {
         super.onResume();
-        binding.numberView.countryCodeTextView.setText(((MainActivityLoginSignUp)
+        binding.countryCodeTextView.setText(((MainActivityLoginSignUp)
                 getBaseActivity()).sessionManager.getUserCountryCode());
-        binding.numberView.mobilesignupb.setText(((MainActivityLoginSignUp)
+        binding.mobilesignupb.setText(((MainActivityLoginSignUp)
                 getBaseActivity()).sessionManager.getUserNumberRemember());
+        Log.e( "onResume: ",getSessionManager().getURLFlag() );
         setSendingCurrencyImage(getSessionManager().getURLFlag());
-        if (!TextUtils.isEmpty(binding.numberView.mobilesignupb.getText())) {
+        if (!TextUtils.isEmpty(binding.mobilesignupb.getText())) {
             binding.rememberMeBox.setChecked(true);
         }
     }
 
     @Override
     public boolean isValidate() {
-        if (TextUtils.isEmpty(binding.numberView.countryCodeTextView.getText().toString())) {
+        if (TextUtils.isEmpty(binding.countryCodeTextView.getText().toString())) {
             onMessage(getString(R.string.enter_number_error));
-        } else if (TextUtils.isEmpty(binding.numberView.mobilesignupb.getText().toString())) {
+        } else if (TextUtils.isEmpty(binding.mobilesignupb.getText().toString())) {
             onMessage(getString(R.string.enter_number_error));
             return false;
-        } else if (!CheckValidation.isPhoneNumberValidate(binding.numberView.mobilesignupb.getText().toString()
-                , binding.numberView.countryCodeTextView.getText().toString())) {
+        } else if (!CheckValidation.isPhoneNumberValidate(binding.mobilesignupb.getText().toString()
+                , binding.countryCodeTextView.getText().toString())) {
             onMessage(getString(R.string.invalid_number));
             return false;
         }
@@ -97,6 +99,9 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
     @Override
     protected void setUp(Bundle savedInstanceState) {
         // initialize code EditText ids in array
+
+        setSendingCurrencyImage(getSessionManager().getURLFlag());
+
         codeInputIds = new Integer[]{
                 binding.digitOne.getId(),
                 binding.digitTwo.getId(),
@@ -122,7 +127,7 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
         });
 
 
-        binding.numberView.countryCodeTextView.setOnClickListener(v -> {
+        binding.countryCodeTextView.setOnClickListener(v -> {
             if (IsNetworkConnection.checkNetworkConnection(getContext())) {
                 DialogCountry country = new DialogCountry(this::onSelectCountry);
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
@@ -143,23 +148,23 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
         });
 
 
-        binding.rememberMeBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                if (!TextUtils.isEmpty(binding.numberView.countryCodeTextView
-                        .getText().toString()) && !TextUtils.isEmpty(binding.numberView.mobilesignupb.getText().toString())) {
-                    ((MainActivityLoginSignUp) getBaseActivity())
-                            .sessionManager.userPhoneRemember(url,
-                            binding.numberView.countryCodeTextView.getText().toString()
-                            , binding.numberView.mobilesignupb.getText().toString()
-                    );
-                }
+      binding.rememberMeBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+           if (isChecked) {
+        if (!TextUtils.isEmpty(binding.countryCodeTextView
+                .getText().toString()) &&
+                !TextUtils.isEmpty(binding.mobilesignupb.getText().toString()) && !url.isEmpty()) {
 
-            } else {
+            getSessionManager().userPhoneRemember(url,
+                    binding.countryCodeTextView.getText().toString()
+                    , binding.mobilesignupb.getText().toString()
+            );
+        }
+          } else {
                 ((MainActivityLoginSignUp) getBaseActivity())
-                        .sessionManager.userPhoneRemember("",
-                        "", "");
+                       .sessionManager.userPhoneRemember(getSessionManager().getURLFlag(),
+                       "", "");
             }
-        });
+      });
     }
 
     @Override
@@ -176,8 +181,24 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
         if (userCode.length() < 4) {
             onMessage(getString(R.string.askfordigit));
         } else {
-            String userNumber = binding.numberView.countryCodeTextView.getText().toString()
-                    + binding.numberView.mobilesignupb.getText().toString();
+
+
+            if(binding.rememberMeBox.isChecked()) {
+
+                if (!TextUtils.isEmpty(binding.countryCodeTextView
+                        .getText().toString()) &&
+                        !TextUtils.isEmpty(binding.mobilesignupb.getText().toString()) && !url.isEmpty()) {
+
+                    getSessionManager().userPhoneRemember(url,
+                            binding.countryCodeTextView.getText().toString()
+                            , binding.mobilesignupb.getText().toString()
+                    );
+
+                }
+            }
+
+            String userNumber = binding.countryCodeTextView.getText().toString()
+                    + binding.mobilesignupb.getText().toString();
 
             progressBar.showProgressDialogWithTitle(getContext(), getString(R.string.getting_data_loading));
             LoginRequest loginRequest = new LoginRequest();
@@ -270,8 +291,8 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
     public void onSuccessLogin(String customerNo) {
         ((MainActivityLoginSignUp) getBaseActivity())
                 .sessionManager.putCustomerPhone(StringHelper.parseNumber(
-                binding.numberView.countryCodeTextView.getText() +
-                        binding.numberView.mobilesignupb.getText().toString()
+                binding.countryCodeTextView.getText() +
+                        binding.mobilesignupb.getText().toString()
         ));
         ((MainActivityLoginSignUp) getBaseActivity())
                 .sessionManager.setCustomerNo(customerNo);
@@ -303,7 +324,7 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
     public void onSelectCountry(GetCountryListResponse country) {
         setSendingCurrencyImage(country.imageURL);
         url = country.imageURL;
-        binding.numberView.countryCodeTextView.setText(country.countryCode);
+        binding.countryCodeTextView.setText(country.countryCode);
     }
 
     @Override
@@ -312,6 +333,7 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
 
         ((MainActivityLoginSignUp) getBaseActivity())
                 .sessionManager.isKYCApproved(customerProfile.isApprovedKYC);
+        getSessionManager().setDocumentsUploaded(customerProfile.isDocUploaded);
         getCustomerImage();
     }
 
@@ -361,16 +383,16 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
 
     }
 
-    public void setSendingCurrencyImage(String url) {
+    public void setSendingCurrencyImage(String urlImage) {
         Glide.with(this)
                 .asBitmap()
-                .load(url)
+                .load(urlImage)
                 .placeholder(R.drawable.ic_united_kingdom)
                 .into(new CustomTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(@NonNull Bitmap resource,
                                                 @Nullable Transition<? super Bitmap> transition) {
-                        binding.numberView.imageIcon.setImageBitmap(resource);
+                        binding.imageIcon.setImageBitmap(resource);
                     }
 
                     @Override

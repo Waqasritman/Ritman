@@ -46,7 +46,7 @@ public class YemenLocationDialog extends BaseDialogFragment<TransferDialogPurpos
     protected void setUp(Bundle savedInstanceState) {
         setSearchView();
         setupRecyclerView();
-
+        binding.titleOfPage.setText(getString(R.string.select_location));
         binding.closeDialog.setOnClickListener(v -> {
             cancelUpload();
         });

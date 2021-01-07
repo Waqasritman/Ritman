@@ -1,7 +1,13 @@
 package totipay.wallet;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
+
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -9,7 +15,7 @@ import java.util.TimerTask;
 import totipay.wallet.appLocker.ApplockManager;
 import totipay.wallet.interfaces.SessionOutListener;
 
-public class TotiWallet extends Application {
+public class TotiWallet extends Application implements LifecycleObserver {
     public static TotiWallet myAutoLogoutApp;
     protected SessionOutListener listener;
     private Timer timer;
@@ -19,6 +25,27 @@ public class TotiWallet extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+    }
+
+
+    @SuppressLint("CheckResult")
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void onMoveToForeground() {
+        Log.e("onMoveToForeground: ","foreground" );
+
+    }
+
+    @SuppressLint("CheckResult")
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    public void onMoveToBackground() {
+        Log.e("onMoveToBackground: ", "bcakground");
+    }
+
+
+    @SuppressLint("CheckResult")
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    public void onMoveToDestroy() {
+        Log.e("onMoveToDestroy: ", "onMoveToDestroy");
     }
 
 

@@ -186,7 +186,6 @@ public class SessionManager {
         userRequest.firstName = pref.getString("first_name", "");
         userRequest.lastName = pref.getString("last_name", "");
         userRequest.middleName = pref.getString("middle_name", "");
-        userRequest.lastName = pref.getString("last_name", "");
         userRequest.address = pref.getString("address", "");
         userRequest.dob = pref.getString("dob", "");
         userRequest.gender = pref.getString("gender", "");

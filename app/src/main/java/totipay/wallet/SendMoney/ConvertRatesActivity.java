@@ -245,18 +245,40 @@ public class ConvertRatesActivity extends BaseFragment<ActivityTransferMoneyBind
 
     @Override
     public void onSelectCountry(GetCountryListResponse country) {
-        GetSendRecCurrencyRequest request = new GetSendRecCurrencyRequest();
-        request.countryType = country.countryType;
-        request.countryShortName = country.countryShortName;
-        request.languageId = getSessionManager().getlanguageselection();
-        if (IsNetworkConnection.checkNetworkConnection(getBaseActivity())) {
-            GetSendRecCurrencyTask task = new GetSendRecCurrencyTask(getBaseActivity(), this);
-            task.execute(request);
+
+        if (isSending) {
+            binding.sendingCurrency.setText(country.currencyShortName);
+            calTransferRequest.PayInCurrency = country.currencyShortName;
+            calTransferRequest.TransferCurrency = country.currencyShortName;
+            setSendingCurrencyImage(country.imageURL);
         } else {
-            onMessage(getString(R.string.no_internet));
+            binding.receivingCurrency.setText(country.currencyShortName);
+            calTransferRequest.PayoutCurrency = country.currencyShortName;
+            setReceivingCurrencyImage(country.imageURL);
         }
 
-        binding.afterConvertRatesLayout.setVisibility(View.GONE);
+        if (!TextUtils.isEmpty(binding.sendingCurrency.getText().toString())
+                && !TextUtils.isEmpty(binding.receivingCurrency.getText().toString())) {
+            if (TextUtils.isEmpty(binding.sendingAmountField.getText().toString())) {
+                binding.sendingAmountField.setText("1");
+                convertRatesRequest();
+            }
+            binding.sendingAmountField.requestFocus();
+        }
+
+
+//        GetSendRecCurrencyRequest request = new GetSendRecCurrencyRequest();
+//        request.countryType = country.countryType;
+//        request.countryShortName = country.countryShortName;
+//        request.languageId = getSessionManager().getlanguageselection();
+//        if (IsNetworkConnection.checkNetworkConnection(getBaseActivity())) {
+//            GetSendRecCurrencyTask task = new GetSendRecCurrencyTask(getBaseActivity(), this);
+//            task.execute(request);
+//        } else {
+//            onMessage(getString(R.string.no_internet));
+//        }
+//
+//        binding.afterConvertRatesLayout.setVisibility(View.GONE);
     }
 
     @Override

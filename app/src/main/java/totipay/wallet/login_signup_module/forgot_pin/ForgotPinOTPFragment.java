@@ -33,7 +33,8 @@ public class ForgotPinOTPFragment extends BaseFragment<EnterOtpBankingBinding>
     Integer[] codeInputIds;
     String numberEmail;
     private CountDownTimer countDownTimer;
-    ForgotPinRequestApprovedUserRequest requestApprovedUserRequest = new ForgotPinRequestApprovedUserRequest();
+    ForgotPinRequestApprovedUserRequest requestApprovedUserRequest
+            = new ForgotPinRequestApprovedUserRequest();
 
     public boolean isWithNumber;
 
@@ -83,6 +84,7 @@ public class ForgotPinOTPFragment extends BaseFragment<EnterOtpBankingBinding>
             startTimer();
         } else {
             onMessage(getString(R.string.no_internet));
+            Navigation.findNavController(binding.getRoot()).navigateUp();
         }
 
 
@@ -270,6 +272,7 @@ public class ForgotPinOTPFragment extends BaseFragment<EnterOtpBankingBinding>
 
     @Override
     public void onResponseMessage(String message) {
+        Navigation.findNavController(binding.getRoot()).navigateUp();
         onMessage(message);
     }
 

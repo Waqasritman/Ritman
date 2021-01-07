@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -143,7 +144,7 @@ public class TakeKYCDataFragment extends BaseFragment<FragmentTakeKycDataBinding
         });
 
 
-        if (((KYCMainActivity) getBaseActivity()).sessionManager.getCustomerPhone().isEmpty()) {
+        if (getSessionManager().getCustomerPhone().isEmpty()) {
             isNumberEmpty = true;
             binding.numberTxt.setVisibility(View.VISIBLE);
             binding.numberLayout.mainNumber.setVisibility(View.VISIBLE);
@@ -153,8 +154,7 @@ public class TakeKYCDataFragment extends BaseFragment<FragmentTakeKycDataBinding
         binding.nextLayout.setOnClickListener(v -> {
 
             if (isValidate()) {
-                request.customer = ((KYCMainActivity) getBaseActivity())
-                        .sessionManager.getCustomerDetails();
+                request.customer = getSessionManager().getCustomerDetails();
 
                 if (!binding.switchAccount.isChecked()) {
                     request.customer.dob = binding.dateOfBirth.getText().toString();
@@ -162,19 +162,20 @@ public class TakeKYCDataFragment extends BaseFragment<FragmentTakeKycDataBinding
                     request.customer.dob = "10/12/1900";
                 }
 
-                if (((KYCMainActivity) getBaseActivity())
-                        .sessionManager.getCustomerPhone().isEmpty()) {
+                if (getSessionManager().getCustomerPhone().isEmpty()) {
                     request.customer.phoneNumber = StringHelper.parseNumber(binding.numberLayout.countryCodeTextView.getText().toString()
                             + binding.numberLayout.mobilesignupb.getText()
                             .toString());
                 } else {
-                    request.customer.phoneNumber = ((KYCMainActivity) getBaseActivity())
-                            .sessionManager.getCustomerPhone();
+                    request.customer.phoneNumber = getSessionManager().getCustomerPhone();
                 }
-
+                Log.e("expire date",binding.idExpireDate.getText().toString() );
+                Log.e( "setUp: ",  binding.idIssueDate.getText().toString());
+                request.idExpireDate = binding.idExpireDate.getText().toString();
+                request.idIssueDate = binding.idIssueDate.getText().toString();
                 request.idNumber = binding.idNumber.getText().toString();
                 request.languageId = getSessionManager().getlanguageselection();
-                request.customerNo = ((KYCMainActivity) getBaseActivity()).sessionManager.getCustomerNo();
+                request.customerNo = getSessionManager().getCustomerNo();
                 if (IsNetworkConnection.checkNetworkConnection(getContext())) {
                     EditCustomerProfileTask task = new EditCustomerProfileTask(getContext(), this);
                     task.execute(request);
@@ -239,13 +240,11 @@ public class TakeKYCDataFragment extends BaseFragment<FragmentTakeKycDataBinding
             showPickerDialog(getString(R.string.select_date_txt));
         });
 
-
         binding.idExpireDate.setOnClickListener(v -> {
             isIssueDateSelect = false;
             isDateOfBirth = false;
             showPickerDialog(getString(R.string.select_date_txt));
         });
-
 
         binding.numberLayout.countrySpinnerSignIn.setOnClickListener(v -> {
             if (IsNetworkConnection.checkNetworkConnection(getContext())) {
@@ -306,11 +305,11 @@ public class TakeKYCDataFragment extends BaseFragment<FragmentTakeKycDataBinding
         datePickerDialog.setAccentColor(Color.parseColor("#931E55"));
         datePickerDialog.setLocale(new Locale("en"));
         if (isIssueDateSelect) {
-            datePickerDialog.setMinDate(calendar);
+            datePickerDialog.setMaxDate(calendar);
         }
 
         if (!isIssueDateSelect && !isDateOfBirth) {
-            datePickerDialog.setMaxDate(calendar);
+            datePickerDialog.setMinDate(calendar);
         }
 
         if (isDateOfBirth) {
@@ -343,13 +342,13 @@ public class TakeKYCDataFragment extends BaseFragment<FragmentTakeKycDataBinding
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         if (isIssueDateSelect) {
-            request.idIssueDate = DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth);
-            binding.idIssueDate.setText(request.idIssueDate);
+           // request.idIssueDate = DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth);
+            binding.idIssueDate.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
         }
 
         if (!isDateOfBirth && !isIssueDateSelect) {
-            request.idExpireDate = DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth);
-            binding.idExpireDate.setText(request.idExpireDate);
+         //   request.idExpireDate = DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth);
+            binding.idExpireDate.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
         }
 
 
