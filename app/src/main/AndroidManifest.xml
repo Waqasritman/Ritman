@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="totipay.wallet">
+    package="tootipay.wallet">
 
     <permission
         android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
@@ -35,24 +35,27 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
+        <activity android:name=".mywalletmoduleV.CreateWalletActivity"></activity>
 
+        <service
+            android:name=".OnClearFromRecentService"
+            android:stopWithTask="false" />
 
-        <service android:name=".OnClearFromRecentService" android:stopWithTask="false"/>
-
-        <activity android:name=".TransferToOwnWalletActivity"
+        <activity
+            android:name=".TransferToOwnWalletActivity"
             android:configChanges="locale"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".ImagePickerActivity"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ImagePickerActivity"
             android:configChanges="locale"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-
             android:name=".prepaid_cards_module.PrepaidCardsActivity"
             android:configChanges="locale"
             android:screenOrientation="portrait"
@@ -184,10 +187,10 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".MoneyTransferModuleV.MoneyTransferMainLayout"
             android:configChanges="locale"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SendMoney.SendMoneyFifthActivity"
@@ -275,9 +278,9 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".login_signup_module.MainActivityLoginSignUp"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SendMoney.ConvertRatesActivity"

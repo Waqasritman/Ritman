@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <view
-            class="totipay.wallet.utils.DrawerMenu"
+            class="tootipay.wallet.utils.DrawerMenu"
             android:layout_width="@dimen/_220sdp"
             android:layout_height="match_parent" />
 

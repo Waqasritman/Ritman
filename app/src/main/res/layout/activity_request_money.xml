@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -25,12 +25,12 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_15sdp" />
 
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:text="@string/mobile_number" />
-
 
                 <include
                     android:id="@+id/number_layout"
@@ -38,6 +38,46 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:text="@string/request_currency" />
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:id="@+id/sending_currency_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_weight="1">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/request_currency_image"
+                        android:layout_width="@dimen/margin_20dp"
+                        android:layout_height="@dimen/margin_20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_10dp"
+                        android:src="@drawable/ic_united_kingdom" />
+
+
+                    <TextView
+                        android:id="@+id/request_currency"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/request_currency_image"
+                        android:background="@drawable/background_select_mood"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_semibold"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:hint="GBP"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_16sp"
+                        app:drawableEndCompat="@drawable/dropdown_arrow" />
+
+                </RelativeLayout>
 
 
                 <TextView

@@ -5,7 +5,7 @@
     app:startDestination="@id/walletTransferFirstActivity">
     <fragment
         android:id="@+id/walletTransferFirstActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferFirstActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferFirstActivity"
         android:label="WalletTransferFirstActivity" >
         <action
             android:id="@+id/action_walletTransferFirstActivity_to_local_transfer_navigation"

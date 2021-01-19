@@ -8,7 +8,7 @@
     <fragment
         tools:layout="@layout/activity_mobile_top_up_first"
         android:id="@+id/mobileTopUpFirstActivity"
-        android:name="totipay.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
+        android:name="tootipay.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
         android:label="MobileTopUpFirstActivity" >
         <action
             android:id="@+id/action_mobileTopUpFirstActivity_to_selectMobilePackActivity"
@@ -17,7 +17,7 @@
     <fragment
         tools:layout="@layout/activity_select_mobile_pack"
         android:id="@+id/selectMobilePackActivity"
-        android:name="totipay.wallet.Mobile_Top_Up.fragments.SelectMobilePackActivity"
+        android:name="tootipay.wallet.Mobile_Top_Up.fragments.SelectMobilePackActivity"
         android:label="SelectMobilePackActivity" >
         <action
             android:id="@+id/action_selectMobilePackActivity_to_donePaymentActivity"
@@ -27,6 +27,6 @@
     <fragment
         tools:layout="@layout/activity_done_payment2"
         android:id="@+id/donePaymentActivity"
-        android:name="totipay.wallet.Mobile_Top_Up.fragments.DonePaymentActivity"
+        android:name="tootipay.wallet.Mobile_Top_Up.fragments.DonePaymentActivity"
         android:label="DonePaymentActivity" />
 </navigation>

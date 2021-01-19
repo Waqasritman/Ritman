@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/beneficiaryListFragment"
-        android:name="totipay.wallet.beneficiary_list_module.fragments.BeneficiaryListFragment"
+        android:name="tootipay.wallet.beneficiary_list_module.fragments.BeneficiaryListFragment"
         android:label="fragment_beneficiary_list"
         tools:layout="@layout/fragment_beneficiary_list">
         <action
@@ -27,12 +27,12 @@
     </fragment>
     <fragment
         android:id="@+id/showBankBeneficiaryFragment"
-        android:name="totipay.wallet.beneficiary_list_module.fragments.ShowBankBeneficiaryFragment"
+        android:name="tootipay.wallet.beneficiary_list_module.fragments.ShowBankBeneficiaryFragment"
         android:label="ShowBankBeneficiaryFragment"
         tools:layout="@layout/fragment_edit_beneficiary" />
     <fragment
         android:id="@+id/showCashBeneficiaryFragment"
-        android:name="totipay.wallet.beneficiary_list_module.fragments.ShowCashBeneficiaryFragment"
+        android:name="tootipay.wallet.beneficiary_list_module.fragments.ShowCashBeneficiaryFragment"
         android:label="ShowCashBeneficiaryFragment"
         tools:layout="@layout/fragment_show_cash_beneficairy">
         <action
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateCashBeneficiaryFragment"
-        android:name="totipay.wallet.beneficiary_list_module.fragments.UpdateCashBeneficiaryFragment"
+        android:name="tootipay.wallet.beneficiary_list_module.fragments.UpdateCashBeneficiaryFragment"
         android:label="UpdateCashBeneficiaryFragment"
         tools:layout="@layout/fragment_update_cash_beneficiary" />
 </navigation>

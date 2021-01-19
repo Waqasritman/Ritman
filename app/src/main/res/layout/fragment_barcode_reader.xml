@@ -8,24 +8,24 @@
         android:keepScreenOn="true">
 
 
-        <totipay.wallet.scanqrcodemodule.camera.CameraSourcePreview
+        <tootipay.wallet.scanqrcodemodule.camera.CameraSourcePreview
 
             android:id="@+id/preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-            <totipay.wallet.scanqrcodemodule.camera.GraphicOverlay
+            <tootipay.wallet.scanqrcodemodule.camera.GraphicOverlay
                 android:id="@+id/graphicOverlay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#44000000" />
 
 
-        </totipay.wallet.scanqrcodemodule.camera.CameraSourcePreview>
+        </tootipay.wallet.scanqrcodemodule.camera.CameraSourcePreview>
 
 
-        <totipay.wallet.scanqrcodemodule.ScannerOverlay
+        <tootipay.wallet.scanqrcodemodule.ScannerOverlay
             android:id="@+id/scan_overlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -8,7 +8,7 @@
     <fragment
         tools:layout="@layout/fragment_take_kyc_data"
         android:id="@+id/takeKYCDataFragment"
-        android:name="totipay.wallet.KYC.fragments.TakeKYCDataFragment"
+        android:name="tootipay.wallet.KYC.fragments.TakeKYCDataFragment"
         android:label="TakeKYCDataFragment" >
         <action
             android:id="@+id/action_takeKYCDataFragment_to_takeKYCIdPictureFragment"
@@ -17,6 +17,6 @@
     <fragment
         tools:layout="@layout/kyc_picture_layout"
         android:id="@+id/takeKYCIdPictureFragment"
-        android:name="totipay.wallet.KYC.fragments.TakeKYCFrontIdPictureFragment"
+        android:name="tootipay.wallet.KYC.fragments.TakeKYCFrontIdPictureFragment"
         android:label="TakeKYCIdPictureFragment" />
 </navigation>

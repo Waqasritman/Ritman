@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mobileTopUpFirstActivity"
-        android:name="totipay.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
+        android:name="tootipay.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
         android:label="MobileTopUpFirstActivity"
         tools:layout="@layout/activity_mobile_top_up_first">
         <action
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/WRBillerNamesFragment"
-        android:name="totipay.wallet.Mobile_Top_Up.fragments.WRBillerPlansFragment"
+        android:name="tootipay.wallet.Mobile_Top_Up.fragments.WRBillerPlansFragment"
         android:label="WRBillerNamesFragment">
         <action
             android:id="@+id/action_WRBillerNamesFragment_to_WRBillerPaymentFragment"
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/WRBillerPaymentFragment"
-        android:name="totipay.wallet.Mobile_Top_Up.fragments.WRBillerPaymentFragment"
+        android:name="tootipay.wallet.Mobile_Top_Up.fragments.WRBillerPaymentFragment"
         android:label="WRBillerPaymentFragment" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/MobileTopupBillDetailsFragment"
-        android:name="totipay.wallet.Mobile_Top_Up.fragments.MobileTopupBillDetailsFragment"
+        android:name="tootipay.wallet.Mobile_Top_Up.fragments.MobileTopupBillDetailsFragment"
         android:label="MobileTopupBillDetailsFragment"
         tools:layout="@layout/fragment_utility_biller_details">
         <action
@@ -66,6 +66,6 @@
     </fragment>
     <fragment
         android:id="@+id/mobileTopupStatusFragment"
-        android:name="totipay.wallet.Mobile_Top_Up.fragments.MobileTopupStatusFragment"
+        android:name="tootipay.wallet.Mobile_Top_Up.fragments.MobileTopupStatusFragment"
         android:label="MobileTopupStatusFragment" />
 </navigation>

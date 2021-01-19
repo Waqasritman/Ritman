@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/moneyTransferActivity"
-        android:name="totipay.wallet.billpayment.fragments.MoneyTransferActivity"
+        android:name="tootipay.wallet.billpayment.fragments.MoneyTransferActivity"
         android:label="MoneyTransferActivity"
         tools:layout="@layout/activity_money_transfer">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/billPaymentsActivity"
-        android:name="totipay.wallet.billpayment.fragments.BillPaymentsTypeFragment"
+        android:name="tootipay.wallet.billpayment.fragments.BillPaymentsTypeFragment"
         android:label="BillPaymentsActivity"
         tools:layout="@layout/activity_bill_payments">
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/billPaymentCountryActivity"
-        android:name="totipay.wallet.billpayment.fragments.BillPaymentCountryActivity"
+        android:name="tootipay.wallet.billpayment.fragments.BillPaymentCountryActivity"
         android:label="BillPaymentCountryActivity"
         tools:layout="@layout/activity_bill_payment_country">
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/electricityBillActivity"
-        android:name="totipay.wallet.billpayment.fragments.ElectricityBillActivity"
+        android:name="tootipay.wallet.billpayment.fragments.ElectricityBillActivity"
         android:label="ElectricityBillActivity"
         tools:layout="@layout/activity_electricity_bill">
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/newOutstandingBillActivity"
-        android:name="totipay.wallet.billpayment.fragments.NewOutstandingBillActivity"
+        android:name="tootipay.wallet.billpayment.fragments.NewOutstandingBillActivity"
         android:label="NewOutstandingBillActivity"
         tools:layout="@layout/activity_new_outstanding_bill" >
         <action
@@ -59,7 +59,7 @@
     <fragment
         tools:layout="@layout/activity_select_bill_payment_mode"
         android:id="@+id/selectBillPaymentModeActivity"
-        android:name="totipay.wallet.billpayment.fragments.SelectBillPaymentModeActivity"
+        android:name="tootipay.wallet.billpayment.fragments.SelectBillPaymentModeActivity"
         android:label="SelectBillPaymentModeActivity" >
         <action
             android:id="@+id/action_selectBillPaymentModeActivity_to_paymentDoneActivity"
@@ -68,12 +68,12 @@
     <fragment
         tools:layout="@layout/activity_payment_done"
         android:id="@+id/paymentDoneActivity"
-        android:name="totipay.wallet.billpayment.fragments.PaymentDoneActivity"
+        android:name="tootipay.wallet.billpayment.fragments.PaymentDoneActivity"
         android:label="PaymentDoneActivity" />
     <fragment
         tools:layout="@layout/activity_add_baneficily_type"
         android:id="@+id/addBeneficiaryTypeActivity"
-        android:name="totipay.wallet.billpayment.fragments.AddBeneficiaryTypeActivity"
+        android:name="tootipay.wallet.billpayment.fragments.AddBeneficiaryTypeActivity"
         android:label="AddBeneficiaryTypeActivity" >
         <action
             android:id="@+id/action_addBeneficiaryTypeActivity_to_electricityAddNewAccountActivity"
@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/electricityAddNewAccountActivity"
-        android:name="totipay.wallet.billpayment.fragments.ElectricityAddNewAccountActivity"
+        android:name="tootipay.wallet.billpayment.fragments.ElectricityAddNewAccountActivity"
         android:label="ElectricityAddNewAccountActivity" >
         <action
             android:id="@+id/action_electricityAddNewAccountActivity_to_electricityProviderActivity"
@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/electricityProviderActivity"
-        android:name="totipay.wallet.billpayment.fragments.ElectricityProviderActivity"
+        android:name="tootipay.wallet.billpayment.fragments.ElectricityProviderActivity"
         android:label="ElectricityProviderActivity" />
 
 </navigation>

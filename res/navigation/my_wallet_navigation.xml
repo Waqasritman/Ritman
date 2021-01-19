@@ -9,7 +9,7 @@
     <fragment
         tools:layout="@layout/activity_my_wallet"
         android:id="@+id/MyWalletActivity"
-        android:name="totipay.wallet.mywalletmoduleV.fragments.MyWalletBalanceFragment"
+        android:name="tootipay.wallet.mywalletmoduleV.fragments.MyWalletBalanceFragment"
         android:label="MyWalletActivity" >
 
         <action
@@ -21,7 +21,7 @@
     <fragment
         tools:layout="@layout/activity_add_money_wallet"
         android:id="@+id/AddMoneyWalletActivity"
-        android:name="totipay.wallet.mywalletmoduleV.fragments.LoadWalletFragment"
+        android:name="tootipay.wallet.mywalletmoduleV.fragments.LoadWalletFragment"
         android:label="AddMoneyWalletActivity" >
 
         <action
@@ -32,6 +32,6 @@
     <fragment
         tools:layout="@layout/activity_added_money_wallet"
         android:id="@+id/addedMoneyWalletActivity"
-        android:name="totipay.wallet.mywalletmoduleV.fragments.AddedMoneyWalletActivity"
+        android:name="tootipay.wallet.mywalletmoduleV.fragments.AddedMoneyWalletActivity"
         android:label="AddedMoneyWalletActivity" />
 </navigation>

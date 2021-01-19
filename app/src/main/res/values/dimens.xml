@@ -37,5 +37,6 @@
     <dimen name="button_height_70dp">70dp</dimen>
     <dimen name="min_height_circle_large_85dp">85dp</dimen>
     <dimen name="circle_height_modules_56dp">56dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
 
 </resources>

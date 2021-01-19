@@ -5,7 +5,7 @@
     app:startDestination="@id/walletTransferFirstActivity">
     <fragment
         android:id="@+id/walletTransferFirstActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferFirstActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferFirstActivity"
         android:label="WalletTransferFirstActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -25,6 +25,6 @@
     <include app:graph="@navigation/local_transfer_navigation" />
     <fragment
         android:id="@+id/walletTransferActivity2"
-        android:name="totipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferActivity"
         android:label="WalletTransferActivity" />
 </navigation>

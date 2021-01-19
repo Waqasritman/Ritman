@@ -27,7 +27,22 @@
                     android:textSize="@dimen/_15sdp" />
 
 
+                <TextView
+                    android:id="@+id/money_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/mobile_number" />
+
+                <include
+                    android:id="@+id/number_layout"
+                    layout="@layout/number_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp" />
+
                 <LinearLayout
+                    android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -36,6 +51,7 @@
 
 
                     <RelativeLayout
+                        android:background="@drawable/background_select_mood"
                         android:id="@+id/sending_currency_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -48,7 +64,7 @@
                             android:layout_width="@dimen/margin_20dp"
                             android:layout_height="@dimen/margin_20dp"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/margin_10dp"
+                            android:layout_marginStart="@dimen/margin_5dp"
                             android:src="@drawable/ic_united_kingdom" />
 
 
@@ -57,7 +73,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toEndOf="@id/sending_currency_image"
-                            android:background="@drawable/background_select_mood"
+
                             android:drawablePadding="@dimen/_5sdp"
                             android:fontFamily="@font/lato_semibold"
                             android:gravity="center_vertical"
@@ -77,6 +93,7 @@
                         android:visibility="invisible" />
 
                     <RelativeLayout
+                        android:background="@drawable/background_select_mood"
                         android:id="@+id/receivng_currency_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -209,19 +226,7 @@
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/money_tv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:text="@string/mobile_number" />
 
-                    <include
-                        android:id="@+id/number_layout"
-                        layout="@layout/number_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_10dp" />
 
                     <TextView
                         android:id="@+id/wallet_name_txt"

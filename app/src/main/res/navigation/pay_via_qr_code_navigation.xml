@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/barcodeReaderFragment"
-        android:name="totipay.wallet.scanqrcodemodule.BarcodeReaderFragment"
+        android:name="tootipay.wallet.scanqrcodemodule.BarcodeReaderFragment"
         android:label="BarcodeReaderFragment"
         tools:layout="@layout/fragment_barcode_reader" >
         <action
@@ -20,6 +20,6 @@
     </fragment>
     <fragment
         android:id="@+id/walletToWalletViaQrCode"
-        android:name="totipay.wallet.payviaqrcode.WalletToWalletViaQrCode"
+        android:name="tootipay.wallet.payviaqrcode.WalletToWalletViaQrCode"
         android:label="WalletToWalletViaQrCode" />
 </navigation>

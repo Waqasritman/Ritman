@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/swiftBeneficiaryDetailFragment"
-        android:name="totipay.wallet.swift_transfer_module.fragments.SwiftBeneficiaryDetailFragment"
+        android:name="tootipay.wallet.swift_transfer_module.fragments.SwiftBeneficiaryDetailFragment"
         android:label="SwiftBeneficiaryDetailFragment"
         tools:layout="@layout/fragment_swift_beneficairy_detail">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/swiftTransferPaymentDetailFragment"
-        android:name="totipay.wallet.swift_transfer_module.fragments.SwiftTransferPaymentDetailFragment"
+        android:name="tootipay.wallet.swift_transfer_module.fragments.SwiftTransferPaymentDetailFragment"
         android:label="SwiftTransferPaymentDetailFragment"
         tools:layout="@layout/fragment_swift_transfer_payment_detail">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/swiftTransferBeneficiaryBankDetailsFragment"
-        android:name="totipay.wallet.swift_transfer_module.fragments.SwiftTransferBeneficiaryBankDetailsFragment"
+        android:name="tootipay.wallet.swift_transfer_module.fragments.SwiftTransferBeneficiaryBankDetailsFragment"
         android:label="SwiftTransferBeneficiaryBankDetailsFragment"
         tools:layout="@layout/fragment_swift_transfer_beneficiary_bank_details">
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/swiftTransferPreferredCorrespondentDetailsFragment"
-        android:name="totipay.wallet.swift_transfer_module.fragments.SwiftTransferPreferredCorrespondentDetailsFragment"
+        android:name="tootipay.wallet.swift_transfer_module.fragments.SwiftTransferPreferredCorrespondentDetailsFragment"
         android:label="SwiftTransferPreferredCorrespondentDetailsFragment"
         tools:layout="@layout/fragment_swift_transfer_preferred_correspondent_details" />
 </navigation>

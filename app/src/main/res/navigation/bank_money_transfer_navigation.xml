@@ -6,7 +6,7 @@
     app:startDestination="@id/selectMoneyTransferTypeActivity">
     <fragment
         android:id="@+id/selectedBeneficiaryForBankTransferFragment"
-        android:name="totipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
+        android:name="tootipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
         android:label="fragment_selected_beneficiary_for_bank_transfer"
         tools:layout="@layout/activity_select_beneficialy" >
         <action
@@ -28,7 +28,7 @@
     <fragment
         tools:layout="@layout/activity_select_type"
         android:id="@+id/selectMoneyTransferTypeActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.SelectMoneyTransferTypeActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.SelectMoneyTransferTypeActivity"
         android:label="SelectMoneyTransferTypeActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -63,7 +63,7 @@
     <fragment
         tools:layout="@layout/activity_send_money_via_bank_first"
         android:id="@+id/sendMoneyViaBankFirstActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferPersonalDetailFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferPersonalDetailFragment"
         android:label="SendMoneyViaBankFirstActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/sendMoneyViaBankSecondActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferBankDetailFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferBankDetailFragment"
         android:label="SendMoneyViaBankSecondActivity" >
         <action
             android:id="@+id/action_sendMoneyViaBankSecondActivity_to_sendMoneyViaBankThirdActivity"
@@ -102,7 +102,7 @@
     </fragment>
     <fragment
         android:id="@+id/sendMoneyViaBankThirdActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankThirdActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankThirdActivity"
         android:label="SendMoneyViaBankThirdActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -117,7 +117,7 @@
     <fragment
         tools:layout="@layout/activity_send_money_via_bankfourth"
         android:id="@+id/cashPaymentFourthActivity2"
-        android:name="totipay.wallet.MoneyTransferModuleV.MoneyTransferPaymentFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.MoneyTransferPaymentFragment"
         android:label="CashPaymentFourthActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -129,11 +129,11 @@
     </fragment>
     <activity
         android:id="@+id/transactionReceiptActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.TransactionReceiptActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.TransactionReceiptActivity"
         android:label="TransactionReceiptActivity" />
     <fragment
         android:id="@+id/indiaBankBeneficiary"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.IndiaBankBeneficiary"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.IndiaBankBeneficiary"
         android:label="IndiaBankBeneficiary" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -146,7 +146,7 @@
     </fragment>
     <fragment
         android:id="@+id/cashTransferSummaryFragment2"
-        android:name="totipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashTransferSummaryFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashTransferSummaryFragment"
         android:label="CashTransferSummaryFragment" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -159,7 +159,7 @@
     <include app:graph="@navigation/local_transfer_navigation" />
     <fragment
         android:id="@+id/sepaCountryBankBeneFragment"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.SepaCountryBankBeneFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.SepaCountryBankBeneFragment"
         android:label="SepaCountryBankBeneFragment" >
         <action
             app:enterAnim="@anim/slide_in_anim"

@@ -6,7 +6,7 @@
     android:id="@+id/cash_transfer_navigation">
     <fragment
         android:id="@+id/selectedBeneficiaryForBankTransferFragment"
-        android:name="totipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
+        android:name="tootipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
         android:label="fragment_selected_beneficiary_for_bank_transfer"
         tools:layout="@layout/activity_select_beneficialy" >
         <action
@@ -27,7 +27,7 @@
     <fragment
         tools:layout="@layout/activity_cash_pickup_first"
         android:id="@+id/cashPickupFirstActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryPersonalDetailsFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryPersonalDetailsFragment"
         android:label="CashPickupFirstActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -48,20 +48,17 @@
     <fragment
         tools:layout="@layout/activity_cash_pickup_second"
         android:id="@+id/cashPickupSecondActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryAddressDetailsFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryAddressDetailsFragment"
         android:label="CashPickupSecondActivity" >
         <action
-            app:enterAnim="@anim/slide_in_anim"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_left"
-            android:id="@+id/action_cashPickupSecondActivity_to_cashPaymentThirdActivity"
-            app:destination="@id/cashPaymentThirdActivity" />
+            android:id="@+id/action_cashPickupSecondActivity_to_selectedBeneficiaryForBankTransferFragment"
+            app:destination="@id/selectedBeneficiaryForBankTransferFragment"
+            app:popUpTo="@id/cash_transfer_navigation" />
     </fragment>
     <fragment
         tools:layout="@layout/activity_cash_payment_third"
         android:id="@+id/cashPaymentThirdActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPaymentThirdActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPaymentThirdActivity"
         android:label="CashPaymentThirdActivity" >
         <action
             android:id="@+id/action_cashPaymentThirdActivity_to_cashTransferSummaryFragment"
@@ -70,7 +67,7 @@
     <fragment
         tools:layout="@layout/activity_cash_payment_fourth"
         android:id="@+id/cashPaymentFourthActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.MoneyTransferPaymentFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.MoneyTransferPaymentFragment"
         android:label="CashPaymentFourthActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -82,12 +79,12 @@
     </fragment>
     <activity
         android:id="@+id/transactionReceiptActivity2"
-        android:name="totipay.wallet.MoneyTransferModuleV.TransactionReceiptActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.TransactionReceiptActivity"
         android:label="TransactionReceiptActivity" />
     <fragment
         tools:layout="@layout/fragment_money_transfer_summary"
         android:id="@+id/cashTransferSummaryFragment"
-        android:name="totipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashTransferSummaryFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashTransferSummaryFragment"
         android:label="CashTransferSummaryFragment" >
         <action
             app:enterAnim="@anim/slide_in_anim"

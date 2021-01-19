@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newLoginCheck"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewLoginCheck"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.NewLoginCheck"
         android:label="NewLoginCheck"
         tools:layout="@layout/new_signup_login">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpMobileNoFragment"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.SignUpMobileNoFragment"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.SignUpMobileNoFragment"
         android:label="SignUpMobileNoFragment"
         tools:layout="@layout/fragment_sign_up_mobile_no">
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpOtpMobileFragment"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.SignUpOtpMobileFragment"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.SignUpOtpMobileFragment"
         android:label="SignUpOtpMobileFragment"
         tools:layout="@layout/enter_otp_banking">
         <action
@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/newSignupCreateProfile"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewSignupCreateProfile"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.NewSignupCreateProfile"
         android:label="NewSignupCreateProfile"
         tools:layout="@layout/complete_profile_nonb">
         <action
@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentSignupCompleteProfile"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.FragmentSignupCompleteProfile"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.FragmentSignupCompleteProfile"
         android:label="FragmentSignupCompleteProfile"
         tools:layout="@layout/complete_profile_nonb2">
         <action
@@ -94,7 +94,7 @@
     </fragment>
     <fragment
         android:id="@+id/newSignupSetupPass"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewSignupSetupPass"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.NewSignupSetupPass"
         android:label="NewSignupSetupPass"
         tools:layout="@layout/setup_pass_nonb">
         <action
@@ -107,12 +107,12 @@
     </fragment>
     <fragment
         android:id="@+id/newSignupCreatepin"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewSignupCreatepin"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.NewSignupCreatepin"
         android:label="NewSignupCreatepin"
         tools:layout="@layout/newpin_banking" />
     <fragment
         android:id="@+id/fragmentSignUpForEmail"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.FragmentSignUpForEmail"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.FragmentSignUpForEmail"
         android:label="FragmentSignUpForEmail"
         tools:layout="@layout/fragment_sign_up_for_email">
         <action
@@ -125,7 +125,7 @@
     </fragment>
     <fragment
         android:id="@+id/newLoginOption"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.NewLoginOption"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.NewLoginOption"
         android:label="NewLoginOption">
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -151,7 +151,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.LoginWithEmailFragment"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.LoginWithEmailFragment"
         android:label="LoginFragment">
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -163,7 +163,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPinNumberFragment"
-        android:name="totipay.wallet.login_signup_module.forgot_pin.ForgotPinNumberFragment"
+        android:name="tootipay.wallet.login_signup_module.forgot_pin.ForgotPinNumberFragment"
         android:label="ForgotPinNumberFragment"
         tools:layout="@layout/forgot_pin_number_email_layout" >
         <action
@@ -184,7 +184,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPinOTPFragment"
-        android:name="totipay.wallet.login_signup_module.forgot_pin.ForgotPinOTPFragment"
+        android:name="tootipay.wallet.login_signup_module.forgot_pin.ForgotPinOTPFragment"
         android:label="ForgotPinOTPFragment"
         tools:layout="@layout/enter_otp_banking" >
         <action
@@ -198,12 +198,12 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordCreateNewPinFragment"
-        android:name="totipay.wallet.login_signup_module.forgot_pin.ForgotPasswordCreateNewPinFragment"
+        android:name="tootipay.wallet.login_signup_module.forgot_pin.ForgotPasswordCreateNewPinFragment"
         android:label="ForgotPasswordCreateNewPinFragment"
         tools:layout="@layout/activity_change_pin" />
     <fragment
         android:id="@+id/forgotPinUserSecurityDataFragment"
-        android:name="totipay.wallet.login_signup_module.forgot_pin.ForgotPinUserSecurityDataFragment"
+        android:name="tootipay.wallet.login_signup_module.forgot_pin.ForgotPinUserSecurityDataFragment"
         android:label="ForgotPinUserSecurityDataFragment"
         tools:layout="@layout/forgot_pin_user_security_data">
         <action
@@ -217,7 +217,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginWithNumber"
-        android:name="totipay.wallet.login_signup_module.fragments_sign_up.LoginWithNumber"
+        android:name="tootipay.wallet.login_signup_module.fragments_sign_up.LoginWithNumber"
         android:label="LoginWithNumber">
         <action
             app:enterAnim="@anim/slide_in_anim"

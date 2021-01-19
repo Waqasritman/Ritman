@@ -18,7 +18,7 @@
             android:textSize="@dimen/_15sdp" />
 
 
-        <totipay.wallet.utils.SnappyRecyclerView
+        <tootipay.wallet.utils.SnappyRecyclerView
             android:id="@+id/userAccountrecyclerview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/home_account_card_height_157"

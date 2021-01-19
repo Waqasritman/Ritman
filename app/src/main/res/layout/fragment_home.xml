@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <totipay.wallet.utils.OnlyVerticalSwipeRefreshLayout
+    <tootipay.wallet.utils.OnlyVerticalSwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -26,7 +26,7 @@
                 android:layout_marginTop="-150dp"
                 android:clipToPadding="false"
                 android:fillViewport="true"
-                android:paddingBottom="@dimen/height_50dp"
+                android:paddingBottom="@dimen/margin_40dp"
                 android:scrollbars="none">
 
                 <LinearLayout
@@ -75,11 +75,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
                         android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
                         android:weightSum="3">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/create_wallet"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackground"
+                            android:elevation="@dimen/_5sdp"
+                            android:padding="@dimen/_5sdp"
+                            app:cardCornerRadius="@dimen/_5sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5sdp">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="25dp"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_mobile_recharge" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:gravity="center"
+                                    android:text="@string/create_wallet"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/add_money_cardview"
@@ -117,40 +152,7 @@
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/money_transfer"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_5sdp"
-                            android:layout_weight="1"
-                            android:background="?attr/selectableItemBackground"
-                            android:padding="@dimen/_10sdp"
-                            app:cardCornerRadius="@dimen/_10sdp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_5sdp">
-
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="25dp"
-                                    android:layout_margin="@dimen/_10sdp"
-                                    android:adjustViewBounds="true"
-                                    android:src="@drawable/ic_money_transfer_icon" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:gravity="center"
-                                    android:text="@string/money_transfer"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_10sdp" />
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/check_rates_card"
@@ -194,10 +196,45 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
                         android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
                         android:weightSum="3">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/money_transfer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackground"
+                            android:padding="@dimen/_10sdp"
+                            app:cardCornerRadius="@dimen/_10sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5sdp">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="25dp"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_money_transfer_icon" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:gravity="center"
+                                    android:text="@string/money_transfer"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/mobile_top_up_carview"
@@ -270,6 +307,20 @@
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_5sdp"
+                        android:weightSum="3">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/e_gift"
                             android:layout_width="0dp"
@@ -305,9 +356,80 @@
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/transactionHistory_card"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackground"
+                            android:padding="@dimen/_10sdp"
+                            app:cardCornerRadius="@dimen/_10sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5sdp">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="25dp"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_cash_out_payment_icon" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:gravity="center"
+                                    android:text="@string/transaction_history_break"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/wallet_history_card"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackground"
+                            android:padding="@dimen/_10sdp"
+                            app:cardCornerRadius="@dimen/_10sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5sdp">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="25dp"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_bank_card" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:gravity="center"
+                                    android:text="@string/wallet_history_break"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
                     </LinearLayout>
 
                     <TextView
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15dp"
@@ -316,6 +438,7 @@
                         android:textColor="@color/black" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:visibility="gone"
                         android:id="@+id/offer_rcv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -368,7 +491,7 @@
 
                     </RelativeLayout>
 
-                    <totipay.wallet.utils.SnappyRecyclerView
+                    <tootipay.wallet.utils.SnappyRecyclerView
                         android:id="@+id/userAccountrecyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/home_account_card_height_157"
@@ -384,5 +507,5 @@
 
         </RelativeLayout>
 
-    </totipay.wallet.utils.OnlyVerticalSwipeRefreshLayout>
+    </tootipay.wallet.utils.OnlyVerticalSwipeRefreshLayout>
 </layout>

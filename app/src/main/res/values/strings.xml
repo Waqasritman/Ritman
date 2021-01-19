@@ -25,7 +25,7 @@
     <string name="nothing_found_text">Nothing found</string>
     <string name="wrong_qr_code">Wrong barcode/QR format</string>
 
-    <string name="app_name">TotiWallet</string>
+    <string name="app_name">Totipay</string>
     <string name="already_have_an_account">Not an existing customer?</string>
     <string name="sign_in">Sign In</string>
     <string name="skip">Skip</string>
@@ -321,7 +321,7 @@
     <string name="first_name_greate_than_3">First name must have 3 character</string>
     <string name="middle_name_greate_than_3">Middle name must have 2 character</string>
     <string name="last_name_greate_than_3">Last name must have 3 character</string>
-    <string name="must_be_18_year_old">You must be 18+ year old to use Totiwallet</string>
+    <string name="must_be_18_year_old">You must be 18+ year old to use Totipay</string>
     <string name="first_name_special_character_not_allowed">Special character are not allowed in first name.</string>
     <string name="last_name_spe_char">Special Character is not allowed in last name.</string>
     <string name="middle_name_spe_char">Special Character is not allowed in middle name</string>
@@ -350,7 +350,7 @@
     <string name="address_hint">Oxford street</string>
     <string name="city_hint">London</string>
     <string name="pound">£</string>
-    <string name="tooti_wallet_txt">TotiWallet</string>
+    <string name="tooti_wallet_txt">Totipay</string>
     <string name="logout_txt">Logout</string>
     <string name="logout_message">Are you sure you want to logout?</string>
     <string name="wallet_traansaction_success">Successfully transferred to wallet account</string>
@@ -365,7 +365,7 @@
     <string name="did_not_receive_otp">Did not received the OTP?</string>
     <string name="text_empty_string">--</string>
     <string name="msg_share_referral">Share Referral</string>
-    <string name="share_message">Use this code to refer TotiWallet to your friends &amp; family and get rewarded once they Sign-Up</string>
+    <string name="share_message">Use this code to refer Totipay to your friends &amp; family and get rewarded once they Sign-Up</string>
     <string name="text_share_with_friend">Share With Friends</string>
     <string name="share_and_earn">Share and earn</string>
     <string name="remember_me">Remember me</string>
@@ -379,7 +379,7 @@
     <string name="selectid_type">Select ID type</string>
     <string name="thanks_message_for_submitting">Thank you for submitting the documents. Once approved you will be notified.</string>
     <string name="finish_txt">Finish</string>
-    <string name="indi_account">TotiWallet Balance</string>
+    <string name="indi_account">Totipay Balance</string>
     <string name="complete_regi_txt">Complete your registration</string>
     <string name="plz_upload_customer_image">Please upload a Selfie with your ID card </string>
     <string name="commission_amount">Commission</string>
@@ -399,7 +399,7 @@
     <string name="close_text">Close</string>
     <string name="login_text">Login</string>
     <string name="toti_logout_auto_text">The application was inactive. Please re-login .</string>
-    <string name="talfie_locked">TotiWallet is locked</string>
+    <string name="talfie_locked">Totipay is locked</string>
     <string name="hide_break_down">Hide price break down</string>
     <string name="description_txt_optional">Description</string>
     <string name="name_hint">John Smith</string>
@@ -658,7 +658,7 @@
     <string name="select_city_error">Please select city </string>
     <string name="yemini_riyal">Yemini Riyal</string>
     <string name="gold">Gold</string>
-    <string name="iban_number" >IBAN number*</string>
+    <string name="iban_number">IBAN number*</string>
     <string name="enter_iban_number">Enter Iban number</string>
     <string name="plz_generate_your_card">Please generate your card</string>
     <string name="maximum_amount_of_top_is_2000">Amount of top-up between USD 100 to USD 2000 </string>
@@ -844,7 +844,6 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="faq_q13"> What are considered as valid ID documents?</string>
 
 
-
     <string name="faq_ans_1"> "Totipay customers can enjoy worldwide money transfers with a £5 transfer fee. Generally, banks will charge £15 - £30 no matter the amount being sent. Fees aside, our customers will make further savings through the very competitive exchange rates that we use."</string>
 
     <string name="faq_ans_2"> "Totipay has a growing number of countries to which you can transfer money and exchange currencies. Please refer to the drop-down list on the site."</string>
@@ -887,4 +886,14 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="faq_ans_12"> To cancel a money transfer or request a refund, kindly contact us. Please note that we will be unable to carry out a refund if the transaction has been paid.</string>
 
     <string name="faq_ans_13">As proof of identification, you can use a passport or your country of residence\'s official identity document. For the use of other types of documents, please contact us for verification. Documents must be valid within the expiration date"</string>
+    <string name="request_currency">Request currency*</string>
+    <string name="plz_select_requesting_cur">Please select requesting currency</string>
+    <string name="transaction_history_break">Transaction \nHistory</string>
+    <string name="wallet_history_break">Wallet \nHistory</string>
+    <string name="create_wallet">Create \nWallet</string>
+    <string name="wallet_currecny_txt">Select wallet*</string>
+    <string name="create_wallet_txt">Create Wallet</string>
+    <string name="select_new_wallet">Please select new wallet</string>
+    <string name="create_new_wallet">Create new wallet </string>
+    <string name="contact_to_admin">sorry for trouble , please contact to administrator</string>
 </resources>

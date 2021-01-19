@@ -6,7 +6,7 @@
     app:startDestination="@id/selectMoneyTransferTypeActivity">
     <fragment
         android:id="@+id/selectedBeneficiaryForBankTransferFragment"
-        android:name="totipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
+        android:name="tootipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
         android:label="fragment_selected_beneficiary_for_bank_transfer"
         tools:layout="@layout/activity_select_beneficialy" >
         <action
@@ -20,7 +20,7 @@
     <fragment
         tools:layout="@layout/activity_select_type"
         android:id="@+id/selectMoneyTransferTypeActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.SelectMoneyTransferTypeActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.SelectMoneyTransferTypeActivity"
         android:label="SelectMoneyTransferTypeActivity" >
         <action
             android:id="@+id/action_selectMoneyTransferTypeActivity_to_selectedBeneficiaryForBankTransferFragment"
@@ -35,7 +35,7 @@
     <fragment
         tools:layout="@layout/activity_send_money_via_bank_first"
         android:id="@+id/sendMoneyViaBankFirstActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferPersonalDetailFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferPersonalDetailFragment"
         android:label="SendMoneyViaBankFirstActivity" >
         <action
             android:id="@+id/action_sendMoneyViaBankFirstActivity_to_sendMoneyViaBankSecondActivity"
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/sendMoneyViaBankSecondActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferBankDetailFragment"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.AddBeneficiaryBankTransferBankDetailFragment"
         android:label="SendMoneyViaBankSecondActivity" >
         <action
             android:id="@+id/action_sendMoneyViaBankSecondActivity_to_sendMoneyViaBankThirdActivity"
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/sendMoneyViaBankThirdActivity"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankThirdActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankThirdActivity"
         android:label="SendMoneyViaBankThirdActivity" >
         <action
             android:id="@+id/action_sendMoneyViaBankThirdActivity_to_cashPaymentFourthActivity2"
@@ -64,6 +64,6 @@
     <fragment
         tools:layout="@layout/activity_send_money_via_bankfourth"
         android:id="@+id/cashPaymentFourthActivity2"
-        android:name="totipay.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankFourthActivity"
+        android:name="tootipay.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankFourthActivity"
         android:label="CashPaymentFourthActivity" />
 </navigation>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:padding="@dimen/_10sdp"
+            tools:context=".mywalletmoduleV.CreateWalletActivity">
+
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_semibold"
+                android:text="@string/create_new_wallet"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/page_title"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="@string/wallet_currecny_txt" />
+
+            <RelativeLayout
+                android:id="@+id/sending_currency_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_below="@id/title"
+                android:layout_marginTop="@dimen/margin_10dp">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/request_currency_image"
+                    android:layout_width="@dimen/margin_20dp"
+                    android:layout_height="@dimen/margin_20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:src="@drawable/ic_united_kingdom" />
+
+
+                <TextView
+                    android:id="@+id/request_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/request_currency_image"
+                    android:background="@drawable/background_select_mood"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/lato_semibold"
+                    android:gravity="center_vertical"
+                    android:hint="GBP"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:drawableEndCompat="@drawable/dropdown_arrow" />
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/create_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/margin_15dp"
+                android:background="@drawable/background_button"
+                android:text="@string/create_wallet_txt"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</layout>
