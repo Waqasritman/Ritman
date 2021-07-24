@@ -24,10 +24,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-
-                android:backgroundTint="@color/white"
                 android:padding="@dimen/margin_20dp"
-                android:src="@drawable/ic_send" />
+                android:src="@drawable/ic_send"
+                app:tint="@color/colorWhite" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -84,11 +83,11 @@
                     android:textColor="@color/colorPrimary" />
 
                 <TextView
-                    android:gravity="center"
                     android:id="@+id/back_button"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_45dp"
                     android:layout_gravity="center_horizontal"
+                    android:gravity="center"
                     android:text="@string/back"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15sdp" />

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/tool_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:background="@color/colorPrimary">
+
+
+            <ImageView
+                android:id="@+id/close_dialog"
+                android:layout_width="@dimen/height_50dp"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_alignParentStart="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/back_btn"
+                app:tint="@color/white" />
+
+
+            <TextView
+                android:id="@+id/title_of_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_20sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/bank_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tool_bar_layout"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/ifsc_code1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:gravity="center_vertical"
+                    android:hint="@string/ifsc_code"
+                    android:inputType="text"
+                    android:maxLength="25"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/existing_bank1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:gravity="center_vertical"
+                    android:hint="@string/existing_bank"
+                    android:inputType="text"
+                    android:maxLength="6"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/branch_name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:background="@drawable/background_select_mood"
+                    android:gravity="center_vertical"
+                    android:hint="@string/branch_name_txt"
+                    android:inputType="text"
+                    android:maxLength="6"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/gradient_btn"
+                android:padding="@dimen/_3sdp"
+                android:text="@string/search_bank"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

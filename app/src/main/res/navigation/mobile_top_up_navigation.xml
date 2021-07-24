@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mobileTopUpFirstActivity"
-        android:name="tootipay.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
         android:label="MobileTopUpFirstActivity"
         tools:layout="@layout/activity_mobile_top_up_first">
         <action
@@ -17,12 +17,15 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_mobileTopUpFirstActivity_to_planNameFragment"
+            app:destination="@id/planNameFragment" />
     </fragment>
 
 
     <fragment
         android:id="@+id/WRBillerNamesFragment"
-        android:name="tootipay.wallet.Mobile_Top_Up.fragments.WRBillerPlansFragment"
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.WRBillerPlansFragment"
         android:label="WRBillerNamesFragment">
         <action
             android:id="@+id/action_WRBillerNamesFragment_to_WRBillerPaymentFragment"
@@ -38,34 +41,69 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_WRBillerNamesFragment_to_mobileTopupStatusFragment"
+            app:destination="@id/mobileTopupStatusFragment"
+            app:enterAnim="@anim/slide_in_anim"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/WRBillerPaymentFragment"
-        android:name="tootipay.wallet.Mobile_Top_Up.fragments.WRBillerPaymentFragment"
-        android:label="WRBillerPaymentFragment" >
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.WRBillerPaymentFragment"
+        android:label="WRBillerPaymentFragment">
         <action
+            android:id="@+id/action_WRBillerPaymentFragment_to_mobileTopupStatusFragment"
+            app:destination="@id/mobileTopupStatusFragment"
             app:enterAnim="@anim/slide_in_anim"
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_left"
-            android:id="@+id/action_WRBillerPaymentFragment_to_mobileTopupStatusFragment"
-            app:destination="@id/mobileTopupStatusFragment" />
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/MobileTopupBillDetailsFragment"
-        android:name="tootipay.wallet.Mobile_Top_Up.fragments.MobileTopupBillDetailsFragment"
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopupBillDetailsFragment"
         android:label="MobileTopupBillDetailsFragment"
         tools:layout="@layout/fragment_utility_biller_details">
         <action
+            android:id="@+id/action_MobileTopupBillDetailsFragment_to_WRBillerPaymentFragment"
+            app:destination="@id/WRBillerPaymentFragment"
             app:enterAnim="@anim/slide_in_anim"
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_left"
-            android:id="@+id/action_MobileTopupBillDetailsFragment_to_WRBillerPaymentFragment"
-            app:destination="@id/WRBillerPaymentFragment" />
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/mobileTopupStatusFragment"
-        android:name="tootipay.wallet.Mobile_Top_Up.fragments.MobileTopupStatusFragment"
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopupStatusFragment"
         android:label="MobileTopupStatusFragment" />
+    <fragment
+        android:id="@+id/planNameFragment"
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.PlanNameFragment"
+        android:label="PlanNameFragment" >
+        <action
+            android:id="@+id/action_planNameFragment_to_rechargePlansFragment"
+            app:destination="@id/rechargePlansFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rechargePlansFragment"
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.RechargePlansFragment"
+        android:label="RechargePlansFragment" >
+        <action
+            android:id="@+id/action_rechargePlansFragment_to_mobileTopUpPrepaidBillDetailsFragment"
+            app:destination="@id/mobileTopUpPrepaidBillDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mobileTopUpPrepaidBillDetailsFragment"
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopUpPrepaidBillDetailsFragment"
+        android:label="MobileTopUpPrepaidBillDetailsFragment" >
+        <action
+            android:id="@+id/action_mobileTopUpPrepaidBillDetailsFragment_to_mobileTopUpPrepaidBillPaymentFragment"
+            app:destination="@id/mobileTopUpPrepaidBillPaymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mobileTopUpPrepaidBillPaymentFragment"
+        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopUpPrepaidBillPaymentFragment"
+        android:label="MobileTopUpPrepaidBillPaymentFragment" />
 </navigation>

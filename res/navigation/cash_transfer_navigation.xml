@@ -6,7 +6,7 @@
     android:id="@+id/cash_transfer_navigation">
     <fragment
         android:id="@+id/selectedBeneficiaryForBankTransferFragment"
-        android:name="tootipay.wallet.beneficiaryselection.SelectBeneficiaryFragment"
+        android:name="ritman.wallet.beneficiaryselection.SelectBeneficiaryFragment"
         android:label="fragment_selected_beneficiary_for_bank_transfer"
         tools:layout="@layout/activity_select_beneficialy" >
         <action
@@ -19,7 +19,7 @@
     <fragment
         tools:layout="@layout/activity_cash_pickup_first"
         android:id="@+id/cashPickupFirstActivity"
-        android:name="tootipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryPersonalDetailsFragment"
+        android:name="ritman.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryPersonalDetailsFragment"
         android:label="CashPickupFirstActivity" >
         <action
             android:id="@+id/action_cashPickupFirstActivity_to_cashPickupSecondActivity"
@@ -31,7 +31,7 @@
     <fragment
         tools:layout="@layout/activity_cash_pickup_second"
         android:id="@+id/cashPickupSecondActivity"
-        android:name="tootipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryAddressDetailsFragment"
+        android:name="ritman.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPickUpBeneficiaryAddressDetailsFragment"
         android:label="CashPickupSecondActivity" >
         <action
             android:id="@+id/action_cashPickupSecondActivity_to_cashPaymentThirdActivity"
@@ -40,7 +40,7 @@
     <fragment
         tools:layout="@layout/activity_cash_payment_third"
         android:id="@+id/cashPaymentThirdActivity"
-        android:name="tootipay.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPaymentThirdActivity"
+        android:name="ritman.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashPaymentThirdActivity"
         android:label="CashPaymentThirdActivity" >
         <action
             android:id="@+id/action_cashPaymentThirdActivity_to_cashPaymentFourthActivity"
@@ -49,7 +49,7 @@
     <fragment
         tools:layout="@layout/activity_cash_payment_fourth"
         android:id="@+id/cashPaymentFourthActivity"
-        android:name="tootipay.wallet.MoneyTransferModuleV.MoneyTransferPaymentFragment"
+        android:name="ritman.wallet.MoneyTransferModuleV.MoneyTransferPaymentFragment"
         android:label="CashPaymentFourthActivity" />
 
 

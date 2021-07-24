@@ -46,11 +46,12 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/round_bg"
-                android:backgroundTint="@color/grey"
+                android:backgroundTint="@color/colorPrimary"
                 android:gravity="center"
                 android:padding="@dimen/_15sdp"
                 android:text="Remove Card"
-                android:textColor="@color/Remoce_card_color" />
+
+                android:textColor="@color/colorWhite" />
 
 
         </LinearLayout>

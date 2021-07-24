@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent_relativeLayout"
+        android:orientation="vertical"
+        tools:context=".personal_loan.fragment.E_KYC_Two_Fragment">
+
+        <TextView
+            android:id="@+id/txt_KYC_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/KYC_customer"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/txt_KYC_customer"
+            android:layout_marginTop="10dp"
+            android:fillViewport="true"
+            android:paddingBottom="@dimen/width_100dp"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/above_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/margin_10dp"
+                    android:layout_marginRight="@dimen/margin_10dp"
+                    android:orientation="vertical">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                  <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/Dist"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_dist"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="Dist"
+                                android:inputType="text"
+                                android:maxLength="25"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/pincode_text"
+                            android:textSize="@dimen/text_size_14sp" />
+
+
+                        <EditText
+                            android:id="@+id/edt_pc"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/background_beneficiary_registeration"
+                            android:gravity="center_vertical"
+                            android:hint="Pincode No."
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_16sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/State"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_kyc_state"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="State"
+                                android:inputType="text"
+                                android:focusable="false"
+                                android:maxLength="25"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/post"
+                            android:textSize="@dimen/text_size_14sp" />
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_po"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="Post Office"
+                                android:inputType="text"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+
+                       <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/Aadharno"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_adharno"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="Aadhar No."
+                                android:inputType="number"
+                                android:maxLength="12"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/name"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                                android:gravity="center_vertical"
+                                android:hint="Name"
+                                android:inputType="text"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/personal_next"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:layout_marginEnd="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:background="@drawable/background_button"
+
+            android:fontFamily="@font/lato_bold"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18sp" />
+    </RelativeLayout>
+
+</layout>

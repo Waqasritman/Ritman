@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/insurance_navigation"
+    app:startDestination="@+id/selectOptionsFragment">
+
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="ritman.wallet.insurance.RegistrationFragment"
+        android:label="RegistrationFragment" >
+        <action
+            android:id="@+id/action_registrationFragment_to_registrationFragment1"
+            app:destination="@id/registrationFragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment1"
+        android:name="ritman.wallet.insurance.RegistrationFragment1"
+        android:label="RegistrationFragment1" >
+        <action
+            android:id="@+id/action_registrationFragment1_to_registrationFragment2"
+            app:destination="@id/registrationFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment2"
+        android:name="ritman.wallet.insurance.RegistrationFragment2"
+        android:label="RegistrationFragment2" >
+        <action
+            android:id="@+id/action_registrationFragment2_to_verifyOtpFragment"
+            app:destination="@id/verifyOtpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectOptionsFragment"
+        android:name="ritman.wallet.insurance.SelectOptionsFragment"
+        android:label="SelectOptionsFragment" >
+        <action
+            android:id="@+id/action_selectOptionsFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_selectOptionsFragment_to_uploadDocumentsFragment"
+            app:destination="@id/uploadDocumentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadDocumentsFragment"
+        android:name="ritman.wallet.insurance.UploadDocumentsFragment"
+        android:label="UploadDocumentsFragment" />
+    <fragment
+        android:id="@+id/verifyOtpFragment"
+        android:name="ritman.wallet.insurance.VerifyOtpFragment"
+        android:label="VerifyOtpFragment" />
+</navigation>

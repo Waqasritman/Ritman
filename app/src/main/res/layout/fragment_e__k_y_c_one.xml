@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent_relativeLayout"
+        android:orientation="vertical"
+        tools:context=".personal_loan.fragment.E_KYC_One_Fragment">
+
+        <TextView
+            android:id="@+id/txt_KYC_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/KYC_customer"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txt_KYC_customer"
+            android:layout_marginTop="10dp"
+            android:fillViewport="true"
+            android:paddingBottom="@dimen/width_100dp"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/above_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/margin_10dp"
+                    android:layout_marginRight="@dimen/margin_10dp"
+                    android:orientation="vertical">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/co"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_co"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="CO"
+                                android:inputType="text"
+                                android:maxLength="128"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+                         <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/Street"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_street"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="Street"
+                                android:inputType="text"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+                      <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/House"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_house"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="House"
+                                android:inputType="text"
+                                android:maxLength="120"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+
+                          <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/addre_landmark"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_Lm"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="Land Mark"
+                                android:inputType="text"
+                                android:maxLength="128"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/vtc"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_vtc"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="vtc"
+                                android:inputType="text"
+                                android:maxLength="128"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/Subdist"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                            <EditText
+                                android:singleLine="true"
+                                android:id="@+id/edt_subdist"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/height_50dp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:paddingLeft="@dimen/margin_10dp"
+                                android:background="@drawable/background_beneficiary_registeration"
+                                android:gravity="center_vertical"
+                                android:hint="Subdist"
+                                android:inputType="text"
+                                android:maxLength="128"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/text_size_16sp" />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/personal_next"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:layout_marginEnd="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:background="@drawable/background_button"
+
+            android:fontFamily="@font/lato_bold"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18sp" />
+    </RelativeLayout>
+
+</layout>

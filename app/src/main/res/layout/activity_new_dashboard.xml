@@ -138,33 +138,6 @@
                         </LinearLayout>
 
 
-                        <LinearLayout
-                            android:id="@+id/swift_transfer"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/margin_10dp">
-
-                            <ImageView
-
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:scaleType="centerInside"
-                                android:src="@drawable/ic_swift" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_10dp"
-                                android:fontFamily="@font/lato_medium"
-                                android:gravity="center_vertical"
-                                android:text="@string/swift_transfer"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_size_15sp" />
-
-
-                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/change_pin"
@@ -193,31 +166,6 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:id="@+id/my_bene_list"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/margin_10dp">
-
-
-                            <ImageView
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:src="@drawable/my_bene_icon" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_10dp"
-                                android:fontFamily="@font/lato_medium"
-                                android:gravity="center_vertical"
-                                android:text="@string/my_bene_list"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_size_15sp" />
-
-                        </LinearLayout>
 
 
                         <LinearLayout
@@ -301,59 +249,6 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:id="@+id/ic_loyality_point"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/margin_10dp">
-
-
-                            <ImageView
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:scaleType="centerInside"
-                                android:src="@drawable/ic_loyality_point" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_10dp"
-                                android:fontFamily="@font/lato_medium"
-                                android:gravity="center_vertical"
-                                android:text="@string/loyalty_points_txt"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_size_15sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/refertofriends"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/margin_10dp">
-
-
-                            <ImageView
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:scaleType="centerInside"
-                                android:src="@drawable/ic_share" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_10dp"
-                                android:fontFamily="@font/lato_medium"
-                                android:gravity="center_vertical"
-                                android:text="@string/refer_to_friends"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_size_15sp" />
-
-                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/settings"

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent_relativeLayout"
+        android:orientation="vertical"
+        tools:context=".personal_loan.fragment.PLActivity">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tool_bar"
+            android:layout_marginTop="10dp"
+            android:fillViewport="true"
+            android:paddingBottom="@dimen/width_100dp"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/above_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/margin_10dp"
+                    android:layout_marginRight="@dimen/margin_10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Residing With:"/>
+
+                        <EditText
+                            android:singleLine="true"
+                            android:id="@+id/residing"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/background_select_mood"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                            android:gravity="center_vertical"
+                            android:hint="@string/residing"
+                            android:inputType="text"
+                            android:maxLength="25"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Number of years at current address:"/>
+
+                        <EditText
+                            android:singleLine="true"
+                            android:id="@+id/no_yr_current_add"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/background_select_mood"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                            android:gravity="center_vertical"
+                            android:hint="@string/no_of_yr"
+                            android:inputType="text"
+                            android:maxLength="25"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Marital Status:"/>
+
+                        <EditText
+                            android:singleLine="true"
+                            android:id="@+id/marite"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/background_select_mood"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                            android:gravity="center_vertical"
+                            android:hint="@string/marite"
+                            android:inputType="text"
+                            android:maxLength="25"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Spouse Employment Status:"/>
+
+                        <EditText
+                            android:singleLine="true"
+                            android:id="@+id/spouse_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/background_select_mood"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                            android:gravity="center_vertical"
+                            android:hint="@string/spouse_employment_status"
+                            android:inputType="text"
+                            android:maxLength="25"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Number of Kids:"/>
+
+                        <EditText
+                            android:singleLine="true"
+                            android:id="@+id/no_kids"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/background_select_mood"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                            android:gravity="center_vertical"
+                            android:hint="@string/number_of_kids"
+                            android:inputType="text"
+                            android:maxLength="25"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/personal_next"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:layout_marginEnd="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:background="@drawable/background_button"
+            android:fontFamily="@font/lato_bold"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18sp" />
+    </RelativeLayout>
+
+</layout>

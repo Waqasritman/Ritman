@@ -8,8 +8,9 @@
         android:orientation="vertical">
 
 
-        <include layout="@layout/tool_bar"
-            android:id="@+id/inculde_layout"/>
+        <include
+            android:id="@+id/inculde_layout"
+            layout="@layout/tool_bar" />
 
 
         <LinearLayout
@@ -46,7 +47,6 @@
             </RelativeLayout>
 
 
-
             <RelativeLayout
                 android:id="@+id/paid_layout"
                 android:layout_width="match_parent"
@@ -62,12 +62,12 @@
                     android:textColor="@color/white" />
 
                 <View
-                    android:visibility="gone"
                     android:id="@+id/paid_view"
                     android:layout_width="match_parent"
                     android:layout_height="1dip"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/white" />
+                    android:background="@color/white"
+                    android:visibility="gone" />
 
             </RelativeLayout>
 

@@ -1,0 +1,74 @@
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:apps="http://schemas.android.com/tools"
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <!--androidx.appcompat.widget.Toolbar-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar_final"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentTop="true"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:textAlignment="center"
+            app:contentInsetStart="0dp"
+            app:layout_collapseMode="pin">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/back_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/back_white_icon"
+                    app:tint="@color/colorPrimary" />
+
+
+                <TextView
+                    android:id="@+id/title_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_15sdp"
+                    apps:text="@string/app_name" />
+
+                <ImageView
+                    android:id="@+id/cross_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                   android:layout_toStartOf="@+id/bbps_toolbar"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_baseline_close_24"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/bbps_toolbar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerInside"
+                    android:layout_marginEnd="@dimen/margin_10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/margin_20dp"
+                    android:layout_alignParentRight="true"
+                    android:tint="@color/colorWhite"
+                    android:src="@drawable/bbps_new_logo_1" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </RelativeLayout>
+</layout>

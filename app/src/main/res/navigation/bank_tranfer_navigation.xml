@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bank_tranfer_navigation"
+    app:startDestination="@id/sendMoneyViaBankThirdActivity">
+
+    <fragment
+        android:id="@+id/sendMoneyViaBankThirdActivity"
+        android:name="ritman.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankThirdActivity"
+        android:label="SendMoneyViaBankThirdActivity">
+        <action
+            android:id="@+id/action_sendMoneyViaBankThirdActivity_to_cashTransferSummaryFragment2"
+            app:destination="@id/cashTransferSummaryFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/cashTransferSummaryFragment2"
+        android:name="ritman.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashTransferSummaryFragment"
+        android:label="CashTransferSummaryFragment" >
+        <action
+            android:id="@+id/action_cashTransferSummaryFragment2_to_generateOtpFragment"
+            app:destination="@id/generateOtpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/generateOtpFragment"
+        android:name="ritman.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.GenerateOtpFragment"
+        android:label="GenerateOtpFragment" />
+</navigation>

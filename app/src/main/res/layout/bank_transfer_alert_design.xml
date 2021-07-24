@@ -73,22 +73,113 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_14sp" />
 
-                <TextView
+
+
+
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:orientation="vertical"
+                    android:id="@+id/simple_bank_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_medium"
-                    android:text="@string/bank_account_title_txt"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/text_size_12sp" />
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/bank_account_title_txt"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/text_size_12sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/toti_pay_limited_txt"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/sort_code"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/text_size_12sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/sort_code_number"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/account_number"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/text_size_12sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/toti_account_no"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14sp" />
+                </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:id="@+id/yemen_bank_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5dp"
                     android:fontFamily="@font/lato_medium"
-                    android:text="@string/toti_pay_limited_txt"
+                    android:text="عبر شرك الناصر   / ريال  -  دولار"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_14sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:text="اسم الحساب / شركة توتي باي"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_12sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:text="رقم الحساب"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
+
+
+                <TextView
+                    android:gravity="end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:text="1223013"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
+                <View
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@color/colorDarkGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"/>
 
 
                 <TextView
@@ -96,37 +187,36 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:fontFamily="@font/lato_medium"
-                    android:text="@string/sort_code"
+                    android:text="عبر شركة الكريمي  بالريال اليمني فقط"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/text_size_12sp" />
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5dp"
                     android:fontFamily="@font/lato_medium"
-                    android:text="@string/sort_code_number"
+                    android:text="اسم لحساب / فكري"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_14sp" />
-
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:fontFamily="@font/lato_medium"
-                    android:text="@string/account_number"
+                    android:text="رقم الحساب"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/text_size_12sp" />
-
                 <TextView
+                    android:gravity="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5dp"
                     android:fontFamily="@font/lato_medium"
-                    android:text="@string/toti_account_no"
+                    android:text="929116"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
 
 
             </LinearLayout>

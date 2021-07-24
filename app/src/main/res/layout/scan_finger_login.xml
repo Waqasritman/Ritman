@@ -17,7 +17,7 @@ android:weightSum="7"
         <ImageView
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:background="@drawable/image3"
+            android:background="@drawable/ic_logo"
             android:layout_height="match_parent">
 
         </ImageView>

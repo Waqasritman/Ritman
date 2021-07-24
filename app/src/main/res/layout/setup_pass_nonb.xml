@@ -15,9 +15,9 @@
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/image3" />
+                android:layout_width="@dimen/height_150dp"
+                android:background="@drawable/ic_logo"
+                android:layout_height="@dimen/width_100dp"/>
 
 
             <TextView

@@ -46,10 +46,12 @@
 
 
         <ImageView
+            android:id="@+id/img_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:tint="@color/posBlue"
             android:src="@drawable/arrow_menu" />
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout    android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
         android:orientation="vertical">
@@ -13,9 +13,10 @@
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/image3" />
+                android:scaleType="centerInside"
+                android:layout_width="@dimen/height_150dp"
+                android:background="@drawable/home_logo"
+                android:layout_height="75dp"/>
 
 
         </LinearLayout>

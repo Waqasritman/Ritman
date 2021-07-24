@@ -5,7 +5,7 @@
     <color name="pinkblue_light">#9581F0</color>
     <color name="scanner_line">#00ceff</color>
     <color name="colorBlueSkyTwo">#DBE4F2</color>
-    <color name="colorGreen">#931E55</color>
+    <color name="colorGreen">#332D78</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorLightGrey">#F4F4F4</color>
@@ -19,9 +19,16 @@
     <color name="Black">#000000</color>
     <color name="gray_lite">#E2E2E2</color>
     <color name="gray_miner_lite">#F7F7F7</color>
-    <color name="color_app_text">#1a1a19</color>
-    <color name="color_toti">#931D55</color>
-    <color name="colorPrimary">#931E55</color>
+    <color name="posBlue">@color/colorPrimary</color>
+    <color name="posOrange">#FF9500</color>
+    <color name="posRed">@color/colorPrimary</color>
+    <color name="poslightred">@color/colorPrimary</color>
+    <color name="posPurple">@color/colorPrimary</color>
+    <color name="posDarkBlue">@color/colorPrimary</color>
+    <color name="posGreen">@color/colorPrimary</color>
+    <color name="color_app_text">@color/colorPrimary</color>
+    <color name="color_toti">@color/colorPrimary</color>
+    <color name="colorPrimary">#332D78</color>
     <color name="colorPrimaryDark">#3a40de</color>
     <color name="darkgrey">#707070</color>
     <color name="grey">#F6F6F6</color>
@@ -33,5 +40,25 @@
     <color name="white">#ffffff</color>
     <color name="colour_accent">#1889AC</color>
     <color name="shadow_new">#24695C1A</color>
+
     <color name="colorGrayTwo">#77869E</color>
+    <color name="grey_3">#f7f7f7</color>
+    <color name="grey_5">#f2f2f2</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_90">#263238</color>
+    <color name="grey_95">#1a1a1a</color>
+    <color name="grey_100_">#0d0d0d</color>
+
+    <color name="cardview0">#34C5A2</color>
+    <color name="cardview1">#007AFF</color>
+    <color name="cardview2">#FF9500</color>
+    <color name="cardview3">#FF2D55</color>
+    <color name="cardview4">#7FD155</color>
+    <color name="cardview5">#AF52DE</color>
+
+    <color name="overlay_dark_50">#80000000</color>
 </resources>

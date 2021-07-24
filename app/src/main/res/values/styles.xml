@@ -8,6 +8,17 @@
   <item name="colorAccent">@color/colorGreen</item>
 </style>
 
+    <style name="PersonalLoanCalendarTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:colorAccent">@color/posBlue</item>
+        <item name="android:colorControlActivated">@color/posBlue</item>
+
+    </style>
+
+    <style name="InsuranceRegistrationCalendarTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:colorAccent">@color/posGreen</item>
+        <item name="android:colorControlActivated">@color/posGreen</item>
+
+    </style>
 
     <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
         <item name="android:windowNoTitle">true</item>

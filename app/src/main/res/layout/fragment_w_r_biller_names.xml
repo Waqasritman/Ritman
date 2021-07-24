@@ -7,6 +7,87 @@
         android:orientation="vertical">
 
 
+        <LinearLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:id="@+id/topup_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/lato_medium"
+                    android:text="@string/txt_topup"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:id="@+id/view_topup"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/data3g_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/lato_medium"
+                    android:text="@string/txt_data3g"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:id="@+id/view_data3g"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:visibility="invisible" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/special_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/lato_medium"
+                    android:text="@string/txt_special"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:id="@+id/view_special"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:visibility="invisible" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"

@@ -71,6 +71,7 @@
                 android:layout_marginEnd="@dimen/margin_20dp"
                 android:fontFamily="@font/lato_medium"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="@string/textOffer"
                 android:textSize="@dimen/text_18sp" />
 
@@ -100,6 +101,7 @@
                 android:fontFamily="@font/lato_medium"
                 android:text="@string/create"
                 android:textAllCaps="false"
+                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/text_18sp" />
 

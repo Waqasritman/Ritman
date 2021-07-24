@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/parent_relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MerchantLoginActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/backgtound_round_up"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.skydoves.powerspinner.PowerSpinnerView
+                        android:id="@+id/language_spinner"
+                        android:layout_width="@dimen/height_150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/margin_25dp"
+                        android:layout_marginEnd="@dimen/margin_15dp"
+                        android:gravity="center"
+                        android:hint="@string/english_txt"
+                        android:padding="@dimen/margin_10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="14.5sp"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_arrow_tint="@color/black"
+                        app:spinner_divider_color="@color/black"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/languages"
+                        app:spinner_popup_animation="dropdown"
+                        app:spinner_popup_background="@color/white"
+                        app:spinner_popup_elevation="14dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_logo" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/ic_man_user"
+                            android:tint="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorPrimary" />
+
+                        <EditText
+                            android:id="@+id/edt_userName"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_45dp"
+                            android:layout_marginStart="@dimen/margin_15dp"
+                            android:background="@null"
+                            android:fontFamily="@font/lato_medium"
+                            android:hint="Username*"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingStart="10dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textSize="@dimen/_14ssp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/gray_lite"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/ic_key"
+                            android:tint="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorPrimary" />
+                        <EditText
+                            android:id="@+id/edt_Password"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_45dp"
+                            android:layout_marginStart="@dimen/margin_15dp"
+                            android:background="@null"
+                            android:fontFamily="@font/lato_medium"
+                            android:hint="Password*"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:paddingStart="10dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textSize="@dimen/_14ssp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:visibility="gone"
+                        android:background="@color/gray_lite" />
+
+
+                    <Button
+                        android:id="@+id/btn_Submit"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/edt_round_fill"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Sign In"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_18sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_forgotPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Forgot Password?"
+                        android:gravity="center"
+                        android:textColor="@color/color_toti"
+                        android:textSize="@dimen/text_size_15sp">
+
+                    </TextView>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="@string/or"
+                    android:textSize="@dimen/_14ssp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/sent_otp_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/btn_gradient_with_border"
+                    android:text="@string/send_otp_mobile"
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/main_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

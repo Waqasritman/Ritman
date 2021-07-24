@@ -40,7 +40,7 @@
                             android:layout_height="@dimen/margin_20dp"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="@dimen/margin_10dp"
-                            android:src="@drawable/ic_united_kingdom" />
+                            android:src="@drawable/india" />
 
 
                         <TextView
@@ -53,7 +53,7 @@
                             android:fontFamily="@font/lato_semibold"
                             android:gravity="center_vertical"
                             android:padding="@dimen/_10sdp"
-                            android:text="GBP"
+                            android:text="INR"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_16sp"
                             app:drawableEndCompat="@drawable/dropdown_arrow" />
@@ -81,7 +81,7 @@
                             android:layout_height="@dimen/margin_20dp"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="@dimen/margin_10dp"
-                            android:src="@drawable/ic_worldwide" />
+                            android:src="@drawable/india" />
 
 
                         <TextView
@@ -95,7 +95,7 @@
                             android:drawablePadding="@dimen/_5sdp"
                             android:fontFamily="@font/lato_semibold"
                             android:gravity="center_vertical"
-                            android:hint="YER"
+                            android:hint="INR"
                             android:padding="@dimen/_10sdp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_16sp"
@@ -162,12 +162,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/background_colour_border"
+                    android:background="@drawable/background_border_blue"
                     android:fontFamily="@font/lato_semibold"
                     android:gravity="center"
                     android:padding="@dimen/_10sdp"
                     android:text="@string/convert_string"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/black" />
 
                 <LinearLayout
                     android:id="@+id/after_convert_rates_layout"
@@ -322,63 +322,6 @@
 
                     </RelativeLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:padding="@dimen/_5sdp"
-                            android:text="@string/source_income"
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:id="@+id/source_of_income"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:background="@drawable/background_select_mood"
-                            android:drawableRight="@drawable/dropdown_arrow"
-                            android:gravity="center_vertical"
-                            android:hint="@string/select_source_income"
-                            android:padding="@dimen/_8sdp"
-                            android:textColor="@color/black" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_5dp"
-                            android:padding="@dimen/_5sdp"
-                            android:text="@string/purpose_of_transfer"
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:id="@+id/purpose_of_transfer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:background="@drawable/background_select_mood"
-                            android:drawableEnd="@drawable/dropdown_arrow"
-                            android:gravity="center_vertical"
-                            android:hint="@string/select_the_purpose_txt"
-                            android:padding="@dimen/_8sdp"
-                            android:textColor="@color/black" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/send_now_layout"
@@ -386,6 +329,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_20sdp"
                         android:background="@drawable/background_button"
+
                         android:gravity="center">
 
                         <TextView

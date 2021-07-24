@@ -4,6 +4,11 @@
         <item>English</item>
         <item>Urdu</item>
     </array>
+    <string name="error_internet">Internet connection cannot be established. Please ensure your device have internet access and try again.</string>
+    <string name="error_server">Cannot establish connection with the server. Please try again later.</string>
+
+
+    <string name="error_fatal">An error has been encountered while processing your request! Please try again later.</string>
 
 
     <string name="grant_permission">Grant Permission</string>
@@ -24,21 +29,77 @@
     <string name="done">Done</string>
     <string name="nothing_found_text">Nothing found</string>
     <string name="wrong_qr_code">Wrong barcode/QR format</string>
+    <string name="otp_sent">OTP has been sent to your mobile number.\n Please verify</string>
+    <string name="dont_receive_otp">Don\'t receive the OTP or expired?</string>
+    <string name="expired_otp">Resend OTP</string>
 
-    <string name="app_name">Totipay</string>
+    <string name="app_name">Angootha pe</string>
     <string name="already_have_an_account">Not an existing customer?</string>
     <string name="sign_in">Sign In</string>
     <string name="skip">Skip</string>
     <string name="back">Back</string>
+    <string name="verify">Verify &amp; Proceed</string>
     <string name="forgot_pin">Forgot PIN?</string>
     <string name="first_name">First Name*</string>
+    <string name="member_first_name">First Name</string>
+
+    <string name="hint_member_first_name">First Name</string>
+    <string name="hint_sms_rle_branch_code">SMS or RLE Branch Code</string>
+    <string name="hint_sms_or_rle_lg_code">SMS or RLE LG Code</string>
+    <string name="hint_dsa_code">DSA Code</string>
+    <string name="hint_branch_code">Branch Code</string>
+    <string name="hint_branch_lg_code">Branch LG Code</string>
+    <string name="hint_transaction_no">Transaction No</string>
+    <string name="hint_ref_no">Account or Reference or Relationship No</string>
+    <string name="hint_application_no">Application Number</string>
+    <string name="sum_assured">Sum Assured</string>
+    <string name="no_of_hospital_cash_benefit">No of Hospital Cash Benefit during term of the policy</string>
+    <string name="hospital_cash_benefit">Hospital Cash Benefit</string>
+    <string name="Premium_Payment_Frequency">Premium Payment Frequency</string>
+    <string name="Instalment_Premium">Instalment Premium</string>
+    <string name="premium_amount_with_gst">Premium Amount with GST</string>
+    <string name="good_health_declaration">Good Health Declaration</string>
+    <string name="covid_questionnaire">Covid Questionnaire</string>
+    <string name="terms_condition">Terms &amp; Condition</string>
+    <string name="otp_consent">OTP Consent*</string>
+    <string name="title">Title</string>
+    <string name="asterisk">*</string>
+    <string name="nominee_salutation">Salutation (Nominee)</string>
+
+    <string name="office_address_1">Office Address 1* \n(Only Alpha numeric and Comma, Full stop, Space are allowed)</string>
+    <string name="office_address_2">Office Address 2* \n(Only Alpha numeric and Comma, Full stop, Space are allowed)</string>
+    <string name="landmark_office">Office LandMark*</string>
+    <string name="company_name">Company Name*</string>
+    <string name="working_since">Working Since*</string>
+    <string name="co">CO*</string>
     <string name="Please_Enter_email_mobile_number">Please enter E-mail or Mobile number</string>
     <string name="Please_select_agents">Please select available agent</string>
     <string name="address">Address*</string>
     <string name="email">E-mail*</string>
-    <string name="gender">Gender*</string>
+    <string name="emailId">Email Id</string>
+
+    <string name="nominee_name">Nominee Name</string>
+    <string name="Percentage_Share">Percentage Share</string>
+    <string name="Appointee_Name">Appointee Name</string>
+    <string name="Source">Source</string>
+    <string name="mph_name">MPH Name</string>
+    <string name="Product_Type">Product Type</string>
+    <string name="dogh_flag">DOGH Flag</string>
+    <string name="otp_consent_flag">OTP Consent Flag</string>
+    <string name="nominee_middle_name">Nominee Middle Name</string>
+    <string name="nominee_last_name">Nominee Last Name</string>
+    <string name="gender">Gender</string>
+
+    <string name="Relationship_with_Nominee">Relationship with Nominee</string>
+    <string name="Relationship_with_Member">Relationship with Member</string>
     <string name="male">Male</string>
+    <string name="married">Married</string>
+    <string name="unmarried">Single</string>
     <string name="female">Female</string>
+    <string name="customer_registration">Customer Registration</string>
+    <string name="registration">Registration</string>
+    <string name="check_customer_status">Check Customer Status</string>
+    <string name="upload_documents">Upload Documents</string>
 
 
     <string name="kyc">KYC</string>
@@ -50,14 +111,15 @@
     <string name="ifsc_code">IFSC Code/IBAN No*</string>
     <string name="id_issue_date">ID issue date</string>
     <string name="id_expirey_date">ID expiry date*</string>
-    <string name="change_pin">Change PIN</string>
+    <string name="change_pin">Change Password</string>
     <string name="wallet">Wallet</string>
-    <string name="mobile_number">Mobile number*</string>
+    <string name="mobile_number">Mobile Number*</string>
+
     <string name="sign_up">Sign Up</string>
     <string name="payment_done">Payment done</string>
     <string name="loyalty_program">Loyalty Program</string>
     <string name="more">More</string>
-    <string name="proceed_to_pay">Proceed To Pay</string>
+
     <string name="select_country">Select country</string>
     <string name="city">City*</string>
     <string name="pay_qr_code">Pay via QR code</string>
@@ -75,6 +137,8 @@
     <string name="enter_pin">Enter PIN</string>
     <string name="cancel">Cancel</string>
     <string name="next">Next</string>
+    <string name="pay_bill">Pay Bill</string>
+    <string name="proceed_to_pay">Proceed to pay</string>
     <string name="middle_name">Middle name</string>
     <string name="nationality">Nationality</string>
     <string name="purpose_of_transfer">Purpose of transfer</string>
@@ -84,10 +148,11 @@
     <string name="availiable_agents">Available agents</string>
     <string name="country">Country</string>
     <string name="customer_details">Customer details</string>
+    <string name="customer_code_or_crm">Customer <Cod></Cod>e</string>
     <string name="sending_amount">Sending amount</string>
     <string name="exchange_rate">Exchange rate</string>
     <string name="id_number">ID number</string>
-    <string name="_91">+44</string>
+    <string name="_91">+91</string>
     <string name="todo">TODO</string>
     <string name="view_reciept">View receipt</string>
     <string name="total_payable">Total payable</string>
@@ -107,7 +172,7 @@
     <string name="vat_10_00">VAT/TAX</string>
     <string name="bank_details">Bank Details</string>
     <string name="branch">Branch</string>
-    <string name="name">Name</string>
+    <string name="name">Name*</string>
     <string name="id_expiry">ID expiry</string>
     <string name="relation_with_beneficiary">Relation with beneficiary*</string>
     <string name="beneficiary_details">Beneficiary Details</string>
@@ -120,7 +185,7 @@
 
     <string name="textOffer">We offer you the best Foreign Exchange rates</string>
     <string name="create">Create an account</string>
-    <string name="already">Existing customer</string>
+    <string name="already">Existing merchant</string>
     <string name="check_rates">Check rates</string>
     <string name="best_rate">Currency Converter</string>
     <!-- TODO Remove or change this placeholder text -->
@@ -165,12 +230,24 @@
     <string name="please_select_bank_error">Please select bank</string>
     <string name="enter_account_no_error">Please enter account number</string>
     <string name="account_no_same_error">Account number should be same.</string>
+    <string name="same_account_no_error">Account number and Confirm Account Number Must be same.</string>
     <string name="fscs_slect_error">Please select FSCS.</string>
     <string name="convert_string">Convert</string>
     <string name="send_otp_email">Send OTP via E-mail</string>
 
     <string name="send_otp_mobile">Send OTP via Mobile</string>
     <string name="all_text">All</string>
+    <string name="txt_topup">TOPUP</string>
+    <string name="txt_data3g">DATA 3G</string>
+    <string name="txt_special">SPECIAL</string>
+    <string name="addre_landmark">Land Mark*</string>
+    <string name="organization">Organization*</string>
+    <string name="official_email">Official Email*</string>
+    <string name="addre_line_1">Address Line 1*\n(Only Alpha numeric and Comma, Full stop, Space are allowed)</string>
+    <string name="work_sector">Work Sector*</string>
+    <string name="office_pincode">Office Pincode*</string>
+    <string name="office_city">Office City*</string>
+    <string name="office_state">Office State*</string>
     <string name="paid_text">Paid</string>
     <string name="received_text">Received</string>
     <string name="local_payments_txt">Local Payments</string>
@@ -195,20 +272,93 @@
 
     <string name="enter_mobile_no_error">Please enter mobile number</string>
     <string name="first_name_text">First name</string>
-    <string name="last_name_text">Last name</string>
+    <string name="last_name_text">Last Name*</string>
+    <string name="member_middle_name_text">Middle Name</string>
+
+    <string name="hint_member_middle_name">Middle Name</string>
+    <string name="member_last_name_text">Last Name</string>
+    <string name="pdf_password">Pdf Password</string>
+
+    <string name="hint_member_last_name">Last Name</string>
+    <string name="hint_pdf_password">Enter Pdf Password if Protected</string>
+    <string name="employment_type">Employment Type*</string>
+    <string name="salary_received_type_id">Salary Received Type Id*</string>
+    <string name="office_phone_no_text">Office Phone No.*</string>
+
+    <string name="Street">Street*</string>
+    <string name="monthly_income">Monthly Income*</string>
+    <string name="loan_amount">Loan Amount*</string>
+    <string name="Aadharno">Aadhar No.*</string>
+
+    <string name="lm">lm</string>
+    <string name="addre_line_2">Address Line 2* \n(Only Alpha numeric and Comma, Full stop, Space are allowed)</string>
+    <string name="job_function">Job Function*</string>
+    <string name="years_in_current_work">No. of years in Current Work*</string>
+    <string name="vtc">vtc*</string>
+    <string name="dob">DOB</string>
+    <string name="compressedAddress">compressed Address* (Alpha numeric and Comma, Full stop, Space are allowed)</string>
+    <string name="bank_ifsc_code">Enter Bank IFSC Code*</string>
+    <string name="Subdist">Subdist*</string>
+    <string name="Dist">Dist*</string>
+    <string name="State">State*</string>
+    <string name="PC">PC</string>
+    <string name="adhar">Aadhaar*</string>
+    <string name="number_of_kids">Number of Kids*</string>
+    <string name="spouse_employment_status">Spouse Employment Status*</string>
+    <string name="marite">Marital Status*</string>
+    <string name="no_of_yr">Number of Years at Current Address*</string>
+    <string name="residing">Residing with*</string>
+    <string name="qualification">Highest Qualification*</string>
+    <string name="pan">PAN*</string>
+    <string name="addre_city">City</string>
+
+    <string name="addre_state">State</string>
+
+    <string name="accommodation">Accommodation*</string>
+    <string name="existing_bank">Existing Bank*</string>
+
+    <string name="edt_transaction_date" translatable="false">Date of Transaction</string>
+    <string name="edt_dob" translatable="false">Date of Birth</string>
+
+    <string name="enter_account_no_pay_bill" translatable="false">Enter your Bank Account Number*</string>
+    <string name="nominee_dob_text" translatable="false">Nominee DOB</string>
+    <string name="OTP_Consent_Date_Time_Stamp" translatable="false">OTP Consent Date Time Stamp</string>
+    <string name="Appointee_DOB" translatable="false">Appointee DOB</string>
+    <string name="date_time_of_insertion" translatable="false">Date Time Of Insertion</string>
+    <string name="designation_text" translatable="false">Designation*</string>
+    <string name="po" translatable="false">PO*</string>
+    <string name="House" translatable="false">House*</string>
+    <string name="pincode_text" translatable="false">Pincode No.*</string>
+
+    <string name="member_address1">Address_Line_1</string>
+    <string name="asterisk_member_address1">*</string>
+    <string name="hint_member_address1">Address Line1</string>
+    <string name="member_address2">Address_Line_2</string>
+
+    <string name="hint_member_address2">Address Line2</string>
+    <string name="member_address3">Member Address_3</string>
+    <string name="hint_member_address3">Address_3</string>
+    <string name="member_address4">Member Address_4</string>
+    <string name="hint_member_address4">Address_4</string>
+    <string name="txt_note">Note: </string>
+    <string name="txt_instruction">\u0020\Fields marked as (*) are mandatory to fill.</string>
     <string name="enter_middle_name_error">Please enter middle name</string>
     <string name="enter_first_name">Please enter first name</string>
     <string name="enter_last_name">Please enter last name</string>
     <string name="enter_dob_error">Please select date of birth</string>
     <string name="enter_email_error">Please enter E-mail</string>
     <string name="select_gender">Please select gender</string>
+    <string name="register_customer">Register</string>
+    <string name="ok">OK</string>
+    <string name="txt_customerno">Entered Customer No. is not registered!\n Please Register Customer First!</string>
+    <string name="txt_oops">Opps!</string>
     <string name="select_date_txt">Select date</string>
 
     <string name="complete_profile">Complete your profile</string>
     <string name="enter_city_name">Enter City Name</string>
     <string name="address_enter">Enter address</string>
     <string name="select_nationlity">Select nationality</string>
-    <string name="please_complete_kyc_text_dialog">Welcome to Totipay.Please complete your profile to enjoy the services.</string>
+    <string name="please_complete_kyc_text_dialog">Welcome to Angootha pe.Please complete your profile to enjoy the services.</string>
     <string name="proceed_text">Proceed</string>
     <string name="loading_txt">Loading...</string>
     <string name="select_source_income">Select the source </string>
@@ -244,7 +394,7 @@
     <string name="single_amount_hint">X</string>
     <string name="askfordigit">Digit must be of mimimum 4 character</string>
     <string name="attention_txt">Important!</string>
-    <string name="otp_message">Your Totipay Wallet password is </string>
+    <string name="otp_message">Your Angootha pe Wallet password is </string>
     <string name="remember_me_otp">Please Use this OTP as login PIN in future.</string>
     <string name="invalid_number">Invalid mobile number</string>
 
@@ -260,8 +410,9 @@
     <string name="accept_continue">Accept and continue</string>
     <string name="setup_password">Setup a password to make this app more secure</string>
     <string name="create_your_profile">Create your profile</string>
-    <string name="middle_name_txt">Middle name*</string>
-    <string name="last_name_text_m">Last name*</string>
+    <string name="middle_name_txt">Middle Name*</string>
+    <string name="member_name_txt">Member Name</string>
+    <string name="last_name_text_m">Last Name*</string>
     <string name="date_of_birth_txt">Date of birth*</string>
     <string name="address__hint">Oxford street </string>
     <string name="nationality_m">Nationality*</string>
@@ -307,6 +458,11 @@
     <string name="recever_name_error">Please enter receiver name</string>
     <string name="plz_enter_description">Please enter description</string>
     <string name="money_transfer">Money \nTransfer</string>
+    <string name="aeps">AEPS\n</string>
+    <string name="pl">PL\n</string>
+    <string name="eKYC">eKYC\n</string>
+    <string name="insurance">Insurance\n</string>
+    <string name="pancard">Pan Card\n</string>
     <string name="add_moeny_txt">Add \nMoney</string>
     <string name="my_cards_txt">My Cards</string>
     <string name="refer">Refer</string>
@@ -321,7 +477,7 @@
     <string name="first_name_greate_than_3">First name must have 3 character</string>
     <string name="middle_name_greate_than_3">Middle name must have 2 character</string>
     <string name="last_name_greate_than_3">Last name must have 3 character</string>
-    <string name="must_be_18_year_old">You must be 18+ year old to use Totipay</string>
+    <string name="must_be_18_year_old">You must be 18+ year old to use Angootha pe</string>
     <string name="first_name_special_character_not_allowed">Special character are not allowed in first name.</string>
     <string name="last_name_spe_char">Special Character is not allowed in last name.</string>
     <string name="middle_name_spe_char">Special Character is not allowed in middle name</string>
@@ -337,6 +493,7 @@
     <string name="Use_gallery">Use gallery</string>
     <string name="upload">Upload</string>
     <string name="plz_upload_front_image">Please Upload Your ID card (front side).</string>
+    <string name="concat_zero">.00</string>
     <string name="plz_upload_back_image">Please Upload Your ID card (back side)</string>
     <string name="using_email_address">Using E-mail address</string>
     <string name="enter_number_error">Please enter number</string>
@@ -350,7 +507,7 @@
     <string name="address_hint">Oxford street</string>
     <string name="city_hint">London</string>
     <string name="pound">£</string>
-    <string name="tooti_wallet_txt">Totipay</string>
+    <string name="tooti_wallet_txt">Angootha pe</string>
     <string name="logout_txt">Logout</string>
     <string name="logout_message">Are you sure you want to logout?</string>
     <string name="wallet_traansaction_success">Successfully transferred to wallet account</string>
@@ -365,7 +522,7 @@
     <string name="did_not_receive_otp">Did not received the OTP?</string>
     <string name="text_empty_string">--</string>
     <string name="msg_share_referral">Share Referral</string>
-    <string name="share_message">Use this code to refer Totipay to your friends &amp; family and get rewarded once they Sign-Up</string>
+    <string name="share_message">Use this code to refer Angootha pe to your friends &amp; family and get rewarded once they Sign-Up</string>
     <string name="text_share_with_friend">Share With Friends</string>
     <string name="share_and_earn">Share and earn</string>
     <string name="remember_me">Remember me</string>
@@ -379,7 +536,7 @@
     <string name="selectid_type">Select ID type</string>
     <string name="thanks_message_for_submitting">Thank you for submitting the documents. Once approved you will be notified.</string>
     <string name="finish_txt">Finish</string>
-    <string name="indi_account">Totipay Balance</string>
+    <string name="indi_account">Angootha pe Balance</string>
     <string name="complete_regi_txt">Complete your registration</string>
     <string name="plz_upload_customer_image">Please upload a Selfie with your ID card </string>
     <string name="commission_amount">Commission</string>
@@ -399,7 +556,7 @@
     <string name="close_text">Close</string>
     <string name="login_text">Login</string>
     <string name="toti_logout_auto_text">The application was inactive. Please re-login .</string>
-    <string name="talfie_locked">Totipay is locked</string>
+    <string name="talfie_locked">Angootha pe is locked</string>
     <string name="hide_break_down">Hide price break down</string>
     <string name="description_txt_optional">Description</string>
     <string name="name_hint">John Smith</string>
@@ -410,8 +567,9 @@
     <string name="update_profile">Update profile</string>
     <string name="privacy">Privacy Policy</string>
     <string name="terms"><![CDATA[Terms & Conditions]]></string>
-    <string name="enter_ifsc_code">Enter IFSC code</string>
-    <string name="location_txt">Location</string>
+    <string name="enter_ifsc_code">Enter IFSC code*</string>
+    <string name="payment_remark">Enter Payment Remark</string>
+    <string name="location_txt">Location*</string>
     <string name="branch_name">Branch name*</string>
     <string name="enter_bank_details">Enter bank details</string>
     <string name="select_branch">Select branch</string>
@@ -434,6 +592,11 @@
     <string name="swift_transfer">Business Transaction</string>
     <string name="enter_bene_personal_details">Enter beneficiary personal details</string>
     <string name="beneficiary_name_account_title">Beneficiary name/account title*</string>
+
+    <string name="label_name_one">Labale Name One</string>
+    <string name="label_name_two">Labale Name Two</string>
+    <string name="label_name_three">Labale Name Three</string>
+
     <string name="jhon_smith">John Smith</string>
     <string name="address_txt">Address</string>
     <string name="contact_no">Contact number</string>
@@ -455,8 +618,8 @@
     <string name="my_bene_list">My Beneficiary List</string>
     <string name="beneficiary_details_txt">Beneficiary details</string>
     <string name="bene_name">Beneficiary name*</string>
-    <string name="branch_name_txt">Branch name</string>
-    <string name="acount_number">Account number</string>
+    <string name="branch_name_txt">Branch Name*</string>
+    <string name="acount_number">Account number*</string>
     <string name="update_beneficary">Update beneficiary</string>
     <string name="delete_beneficary">Delete beneficiary</string>
     <string name="mobile_number_txt">Mobile number</string>
@@ -502,10 +665,15 @@
     <string name="e_gft_sent">E-Gift Sent</string>
     <string name="receiver_name_m">Receiver name</string>
     <string name="customer_name">Customer name</string>
+
+    <string name="billerid">Biller Id</string>
+    <string name="payment_amount">Payment Amount</string>
+    <string name="NA">NA</string>
     <string name="service_provider">Service provider</string>
     <string name="add_account">Add Account</string>
     <string name="mobile_top_up">Mobile top-up</string>
     <string name="select_operator">Select operator</string>
+    <string name="billdue_date">Your Bill Due Date has been expired\nYou cannot make the payment</string>
     <string name="browse_plans">Browse plans</string>
     <string name="amount_text">Amount*</string>
     <string name="receiving_txt">Receiving</string>
@@ -528,10 +696,12 @@
     <string name="select_the_relation_txt">Select the relation</string>
     <string name="city_name_m">City name*</string>
     <string name="location_txt_m">Location*</string>
-    <string name="re_enter_account_no_m">Re Enter Account Number*</string>
+    <string name="re_enter_account_no_m">Re-enter account number*</string>
+    <string name="enter_account_no">Enter account number*</string>
+    <string name="confirm_account_no">Confirm account number*</string>
     <string name="local_transfer">To other wallet</string>
     <string name="inter_transfer">International Transfer</string>
-    <string name="toti_pay_limited_txt">TotiPay Limited</string>
+    <string name="toti_pay_limited_txt">Angootha pe Limited</string>
     <string name="sort_code_number">60-83-71</string>
     <string name="toti_account_no">70767547</string>
     <string name="no_bene_found">No beneficiary found</string>
@@ -567,18 +737,31 @@
     <string name="euro">Euro</string>
     <string name="un_dollar">United states dollar</string>
     <string name="balance_text">Balance</string>
+    <string name="billamount_text">Bill amount</string>
     <string name="please_select_wallet_account">Select the wallet you wish to load</string>
     <string name="no_history_found">No history found</string>
     <string name="select_type">Select type</string>
     <string name="select_category">Select category</string>
     <string name="plz_select_top_up_type">Please select top up type</string>
     <string name="select_plan">Select mobile top up plan</string>
+    <string name="select_option">Select your option</string>
     <string name="select_pack">Select pack</string>
     <string name="choose_plan">Choose Plan</string>
+    <string name="get_biller_details">Get Biller Details</string>
+
     <string name="select_plan_txt">Select plan</string>
     <string name="plz_select_category">Please select category</string>
     <string name="plz_select_operator">Please select operator</string>
-    <string name="biller_name">Biller name</string>
+    <string name="biller_name">Biller Name</string>
+
+    <string name="txt_mrp">MRP</string>
+    <string name="txt_rechargeamount">Recharge Amount</string>
+    <string name="txt_benefits">Benefits</string>
+    <string name="txt_validity">Validity</string>
+    <string name="txt_talktime">Talktime</string>
+    <string name="txt_dataMB">DataMB</string>
+    <string name="transaction_failed">Transaction Failed</string>
+
     <string name="amount_payable">Payable amount</string>
     <string name="available_wallets">Available wallets</string>
     <string name="choose_wallet">Choose wallet</string>
@@ -597,6 +780,17 @@
     <string name="plz_enter_uitlitu_payment_account">Please enter account no of utility </string>
     <string name="select_receiverwallet">Select receiver wallet</string>
     <string name="send_money_via_bank">Send money via bank</string>
+    <string name="personal_info">Personal Information</string>
+    <string name="available_plan_name">List of available plan categories</string>
+    <string name="available_recharge_plan_name">List of available Recharge Plans</string>
+    <string name="applicant_info">Applicant Information</string>
+    <string name="financial_info">Financial Information</string>
+    <string name="partner_bank_details">Partner Bank Details</string>
+    <string name="txt_search_bank_detail">Search bank details either by entering bank name or IFSC Code</string>
+    <string name="contact_info">Contact Information</string>
+    <string name="KYC_customer">e-KYC Customer</string>
+    <string name="details">Please enter the below details to complete the payment</string>
+
     <string name="mobile_top_up_home">Mobile \nTop up</string>
     <string name="biller_name_home">Bill \nPayments</string>
     <string name="prepaid_card_home">Prepaid \nCards</string>
@@ -612,15 +806,22 @@
     <string name="pay_thorough_card">Pay through card</string>
     <string name="bill_details">Bill details to pay</string>
     <string name="due_date">Due date</string>
+    <string name="net_bill_amount">Net bill amount</string>
+    <string name="bill_date">Bill Date</string>
+    <string name="bill_due_date">Bill Due Date</string>
+    <string name="bill_status">Bill Status</string>
+    <string name="bill_number">Bill Number</string>
+    <string name="bill_period">Bill Period</string>
     <string name="save_transaction_receipt">Saved Transaction Receipt</string>
     <string name="some_thing_wrong">Something wrong</string>
     <string name="relation_with_beneficiary_txt">Relation with beneficiary</string>
     <string name="john_txt">John</string>
     <string name="smith">Smith</string>
     <string name="in_process">In process</string>
-    <string name="in_process_msg_card">Thanks for using Totipay Service. We will notify once payment is processed</string>
+    <string name="in_process_msg_card">Thanks for using Angootha pe Service. We will notify once payment is processed</string>
     <string name="refer_no">Reference no</string>
     <string name="bill_payment_tool_title">Bill Payment</string>
+    <string name="create_customer_tool_title">Create Customer</string>
     <string name="prepaid_card_title">Prepaid Cards</string>
     <string name="prepaid_card_number">Prepaid card number</string>
     <string name="generate_prepaid_card">Generate prepaid card</string>
@@ -633,7 +834,7 @@
     <string name="cancel_tran">Return to home</string>
     <string name="cancel_transaction_text">Are you sure you want to go to home?</string>
     <string name="to_own_account">To own wallet</string>
-    <string name="convert_currency_home">Own Wallet \nTransfer</string>
+    <string name="convert_currency_home">Beneficiary \nRegistration</string>
     <string name="send_moeny_to_wallet_your_own">Send money to your own wallet</string>
     <string name="our_rates">Our Rates</string>
     <string name="server_error">Server error try again later.</string>
@@ -648,6 +849,7 @@
     <string name="five_hundred">500</string>
     <string name="enter_txt">Enter</string>
     <string name="correct">Correct</string>
+    <string name="comma">,</string>
     <string name="select_utility_bill_type">Select utility bill type</string>
     <string name="payment">Payment</string>
     <string name="select_city">Select city*</string>
@@ -664,96 +866,96 @@
     <string name="maximum_amount_of_top_is_2000">Amount of top-up between USD 100 to USD 2000 </string>
     <string name="note">Note:</string>
 
-    <string name="terms_txt">You can contact us at info@totipay.com or by
-Our registered office address is 14 Charles Walk, Rowley Regis, England, B65 9ED and head office is at TotiPay Ltd, Office 513, 5th Floor, Quayside Tower, Broad Street, Birmingham B1 2HF
-You means the user of the website operated by Totipay.
-This website (www.totipay.com) is operated and owned by Totipay with company registration number is; 10338529 (hereafter referred to as Totipay).mailing us by post.
-The use and access to the Totipay Websiteis provided on the basis of the following terms and conditions:
+    <string name="terms_txt">You can contact us at info@Angootha pe.com or by
+Our registered office address is 14 Charles Walk, Rowley Regis, England, B65 9ED and head office is at Angootha pe Ltd, Office 513, 5th Floor, Quayside Tower, Broad Street, Birmingham B1 2HF
+You means the user of the website operated by Angootha pe.
+This website (www.Angootha pe.com) is operated and owned by Angootha pe with company registration number is; 10338529 (hereafter referred to as Angootha pe).mailing us by post.
+The use and access to the Angootha pe Websiteis provided on the basis of the following terms and conditions:
 
 1. Changes to the Website
-1.1 Totipay may from time to time make such changes to the content of the Website or the products and services it offers.
-1.2 Totipay may withdraw such services and products as considered appropriate.
-1.3 Totipay may terminate your access or use of the Website if there is any breach of our terms or conditions or in the case of breach of law orregulation . Totipay reserves the right to use various procedures to authenticate each transaction including identity checks. Totipay reserves the right to decline or to discontinue processing any part of your order at any time.
-1.4 Totipay may discontinue the operation of the Website.
+1.1 Angootha pe may from time to time make such changes to the content of the Website or the products and services it offers.
+1.2 Angootha pe may withdraw such services and products as considered appropriate.
+1.3 Angootha pe may terminate your access or use of the Website if there is any breach of our terms or conditions or in the case of breach of law orregulation . Angootha pe reserves the right to use various procedures to authenticate each transaction including identity checks. Angootha pe reserves the right to decline or to discontinue processing any part of your order at any time.
+1.4 Angootha pe may discontinue the operation of the Website.
 
 2. Permitted access to the Website
-2.1 You should not use the Website from any country where accessing or using the Website or any of the information, products or services on it is prohibited by law. This Website does not constituteany invitation or solicitation by Totipay to any person to use any such information, products or services in countries where to do so is prohibited by law.
+2.1 You should not use the Website from any country where accessing or using the Website or any of the information, products or services on it is prohibited by law. This Website does not constituteany invitation or solicitation by Angootha pe to any person to use any such information, products or services in countries where to do so is prohibited by law.
 
 3. Reliance on Information posted
-3.1 Totipay shall use its reasonableendeavours to ensure that any dated information contained or reproduced on the Website is up to date at the stated date of its publication. Totipay does not accept any responsibility to update or amend any information. The information or content provided by the Website may be out of date at any given time.
+3.1 Angootha pe shall use its reasonableendeavours to ensure that any dated information contained or reproduced on the Website is up to date at the stated date of its publication. Angootha pe does not accept any responsibility to update or amend any information. The information or content provided by the Website may be out of date at any given time.
 
 4. Restrictions on the use of the Website
-4.1 The content of the Website and the products and services made available by Totipay on the Website are intended for use by holiday or businesstravellers or by individuals or corporations seeking to purchase currencies for the purpose of business or travel, and should not be used for speculation or investment.
+4.1 The content of the Website and the products and services made available by Angootha pe on the Website are intended for use by holiday or businesstravellers or by individuals or corporations seeking to purchase currencies for the purpose of business or travel, and should not be used for speculation or investment.
 
 5. Intellectual Property
-5.1 All intellectual property and all materials comprising or contained in the Website but not limited to all text/articles, logos, softwareand images, are owned, or licensed, except as otherwise expressly stated, by Totipay. 5.2 You are entitled to access the Website for the purposes of accessing the facilities offered by Totipay. However you may not use the Website or its contents in any way, directly or indirectly, for any other purpose. The materials on the Website may not be copied or redistributed for commercial purpose or for compensation of any kind without written permission from Totipay.
+5.1 All intellectual property and all materials comprising or contained in the Website but not limited to all text/articles, logos, softwareand images, are owned, or licensed, except as otherwise expressly stated, by Angootha pe. 5.2 You are entitled to access the Website for the purposes of accessing the facilities offered by Angootha pe. However you may not use the Website or its contents in any way, directly or indirectly, for any other purpose. The materials on the Website may not be copied or redistributed for commercial purpose or for compensation of any kind without written permission from Angootha pe.
 
 6. Links to other websites
-6.1 This Website contains links to third party websites. Such links are provided for your convenience. 6.2 Totipay has no control over publications by third party websites. Totipay does not warrant the content or accuracy of such third party websites nor does Totipay accept responsibility or liability in relation to the content or products offered by thesites .
+6.1 This Website contains links to third party websites. Such links are provided for your convenience. 6.2 Angootha pe has no control over publications by third party websites. Angootha pe does not warrant the content or accuracy of such third party websites nor does Angootha pe accept responsibility or liability in relation to the content or products offered by thesites .
 
 7. Limitations On Liability
-7.1 All content shown on the Website including the services and products we provide are made available without any warranties, conditions or guarantees given by Totipay. All such warranties, conditions or guarantees which would otherwise be implied by law are excluded to the fullest extent permitted by law. In particular, Totipay does not warrant the accuracy, suitability, reliability, completeness, performance and/or fitness for purpose of the content of any services or products available on this Website.
-7.2 Totipay uses reasonable skill and care in providing its products and services to you. However (to the maximum extent permitted by law) Totipay is not liable to you for any loss, damage, claim or compensation (including loss of profit or loss of use) arising out of:
+7.1 All content shown on the Website including the services and products we provide are made available without any warranties, conditions or guarantees given by Angootha pe. All such warranties, conditions or guarantees which would otherwise be implied by law are excluded to the fullest extent permitted by law. In particular, Angootha pe does not warrant the accuracy, suitability, reliability, completeness, performance and/or fitness for purpose of the content of any services or products available on this Website.
+7.2 Angootha pe uses reasonable skill and care in providing its products and services to you. However (to the maximum extent permitted by law) Angootha pe is not liable to you for any loss, damage, claim or compensation (including loss of profit or loss of use) arising out of:
 7.2.1 your use, delay or inability to use this Website;
-7.2.2 any inability to perform any of Totipay\'s obligations due tofailure of any technical or computer systems;
-7.2.3 any reasons beyond Totipay\'s reasonable control. This will include (amongst other things) war, terrorism, government action, natural disaster, and industrial disputes;
+7.2.2 any inability to perform any of Angootha pe\'s obligations due tofailure of any technical or computer systems;
+7.2.3 any reasons beyond Angootha pe\'s reasonable control. This will include (amongst other things) war, terrorism, government action, natural disaster, and industrial disputes;
 7.2.4 any damage to your computer equipment as a result of using this Website or any products or services provided from it;
 7.2.5 any change in foreign currency rates which may occur from time to time.
-7.3 Without limiting the more general exclusions of liability as set out in sections 7.1 and 7.2, (to the maximum extent permitted by law) Totipay is not liable to you for any loss of profit, loss of use, indirect, or consequential losses, claims or other damages suffered or incurred by you from the use of the Website or products or services itofferes.
-7.4 Totipay\'s maximum aggregate liability to you in respect of all foreign currency transactions undertaken by you shall be limited to a refund equivalent to anymoneys you have paid to Totipay to acquire foreign currency.
-7.5 Totipay does not warrant that the Website is free of viruses or of other material which is malicious or technologically harmful. Totipay is not liable for any viruses for other technologically harmful material that may affect your computer equipment, computer programs or other material resulting from your use of the Website.
-7.6 The disclaimers and limitations of liability in these terms and conditions shall not apply to any damages arising from death or personal injury caused by the negligence of Totipay or any of its employees or agents or for fraud.
-7.7 Totipay does not accept any liability for loss occasioned by fraudulent spending or any other unauthorized use of the service but will assist its customers in preparing a claim for submission to the appropriate third partieswhere requested to do so.
+7.3 Without limiting the more general exclusions of liability as set out in sections 7.1 and 7.2, (to the maximum extent permitted by law) Angootha pe is not liable to you for any loss of profit, loss of use, indirect, or consequential losses, claims or other damages suffered or incurred by you from the use of the Website or products or services itofferes.
+7.4 Angootha pe\'s maximum aggregate liability to you in respect of all foreign currency transactions undertaken by you shall be limited to a refund equivalent to anymoneys you have paid to Angootha pe to acquire foreign currency.
+7.5 Angootha pe does not warrant that the Website is free of viruses or of other material which is malicious or technologically harmful. Angootha pe is not liable for any viruses for other technologically harmful material that may affect your computer equipment, computer programs or other material resulting from your use of the Website.
+7.6 The disclaimers and limitations of liability in these terms and conditions shall not apply to any damages arising from death or personal injury caused by the negligence of Angootha pe or any of its employees or agents or for fraud.
+7.7 Angootha pe does not accept any liability for loss occasioned by fraudulent spending or any other unauthorized use of the service but will assist its customers in preparing a claim for submission to the appropriate third partieswhere requested to do so.
 7.8 If any provisions of these terms and conditions including these disclaimers and limitations shall be unlawful or unenforceable then such provisions shall fall away and shall not affect the validity and enforceability of the remaining terms. Your statutory rights remain unaffected.
 
 8. Privacy And Data Protection
-Totipay processes information about you in accordance with its privacy policy. By using the website you consent to such processes and confirm that all data you provide is accurate.
+Angootha pe processes information about you in accordance with its privacy policy. By using the website you consent to such processes and confirm that all data you provide is accurate.
 Governing Laws and Changes to These Terms and Conditions
 
 9. Use of Website
 The use of the Website and these terms and conditionsis governed by the Laws of England and Wales.
 
 10. Disputes
-All Disputes arising out of the use of the Website and/or any services or products provided by Totipay or any dispute relating to these terms and conditions shall be resolved by the courts Of England And Wales.
+All Disputes arising out of the use of the Website and/or any services or products provided by Angootha pe or any dispute relating to these terms and conditions shall be resolved by the courts Of England And Wales.
 
 11. Right to change
-Totipay reserves the right to change these terms and conditions from time to time. You should check these terms and conditions every time you use the Website. By using the Website you will be treated as having consented to these terms and conditions and/or any revised terms and conditions which may appear from time to time.
+Angootha pe reserves the right to change these terms and conditions from time to time. You should check these terms and conditions every time you use the Website. By using the Website you will be treated as having consented to these terms and conditions and/or any revised terms and conditions which may appear from time to time.
 
 Provisions Relating To Placing Of The Order And When The Contract Between You And Top Connect Is Formed.
 1. Orders through the Website must only be placed by individuals over the age of 18.
-2. On the Website Totipay makes available currency for purchase in respect of holiday and business travel etc., (but not for investment or speculation).
-3. Please follow the steps on the screen in order to place an order. Totipay reserves the right to request further information in order to process your order.
-4. Totipay will use various procedures to authenticate each transaction for the purposes of law and regulations including anti-money laundering regulations. Totipay reserves the right to decline or process any part of your order at any time.
+2. On the Website Angootha pe makes available currency for purchase in respect of holiday and business travel etc., (but not for investment or speculation).
+3. Please follow the steps on the screen in order to place an order. Angootha pe reserves the right to request further information in order to process your order.
+4. Angootha pe will use various procedures to authenticate each transaction for the purposes of law and regulations including anti-money laundering regulations. Angootha pe reserves the right to decline or process any part of your order at any time.
 5. You will be able to edit the details of your order any time up until you press the Book Now button.
-6. Totipay will send you an email acknowledgement of your order once it has received it but please note that this is an acknowledgement only and does not mean acceptance of your order by Totipay.
-7. Once you have placed your order for money transfer on our Website or via phone or via visiting our office or branch, you authorise Top Connect tOnce you have placed your order for money transfer on our Website or via phone or via visiting our office or branch, you authorise Totipay to action your order and hence you will not be allowed to cancel the orderit subject to the cancellation policy set out in paragraph 8 below. Should you wish to make any amendments to your order, Totipay will use its reasonable endeavors to accommodate your needs but the final decision is down to our sole discretion. If you wish to amend your order please send an e-mail to our manager at info@totipay.com. Any such amendments will be subject to the applicable foreign exchange rates as published on the Website by Totipay from time to time. If Totipay agrees to amend you order you will receive an e-mail to confirm this. However Totipay is under no obligation to accept any such amendments to your order and Totipay accepts no liability or responsibility in the event that it decides not to do so.
-8. You may cancel your order by providing Totipay with written notice of cancellation, by email to info@totipay.com at the earliest opportunity. Please note that by this time, Totipay may have purchased your Cedi order at the foreign exchange rate of that day. In the case of cancellation you will receive a refund at the foreign exchange rate prevailing at the time of cancellation of the order which may be different to the foreign exchange rate at the time of your order as the Cedi, GBP and US dollar exchange rates fluctuate.
-9. All orders are subject to acceptance by Totipay and Totipay will confirm such acceptance by email indicating that your order has been accepted. The contract between Totipay and you will only be formed once Totipay sends you the confirmation email that your order has been accepted. Until that time there will be no binding arrangement for Totipay to supply you with any money transfer service, foreign exchange or other services. You should print and retain a copy of the confirmation email for your records or the receipt slip that will be provided to you by Totipay.
-10. Totipay is not obliged to accept any order and may decline to do so for any reason Price, Availability And Delivery
+6. Angootha pe will send you an email acknowledgement of your order once it has received it but please note that this is an acknowledgement only and does not mean acceptance of your order by Angootha pe.
+7. Once you have placed your order for money transfer on our Website or via phone or via visiting our office or branch, you authorise Top Connect tOnce you have placed your order for money transfer on our Website or via phone or via visiting our office or branch, you authorise Angootha pe to action your order and hence you will not be allowed to cancel the orderit subject to the cancellation policy set out in paragraph 8 below. Should you wish to make any amendments to your order, Angootha pe will use its reasonable endeavors to accommodate your needs but the final decision is down to our sole discretion. If you wish to amend your order please send an e-mail to our manager at info@Angootha pe.com. Any such amendments will be subject to the applicable foreign exchange rates as published on the Website by Angootha pe from time to time. If Angootha pe agrees to amend you order you will receive an e-mail to confirm this. However Angootha pe is under no obligation to accept any such amendments to your order and Angootha pe accepts no liability or responsibility in the event that it decides not to do so.
+8. You may cancel your order by providing Angootha pe with written notice of cancellation, by email to info@Angootha pe.com at the earliest opportunity. Please note that by this time, Angootha pe may have purchased your Cedi order at the foreign exchange rate of that day. In the case of cancellation you will receive a refund at the foreign exchange rate prevailing at the time of cancellation of the order which may be different to the foreign exchange rate at the time of your order as the Cedi, GBP and US dollar exchange rates fluctuate.
+9. All orders are subject to acceptance by Angootha pe and Angootha pe will confirm such acceptance by email indicating that your order has been accepted. The contract between Angootha pe and you will only be formed once Angootha pe sends you the confirmation email that your order has been accepted. Until that time there will be no binding arrangement for Angootha pe to supply you with any money transfer service, foreign exchange or other services. You should print and retain a copy of the confirmation email for your records or the receipt slip that will be provided to you by Angootha pe.
+10. Angootha pe is not obliged to accept any order and may decline to do so for any reason Price, Availability And Delivery
 11. Your money transfer request will be delivered at the time of your instruction.
 12. The GBP price payable for Cedi that you wish to send will be as shown on the confirmation screen and will be only valid for a short period of time as Foreign exchange rates fluctuates regularly . If you do not submit your order immediately you enter the confirmation screen the price many change and you will need to enter the screen again to see the updated price.
-13. Totipay have the right to revise and amend these terms and conditions from time to time. You will be subject to the terms and conditions in force at the time you place your order with Totipay. By placing an order you agree to the terms and conditions in force at the time the order is made.
-14. Totipay is entitled to refuse, withdraw or cancel your money transfer order at anytime, for any reason. Totipay may terminate any money transfer order at any time.
-15. Please be advised that certain requests may be beyond Totipay\'s control. As such, Totipay accepts no liability for such actions. If you pay by card, please note that Totipay does not refund charges made by your card issuer and that the late cancellation fee may also be subject to a cash advance fee from your card issuer.
+13. Angootha pe have the right to revise and amend these terms and conditions from time to time. You will be subject to the terms and conditions in force at the time you place your order with Angootha pe. By placing an order you agree to the terms and conditions in force at the time the order is made.
+14. Angootha pe is entitled to refuse, withdraw or cancel your money transfer order at anytime, for any reason. Angootha pe may terminate any money transfer order at any time.
+15. Please be advised that certain requests may be beyond Angootha pe\'s control. As such, Angootha pe accepts no liability for such actions. If you pay by card, please note that Angootha pe does not refund charges made by your card issuer and that the late cancellation fee may also be subject to a cash advance fee from your card issuer.
 
-Totipay May Also Terminate Any Contract It Has With You If It Is Required To Do So On Instructions Of Any Law Enforcement Agency Or Regulatory Body. In This Case Totipay May Retain All Or Any Of Your Money If It Is Required To Do So By Law And Then Deal With It As Ordered By A Court Or Other Body Of Competent Jurisdiction.
+Angootha pe May Also Terminate Any Contract It Has With You If It Is Required To Do So On Instructions Of Any Law Enforcement Agency Or Regulatory Body. In This Case Angootha pe May Retain All Or Any Of Your Money If It Is Required To Do So By Law And Then Deal With It As Ordered By A Court Or Other Body Of Competent Jurisdiction.
 
-As a Money Services Business (MSB), Totipay is registered and regulated by HM Customs  Excise under Money Laundering Regulations and licensed by the FCA as a PaymentInstitution..
+As a Money Services Business (MSB), Angootha pe is registered and regulated by HM Customs  Excise under Money Laundering Regulations and licensed by the FCA as a PaymentInstitution..
 
 Our staff are fully conversant with Anti-Money Laundering guidelines and are aware of their responsibilities in the monitoring and reporting of any actions that raise suspicion or give cause for concern.
 
-Totipay reserves the right to perform identity checks in accordance with the terms and conditions on all individuals who place an order on the website. For further information on these identity checks please contact info@totipay.com.
+Angootha pe reserves the right to perform identity checks in accordance with the terms and conditions on all individuals who place an order on the website. For further information on these identity checks please contact info@Angootha pe.com.
 
-Totipay reserves the right at all times to refuse to process any foreign currency order which it believes in its sole discretion, is connected in any manner of unlawful or illegal purpose. We have a legal obligation to report to Customs and Excise or NCIS any such suspicious transactions.
-Totipay is obliged by law to monitor any unusual or suspicious transactions of any size taking place when we have reasons to believe the money is being derived from unlawful or illegal activity.
+Angootha pe reserves the right at all times to refuse to process any foreign currency order which it believes in its sole discretion, is connected in any manner of unlawful or illegal purpose. We have a legal obligation to report to Customs and Excise or NCIS any such suspicious transactions.
+Angootha pe is obliged by law to monitor any unusual or suspicious transactions of any size taking place when we have reasons to believe the money is being derived from unlawful or illegal activity.
 
 
-There is a statutory obligation on all Totipay employees and their agents to report suspicious transactions to the UK authorities. Where any such report is made, Totipay accepts no liability for any delay in transmission of or confiscation of the funds. The Rates are subject to change in accordance with current national rates. Please enquire to get more details</string>
-    <string name="privacy_txt">Welcome to the Totipay Ltd website (hereinafter referred to as TOTIPAY) www.totipay.com.
+There is a statutory obligation on all Angootha pe employees and their agents to report suspicious transactions to the UK authorities. Where any such report is made, Angootha pe accepts no liability for any delay in transmission of or confiscation of the funds. The Rates are subject to change in accordance with current national rates. Please enquire to get more details</string>
+    <string name="privacy_txt">Welcome to the Angootha pe Ltd website (hereinafter referred to as Angootha pe) www.Angootha pe.com.
 Protecting your privacy is very important to us. Therefore the purpose of this Policy is to inform our customers and other individuals (you or your) how we deal with, collect, use, disclose and protect your personal information. This Policy applies to our collection of, use of and disclosure of, personal information in the United Kingdom.
-This Policy does not apply to information about our employees or to information that is not personal information. You can be assured that TOTIPAYalwaystake steps to comply with the privacy principles and requirements under applicable UK privacy legislation. This policy is applicable to all TOTIPAY consumers and visitors who visit our website. www.totipay.com
+This Policy does not apply to information about our employees or to information that is not personal information. You can be assured that Angootha pealwaystake steps to comply with the privacy principles and requirements under applicable UK privacy legislation. This policy is applicable to all Angootha pe consumers and visitors who visit our website. www.Angootha pe.com
 Personal Information The personal information that we collect is information about an identifiable individual, as described under applicable privacy legislation.
-TOTIPAY collects personal information about you from a variety of sources in the course of providing you with money transfer service and other related products and services, which include the following:
+Angootha pe collects personal information about you from a variety of sources in the course of providing you with money transfer service and other related products and services, which include the following:
 We collect personal information when you ask us to send money or to provide other any other Service to you. This personal information may include identities and contact information of senders and recipients of money transfers or payments, credit card, banking or other billing information, birth dates and other personal identifiers such as Passport details, Driving License or other such governmental identification.
 Information is used to verify your identity for security and fraud prevention purposes, identification numbers and amounts paid, transferred, exchanged or otherwise processed. We collect information about your transactions with us, including transaction history, such as frequency of use and amounts paid, transferred, exchanged or otherwise processed and any rewards program account information, if any.
 verification, fraud prevention In and similar security purposes, we collect and/or confirm certain identity-related information, financial background and similar information through third parties sources such as government agencies and consumer reporting agencies.
@@ -765,17 +967,17 @@ This may include the following purposes:
 Authorising and processing your transactions, including effecting and administering money transfers, and ensuring proper payment to the designated recipient of funds. Collecting amounts owing to us, and otherwise enforcing and collecting on your accounts or agreements with us. Meeting legal, regulatory, self-regulatory, risk management, fraud prevention and security requirements, which may include (among other measures) verifying the identity of the customer and receiver of funds and checking identities against money laundering, terrorist financing or similar watch lists established by regulatory agencies or similar bodies in the UK or in other countries. For identity verification purposes, customers and receiver of money transfers may be required to produce valid identification or consent to verification by other means. Maintaining business and transaction records for reasonable periods, and generally managing and administering our business.
 Meeting insurance, audit and processing requirements.
 Otherwise, as permitted or required by law.
-There may be circumstances in which TOTIPAY is obliged to collect, use, or disclose certain personal information without your consent. Such circumstances include:
+There may be circumstances in which Angootha pe is obliged to collect, use, or disclose certain personal information without your consent. Such circumstances include:
 A serious and imminent threat to someone’s life, health or safety.
 A serious threat to public health or public safety.
 Unlawful activity has been, is being or may be engaged in.
-If TOTIPAY reasonably believes that the use or disclosure is necessary for the prevention, detection , investigation, prosecution or punishment of:
+If Angootha pe reasonably believes that the use or disclosure is necessary for the prevention, detection , investigation, prosecution or punishment of:
 Criminal offences, breach of law, imposing of penalty or sanction or breach of a prescribed law.
 the enforcement of laws relating to the confiscation of the proceeds of crime.
 the protection of the public revenue;
 the prevention, detection, investigation or remedying of seriously improper conduct or prescribed conduct; or
 the preparation for, or conduct of, proceedings before any Court or Tribunal, or implementation of the orders of a Court or Tribunal.
-If TOTIPAY is obliged to use or disclose your personal information as herein mentioned, it will create a written report of the use or disclosure.
+If Angootha pe is obliged to use or disclose your personal information as herein mentioned, it will create a written report of the use or disclosure.
 We store information that we collect through cookies, log files, and/or third parties to create a profile of our users. Consequently, collected information is used to improve the content of the site for the user.
 If we make changes to any of our Privacy Policies or practices with respect to how we use personally identifiable information, we will post those changes with or without notice to this Privacy Policy as and when they come into effect.
 In some cases we may be required to disclose certain information to comply with a legal process, such as a court order, subpoena or search warrant.
@@ -788,9 +990,9 @@ We take reasonable measures to ensure that personal information that may be proc
 Business Transactions: Your personal information may be used by us and disclosed to parties connected with the contemplated or actual financing, securitisation, insuring, sale, assignment or other disposal of all or part of our business or assets (including, for example, your account with us), for purposes related to the evaluation and performance of these transactions, including:
 permitting such parties to evaluate and determine whether to proceed or continue with the transaction, and
 fulfilling reporting, inspection or audit requirements or obligations to such parties. Our successors and assignees and/or its business or assets may use and disclose your personal information for similar purposes as described in this Privacy Policy.
-Legal, Regulatory, etc: TOTIPAY may disclose your personal information as necessary to meet legal, regulatory, self-regulatory, insurance, audit, and security requirements, and as otherwise with your consent or as permitted or required by law (including as required by applicable UK and foreign laws).
+Legal, Regulatory, etc: Angootha pe may disclose your personal information as necessary to meet legal, regulatory, self-regulatory, insurance, audit, and security requirements, and as otherwise with your consent or as permitted or required by law (including as required by applicable UK and foreign laws).
 
-UK Financial Conduct Authority (FCA) require all financial institutions including TOTIPAY to verify but not limited to the identity of the customer, purpose of transaction and source of funds. To comply with these regulatory requirements, we will be comparing, which also include sharing the information that you have provided such as but not limited to Name, Address, Driver\'s license number and any other information contained in your consumer report, with available and reputable ID verification service provider. Such agency will only use the information in your consumer report for the purpose of validating your identity and no other.
+UK Financial Conduct Authority (FCA) require all financial institutions including Angootha pe to verify but not limited to the identity of the customer, purpose of transaction and source of funds. To comply with these regulatory requirements, we will be comparing, which also include sharing the information that you have provided such as but not limited to Name, Address, Driver\'s license number and any other information contained in your consumer report, with available and reputable ID verification service provider. Such agency will only use the information in your consumer report for the purpose of validating your identity and no other.
 
 If we are unable to validate your identity through the on-line process, you will be directed to an alternative, off-line process. Additional documentary proof might be required for establishing the source of funds.
 Our services have also been regulated by the HMRC and comply with money laundering regulations.
@@ -801,20 +1003,20 @@ Consent to the collection,useand disclosure of personal information may be given
 You may provide your consent in some circumstances where notice has been provided to you about our intentions with respect to your personal information and you have not withdrawn your consent for an identified purpose, such as by using an opt out option provided, if any. Consent may be given by your authorized representative (such as a legal guardian or a person having a power of attorney). Generally, by providing us with personal information, we will assume that you consent to our collection, use and disclosure of such information for the purposes identified or described in this Privacy Policy, if applicable, or otherwise at the time of collection.
 
 You may withdraw your consent to our collection, use and disclosure of personal information at any time, subject to contractual and legal restrictions and reasonable notice. Note that if you withdraw your consent to uses of your personal information, we may no longer be able to provide certain Services. Note also that where we have provided or are providing services to you, your consent will be valid for so long as necessary to fulfill the purposes described in this Privacy Policy or otherwise at the time of collection, and you may not be permitted to withdraw consent to certain necessary uses and disclosures (for example, but not limited to, maintaining reasonable business and transaction records and disclosures to UK and foreign government entities as required to comply with laws).
-TOTIPAY collects, uses and discloses your personal information with your consent, except as permitted or required by law. We may be required or permitted under state laws, federal laws, or foreign statute or regulation to collect, use or disclose personal information without your consent, for example to comply with a court order, to comply with local or federal regulations or a legally permitted inquiry by a government agency, or to collect a debt owed to us.
+Angootha pe collects, uses and discloses your personal information with your consent, except as permitted or required by law. We may be required or permitted under state laws, federal laws, or foreign statute or regulation to collect, use or disclose personal information without your consent, for example to comply with a court order, to comply with local or federal regulations or a legally permitted inquiry by a government agency, or to collect a debt owed to us.
 
 Security
-TOTIPAY takes all reasonable steps to protect your personal information using physical, electronic or procedural security measures appropriate to the sensitivity of the information in our custody or control, which may include safeguards to protect against loss or theft, as well as unauthorised access, disclosure, copying, use or modification. Our authorised employees, agents and subsidiaries who require access to your personal information in order to fulfill their job requirements will have access to your personal information.
+Angootha pe takes all reasonable steps to protect your personal information using physical, electronic or procedural security measures appropriate to the sensitivity of the information in our custody or control, which may include safeguards to protect against loss or theft, as well as unauthorised access, disclosure, copying, use or modification. Our authorised employees, agents and subsidiaries who require access to your personal information in order to fulfill their job requirements will have access to your personal information.
 
 We have in place a range of security safeguards to protect your personal information against loss or theft, as well as unauthorized access, disclosure, copying, use, or modification, regardless of the format in which it is held.
 
-TOTIPAY work to protect personally identifiable information stored on their site’s server from unauthorised access using commercially available and industrially acceptable standards of computer security products, such as firewalls, as well as carefully developed security procedures and practices. In addition, a username and password are generally required for you to use, view or change application or interview information. We use both internal and external resources to review the adequacy of security measures on a regular basis.
+Angootha pe work to protect personally identifiable information stored on their site’s server from unauthorised access using commercially available and industrially acceptable standards of computer security products, such as firewalls, as well as carefully developed security procedures and practices. In addition, a username and password are generally required for you to use, view or change application or interview information. We use both internal and external resources to review the adequacy of security measures on a regular basis.
 
-TOTIPAY ensures that all staff are aware of the importance of maintaining the confidentiality of personal information.
+Angootha pe ensures that all staff are aware of the importance of maintaining the confidentiality of personal information.
 
 Access, Correction and Contacting Us
-TOTIPAY will upon request allow you to access to your personal information. The requested information shall be provided or made available in a form that is generally understandable. In circumstances where you point out to us that any information held by us is inaccurate or incomplete, we will take appropriate action to amend the information as required and, if necessary, notify any third party of the correction.
-There may be circumstances which preclude TOTIPAY from providing access to some or all of your personal information. Those circumstances could be:
+Angootha pe will upon request allow you to access to your personal information. The requested information shall be provided or made available in a form that is generally understandable. In circumstances where you point out to us that any information held by us is inaccurate or incomplete, we will take appropriate action to amend the information as required and, if necessary, notify any third party of the correction.
+There may be circumstances which preclude Angootha pe from providing access to some or all of your personal information. Those circumstances could be:
 The information may contain references to other individuals;
 Legal, investigative, security, or commercial proprietary reasons; or
 The information is subject to solicitor/client or litigation privilege.
@@ -826,37 +1028,37 @@ Legal Disclaimer
 This Privacy Policy may be revised from time to time. If we intend to use or disclose Personal Information for purposes materially different than those described in this Policy, we will make reasonable efforts to notify affected individuals, if necessary, including by revising this Privacy Policy. If you are concerned about how your personal information is used, you should contact us as described above to obtain a current copy of this Privacy Policy. We urge you to request and review this Privacy Policy frequently to obtain the current version. Your continued provision of personal information or use of our services following any changes to this Privacy Policy constitutes your acceptance of any such changes.
 Privacy Policy Changes
 
-or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints or have other concerns about our personal information practices, you may write to us as described above, e-mail us at lastmodified April 25, 2018.info@totipay.com</string>
+or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints or have other concerns about our personal information practices, you may write to us as described above, e-mail us at lastmodified April 25, 2018.info@Angootha pe.com</string>
     <string name="faq">FAQ</string>
 
     <string name="faq_q1"> How much does it cost to make a personal money transfer abroad?</string>
     <string name="faq_q2"> Where can I transfer money to?</string>
     <string name="faq_q3"> How long does an international currency transfer take?</string>
     <string name="faq_q4"> How do I make a personal international money transfer?</string>
-    <string name="faq_q5"> Why use Totipay over my bank?</string>
+    <string name="faq_q5"> Why use Angootha pe over my bank?</string>
     <string name="faq_q6"> How long will it take before the funds are available for the beneficiary?</string>
-    <string name="faq_q7"> Where can I find Totipay money transfer locations?</string>
-    <string name="faq_q8"> How can I contact a Totipay money transfer agent?</string>
+    <string name="faq_q7"> Where can I find Angootha pe money transfer locations?</string>
+    <string name="faq_q8"> How can I contact a Angootha pe money transfer agent?</string>
     <string name="faq_q9"> Is there a cash limit for money transfer?</string>
     <string name="faq_q10"> What if I provide a wrong account number on my transfer?</string>
-    <string name="faq_q11"> Can I transfer money in the same country with Totipay money transfer?</string>
+    <string name="faq_q11"> Can I transfer money in the same country with Angootha pe money transfer?</string>
     <string name="faq_q12"> Can I cancel a transfer and get a refund?</string>
     <string name="faq_q13"> What are considered as valid ID documents?</string>
 
 
-    <string name="faq_ans_1"> "Totipay customers can enjoy worldwide money transfers with a £5 transfer fee. Generally, banks will charge £15 - £30 no matter the amount being sent. Fees aside, our customers will make further savings through the very competitive exchange rates that we use."</string>
+    <string name="faq_ans_1"> "Angootha pe customers can enjoy worldwide money transfers with a £5 transfer fee. Generally, banks will charge £15 - £30 no matter the amount being sent. Fees aside, our customers will make further savings through the very competitive exchange rates that we use."</string>
 
-    <string name="faq_ans_2"> "Totipay has a growing number of countries to which you can transfer money and exchange currencies. Please refer to the drop-down list on the site."</string>
+    <string name="faq_ans_2"> "Angootha pe has a growing number of countries to which you can transfer money and exchange currencies. Please refer to the drop-down list on the site."</string>
 
     <string name="faq_ans_3"> "This depends on a number of factors, like, where the funds are sent from, where the funds are going, and in which currency you are sending them etc. However, generally, this process is very fast."</string>
 
     <string name="faq_ans_4"> It\'s really simple:
-    Register with Totipay
+    Register with Angootha pe
     Login to your account and get a live exchange rate quote
     Enter the recipient bank account details to book your money transfer
     Send us the funds, relax and we\'ll deliver the funds to your nominated bank account as quickly as possible.</string>
 
-    <string name="faq_ans_5"> High street banks may have been around a lot longer than specialist currency brokers like Totipay, but they remain uncompetitive when it comes to helping people transfer money internationally. Not just uncompetitive with their exchange rates and high fees, but also with their levels of customer service and specialist foreign exchange knowledge.
+    <string name="faq_ans_5"> High street banks may have been around a lot longer than specialist currency brokers like Angootha pe, but they remain uncompetitive when it comes to helping people transfer money internationally. Not just uncompetitive with their exchange rates and high fees, but also with their levels of customer service and specialist foreign exchange knowledge.
     Better exchange rates than any bank
     £5 transfer fee (Max)
     24/7 access to our experts
@@ -864,7 +1066,7 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     Regulated by the Financial Conduct Authority
     Different types of transfers available
 
-    Use Totipay when:
+    Use Angootha pe when:
     Emigrating or moving overseas.
     Buying or selling property abroad
     Making overseas purchase
@@ -874,7 +1076,7 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
 
     <string name="faq_ans_6"> This is normally a maximum of 24 hours, however, this does depend on the country and mode of payment. You can contact us for advice regarding your sending options and destinations.</string>
 
-    <string name="faq_ans_7"> Totipay money transfer has its own branches as well as a wide network of agents all over the UK. If you wish to find an agent or are interested in becoming an agent, we would be happy to hear from you. Please contact us.</string>
+    <string name="faq_ans_7"> Angootha pe money transfer has its own branches as well as a wide network of agents all over the UK. If you wish to find an agent or are interested in becoming an agent, we would be happy to hear from you. Please contact us.</string>
     <string name="faq_ans_8"> You can contact us via phone, fax or email and we will find the closest agent to you.</string>
 
     <string name="faq_ans_9"> Unfortunately, there is. The cash limit for money transfer in a day is £5000. An ID will be required when £3000 and above is being transferred.</string>
@@ -890,10 +1092,72 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="plz_select_requesting_cur">Please select requesting currency</string>
     <string name="transaction_history_break">Transaction \nHistory</string>
     <string name="wallet_history_break">Wallet \nHistory</string>
-    <string name="create_wallet">Create \nWallet</string>
+    <string name="create_wallet">Register \nCustomer</string>
     <string name="wallet_currecny_txt">Select wallet*</string>
     <string name="create_wallet_txt">Create Wallet</string>
     <string name="select_new_wallet">Please select new wallet</string>
     <string name="create_new_wallet">Create new wallet </string>
-    <string name="contact_to_admin">sorry for trouble , please contact to administrator</string>
+    <string name="contact_to_admin">sorry for the trouble, please contact to administrator</string>
+    <string name="enter_name_user_error">Enter user name</string>
+    <string name="merchant_number">Customer number*</string>
+    <string name="enter_merchant_number">Enter merchant number</string>
+    <string name="enter_adress">Enter address</string>
+    <string name="enter_beneficairy_number">Enter beneficairy number</string>
+    <string name="verify_bene_txt">Verify Beneficiary</string>
+    <string name="successfully_txt">Successful!</string>
+    <string name="customer_register_">Customer Registered Successfully\n Your Customer Id is: </string>
+    <string name="your_transaction_was_successful"> Transaction successful</string>
+    <string name="your_transaction_number">Your transaction Number</string>
+    <string name="biller_details">Biller Details not available</string>
+    <string name="get_plans_txt">Get plans Name</string>
+    <string name="select_plan_3g">Select mobile 3G plan</string>
+    <string name="select_plan_special">Select mobile Special plan</string>
+    <string name="remark">Remark*</string>
+
+
+    <string name="firstname_personal">First Name should not be null/empty</string>
+    <string name="lastname_personal">Last Name should not be null/empty</string>
+    <string name="good_health_declaration_insurance">Good Health Declaration should not be null/empty</string>
+    <string name="covid_questionnaire_insurance">Covid Questionnaire should not be null/empty</string>
+    <string name="terms_condition_insurance">Terms Condition should not be null/empty</string>
+    <string name="otp_consent_insurance">OTP Consent should not be null/empty</string>
+    <string name="middlename_personal">Middle Name should not be null/empty</string>
+    <string name="sum_assured_insurance">Sum Assured cannot be null/empty</string>
+    <string name="premium_amount_with_gst_insurance">Premium Amount With Gst cannot be null/empty</string>
+    <string name="err_birth">Age Cannot be less than 18-years or greater than 55-years</string>
+    <string name="addre_line_one">Address Line1, Invalid not as per standard specified.</string>
+    <string name="addre_line_two">Address Line2, Invalid not as per standard specified.</string>
+    <string name="workingsince">Please select your working date.</string>
+    <string name="landmark">Landmark, Invalid not as per standard specified.</string>
+    <string name="invalide_pine_code">Pin code, Invalid not as per standard specified</string>
+    <string name="invalid_city">City name, Invalid not as per standard specified.</string>
+    <string name="invalid_state">State name, Invalid not as per standard specified.</string>
+    <string name="invalid_accommondation">Accommodation type, Invalid not as per standard specified.</string>
+    <string name="invalid_pan">PAN, Invalid not as per the standard specified.</string>
+    <string name="invalid_adhaar">Aadhaar, Invalid not as per the standard specified.</string>
+    <string name="company_name_null">CompanyName, should contain minimum 3 letters</string>
+    <string name="invalid_phone_no">Invalid office phone no.It should start with 0.</string>
+    <string name="invalid_amount">Monthly Income, Invalid not as per standard specified.</string>
+    <string name="enter_loan_amount">Please Enter Your Loan Amount.</string>
+    <string name="no_of_work_year">Total Number of Years in Work, should contain maximum 2 digits</string>
+    <string name="invalid_mob_no">Mobile, Invalid not as per standard specified.</string>
+    <string name="invalid_email">Email Id, Invalid not as per standard specified.</string>
+    <string name="care_of">Please Enter Care Of</string>
+    <string name="enter_street">"Please enter Street "</string>
+    <string name="enter_house">Please Enter House No.</string>
+    <string name="enter_vill_cit_to">Please Enter Village  or Town or City.</string>
+    <string name="enter_subdisc">"Please Enter Sub District "</string>
+    <string name="enter_distic">Please enter District</string>
+    <string name="enter_post">Please enter Post Office</string>
+    <string name="post">Post Office*</string>
+    <string name="name_personal">First Name, Should not be null/empty</string>
+    <string name="dob_text">Date of Birth*</string>
+    <string name="verify_documentation1">Please verify your documents</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="otp_verification_text">"Please enter your One Time Password (OTP)\n sent on your Mobile Number "</string>
+    <string name="enter_otp">Enter your OTP</string>
+    <string name="update_available">Update Available</string>
+    <string name="update">update</string>
+    <string name="update_available_msg">Check out the latest version available of Angootha pe application!</string>
+
 </resources>

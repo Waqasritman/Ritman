@@ -24,7 +24,6 @@
                     android:text="@string/mobile_top_up"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_20sp" />
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -41,6 +40,7 @@
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
@@ -48,6 +48,7 @@
                     android:textSize="@dimen/_12ssp" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
@@ -67,7 +68,6 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/darkgrey" />
                 </LinearLayout>
-
 
 
                 <LinearLayout
@@ -180,6 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/background_button"
+
                     android:gravity="center">
 
                     <TextView
@@ -189,7 +190,7 @@
                         android:drawableLeft="@drawable/ic_white_send"
                         android:drawablePadding="@dimen/_5sdp"
                         android:padding="@dimen/_3sdp"
-                        android:text="@string/next"
+                        android:text="@string/get_plans_txt"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>

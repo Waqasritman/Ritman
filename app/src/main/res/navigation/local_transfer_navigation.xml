@@ -8,7 +8,7 @@
     <fragment
         tools:layout="@layout/activity_send_money_type"
         android:id="@+id/sendMoneyTypeActivity"
-        android:name="tootipay.wallet.MoneyTransferModuleV.wallettransfer.SendMoneyTypeActivity"
+        android:name="ritman.wallet.MoneyTransferModuleV.wallettransfer.SendMoneyTypeActivity"
         android:label="SendMoneyTypeActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/walletTransferActivity"
-        android:name="tootipay.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferActivity"
+        android:name="ritman.wallet.MoneyTransferModuleV.wallettransfer.local.WalletTransferActivity"
         android:label="WalletTransferActivity" >
         <action
             app:enterAnim="@anim/slide_in_anim"
@@ -39,10 +39,10 @@
     </fragment>
     <fragment
         android:id="@+id/selectCardActivity_walletTransfer"
-        android:name="tootipay.wallet.SendMoney.SelectCardActivity_walletTransfer"
+        android:name="ritman.wallet.SendMoney.SelectCardActivity_walletTransfer"
         android:label="SelectCardActivity_walletTransfer" />
     <fragment
         android:id="@+id/requestMoneyActivity"
-        android:name="tootipay.wallet.SendMoney.RequestMoneyActivity"
+        android:name="ritman.wallet.SendMoney.RequestMoneyActivity"
         android:label="RequestMoneyActivity" />
 </navigation>

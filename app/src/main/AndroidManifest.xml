@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="tootipay.wallet">
+    package="ritman.wallet">
 
     <permission
         android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
         android:protectionLevel="signature" />
     <permission android:name="android.permission.INTERACT_ACROSS_USERS" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -15,12 +18,13 @@
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="a/ndroid.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".TotiWallet"
@@ -35,7 +39,23 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".mywalletmoduleV.CreateWalletActivity"></activity>
+        <activity android:name=".insurance.InsuranceActivity" />
+        <activity android:name=".BankDetailsActivity" />
+        <activity android:name=".personal_loan.fragment.PLActivity" />
+        <activity android:name=".AEPSActivity" />
+        <activity android:name=".beneficairyRegistration.BeneficiaryRegistrationActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".VerifyOtpActivity" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".MerchantLoginActivity" />
+        <activity android:name=".pancard.PanCardActivity" />
+        <activity android:name=".ekyc.eKYCActivity" />
+        <activity
+            android:name=".mywalletmoduleV.CreateWalletActivity"
+            android:configChanges="locale"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
 
         <service
             android:name=".OnClearFromRecentService"
@@ -136,7 +156,7 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".TransactionHistoryActivity"
+            android:name=".TransactionHistory.TransactionHistoryActivity"
             android:configChanges="locale"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
