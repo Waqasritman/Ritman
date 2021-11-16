@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/personal_ZeroFragment"
-        android:name="ritman.wallet.personal_loan.fragment.Personal_ZeroFragment"
+        android:name="angoothape.wallet.personal_loan.fragment.Personal_ZeroFragment"
         android:label="Personal_ZeroFragment">
         <action
             android:id="@+id/action_personal_ZeroFragment_to_personal_One_Fragment2"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/personal_One_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.Personal_One_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.Personal_One_Fragment"
         android:label="Personal_One_Fragment">
         <action
             android:id="@+id/action_personal_One_Fragment_to_personal_Two_Fragment"
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/personal_Two_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.Personal_Two_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.Personal_Two_Fragment"
         android:label="Personal_Two_Fragment" >
         <action
             android:id="@+id/action_personal_Two_Fragment_to_applicantInfoOneFragment"
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/applicantInfoOneFragment"
-        android:name="ritman.wallet.personal_loan.fragment.ApplicantInfoOneFragment"
+        android:name="angoothape.wallet.personal_loan.fragment.ApplicantInfoOneFragment"
         android:label="ApplicantInfoOneFragment" >
         <action
             android:id="@+id/action_applicantInfoOneFragment_to_applicantInfo_Two_Fragment"
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/applicantInfo_Two_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.ApplicantInfo_Two_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.ApplicantInfo_Two_Fragment"
         android:label="ApplicantInfo_Two_Fragment" >
         <action
             android:id="@+id/action_applicantInfo_Two_Fragment_to_applicantInfo_Three_Fragment"
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/applicantInfo_Three_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.ApplicantInfo_Three_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.ApplicantInfo_Three_Fragment"
         android:label="ApplicantInfo_Three_Fragment" >
 
         <action
@@ -58,7 +58,7 @@
 
     <fragment
         android:id="@+id/partner_Bank_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.Partner_Bank_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.Partner_Bank_Fragment"
         android:label="Partner_Bank_Fragment" >
         <action
             android:id="@+id/action_partner_Bank_Fragment_to_contact_Info_Fragment"
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/contact_Info_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.Contact_Info_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.Contact_Info_Fragment"
         android:label="Contact_Info_Fragment" >
         <action
             android:id="@+id/action_contact_Info_Fragment_to_e_KYC_One_Fragment"
@@ -77,7 +77,7 @@
     </fragment>
     <fragment
         android:id="@+id/e_KYC_One_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.E_KYC_One_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.E_KYC_One_Fragment"
         android:label="E_KYC_One_Fragment" >
         <action
             android:id="@+id/action_e_KYC_One_Fragment_to_e_KYC_Two_Fragment"
@@ -85,7 +85,7 @@
     </fragment>
     <fragment
         android:id="@+id/e_KYC_Two_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.E_KYC_Two_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.E_KYC_Two_Fragment"
         android:label="E_KYC_Two_Fragment" >
         <action
             android:id="@+id/action_e_KYC_Two_Fragment_to_e_KYC_Three_Fragment"
@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/e_KYC_Three_Fragment"
-        android:name="ritman.wallet.personal_loan.fragment.E_KYC_Three_Fragment"
+        android:name="angoothape.wallet.personal_loan.fragment.E_KYC_Three_Fragment"
         android:label="E_KYC_Three_Fragment" >
         <action
             android:id="@+id/action_e_KYC_Three_Fragment_to_createCustomerFragment"
@@ -101,7 +101,7 @@
     </fragment>
     <fragment
         android:id="@+id/dataFragment2"
-        android:name="ritman.wallet.personal_loan.fragment.DataFragment"
+        android:name="angoothape.wallet.personal_loan.fragment.DataFragment"
         android:label="DataFragment" >
         <action
             android:id="@+id/action_dataFragment2_to_partner_Bank_Fragment"
@@ -109,7 +109,7 @@
     </fragment>
     <fragment
         android:id="@+id/createCustomerFragment"
-        android:name="ritman.wallet.personal_loan.fragment.CreateCustomerFragment"
+        android:name="angoothape.wallet.personal_loan.fragment.CreateCustomerFragment"
         android:label="CreateCustomerFragment" >
         <action
             android:id="@+id/action_createCustomerFragment_to_personal_ZeroFragment"
@@ -123,7 +123,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkCustomerStatusFragment"
-        android:name="ritman.wallet.personal_loan.fragment.CheckCustomerStatusFragment"
+        android:name="angoothape.wallet.personal_loan.fragment.CheckCustomerStatusFragment"
         android:label="CheckCustomerStatusFragment" >
         <action
             android:id="@+id/action_checkCustomerStatusFragment_to_createCustomerFragment"
@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/uploadDocumentFragment"
-        android:name="ritman.wallet.personal_loan.fragment.UploadDocumentFragment"
+        android:name="angoothape.wallet.personal_loan.fragment.UploadDocumentFragment"
         android:label="UploadDocumentFragment" >
         <action
             android:id="@+id/action_uploadDocumentFragment_to_createCustomerFragment"

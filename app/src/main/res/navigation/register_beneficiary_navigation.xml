@@ -2,31 +2,26 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/selectBeneficiaryFragment"
-    android:id="@+id/register_bene">
+    android:id="@+id/register_bene"
+    app:startDestination="@id/selectBeneficiaryFragment">
 
     <fragment
-        tools:layout="@layout/activity_send_money_via_bank_first"
         android:id="@+id/sendMoneyViaBankFirstActivity"
-        android:name="ritman.wallet.beneficairyRegistration.fragments.AddBeneficiaryBankTransferPersonalDetailFragment"
-        android:label="SendMoneyViaBankFirstActivity" >
+        android:name="angoothape.wallet.beneficairyRegistration.fragments.AddBeneficiaryBankTransferPersonalDetailFragment"
+        android:label="SendMoneyViaBankFirstActivity"
+        tools:layout="@layout/activity_send_money_via_bank_first" >
         <action
-            app:enterAnim="@anim/slide_in_anim"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_left"
-            android:id="@+id/action_sendMoneyViaBankFirstActivity_to_indiaBankBeneficiary"
-            app:destination="@id/indiaBankBeneficiary" />
+            android:id="@+id/action_sendMoneyViaBankFirstActivity_to_beneficiaryOTPRegistration"
+            app:destination="@id/beneficiaryOTPRegistration" />
+        <action
+            android:id="@+id/action_sendMoneyViaBankFirstActivity_to_bank_tranfer_navigation"
+            app:destination="@id/bank_tranfer_navigation" />
     </fragment>
     <fragment
-        android:id="@+id/indiaBankBeneficiary"
-        android:name="ritman.wallet.beneficairyRegistration.fragments.IndiaBankBeneficiary"
-        android:label="IndiaBankBeneficiary" />
-    <fragment
-        tools:layout="@layout/activity_select_beneficialy"
         android:id="@+id/selectBeneficiaryFragment"
-        android:name="ritman.wallet.beneficiaryselection.SelectBeneficiaryFragment"
-        android:label="SelectBeneficiaryFragment" >
+        android:name="angoothape.wallet.beneficiaryselection.SelectBeneficiaryFragment"
+        android:label="SelectBeneficiaryFragment"
+        tools:layout="@layout/activity_select_beneficialy">
         <action
             android:id="@+id/action_selectBeneficiaryFragment_to_sendMoneyViaBankFirstActivity"
             app:destination="@id/sendMoneyViaBankFirstActivity" />
@@ -36,5 +31,30 @@
     </fragment>
 
 
-    <include app:graph="@navigation/bank_tranfer_navigation"/>
+    <include app:graph="@navigation/bank_tranfer_navigation" />
+    <fragment
+        android:id="@+id/registrationActivity"
+        android:name="angoothape.wallet.RegistrationActivity"
+        android:label="RegistrationActivity"
+        tools:layout="@layout/activity_registration" />
+    <fragment
+        android:id="@+id/confirmBeneficiary"
+        android:name="angoothape.wallet.beneficairyRegistration.fragments.ConfirmBeneficiary"
+        android:label="ConfirmBeneficiary"
+        tools:layout="@layout/beneficiary_confirmation_layout" >
+        <action
+            android:id="@+id/action_confirmBeneficiary_to_bank_tranfer_navigation"
+            app:destination="@id/bank_tranfer_navigation"
+            app:popUpTo="@id/selectBeneficiaryFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/generate_otp_fragment_layout"
+        android:id="@+id/beneficiaryOTPRegistration"
+        android:name="angoothape.wallet.beneficairyRegistration.fragments.BeneficiaryOTPRegistration"
+        android:label="BeneficiaryOTPRegistration" >
+        <action
+            app:popUpTo="@id/selectBeneficiaryFragment"
+            android:id="@+id/action_beneficiaryOTPRegistration_to_bank_tranfer_navigation"
+            app:destination="@id/bank_tranfer_navigation" />
+    </fragment>
 </navigation>

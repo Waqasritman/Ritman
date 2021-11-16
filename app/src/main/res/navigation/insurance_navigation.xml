@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="ritman.wallet.insurance.RegistrationFragment"
+        android:name="angoothape.wallet.insurance.RegistrationFragment"
         android:label="RegistrationFragment" >
         <action
             android:id="@+id/action_registrationFragment_to_registrationFragment1"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment1"
-        android:name="ritman.wallet.insurance.RegistrationFragment1"
+        android:name="angoothape.wallet.insurance.RegistrationFragment1"
         android:label="RegistrationFragment1" >
         <action
             android:id="@+id/action_registrationFragment1_to_registrationFragment2"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment2"
-        android:name="ritman.wallet.insurance.RegistrationFragment2"
+        android:name="angoothape.wallet.insurance.RegistrationFragment2"
         android:label="RegistrationFragment2" >
         <action
             android:id="@+id/action_registrationFragment2_to_verifyOtpFragment"
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectOptionsFragment"
-        android:name="ritman.wallet.insurance.SelectOptionsFragment"
+        android:name="angoothape.wallet.insurance.SelectOptionsFragment"
         android:label="SelectOptionsFragment" >
         <action
             android:id="@+id/action_selectOptionsFragment_to_registrationFragment"
@@ -41,10 +41,10 @@
     </fragment>
     <fragment
         android:id="@+id/uploadDocumentsFragment"
-        android:name="ritman.wallet.insurance.UploadDocumentsFragment"
+        android:name="angoothape.wallet.insurance.UploadDocumentsFragment"
         android:label="UploadDocumentsFragment" />
     <fragment
         android:id="@+id/verifyOtpFragment"
-        android:name="ritman.wallet.insurance.VerifyOtpFragment"
+        android:name="angoothape.wallet.insurance.VerifyOtpFragment"
         android:label="VerifyOtpFragment" />
 </navigation>

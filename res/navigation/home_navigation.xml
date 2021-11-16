@@ -8,6 +8,6 @@
     <fragment
         tools:layout="@layout/fragment_home"
         android:id="@+id/homeFragment"
-        android:name="ritman.wallet.home_module.fragments.HomeFragment"
+        android:name="angoothape.wallet.home_module.fragments.HomeFragment"
         android:label="HomeFragment" />
 </navigation>

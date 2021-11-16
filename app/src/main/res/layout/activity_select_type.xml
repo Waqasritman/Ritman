@@ -51,7 +51,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/lato_regular"
                         android:gravity="start|center_vertical"
-                        android:text="@string/bank_transfer"
+                        android:text="@string/DMT_txt"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15sdp" />
 

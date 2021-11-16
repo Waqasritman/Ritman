@@ -6,7 +6,7 @@
     app:startDestination="@id/selectedBeneficiaryForBankTransferFragment">
     <fragment
         android:id="@+id/selectedBeneficiaryForBankTransferFragment"
-        android:name="ritman.wallet.beneficiaryselection.SelectBeneficiaryFragment"
+        android:name="angoothape.wallet.beneficiaryselection.SelectBeneficiaryFragment"
         android:label="fragment_selected_beneficiary_for_bank_transfer"
         tools:layout="@layout/activity_select_beneficialy" >
         <action
@@ -16,6 +16,6 @@
     <fragment
         tools:layout="@layout/activity_send_money_to_wallet"
         android:id="@+id/sendMoneyToWalletActivity"
-        android:name="ritman.wallet.MoneyTransferModuleV.wallettransfer.international.SendMoneyToWalletActivity"
+        android:name="angoothape.wallet.MoneyTransferModuleV.wallettransfer.international.SendMoneyToWalletActivity"
         android:label="SendMoneyToWalletActivity" />
 </navigation>

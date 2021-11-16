@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <!--Set application-wide security config using base-config tag.-->
-    <base-config cleartextTrafficPermitted="true"/>
+
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">https://payinapi.angoothape.com/RitmanPay/</domain>
+        <domain includeSubdomains="true">https://122.187.215.20/RitpayDomesticRestAPIUAT/RIT/</domain>
+        <domain includeSubdomains="true">https://122.187.215.20/RitpayDomesticRestAPIUAT/RitmanPay/</domain>
+    </domain-config>
+    <base-config cleartextTrafficPermitted="true" />
 </network-security-config>

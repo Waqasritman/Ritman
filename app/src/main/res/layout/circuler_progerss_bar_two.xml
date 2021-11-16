@@ -16,7 +16,7 @@
             android:layout_gravity="center"
             android:src="@drawable/loading_circle"/>
 
-        <ritman.wallet.utils.CustomCircularProgressView
+        <angoothape.wallet.utils.CustomCircularProgressView
             android:id="@+id/ivProgressBarTwo"
             android:layout_width="30dp"
             android:layout_height="30dp"

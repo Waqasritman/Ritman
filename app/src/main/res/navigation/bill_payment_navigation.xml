@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/utilityCategoryBFragment"
-        android:name="ritman.wallet.billpayment.fragments.UtilityCategoryBFragment"
+        android:name="angoothape.wallet.billpayment.fragments.UtilityCategoryBFragment"
         android:label="UtilityCategoryBFragment" >
         <action
             android:id="@+id/action_utilityCategoryBFragment_to_utilityBillPaymentPlanFragment"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/utilityBillPaymentPlanFragment"
-        android:name="ritman.wallet.billpayment.updated_fragments.UtilityBillPaymentPlanFragment"
+        android:name="angoothape.wallet.billpayment.updated_fragments.UtilityBillPaymentPlanFragment"
         android:label="UtilityBillPaymentPlanFragment" >
         <action
             android:id="@+id/action_utilityBillPaymentPlanFragment_to_utilityPaymentAccountNoFragment"
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/utilityPaymentAccountNoFragment"
-        android:name="ritman.wallet.billpayment.updated_fragments.UtilityPaymentAccountNoFragment"
+        android:name="angoothape.wallet.billpayment.updated_fragments.UtilityPaymentAccountNoFragment"
         android:label="UtilityPaymentAccountNoFragment" >
         <action
             android:id="@+id/action_utilityPaymentAccountNoFragment_to_utilityBillerDetailsFragment"
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/utilityBillerDetailsFragment"
-        android:name="ritman.wallet.billpayment.updated_fragments.UtilityBillerDetailsFragment"
+        android:name="angoothape.wallet.billpayment.updated_fragments.UtilityBillerDetailsFragment"
         android:label="UtilityBillerDetailsFragment" >
         <action
             android:id="@+id/action_utilityBillerDetailsFragment_to_payBillFragment"
@@ -42,10 +42,10 @@
     </fragment>
     <fragment
         android:id="@+id/payBillFragment"
-        android:name="ritman.wallet.billpayment.updated_fragments.PayBillFragment"
+        android:name="angoothape.wallet.billpayment.updated_fragments.PayBillFragment"
         android:label="PayBillFragment" />
     <fragment
         android:id="@+id/paymentAmountValidationFragment"
-        android:name="ritman.wallet.billpayment.fragments.PaymentAmountValidationFragment"
+        android:name="angoothape.wallet.billpayment.fragments.PaymentAmountValidationFragment"
         android:label="PaymentAmountValidationFragment" />
 </navigation>

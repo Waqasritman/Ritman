@@ -59,6 +59,6 @@
     <color name="cardview3">#FF2D55</color>
     <color name="cardview4">#7FD155</color>
     <color name="cardview5">#AF52DE</color>
-
+    <color name="colorLabel">#000000</color>
     <color name="overlay_dark_50">#80000000</color>
 </resources>

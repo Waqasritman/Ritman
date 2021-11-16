@@ -8,7 +8,7 @@
     <fragment
         tools:layout="@layout/fragment_gift_receiver"
         android:id="@+id/giftReceiverFragment"
-        android:name="ritman.wallet.e_gift.fragments.GiftReceiverFragment"
+        android:name="angoothape.wallet.e_gift.fragments.GiftReceiverFragment"
         android:label="GiftReceiverFragment" >
         <action
             android:id="@+id/action_giftReceiverFragment_to_SendEGiftActivity"
@@ -19,6 +19,6 @@
     <fragment
         tools:layout="@layout/activity_send_e_gift"
         android:id="@+id/SendEGiftActivity"
-        android:name="ritman.wallet.e_gift.fragments.SendEGiftActivity"
+        android:name="angoothape.wallet.e_gift.fragments.SendEGiftActivity"
         android:label="GiftReceiverFragment" />
 </navigation>

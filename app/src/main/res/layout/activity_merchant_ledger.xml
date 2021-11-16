@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout  android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
+
+
+        <LinearLayout
+            android:id="@+id/closing_view_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tool_bar"
+            android:background="@color/colorPrimary"
+            android:minHeight="100dp"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="@dimen/margin_10dp"
+                android:paddingEnd="0dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14sp" />
+
+
+            <TextView
+                android:id="@+id/closing_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_bold"
+                android:paddingStart="@dimen/margin_10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_22sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/closing_view_layout"
+            android:visibility="visible">
+
+
+            <LinearLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:background="@color/colorWhite"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:weightSum="3">
+
+
+                <RelativeLayout
+                    android:id="@+id/all_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/all_text"
+                        android:textColor="@color/colorPrimary" />
+
+                    <View
+                        android:id="@+id/all_received"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colorPrimary" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/credit_"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/credit_txt"
+                        android:textColor="@color/colorPrimary" />
+
+                    <View
+                        android:id="@+id/top_credit_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colorPrimary"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/debit_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/debit_txt"
+                        android:textColor="@color/colorPrimary" />
+
+                    <View
+                        android:id="@+id/top_debit_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colorPrimary"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/filter_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tab_layout"
+                android:layout_alignStart="@id/llDateFilter"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_width_rating_35"
+                    android:layout_margin="@dimen/margin_5dp"
+                    android:elevation="3dp"
+                    app:cardCornerRadius="3dp"
+                    app:cardMaxElevation="5dp">
+
+                    <TextView
+                        android:id="@+id/tvFromDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_10dp"
+                        android:drawableStart="@drawable/card_icon"
+                        android:drawablePadding="@dimen/margin_10dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:gravity="center"
+                        android:hint="@string/text_from"
+                        android:paddingStart="0dp"
+                        android:paddingTop="@dimen/margin_10dp"
+                        android:paddingEnd="@dimen/margin_10dp"
+                        android:paddingBottom="@dimen/margin_10dp"
+                        android:textColor="#606060"
+                        android:textSize="@dimen/text_size_14sp" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_width_rating_35"
+                    android:layout_margin="@dimen/margin_5dp"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:elevation="3dp"
+                    app:cardCornerRadius="3dp"
+                    app:cardMaxElevation="5dp">
+
+                    <TextView
+                        android:id="@+id/tvToDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_10dp"
+                        android:drawableStart="@drawable/card_icon"
+                        android:drawablePadding="@dimen/margin_10dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:gravity="center"
+                        android:hint="@string/text_to"
+                        android:paddingStart="0dp"
+                        android:paddingTop="@dimen/margin_10dp"
+                        android:paddingEnd="@dimen/margin_10dp"
+                        android:paddingBottom="@dimen/margin_10dp"
+                        android:textColor="#606060"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDateFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tab_layout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/text_width_rating_35"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/margin_5dp"
+                        android:elevation="3dp"
+                        app:cardCornerRadius="3dp"
+                        app:cardMaxElevation="5dp">
+
+                        <TextView
+                            android:id="@+id/tvReset"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/margin_10dp"
+                            android:paddingTop="@dimen/margin_5dp"
+                            android:paddingEnd="@dimen/margin_10dp"
+                            android:paddingBottom="@dimen/margin_5dp"
+                            android:text="@string/text_reset"
+                            android:textColor="#606060"
+                            android:textSize="@dimen/text_size_14sp" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/text_width_rating_35"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/margin_5dp"
+                        android:elevation="3dp"
+                        app:cardCornerRadius="3dp"
+                        app:cardMaxElevation="5dp">
+
+                        <TextView
+                            android:id="@+id/tvApply"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/margin_10dp"
+                            android:paddingTop="@dimen/margin_5dp"
+                            android:paddingEnd="@dimen/margin_10dp"
+                            android:paddingBottom="@dimen/margin_5dp"
+                            android:text="@string/text_apply"
+                            android:textColor="#606060"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_ledger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/filter_options" />
+
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/total_debit_layout"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/height_45dp"-->
+            <!--                android:layout_above="@+id/debit_view"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:weightSum="2">-->
+
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="center_vertical"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:fontFamily="@font/montserrat_medium"-->
+            <!--                    android:paddingStart="@dimen/margin_10dp"-->
+            <!--                    android:paddingEnd="0dp"-->
+            <!--                    android:text="@string/debit_balance"-->
+            <!--                    android:textSize="@dimen/text_size_14sp" />-->
+
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/debit_balance"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="center_vertical"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:fontFamily="@font/lato_semibold"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="@dimen/text_size_16sp" />-->
+
+            <!--            </LinearLayout>-->
+
+            <!--            <View-->
+            <!--                android:id="@+id/debit_view"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="1dp"-->
+            <!--                android:layout_above="@id/credit_view_layout"-->
+            <!--                android:background="@color/gray_lite" />-->
+
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/credit_view_layout"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/height_45dp"-->
+            <!--                android:layout_above="@id/credit_view"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:weightSum="2">-->
+
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="center_vertical"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:fontFamily="@font/montserrat_medium"-->
+            <!--                    android:paddingStart="@dimen/margin_10dp"-->
+            <!--                    android:paddingEnd="0dp"-->
+            <!--                    android:text="@string/credit_balance"-->
+            <!--                    android:textSize="@dimen/text_size_14sp" />-->
+
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/credit_balance"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="center_vertical"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:fontFamily="@font/lato_semibold"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="@dimen/text_size_16sp" />-->
+
+            <!--            </LinearLayout>-->
+
+            <!--            <View-->
+            <!--                android:id="@+id/credit_view"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="1dp"-->
+            <!--                android:layout_above="@id/closing_view_layout"-->
+            <!--                android:background="@color/gray_lite" />-->
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

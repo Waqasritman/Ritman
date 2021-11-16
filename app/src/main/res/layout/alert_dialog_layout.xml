@@ -50,7 +50,7 @@
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginTop="@dimen/margin_15dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:weightSum="2">
 
 
@@ -60,8 +60,7 @@
                     android:textSize="@dimen/text_size_14sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="@dimen/margin_5dp"
+
                     android:layout_weight="1"
                     android:background="@drawable/gradient_btn"
 
@@ -74,8 +73,7 @@
                     android:textSize="@dimen/text_size_14sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_5dp"
-                    android:layout_marginEnd="0dp"
+                    android:layout_marginTop="@dimen/margin_5dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_gradient_with_border"
                     android:text="@string/cancel"

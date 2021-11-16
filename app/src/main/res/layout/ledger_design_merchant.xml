@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/first_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5dp"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_10dp">
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/lato_semibold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14sp" />
+
+            <TextView
+
+                android:layout_toEndOf="@id/status"
+                android:id="@+id/sending_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:layout_toStartOf="@+id/cr_dr_icon"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="end"
+                android:textColor="@color/Green" />
+
+            <ImageView
+                android:src="@drawable/ic_arrow_down_green"
+                android:id="@+id/cr_dr_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/transaction_no_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/status"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/transaction_id_txt_"
+                android:textColor="@color/posOrange"
+                android:textSize="@dimen/text_size_12sp" />
+
+            <TextView
+                android:id="@+id/txn_date_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/status"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:fontFamily="@font/lato_regular"
+                android:textColor="@color/colorGrayTwo"
+                android:textSize="@dimen/text_size_12sp" />
+
+            <TextView
+                android:id="@+id/transaction_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/transaction_no_txt"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:fontFamily="@font/lato_regular"
+                android:textColor="@color/posOrange"
+                android:textSize="@dimen/text_size_12sp" />
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

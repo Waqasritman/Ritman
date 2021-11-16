@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/sendMoneyViaBankThirdActivity"
-        android:name="ritman.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankThirdActivity"
+        android:name="angoothape.wallet.MoneyTransferModuleV.banktransfer.SendMoneyViaBankThirdActivity"
         android:label="SendMoneyViaBankThirdActivity">
         <action
             android:id="@+id/action_sendMoneyViaBankThirdActivity_to_cashTransferSummaryFragment2"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/cashTransferSummaryFragment2"
-        android:name="ritman.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashTransferSummaryFragment"
+        android:name="angoothape.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.CashTransferSummaryFragment"
         android:label="CashTransferSummaryFragment" >
         <action
             android:id="@+id/action_cashTransferSummaryFragment2_to_generateOtpFragment"
@@ -22,6 +22,6 @@
     </fragment>
     <fragment
         android:id="@+id/generateOtpFragment"
-        android:name="ritman.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.GenerateOtpFragment"
+        android:name="angoothape.wallet.MoneyTransferModuleV.cashtransfer_doortodoor.GenerateOtpFragment"
         android:label="GenerateOtpFragment" />
 </navigation>

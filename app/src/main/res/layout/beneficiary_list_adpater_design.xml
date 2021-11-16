@@ -45,14 +45,14 @@
         </LinearLayout>
 
 
-        <ImageView
-            android:id="@+id/img_arrow"
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/deActive_bene"
+            android:checked="true"
+            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:tint="@color/posBlue"
-            android:src="@drawable/arrow_menu" />
+            android:layout_centerVertical="true" />
 
 
     </RelativeLayout>

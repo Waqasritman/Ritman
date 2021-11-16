@@ -4,6 +4,14 @@
         <item>English</item>
         <item>Urdu</item>
     </array>
+
+
+    <string-array name="titleType">
+        <item>Mr.</item>
+        <item>Mrs.</item>
+        <item>Ms.</item>
+    </string-array>
+
     <string name="error_internet">Internet connection cannot be established. Please ensure your device have internet access and try again.</string>
     <string name="error_server">Cannot establish connection with the server. Please try again later.</string>
 
@@ -462,6 +470,9 @@
     <string name="pl">PL\n</string>
     <string name="eKYC">eKYC\n</string>
     <string name="insurance">Insurance\n</string>
+    <string name="select_mer_txt">Select Merchant</string>
+    <string name="transfer_to_mer_txt">Transfer fund to merchant</string>
+    <string name="transfer_to_merchant">Fund to \nMerchant</string>
     <string name="pancard">Pan Card\n</string>
     <string name="add_moeny_txt">Add \nMoney</string>
     <string name="my_cards_txt">My Cards</string>
@@ -1159,5 +1170,117 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="update_available">Update Available</string>
     <string name="update">update</string>
     <string name="update_available_msg">Check out the latest version available of Angootha pe application!</string>
+    <string name="tramount">₹</string>
+    <string name="amount">Transaction Amount</string>
+    <string name="select_device">Select Device</string>
+    <string name="adhaar_no">Adhaar No.</string>
+    <string name="adhaar_no_virtu">AadharNumber/Virtual ID</string>
+
+    <string name="evolute_rd">Please download Evolute RD Service</string>
+    <string name="watch_rd">Please download Watch RD Service</string>
+    <string name="morpho_rd">Please download Morpho RD Service</string>
+    <string name="mantra_rd">Please download Mantra RD Service</string>
+    <string name="please_enter_shop_name">Please Enter Shop Name</string>
+    <string name="shop_name">Shop Name</string>
+    <string name="full_name">Full name*</string>
+    <string name="DMT_txt">DMT\n</string>
+    <string name="refund_txt">Refund\n</string>
+    <string name="refund_txt_title">Refund</string>
+    <string name="confirm_title_bene">Beneficiary Details</string>
+    <string name="full_name_txt">Full name</string>
+    <string name="fund_successfully">Funds transferred successfully</string>
+    <string name="ledger_history_txt_home">Ledger \nHistory</string>
+    <string name="open_balance_">Opening Balance</string>
+    <string name="closing_balance_txt">Closing balance</string>
+    <string name="credit_balance">Credit balance</string>
+    <string name="debit_balance">Debit balance</string>
+    <string name="ledger_history_txt">Ledger History</string>
+    <string name="create_agent_tool_title">Create Agent</string>
+
+
+    <string name="customer_ser_txt">Customer service</string>
+    <string name="funding_banks">Funding banks</string>
+    <string name="upload_cash_details">Cash IN\n</string>
+    <string name="deposit_amount">Deposit amount</string>
+    <string name="browse_image">Select slip</string>
+    <string name="status">Status</string>
+    <string name="date_txt">Date</string>
+    <string name="text_from">From</string>
+    <string name="text_to">TO</string>
+    <string name="payment_mode">Payment mode</string>
+    <string name="edit_bene_txt">Activate Beneficiary</string>
+    <string name="text_reset">Reset</string>
+    <string name="text_apply">Apply</string>
+    <string name="customer_histroy">Customer Transaction history</string>
+
+    <string name="transaction_no_txt">Please enter your transaction number for refund</string>
+    <string name="transaction_hint">XXXXXXXXXXXX</string>
+    <string name="enter_transaction_no_txt">Please enter your transacation number</string>
+
+
+    <string name="kyc_not_approved">KYC not approved</string>
+    <string name="credit_txt">Credit</string>
+    <string name="debit_txt">Debit</string>
+    <string name="title_bene">Title</string>
+    <string name="select_from_date">Select from date*</string>
+    <string name="select_to_date">Select to date*</string>
+    <string name="transaction_id_txt">Transacation id</string>
+    <string name="beneficiary_name_txt">Beneficiary name</string>
+    <string name="beneficiary_account_no">Beneficiary account number</string>
+    <string name="error_selct_from_date">Select from date</string>
+    <string name="error_selct_to_date">Select to date</string>
+    <string name="transaction_id_txt_">Trans id:</string>
+
+    <string-array name="arrayFingerTypeThumb">
+        <item>6~RightThumb</item>
+        <item>5~LeftThumb</item>
+    </string-array>
+
+    <string-array name="deviceType">
+        <item>Morpho Device</item>
+        <item>3M Device</item>
+        <item>Startek Device</item>
+        <item>Precision Device</item>
+        <item>Secugen Device</item>
+        <item>Mantra Device</item>
+    </string-array>
+
+    <string-array name="arrayFingerCount">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="arrayFingerType">
+        <item>FMR</item>
+        <item>FIR</item>
+    </string-array>
+
+    <string-array name="arrayFingerFormat">
+        <item>XML</item>
+        <!--<item>PROTOBUF</item>-->
+    </string-array>
+    <string-array name="arrayFingerFormatAeps">
+        <item>XML</item>
+        <item>PROTOBUF</item>
+    </string-array>
+
+    <string-array name="arrayEnv">
+        <item>P</item>
+        <!--<item>S</item>
+        <item>P</item>-->
+    </string-array>
+    <string-array name="arrayEnvAEPS">
+        <item>P</item>
+        <!--<item>S</item>
+        <item>PP</item>-->
+    </string-array>
 
 </resources>

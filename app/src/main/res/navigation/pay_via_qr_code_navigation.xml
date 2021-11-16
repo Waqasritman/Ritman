@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/barcodeReaderFragment"
-        android:name="ritman.wallet.scanqrcodemodule.BarcodeReaderFragment"
+        android:name="angoothape.wallet.scanqrcodemodule.BarcodeReaderFragment"
         android:label="BarcodeReaderFragment"
         tools:layout="@layout/fragment_barcode_reader" >
         <action
@@ -20,6 +20,6 @@
     </fragment>
     <fragment
         android:id="@+id/walletToWalletViaQrCode"
-        android:name="ritman.wallet.payviaqrcode.WalletToWalletViaQrCode"
+        android:name="angoothape.wallet.payviaqrcode.WalletToWalletViaQrCode"
         android:label="WalletToWalletViaQrCode" />
 </navigation>

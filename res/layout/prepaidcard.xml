@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <view
-            class="ritman.wallet.utils.DrawerMenu"
+            class="angoothape.wallet.utils.DrawerMenu"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="match_parent" />
 

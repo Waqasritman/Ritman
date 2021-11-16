@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refund_naviagtion"
+    app:startDestination="@id/refundTransactionNumberFragment">
+
+    <fragment
+        tools:layout="@layout/verify_otp_fragment_layout"
+        android:id="@+id/refundTransactionNumberFragment"
+        android:name="angoothape.wallet.refund_module.RefundTransactionNumberFragment"
+        android:label="RefundTransactionNumberFragment" />
+    <fragment
+        tools:layout="@layout/generate_otp_fragment_layout"
+        android:id="@+id/refundOTPFragment"
+        android:name="angoothape.wallet.refund_module.RefundOTPFragment"
+        android:label="RefundOTPFragment" />
+</navigation>

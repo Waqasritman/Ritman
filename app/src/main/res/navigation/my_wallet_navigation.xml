@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/MyWalletActivity"
-        android:name="ritman.wallet.mywalletmoduleV.fragments.MyWalletBalanceFragment"
+        android:name="angoothape.wallet.mywalletmoduleV.fragments.MyWalletBalanceFragment"
         android:label="MyWalletActivity"
         tools:layout="@layout/activity_my_wallet">
 
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/AddMoneyWalletActivity"
-        android:name="ritman.wallet.mywalletmoduleV.fragments.LoadWalletFragment"
+        android:name="angoothape.wallet.mywalletmoduleV.fragments.LoadWalletFragment"
         android:label="AddMoneyWalletActivity"
         tools:layout="@layout/activity_add_money_wallet">
 
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/choosePaymentMethodForWalletLoadFragment"
-        android:name="ritman.wallet.mywalletmoduleV.fragments.ChoosePaymentMethodForWalletLoadFragment"
+        android:name="angoothape.wallet.mywalletmoduleV.fragments.ChoosePaymentMethodForWalletLoadFragment"
         android:label="ChoosePaymentMethodForWalletLoadFragment"
         tools:layout="@layout/activity_select_card" />
 </navigation>

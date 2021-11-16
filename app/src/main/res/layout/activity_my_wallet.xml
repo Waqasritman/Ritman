@@ -18,7 +18,7 @@
             android:textSize="@dimen/_15sdp" />
 
 
-        <ritman.wallet.utils.SnappyRecyclerView
+        <angoothape.wallet.utils.SnappyRecyclerView
             android:id="@+id/userAccountrecyclerview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/home_account_card_height_157"

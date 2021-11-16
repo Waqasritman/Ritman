@@ -31,17 +31,18 @@
 
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/refresh_balance"
                 android:layout_width="@dimen/margin_15dp"
                 android:layout_height="@dimen/margin_15dp"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/notifiacaiton_btn"
                 android:background="@android:color/transparent"
-
                 android:src="@drawable/ic_qr"
                 app:tint="@color/colorWhite" />
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/notifiacaiton_btn"
                 android:layout_width="@dimen/height_50dp"
                 android:layout_height="@dimen/height_50dp"
@@ -54,6 +55,7 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/send"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -64,6 +66,7 @@
             app:backgroundTint="@color/white" />
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/bottom_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

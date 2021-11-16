@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mobileTopUpFirstActivity"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.MobileTopUpFirstActivity"
         android:label="MobileTopUpFirstActivity"
         tools:layout="@layout/activity_mobile_top_up_first">
         <action
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/WRBillerNamesFragment"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.WRBillerPlansFragment"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.WRBillerPlansFragment"
         android:label="WRBillerNamesFragment">
         <action
             android:id="@+id/action_WRBillerNamesFragment_to_WRBillerPaymentFragment"
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/WRBillerPaymentFragment"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.WRBillerPaymentFragment"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.WRBillerPaymentFragment"
         android:label="WRBillerPaymentFragment">
         <action
             android:id="@+id/action_WRBillerPaymentFragment_to_mobileTopupStatusFragment"
@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/MobileTopupBillDetailsFragment"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopupBillDetailsFragment"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.MobileTopupBillDetailsFragment"
         android:label="MobileTopupBillDetailsFragment"
         tools:layout="@layout/fragment_utility_biller_details">
         <action
@@ -76,11 +76,11 @@
     </fragment>
     <fragment
         android:id="@+id/mobileTopupStatusFragment"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopupStatusFragment"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.MobileTopupStatusFragment"
         android:label="MobileTopupStatusFragment" />
     <fragment
         android:id="@+id/planNameFragment"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.PlanNameFragment"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.PlanNameFragment"
         android:label="PlanNameFragment" >
         <action
             android:id="@+id/action_planNameFragment_to_rechargePlansFragment"
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/rechargePlansFragment"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.RechargePlansFragment"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.RechargePlansFragment"
         android:label="RechargePlansFragment" >
         <action
             android:id="@+id/action_rechargePlansFragment_to_mobileTopUpPrepaidBillDetailsFragment"
@@ -96,7 +96,7 @@
     </fragment>
     <fragment
         android:id="@+id/mobileTopUpPrepaidBillDetailsFragment"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopUpPrepaidBillDetailsFragment"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.MobileTopUpPrepaidBillDetailsFragment"
         android:label="MobileTopUpPrepaidBillDetailsFragment" >
         <action
             android:id="@+id/action_mobileTopUpPrepaidBillDetailsFragment_to_mobileTopUpPrepaidBillPaymentFragment"
@@ -104,6 +104,6 @@
     </fragment>
     <fragment
         android:id="@+id/mobileTopUpPrepaidBillPaymentFragment"
-        android:name="ritman.wallet.Mobile_Top_Up.fragments.MobileTopUpPrepaidBillPaymentFragment"
+        android:name="angoothape.wallet.Mobile_Top_Up.fragments.MobileTopUpPrepaidBillPaymentFragment"
         android:label="MobileTopUpPrepaidBillPaymentFragment" />
 </navigation>
