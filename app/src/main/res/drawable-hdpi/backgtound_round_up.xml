@@ -3,7 +3,7 @@
 
     <item>
         <shape>
-            <corners android:radius="20dp"
+            <corners android:radius="25dp"
                 android:bottomLeftRadius="0dp"
                 android:bottomRightRadius="0dp"
                 />

@@ -1013,7 +1013,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         canvas.drawBitmap(bitmap, 0, 0, null);
         document.finishPage(page);
 
-        String directory_path = Environment.getExternalStorageDirectory().getAbsolutePath() + PATH;
+        String directory_path = getFilesDir() + PATH;
         File file = new File(directory_path);
         if (!file.exists()) {
             file.mkdirs();
@@ -1032,8 +1032,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     }
 
     private void saveImage(Bitmap finalBitmap, String image_name) {
-        String root = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES).toString() + "/TotiPay/";
+        String root = getFilesDir() + "/TotiPay/";
         File myDir = new File(root);
         myDir.mkdirs();
         String fname = image_name + ".jpg";
@@ -1083,8 +1082,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
 
 
     public Uri getURI() {
-        File outputFile = new File(Environment.getExternalStorageDirectory()
-                .getAbsolutePath() + PATH,
+        File outputFile = new File(getFilesDir() + PATH,
                 PDF_Name + ".pdf");
 
         return FileProvider.getUriForFile(this,

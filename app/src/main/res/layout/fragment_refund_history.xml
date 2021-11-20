@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingBottom="@dimen/margin_10dp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
 
     </LinearLayout>

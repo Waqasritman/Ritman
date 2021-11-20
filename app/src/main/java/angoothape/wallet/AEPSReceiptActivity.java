@@ -215,7 +215,7 @@ public class AEPSReceiptActivity extends RitmanBaseActivity<ActivityAEPSReceiptB
         canvas.drawBitmap(bitmap, 0, 0, null);
         document.finishPage(page);
 
-        String directory_path = Environment.getExternalStorageDirectory().getAbsolutePath() + PATH;
+        String directory_path = getFilesDir() + PATH;
         File file = new File(directory_path);
         if (!file.exists()) {
             file.mkdirs();
@@ -285,8 +285,7 @@ public class AEPSReceiptActivity extends RitmanBaseActivity<ActivityAEPSReceiptB
 
 
     public Uri getURI() {
-        File outputFile = new File(Environment.getExternalStorageDirectory()
-                .getAbsolutePath() + PATH,
+        File outputFile = new File(getFilesDir() + PATH,
                 PDF_Name + ".pdf");
 
         return FileProvider.getUriForFile(this,

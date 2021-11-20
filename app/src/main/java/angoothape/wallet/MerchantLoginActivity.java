@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.VerifyEKYCRequest;
@@ -57,14 +56,31 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
             @Override
             public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
                 if (response.isSuccessful()) {
-                    if(response.body().responseCode.equals(101)) {
-                        sessionManager
-                                .merchantName(binding.edtUserName.getText().toString());
+                    sessionManager
+                            .merchantName(binding.edtUserName.getText().toString());
+
+                    assert response.body() != null;
+                    if (response.body().responseCode.equals(101)) {
+                        checkVerifiedEKYC(response.body().responseCode);
+                    } else if (response.body().responseCode.equals(504)) {
                         checkVerifiedEKYC(response.body().responseCode);
                     } else {
                         Utils.hideCustomProgressDialog();
                         onMessage(response.body().description);
                     }
+
+
+//
+//
+//                    if(response.body().responseCode.equals(101)) {
+//                        sessionManager
+//                                .merchantName(binding.edtUserName.getText().toString());
+//                        checkVerifiedEKYC(response.body().responseCode);
+//                    }
+//                    else {
+//                        Utils.hideCustomProgressDialog();
+//                        onMessage(response.body().description);
+//                    }
                 }
             }
 
@@ -104,10 +120,7 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
                         String bodyy = AESHelper.decrypt(response.body().data.body
                                 , gKey);
                         Log.e("vv", bodyy.trim());
-
                         sessionManager.setIsVerified("true");
-
-
                         if (responseCode.equals(101)) {
                             startActivity(new Intent(MerchantLoginActivity.this,
                                     NewDashboardActivity.class));
@@ -130,6 +143,8 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
                         } else {
                             onMessage(response.body().description);
                         }
+                    } else {
+                        onMessage(response.body().description);
                     }
                 }
             }

@@ -44,6 +44,7 @@ public class VerifyOtpActivity extends RitmanBaseActivity<ActivityVerifyOtpBindi
             public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
 
                 if (response.isSuccessful()) {
+                    assert response.body() != null;
                     if (response.body().responseCode.equals(101)) {
                         startActivity(new Intent(VerifyOtpActivity.this,
                                 NewDashboardActivity.class));

@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
@@ -89,6 +90,10 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //  if (BuildConfig.FLAVOR_country.equals("saudi") && "ar".equals(LanguageUtil.getSelectedLanguageFromSharedPreferences(this))) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+                WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);
         //  } else {
         //      getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         //  }

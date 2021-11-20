@@ -30,7 +30,7 @@ public class RefundActivity extends RitmanBaseActivity<ActivityRefundBinding> {
     @Override
     protected void initUi(Bundle savedInstanceState) {
         //  navController = Navigation.findNavController(this, R.id.dashboard_money_tranfser);
-        binding.toolBar.titleTxt.setText(getString(R.string.refund_txt));
+        binding.toolBar.titleTxt.setText("Refund");
         binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
 
         binding.toolBar.toolBarFinal

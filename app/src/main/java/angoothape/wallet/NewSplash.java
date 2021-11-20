@@ -37,8 +37,8 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
 
     @Override
     protected void initUi(Bundle savedInstanceState) {
-       // getOsVersion();
-        getCountry();
+        getOsVersion();
+        //  getCountry();
     }
 
     public void getOsVersion() {
@@ -57,7 +57,7 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
         Utils.showCustomProgressDialog(this, false);
         OsVersionRequest request = new OsVersionRequest();
         request.os_type = "Android";
-        Call<OsVersionResponse> call = RestClient.get().getOsVersion(request, "RahejaTeller");
+        Call<OsVersionResponse> call = RestClient.get().getOsVersion(request);
         call.enqueue(new Callback<OsVersionResponse>() {
             @Override
             public void onResponse(Call<OsVersionResponse> call, Response<OsVersionResponse> response) {

@@ -20,18 +20,20 @@
             android:padding="@dimen/margin_10dp">
 
             <TextView
+                android:layout_toStartOf="@id/sending_amount"
+                android:layout_alignParentStart="true"
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/lato_semibold"
-                android:gravity="center"
+                android:gravity="start"
+                android:layout_marginEnd="@dimen/margin_10dp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_14sp" />
 
             <TextView
-
-                android:layout_toEndOf="@id/status"
+                android:singleLine="true"
                 android:id="@+id/sending_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

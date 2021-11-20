@@ -454,8 +454,7 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/CustomerDevice/OS_Version")
-    Call<OsVersionResponse> getOsVersion(@Body OsVersionRequest requestBody,
-                                         @Header("Username") String Username);
+    Call<OsVersionResponse> getOsVersion(@Body OsVersionRequest requestBody);
 
 
     //IINData

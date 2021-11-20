@@ -113,7 +113,11 @@ public class RefundHistoryFragment extends BaseFragment<FragmentRefundHistoryBin
 
     @Override
     public void onGetHistoryList(List<TransactionHistoryResponse> historyList) {
-
+        responseList.clear();
+        filteredList.clear();
+        responseList.addAll(historyList);
+        filteredList.addAll(historyList);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
