@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  >
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_5sdp"
+    tools:context=".aeps.activity.SelectDeviceActivity">
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_gravity="end"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:textColor="@color/Black"
+            android:textStyle="bold"
+            android:text="PAIR Device" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="3" />
+
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_pair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_middle"
+            android:checked="true"
+            app:thumbTint="@color/color_toti" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:checkedButton="@id/button1"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button 1"
+                android:textColor="@color/Black"
+                style="?attr/materialButtonOutlinedStyle"
+                />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Black"
+                android:text="Button 2"
+                style="?attr/materialButtonOutlinedStyle"
+                />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Black"
+                android:text="Button 3"
+                style="?attr/materialButtonOutlinedStyle"
+                />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+        android:gravity="end"
+        android:minHeight="40dp"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_10sdp"
+        android:showDividers="middle"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/pair_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pair"
+            android:textColor="@color/white"
+            android:background="@drawable/edt_round_fill"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/device_pair_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_2sdp"
+        android:weightSum="4"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/evolute"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_50dp"
+            android:background="@drawable/button"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/_2sdp"
+            android:textColor="@color/white"
+            android:text="Evolute"/>
+
+        <Button
+           android:id="@+id/watch_data"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_50dp"
+            android:background="@drawable/button"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/_2sdp"
+            android:textColor="@color/white"
+            android:text="Watch Data"/>
+        <Button
+            android:id="@+id/morpho"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_50dp"
+            android:background="@drawable/button"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/_2sdp"
+            android:textColor="@color/white"
+            android:text="Morpho"/>
+        <Button
+            android:id="@+id/mantra"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_50dp"
+            android:background="@drawable/button"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/_2sdp"
+            android:text="Mantra"/>
+
+    </LinearLayout>
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/select_bank_name"
+        android:textSize="@dimen/_12ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/select_bank"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:background="@drawable/border_background_green_colour"
+            android:drawableEnd="@drawable/dropdown_arrow"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:hint="@string/select_bank_name"
+            android:paddingStart="@dimen/margin_10dp"
+            android:paddingEnd="@dimen/margin_10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/darkgrey" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="vertical">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Select Service :" />
+        <!--style="@style/lblTitleLight"-->
+
+        <Spinner
+            android:id="@+id/serviceType"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/border_background_green_colour"
+            android:drawableEnd="@drawable/dropdown_arrow"
+            android:entries="@array/deviceType"
+            android:spinnerMode="dropdown"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/amount"
+        android:textSize="@dimen/_12ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="2.5"
+            android:gravity="center"
+            android:text="@string/tramount"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/Black"
+            android:background="@drawable/border_background_green_colour"
+            android:layout_height="@dimen/height_50dp"/>
+
+        <EditText
+            android:id="@+id/t_amount"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_height="@dimen/height_50dp"
+            android:background="@drawable/border_background_green_colour"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:paddingStart="@dimen/margin_10dp"
+            android:paddingEnd="@dimen/margin_10dp"
+            android:textColor="@android:color/black"
+            android:hint="0"
+            android:textSize="@dimen/_14sdp"
+            android:typeface="monospace"
+            />
+    </LinearLayout>
+
+<!--<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/_5sdp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Agree dfofhfqoqofqowhfowhoqwhi"
+        android:layout_marginRight="@dimen/_8sdp"/>
+    <RadioGroup
+        android:id="@+id/radio_gp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radio_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No" />
+
+    </RadioGroup>
+</LinearLayout>-->
+
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/height_45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="50dp"
+        android:background="@drawable/edt_round_fill"
+        android:fontFamily="@font/lato_bold"
+        android:text="Next"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_18sp" />
+
+
+</LinearLayout>
+    </ScrollView>
+
+</layout>

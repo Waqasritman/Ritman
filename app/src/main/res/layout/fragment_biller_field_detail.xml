@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgtound_round_up"
+        android:orientation="vertical">
+
+     <!--   <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20dp">
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/plz_enter_uitlitu_payment_account"
+                android:textColor="@color/blakish"
+                android:textSize="@dimen/text_size_20sp" />
+
+            <LinearLayout
+                android:id="@+id/largeLabe1Close"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+            <TextView
+                android:id="@+id/label_name_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/label_name_one"
+                android:textColor="@color/darkgrey"
+                android:textSize="@dimen/text_size_15sp">
+
+            </TextView>
+
+            <EditText
+                android:textColor="@color/black"
+                android:id="@+id/description_one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_grey"
+                android:fontFamily="@font/lato_medium"
+                android:hint="@string/jhon_smith"
+                android:inputType="number"
+                android:padding="@dimen/margin_10dp"
+                android:textSize="@dimen/text_size_14sp">
+
+            </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/largeLabe2Close"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+               >
+            <TextView
+                android:id="@+id/label_name_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/label_name_two"
+                android:textColor="@color/darkgrey"
+                android:textSize="@dimen/text_size_15sp">
+
+            </TextView>
+
+            <EditText
+                android:textColor="@color/black"
+                android:id="@+id/description_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:background="@drawable/edittext_grey"
+                android:fontFamily="@font/lato_medium"
+                android:hint="@string/phone_number_hint"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/largeLabe3Close"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/label_name_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:text="@string/label_name_three"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="@dimen/text_size_15sp">
+
+                </TextView>
+
+                <EditText
+                    android:textColor="@color/black"
+                    android:id="@+id/description_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@drawable/edittext_grey"
+                    android:fontFamily="@font/lato_medium"
+                    android:hint="@string/phone_number_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/next_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/margin_20dp"
+            android:background="@drawable/button_design"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_18sp" />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</layout>

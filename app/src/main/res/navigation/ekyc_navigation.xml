@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/billpayment_navigation"
+     app:startDestination="@id/createEkycAgentFragment">
+   <!-- app:startDestination="@id/adharBioKYCFragment">-->
+
+    <fragment
+        android:id="@+id/createEkycAgentFragment"
+        android:name="angoothape.wallet.ekyc.fragments.CreateEkycAgentFragment"
+        android:label="CreateEkycAgentFragment" >
+        <action
+            android:id="@+id/action_createEkycAgentFragment_to_OTPVerifyFragment"
+            app:destination="@id/OTPVerifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OTPVerifyFragment"
+        android:name="angoothape.wallet.ekyc.fragments.OTPVerifyFragment"
+        android:label="OTPVerifyFragment" >
+       <!-- <action
+            android:id="@+id/action_OTPVerifyFragment_to_adharBioKYCFragment"
+            app:destination="@id/adharBioKYCFragment" />-->
+    </fragment>
+    <fragment
+        android:id="@+id/adharBioKYCFragment"
+        android:name="angoothape.wallet.ekyc.fragments.AdharBioKYCFragment"
+        android:label="AdharBioKYCFragment" />
+</navigation>

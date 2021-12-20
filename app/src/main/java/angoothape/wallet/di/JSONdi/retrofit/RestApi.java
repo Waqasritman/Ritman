@@ -84,15 +84,18 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RPAY/BusBooking/GetBUSStations")
-    Call<GetBusStationsResponse> getBusStations(@Body RequestBody request, @Header("Username") String userName);
+    Call<GetBusStationsResponse> getBusStations(@Body RequestBody request,
+                                                @Header("Username") String userName);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RPAY/BusBooking/GetBUSDestinationStations")
+    Call<GetBusStationsResponse> getDestinationBus(@Body RequestBody request,
+                                                   @Header("Username") String userName);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Agent/GetDistributorMerchants")
     Call<DistributorDetailsResponse> getDistributorMerchants(@Body RequestBody request, @Header("Username") String userName);
 
-
-//    @HTTP(method = "GET", path = "TotiPayRestAPI/Images/GetCustomerImage", hasBody = true)
-//    Call<GetProfileImage> getCustomerImage(@Body GetCustomerProfileImageRequest request);
 
     @POST("RitmanPay/AddCustomerImage")
     Call<SimpleResponse> uploadCustomerImage(@Body UploadUserImageRequest request);
