@@ -168,10 +168,10 @@ public class TransactionReceiptActivity extends RitmanBaseActivity<ReceiptLayout
         filePath = new File(targetPdf);
         try {
             document.writeTo(new FileOutputStream(filePath));
-            Toast.makeText(this, getString(R.string.save_transaction_receipt), Toast.LENGTH_LONG).show();
+         //   Toast.makeText(this, getString(R.string.save_transaction_receipt), Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             Log.e("main", "error " + e.toString());
-            Toast.makeText(this, getString(R.string.some_thing_wrong) + e.toString(), Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, getString(R.string.some_thing_wrong) + e.toString(), Toast.LENGTH_LONG).show();
         }
         document.close();
 
@@ -179,7 +179,7 @@ public class TransactionReceiptActivity extends RitmanBaseActivity<ReceiptLayout
 
     private void saveImage(Bitmap finalBitmap, String image_name) {
         String root = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES).toString() + "/TotiPay/";
+                Environment.DIRECTORY_PICTURES).toString() + "/Angoothape/";
         File myDir = new File(root);
         myDir.mkdirs();
         String fname = image_name + ".jpg";
@@ -264,7 +264,6 @@ public class TransactionReceiptActivity extends RitmanBaseActivity<ReceiptLayout
             } else {
                 ActivityCompat.requestPermissions(TransactionReceiptActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_PERMISSIONS);
-
             }
 
             if ((ActivityCompat.shouldShowRequestPermissionRationale(TransactionReceiptActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE))) {

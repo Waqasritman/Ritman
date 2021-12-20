@@ -207,9 +207,7 @@ public class SessionManager {
         return pref.getString("userEmailRemember", "");
     }
 
-    public void userPhoneRemember(String url, String iso, String number) {
-        pref.putString("url", url);
-        pref.putString("iso_remember", iso);
+    public void userPhoneRemember(String number) {
         pref.putString("number_remember", number);
         pref.commit();
     }

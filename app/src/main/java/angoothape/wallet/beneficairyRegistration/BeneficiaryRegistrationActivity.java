@@ -39,7 +39,6 @@ public class BeneficiaryRegistrationActivity extends RitmanBaseActivity<Activity
 
 
         binding.toolBar.crossBtn.setOnClickListener(v -> {
-
             onClose();
         });
     }

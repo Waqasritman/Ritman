@@ -20,6 +20,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keep class  angoothape.wallet.di.** { *; }
+-keep class  angoothape.wallet.aeps.** { *; }
 -dontwarn retrofit.**
 -keep class retrofit.** { *; }
 -keepattributes Signature

@@ -85,26 +85,15 @@ public class CashTransferSummaryFragment extends BaseFragment<FragmentMoneyTrans
 
         binding.paymentMode.setText(selectedPaymentMode.paymentName);
 
-//        binding.confirmBtn.setOnClickListener(v -> {
-//            VerifyOtp();
-//        });
-
-
         binding.confirmBtn.setOnClickListener(v -> {
             getSummary();
-//            Bundle bundle = new Bundle();
-//            bundle.putDouble("PayInAmount", PayInAmount);
-//            bundle.putParcelable("benedetails", benedetails);
-//            Navigation.findNavController(binding.getRoot())
-//                    .navigate(R.id.action_cashTransferSummaryFragment2_to_generateOtpFragment,bundle
-//                    );
-
         });
     }
 
 
 
     public void getSummary() {
+        binding.confirmBtn.setEnabled(false);
         Utils.showCustomProgressDialog(getContext(), false);
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
                 .getKey(getSessionManager().getMerchantName())).trim();
@@ -126,6 +115,7 @@ public class CashTransferSummaryFragment extends BaseFragment<FragmentMoneyTrans
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
+                        binding.confirmBtn.setEnabled(true);
                         onMessage(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
@@ -148,6 +138,7 @@ public class CashTransferSummaryFragment extends BaseFragment<FragmentMoneyTrans
                                     @Override
                                     public void run() {
                                         mHandler.removeCallbacks(this);
+                                        binding.confirmBtn.setEnabled(true);
                                         Log.e("getSummary: ", data.getTransactionNumber());
                                         Intent i = new Intent(getActivity(), TransactionReceiptActivity.class);
                                         i.putExtra("TransactionNumber", data.getTransactionNumber());
@@ -160,38 +151,12 @@ public class CashTransferSummaryFragment extends BaseFragment<FragmentMoneyTrans
                                 e.printStackTrace();
                             }
                         } else {
+                            binding.confirmBtn.setEnabled(true);
                             onMessage(response.resource.description);
                         }
                     }
                 });
 
-//        viewModel.getSummary(ritmanPaySendRequest, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-//                , response -> {
-//                    Utils.hideCustomProgressDialog();
-//                    if (response.status == Status.ERROR) {
-//                        onMessage(getString(response.messageResourceId));
-//                    } else {
-//                        assert response.resource != null;
-//                        if (response.resource.responseCode.equals(101)) {
-//                            TransactionNumber = response.resource.data.getTransactionNumber();
-//                            Handler mHandler;
-//                            mHandler = new Handler();
-//                            mHandler.postDelayed(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    mHandler.removeCallbacks(this);
-//                                    Intent i = new Intent(getActivity(), TransactionReceiptActivity.class);
-//                                    i.putExtra("TransactionNumber", response.resource.data.getTransactionNumber());
-//                                    startActivity(i);
-//                                    getBaseActivity().finish();
-//                                }
-//                            }, 200);
-//
-//                        } else {
-//                            onMessage(response.resource.description);
-//                        }
-//                    }
-//                });
     }
 
 

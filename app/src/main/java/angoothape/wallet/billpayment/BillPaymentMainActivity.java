@@ -61,21 +61,18 @@ public class BillPaymentMainActivity extends RitmanBaseActivity<ActivityBillMain
             onClose();
         });
 
-        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                if(destination.getId() == R.id.payBillFragment) {
-                   // binding.toolBar.toolBarFinal.setVisibility(View.GONE);
-                    binding.toolBar.bbpsToolbar.setVisibility(View.INVISIBLE);
-                   // bottomNavigationView.setVisibility(View.GONE);
-                }
-                else if (destination.getId()==R.id.paymentAmountValidationFragment){
-                    binding.toolBar.bbpsToolbar.setVisibility(View.INVISIBLE);
-                }
-                else {
-                    binding.toolBar.bbpsToolbar.setVisibility(View.VISIBLE);
-                    //bottomNavigationView.setVisibility(View.VISIBLE);
-                }
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if(destination.getId() == R.id.payBillFragment) {
+               // binding.toolBar.toolBarFinal.setVisibility(View.GONE);
+                binding.toolBar.bbpsToolbar.setVisibility(View.INVISIBLE);
+               // bottomNavigationView.setVisibility(View.GONE);
+            }
+            else if (destination.getId()==R.id.paymentAmountValidationFragment){
+                binding.toolBar.bbpsToolbar.setVisibility(View.INVISIBLE);
+            }
+            else {
+                binding.toolBar.bbpsToolbar.setVisibility(View.VISIBLE);
+                //bottomNavigationView.setVisibility(View.VISIBLE);
             }
         });
 

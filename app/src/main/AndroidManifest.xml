@@ -40,7 +40,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".AEPSReceiptActivity"></activity>
+        <activity android:name=".bus_booking.BusBookingMainActivity"></activity>
+        <activity android:name=".AEPSReceiptActivity" />
         <activity android:name=".menumodules.CustomerServiceDetailsActivity" />
         <activity android:name=".CustomerTransactionHistoryActivity" />
         <activity android:name=".refund_module.RefundActivity" />
@@ -54,6 +55,7 @@
         <activity android:name=".personal_loan.fragment.PLActivity" />
         <activity android:name=".AEPSActivity" />
         <activity android:name=".beneficairyRegistration.BeneficiaryRegistrationActivity" />
+        <activity android:name=".refund_module.RefundOTPFragment" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".VerifyOtpActivity" />
         <activity android:name=".ForgotPassword" />

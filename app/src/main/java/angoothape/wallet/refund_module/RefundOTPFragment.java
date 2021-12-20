@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.lifecycle.ViewModelProvider;
 
 import angoothape.wallet.R;
+import angoothape.wallet.base.RitmanBaseActivity;
 import angoothape.wallet.databinding.GenerateOtpFragmentLayoutBinding;
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
@@ -17,18 +18,18 @@ import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.fragments.BaseFragment;
 import angoothape.wallet.utils.Utils;
 
-public class RefundOTPFragment extends BaseFragment<GenerateOtpFragmentLayoutBinding> {
+public class RefundOTPFragment extends RitmanBaseActivity<GenerateOtpFragmentLayoutBinding> {
 
 
     String txnNo;
     RefundViewModel viewModel;
 
-    @Override
+
     protected void injectView() {
 
     }
 
-    @Override
+
     public boolean isValidate() {
         if (binding.edtOtp.getText().toString().isEmpty()) {
             onMessage(getString(R.string.enter_otp));
@@ -38,13 +39,18 @@ public class RefundOTPFragment extends BaseFragment<GenerateOtpFragmentLayoutBin
     }
 
     @Override
-    protected void setUp(Bundle savedInstanceState) {
+    public int getLayoutId() {
+        return R.layout.generate_otp_fragment_layout;
+    }
+
+    @Override
+    protected void initUi(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(RefundViewModel.class);
-        txnNo = getArguments().getString("txn_no");
+        txnNo = getIntent().getExtras().getString("txn_no", "");
 
         binding.btnVerifyOtp.setOnClickListener(v -> {
             if (isValidate()) {
-                Utils.showCustomProgressDialog(getContext(), false);
+                Utils.showCustomProgressDialog(this, false);
                 String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
                         .getKey(getSessionManager().getMerchantName())).trim();
 
@@ -60,12 +66,13 @@ public class RefundOTPFragment extends BaseFragment<GenerateOtpFragmentLayoutBin
                 viewModel.refundTransaction(request
                         , KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
                                 .getKey(getSessionManager().getMerchantName())).trim())
-                        .observe(getViewLifecycleOwner(), response -> {
+                        .observe(this, response -> {
 
                             Utils.hideCustomProgressDialog();
                             if (response.status == Status.ERROR) {
                                 onMessage(getString(response.messageResourceId));
                             } else if (response.status == Status.SUCCESS) {
+                                assert response.resource != null;
                                 onMessage(response.resource.description);
                                 Handler mHandler;
                                 mHandler = new Handler();
@@ -73,7 +80,7 @@ public class RefundOTPFragment extends BaseFragment<GenerateOtpFragmentLayoutBin
                                     @Override
                                     public void run() {
                                         mHandler.removeCallbacks(this);
-                                        getBaseActivity().finish();
+                                        finish();
                                     }
                                 }, 400);
                             }
@@ -81,11 +88,5 @@ public class RefundOTPFragment extends BaseFragment<GenerateOtpFragmentLayoutBin
                         });
             }
         });
-
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.generate_otp_fragment_layout;
     }
 }

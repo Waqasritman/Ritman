@@ -15,10 +15,10 @@
     <string name="error_internet">Internet connection cannot be established. Please ensure your device have internet access and try again.</string>
     <string name="error_server">Cannot establish connection with the server. Please try again later.</string>
 
-
+    <string name="to_continue_text">to continue</string>
     <string name="error_fatal">An error has been encountered while processing your request! Please try again later.</string>
 
-
+    <string name="text_login_in">Log in</string>
     <string name="grant_permission">Grant Permission</string>
     <string name="permission_camera">This app needs camera permission to scan barcode</string>
 
@@ -1230,6 +1230,13 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="error_selct_from_date">Select from date</string>
     <string name="error_selct_to_date">Select to date</string>
     <string name="transaction_id_txt_">Trans id:</string>
+    <string name="remember_me_text">Remember me</string>
+    <string name="book_bus_ticket">Book a bus ticket</string>
+    <string name="select_source">Select source</string>
+    <string name="select_dis">Select Destination</string>
+    <string name="route_txt">Route</string>
+    <string name="find_bus_txt">Find bus</string>
+    <string name="dep_date_txt">Departure date</string>
 
     <string-array name="arrayFingerTypeThumb">
         <item>6~RightThumb</item>

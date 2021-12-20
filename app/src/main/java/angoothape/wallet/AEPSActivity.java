@@ -23,7 +23,6 @@ import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -79,14 +78,14 @@ import ir.androidexception.datatable.model.DataTableHeader;
 import ir.androidexception.datatable.model.DataTableRow;
 import angoothape.wallet.aeps.global.Verhoeff;
 import angoothape.wallet.aeps.maskedittext.MaskedEditText;
-import angoothape.wallet.aeps.model.DeviceInfo;
-import angoothape.wallet.aeps.model.Opts;
-import angoothape.wallet.aeps.model.PidData;
-import angoothape.wallet.aeps.model.PidOptions;
-import angoothape.wallet.aeps.model.uid.AuthReq;
-import angoothape.wallet.aeps.model.uid.AuthRes;
-import angoothape.wallet.aeps.model.uid.Meta;
-import angoothape.wallet.aeps.model.uid.Uses;
+import angoothape.wallet.di.model.DeviceInfo;
+import angoothape.wallet.di.model.Opts;
+import angoothape.wallet.di.model.PidData;
+import angoothape.wallet.di.model.PidOptions;
+import angoothape.wallet.di.model.uid.AuthReq;
+import angoothape.wallet.di.model.uid.AuthRes;
+import angoothape.wallet.di.model.uid.Meta;
+import angoothape.wallet.di.model.uid.Uses;
 import angoothape.wallet.aeps.signer.XMLSigner;
 import angoothape.wallet.aeps.viewmodels.AEPSViewModel;
 import angoothape.wallet.base.RitmanBaseActivity;
@@ -852,13 +851,11 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        //  onMessage(getString(response.messageResourceId));
+                         onMessage(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             Toast.makeText(this, response.resource.description, Toast.LENGTH_SHORT).show();
-
-
                             binding.activityMain.setVisibility(View.INVISIBLE);
                             binding.relativeReciept.setVisibility(View.VISIBLE);
                             String bodyy = AESHelper.decrypt(response.resource.data.body
@@ -870,11 +867,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
 
 
                                 AEPS_Trans_Response data = gson.fromJson(bodyy, type);
-
-
                                 getTransactionData(data.decrypted_Response);
-
-
                                 binding.bcName.setText(data.bC_Name);
                                 binding.agentId.setText(data.agent_ID);
                             } catch (Exception e) {
@@ -882,7 +875,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                             }
                         } else {
                             showPopup(response.resource.description, "Error", true);
-                            //     Toast.makeText(this, response.resource.description, Toast.LENGTH_SHORT).show();
 
                         }
                     }

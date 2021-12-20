@@ -148,23 +148,7 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
         });
 
 
-      binding.rememberMeBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-           if (isChecked) {
-        if (!TextUtils.isEmpty(binding.countryCodeTextView
-                .getText().toString()) &&
-                !TextUtils.isEmpty(binding.mobilesignupb.getText().toString()) && !url.isEmpty()) {
 
-            getSessionManager().userPhoneRemember(url,
-                    binding.countryCodeTextView.getText().toString()
-                    , binding.mobilesignupb.getText().toString()
-            );
-        }
-          } else {
-                ((MainActivityLoginSignUp) getBaseActivity())
-                       .sessionManager.userPhoneRemember(getSessionManager().getURLFlag(),
-                       "", "");
-            }
-      });
     }
 
     @Override
@@ -189,10 +173,7 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
                         .getText().toString()) &&
                         !TextUtils.isEmpty(binding.mobilesignupb.getText().toString()) && !url.isEmpty()) {
 
-                    getSessionManager().userPhoneRemember(url,
-                            binding.countryCodeTextView.getText().toString()
-                            , binding.mobilesignupb.getText().toString()
-                    );
+
 
                 }
             }

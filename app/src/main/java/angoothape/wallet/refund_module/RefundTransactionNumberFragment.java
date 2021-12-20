@@ -1,5 +1,6 @@
 package angoothape.wallet.refund_module;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -45,7 +46,6 @@ public class RefundTransactionNumberFragment extends BaseFragment<RefundTransact
     protected void setUp(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(RefundViewModel.class);
 
-
         binding.btnNext.setOnClickListener(v -> {
             if (isValidate()) {
                 Utils.showCustomProgressDialog(getContext(), false);
@@ -55,7 +55,7 @@ public class RefundTransactionNumberFragment extends BaseFragment<RefundTransact
                 GenerateOTPRefund otpRequest = new GenerateOTPRefund();
                 otpRequest.Txn_no = binding.transactionNo.getText().toString();
                 String body = RestClient.makeGSONString(otpRequest);
-                Log.e("body", body);
+
                 AERequest request = new AERequest();
                 request.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
@@ -68,14 +68,16 @@ public class RefundTransactionNumberFragment extends BaseFragment<RefundTransact
                             if (response.status == Status.ERROR) {
                                 onMessage(getString(response.messageResourceId));
                             } else if (response.status == Status.SUCCESS) {
+                                assert response.resource != null;
                                 if (response.resource.responseCode.equals(101)) {
-                                    String bodyy = AESHelper.decrypt(response.resource.data.body
-                                            , gKey);
+
                                     try {
-                                        Gson gson = new Gson();
-                                        Type type = new TypeToken<RefundOTPResponse>() {
-                                        }.getType();
-                                        RefundOTPResponse data = gson.fromJson(bodyy, type);
+
+                                        Intent intent = new Intent(getBaseActivity()
+                                                , RefundOTPFragment.class);
+                                        intent.putExtra("txn_no", binding.transactionNo.getText().toString());
+                                        getBaseActivity().startActivity(intent);
+                                        getBaseActivity().finish();
 
                                     } catch (Exception e) {
                                         e.printStackTrace();

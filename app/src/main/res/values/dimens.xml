@@ -48,4 +48,6 @@
     <dimen name="width_80dp">80dp</dimen>
     <dimen name="spacing_mlarge">5dp</dimen>
     <dimen name="text_width_rating_35">35dp</dimen>
+    <dimen name="size_app_text_xlarge">22sp</dimen>
+    <dimen name="text_19sp">19sp</dimen>
 </resources>

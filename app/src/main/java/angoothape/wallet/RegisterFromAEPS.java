@@ -8,21 +8,16 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
-import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
-
-import java.lang.reflect.Type;
 
 import angoothape.wallet.aeps.activity.SelectDeviceActivity;
 import angoothape.wallet.base.RitmanBaseActivity;
 import angoothape.wallet.databinding.ActivityRegisterFromAEPSBinding;
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
-import angoothape.wallet.di.JSONdi.restRequest.RegisterCustomerResponse;
 import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
-import angoothape.wallet.model.RegisterModel;
+import angoothape.wallet.di.RegisterModel;
 import angoothape.wallet.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Response;

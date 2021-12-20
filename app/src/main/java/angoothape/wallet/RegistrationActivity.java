@@ -17,13 +17,12 @@ import angoothape.wallet.di.JSONdi.restRequest.RegisterCustomerResponse;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.fragments.BaseFragment;
 import angoothape.wallet.interfaces.OnDecisionMade;
-import angoothape.wallet.model.RegisterModel;
+import angoothape.wallet.di.RegisterModel;
 import angoothape.wallet.utils.Utils;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 

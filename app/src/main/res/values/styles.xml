@@ -19,6 +19,19 @@
         <item name="android:colorControlActivated">@color/posGreen</item>
 
     </style>
+    <style name="Text14spMedium" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+
+    <style name="Text16spSemiBold" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="fontFamily">@font/montserrat_semibold</item>
+    </style>
+
 
     <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
         <item name="android:windowNoTitle">true</item>
