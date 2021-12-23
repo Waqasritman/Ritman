@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/register_beneficiary_navigation" />
+            app:navGraph="@navigation/bus_booking_navigation" />
 
     </LinearLayout>
 </layout>

@@ -87,7 +87,7 @@ Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_EKYC(
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_RitpayDomesticbaseurl(JNIEnv *env, jclass clazz) {
-    std::string baseURL = "https://122.187.215.20/RitpayDomesticRestAPIUAT/RitmanPay/";
+    std::string baseURL = "https://122.187.215.20/RitpayDomesticRestAPIUAT/RPAY/";
     return env->NewStringUTF(baseURL.c_str());
 }
 

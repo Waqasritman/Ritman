@@ -1237,6 +1237,13 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="route_txt">Route</string>
     <string name="find_bus_txt">Find bus</string>
     <string name="dep_date_txt">Departure date</string>
+    <string name="bus_book_txt">Bus Booking</string>
+    <string name="booking_det_txt">Booking Details</string>
+    <string name="booking_from_txt">Booking From</string>
+    <string name="booing_to_txt">Booking To</string>
+    <string name="view_seats_txt">View Available Seats</string>
+    <string name="book_tickets_txt">Book ticket</string>
+    <string name="total_charges">Total</string>
 
     <string-array name="arrayFingerTypeThumb">
         <item>6~RightThumb</item>

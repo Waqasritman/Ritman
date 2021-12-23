@@ -8,6 +8,7 @@ import android.view.View;
 import angoothape.wallet.FundTransferToMerchantActivity;
 import angoothape.wallet.MerchantLedgerActivity;
 import angoothape.wallet.UploadCashDetailsActivity;
+import angoothape.wallet.bus_booking.BusBookingMainActivity;
 import angoothape.wallet.refund_module.RefundActivity;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -57,7 +58,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
         });
 
         binding.mobileTopUpCarview.setOnClickListener(view ->
-                        startActivity(new Intent(getActivity(), MobileTopUpMainActivity.class))
+                startActivity(new Intent(getActivity(), BusBookingMainActivity.class))
+                    //    startActivity(new Intent(getActivity(), MobileTopUpMainActivity.class))
                 //startActivity(new Intent(getActivity(), LoyalityPointsActivity.class))
         );
         binding.billPaymentCarview.setOnClickListener(view ->

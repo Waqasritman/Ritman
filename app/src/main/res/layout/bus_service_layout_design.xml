@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_10dp"
+        android:elevation="@dimen/margin_5dp"
+        app:cardCornerRadius="@dimen/margin_5dp"
+        app:cardElevation="@dimen/margin_5dp"
+        app:cardMaxElevation="@dimen/margin_5dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_15dp">
+
+
+            <TextView
+                android:id="@+id/agent_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/journey_date"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="SVR Tours Travels"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14sp" />
+
+
+            <TextView
+                android:id="@+id/bus_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/agent_name"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="VOLVO AC Semi Sleeper"
+                android:textSize="@dimen/text_size_14sp" />
+
+
+            <TextView
+                android:id="@+id/journey_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="2021-12-21"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_14sp" />
+
+            <RelativeLayout
+                android:id="@+id/time_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bus_type"
+                android:layout_marginTop="@dimen/margin_10dp">
+
+                <TextView
+                    android:id="@+id/starting_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Mumbai"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <TextView
+                    android:id="@+id/starting_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/starting_city"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:text="05:00 PM" />
+
+
+                <View
+                    android:id="@+id/view_start"
+                    android:layout_width="60dp"
+                    android:layout_height="1dip"
+                    android:layout_below="@id/starting_city"
+                    android:layout_toStartOf="@id/icon"
+                    android:background="@color/colorSpinner" />
+
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="@dimen/margin_25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_5dp"
+                    android:src="@drawable/mobile_top_up" />
+
+
+                <View
+                    android:id="@+id/view_end"
+                    android:layout_width="60dp"
+                    android:layout_height="1dip"
+                    android:layout_below="@id/starting_city"
+                    android:layout_toEndOf="@id/icon"
+                    android:background="@color/colorSpinner" />
+
+
+                <TextView
+                    android:id="@+id/end_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Mumbai"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <TextView
+                    android:id="@+id/end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/end_city"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:text="05:00 PM" />
+            </RelativeLayout>
+
+
+            <View
+                android:id="@+id/below_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_below="@id/time_layout"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@color/colorSpinner" />
+
+
+            <TextView
+                android:id="@+id/avail_seats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/below_view"
+                android:layout_marginTop="@dimen/margin_25dp"
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:layout_toStartOf="@id/select"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="53 available sets"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <Button
+                android:id="@+id/select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/below_view"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Select"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16sp" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -2,7 +2,9 @@ package angoothape.wallet.di.JSONdi.retrofit;
 
 
 import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
+import angoothape.wallet.di.JSONdi.restResponse.BusSeatingLayoutResponse;
 import angoothape.wallet.di.JSONdi.restResponse.DistributorDetailsResponse;
+import angoothape.wallet.di.JSONdi.restResponse.GetAvailableServicesResponse;
 import angoothape.wallet.di.JSONdi.restResponse.GetBalanceCustomerLimit;
 import angoothape.wallet.di.JSONdi.restResponse.GetBusStationsResponse;
 import okhttp3.RequestBody;
@@ -81,16 +83,25 @@ public interface RestApi {
     @POST("RitmanPay/Agent/FundTransferToMerchant")
     Call<SimpleResponse> fundTransferToMerchant(@Body RequestBody request, @Header("Username") String userName);
 
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("BusBooking/GetServiceSeatingLayout")
+    Call<BusSeatingLayoutResponse> getServiceSeatingLayout(@Body RequestBody request,
+                                                           @Header("Username") String userName);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
-    @POST("RPAY/BusBooking/GetBUSStations")
+    @POST("BusBooking/GetBUSStations")
     Call<GetBusStationsResponse> getBusStations(@Body RequestBody request,
                                                 @Header("Username") String userName);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
-    @POST("RPAY/BusBooking/GetBUSDestinationStations")
+    @POST("BusBooking/GetBUSDestinationStations")
     Call<GetBusStationsResponse> getDestinationBus(@Body RequestBody request,
                                                    @Header("Username") String userName);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("BusBooking/GetBusAvailableServices")
+    Call<GetAvailableServicesResponse> getAvailableService(@Body RequestBody request,
+                                                           @Header("Username") String userName);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Agent/GetDistributorMerchants")

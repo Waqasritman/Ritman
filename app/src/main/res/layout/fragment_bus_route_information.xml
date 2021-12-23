@@ -13,14 +13,17 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_15dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="@string/book_bus_ticket"
+            android:text="@string/booking_det_txt"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_22sp" />
 
+
         <TextView
+            android:id="@+id/selected_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_15dp"
+            android:layout_marginTop="@dimen/margin_10dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="@string/route_txt"
             android:textColor="@color/colorBlack"
@@ -47,11 +50,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_50dp"
                     android:background="@android:color/transparent"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/montserrat_medium"
                     android:gravity="center_vertical"
-                    android:hint="@string/select_source"
+                    android:hint="@string/booking_from_txt"
                     android:paddingStart="@dimen/margin_10dp"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/text_size_16sp" />
 
                 <View
@@ -64,11 +67,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_50dp"
                     android:background="@android:color/transparent"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/montserrat_medium"
                     android:gravity="center_vertical"
-                    android:hint="@string/select_dis"
+                    android:hint="@string/booing_to_txt"
                     android:paddingStart="@dimen/margin_10dp"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/text_size_16sp" />
 
 
@@ -76,46 +79,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_15dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@string/dep_date_txt"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/text_size_14sp" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_15dp"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:layout_marginEnd="@dimen/margin_15dp"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="3dp"
-            app:cardMaxElevation="3dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/select_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_50dp"
-                    android:background="@android:color/transparent"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center_vertical"
-                    android:hint="@string/select_date_txt"
-                    android:paddingStart="@dimen/margin_10dp"
-                    android:textSize="@dimen/text_size_16sp" />
-
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/find_bus"
@@ -126,7 +89,7 @@
             android:layout_marginEnd="@dimen/margin_15dp"
             android:background="@drawable/background_select_mood"
             android:backgroundTint="@color/colorPrimary"
-            android:text="@string/find_bus_txt"
+            android:text="@string/view_seats_txt"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 

@@ -34,6 +34,20 @@ public class DateAndTime {
         return format.format(calendar.getTime());
     }
 
+    public static String getBusFormat(int year, int monthOfYear, int dayOfMonth) {
+        Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
+        calendar.set(year, monthOfYear, dayOfMonth);
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+
+        return format.format(calendar.getTime());
+    }
+
+
+    public static String getBusFormat(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        return format.format(date.getTime());
+    }
 
     public static String setDateFormat(int year, int monthOfYear, int dayOfMonth) {
         Calendar calendar = Calendar.getInstance(Locale.ENGLISH);

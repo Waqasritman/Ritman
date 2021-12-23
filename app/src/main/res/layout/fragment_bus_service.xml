@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".bus_booking.fragments.BusServiceFragment">
+
+
+        <com.harrywhewell.scrolldatepicker.DayScrollDatePicker
+            android:id="@+id/day_date_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:paddingStart="@dimen/margin_10dp"
+            android:paddingEnd="0dp"
+            app:baseColor="@color/white"
+            app:baseTextColor="@color/black"
+            app:selectedColor="@color/cardview0"
+            app:selectedTextColor="@color/white"
+            app:showFullDate="false"
+            app:showTitle="false" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recyclerView"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15dp" />
+
+
+    </LinearLayout>
+</layout>
