@@ -529,7 +529,7 @@
     <string name="off_text">Off</string>
     <string name="wallet_to_wallet">Wallet To Wallet</string>
     <string name="search">Search</string>
-    <string name="phone_number_hint">7508 555555</string>
+    <string name="phone_number_hint">123456789</string>
     <string name="did_not_receive_otp">Did not received the OTP?</string>
     <string name="text_empty_string">--</string>
     <string name="msg_share_referral">Share Referral</string>
@@ -1244,6 +1244,13 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="view_seats_txt">View Available Seats</string>
     <string name="book_tickets_txt">Book ticket</string>
     <string name="total_charges">Total</string>
+    <string name="passenger_info">Passenger information</string>
+    <string name="cancel_booking">Cancel Booking</string>
+    <string name="canceldet_txt">Cancellation Details</string>
+    <string name="return_amount_txt">Return Amount:</string>
+    <string name="cancel_txt">Cancellation Charges:</string>
+    <string name="bus_book_txt_home">Bus \nBooking</string>
+    <string name="bill_desk">Bill desk</string>
 
     <string-array name="arrayFingerTypeThumb">
         <item>6~RightThumb</item>

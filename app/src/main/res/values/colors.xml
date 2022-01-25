@@ -5,11 +5,11 @@
     <color name="pinkblue_light">#9581F0</color>
     <color name="scanner_line">#00ceff</color>
     <color name="colorBlueSkyTwo">#DBE4F2</color>
-    <color name="colorGreen">#332D78</color>
+    <color name="colorGreen">#342E78</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorLightGrey">#F4F4F4</color>
-    <color name="colorYellow">#F1A104</color>
+    <color name="colorYellow">#FF8F30</color>
     <color name="colorSpinner">#BFBFBF</color>
     <color name="colorDarkGray">#FF000000</color>
     <color name="colorTransparent">#80000000</color>
@@ -28,7 +28,7 @@
     <color name="posGreen">@color/colorPrimary</color>
     <color name="color_app_text">@color/colorPrimary</color>
     <color name="color_toti">@color/colorPrimary</color>
-    <color name="colorPrimary">#332D78</color>
+    <color name="colorPrimary">#342E78</color>
     <color name="colorPrimaryDark">#3a40de</color>
     <color name="darkgrey">#707070</color>
     <color name="grey">#F6F6F6</color>

@@ -21,8 +21,18 @@
         android:label="BusRouteInformationFragment"
         tools:layout="@layout/fragment_bus_route_information" />
     <fragment
-        tools:layout="@layout/fragment_bus_seating"
         android:id="@+id/busSeatingFragment"
         android:name="angoothape.wallet.bus_booking.fragments.BusSeatingFragment"
-        android:label="BusSeatingFragment" />
+        android:label="BusSeatingFragment"
+        tools:layout="@layout/fragment_bus_seating" />
+    <fragment
+        android:id="@+id/busPassengerDetails"
+        android:name="angoothape.wallet.bus_booking.fragments.BusPassengerDetails"
+        android:label="BusPassengerDetails"
+        tools:layout="@layout/fragment_bus_passenger_details" />
+    <fragment
+        android:id="@+id/busSeatConfirmedFragment"
+        android:name="angoothape.wallet.bus_booking.fragments.BusSeatConfirmedFragment"
+        android:label="BusSeatConfirmedFragment"
+        tools:layout="@layout/fragment_bus_seat_confirmed" />
 </navigation>

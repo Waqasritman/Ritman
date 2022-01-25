@@ -280,7 +280,7 @@
                 android:layout_marginEnd="@dimen/margin_15dp"
                 android:background="@drawable/background_select_mood"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="@string/book_tickets_txt"
+                android:text="@string/next"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 

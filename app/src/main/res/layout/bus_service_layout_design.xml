@@ -91,7 +91,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/margin_5dp"
-                    android:src="@drawable/mobile_top_up" />
+                    android:src="@drawable/bus" />
 
 
                 <View

@@ -204,7 +204,7 @@ public class FilterDialog extends BaseDialogFragment<FilterDialogDesignBinding> 
 
         datePickerDialog.setThemeDark(false);
         datePickerDialog.showYearPickerFirst(false);
-        datePickerDialog.setAccentColor(Color.parseColor("#332D78"));
+        datePickerDialog.setAccentColor(Color.parseColor("#342E78"));
         datePickerDialog.setLocale(new Locale("en"));
         // if (isStartDate) {
         datePickerDialog.setMaxDate(calendar);

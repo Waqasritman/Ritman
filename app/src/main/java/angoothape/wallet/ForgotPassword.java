@@ -12,6 +12,7 @@ import angoothape.wallet.databinding.ActivityForgotPasswordBinding;
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.SimpleRequest;
+import angoothape.wallet.di.JSONdi.restRequest.SimpleRequestCred;
 import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
@@ -40,26 +41,14 @@ public class ForgotPassword extends RitmanBaseActivity<ActivityForgotPasswordBin
                 .setColorFilter(ContextCompat.getColor(this,
                         R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
 
-//        RootBeer rootBeer = new RootBeer(this);
-//        if (rootBeer.isRooted()) {
-//            binding.mainLayout.setVisibility(View.GONE);
-//            binding.rootedDeviceLayout.setVisibility(View.VISIBLE);
-//        } else {
-//            binding.mainLayout.setVisibility(View.VISIBLE);
-//            binding.rootedDeviceLayout.setVisibility(View.GONE);
-//
-//        }
 
         binding.toolBar.crossBtn.setVisibility(View.GONE);
 
-        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(binding.edtUserName.getText().toString().isEmpty()) {
-                    onMessage("Enter user name");
-                } else {
-                    getMerchantLogin();
-                }
+        binding.btnSubmit.setOnClickListener(v -> {
+            if(binding.edtUserName.getText().toString().isEmpty()) {
+                onMessage("Enter user name");
+            } else {
+                getMerchantLogin();
             }
         });
     }
@@ -71,8 +60,7 @@ public class ForgotPassword extends RitmanBaseActivity<ActivityForgotPasswordBin
         String gKey = KeyHelper.getKey(binding.edtUserName.getText().toString()).trim() + KeyHelper.getSKey(KeyHelper
                 .getKey(binding.edtUserName.getText().toString())).trim();
 
-        SimpleRequest loginRequest = new SimpleRequest();
-
+        SimpleRequestCred loginRequest = new SimpleRequestCred();
         String body = RestClient.makeGSONString(loginRequest);
         Log.e("vv", body);
 
@@ -87,9 +75,7 @@ public class ForgotPassword extends RitmanBaseActivity<ActivityForgotPasswordBin
             public void onResponse(Call<AEResponse> call, Response<AEResponse> response) {
                 Utils.hideCustomProgressDialog();
                 if (response.isSuccessful()) {
-
                     assert response.body() != null;
-
                     if(response.body().responseCode.equals(101)) {
                         String bodyy = AESHelper.decrypt(response.body().data.body
                                 , gKey);
@@ -106,7 +92,6 @@ public class ForgotPassword extends RitmanBaseActivity<ActivityForgotPasswordBin
                 Log.e("TAG", "onFailure: " + t.getLocalizedMessage());
             }
         });
-
 
     }
 

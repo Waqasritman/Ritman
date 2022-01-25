@@ -37,8 +37,8 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
         if (!getSessionManager().getUserNumberRemember().isEmpty()) {
             binding.edtUserName.setText(getSessionManager()
                     .getUserNumberRemember());
+            binding.rememberMeCheck.setChecked(true);
         }
-
 
         binding.rememberMeCheck.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
@@ -92,7 +92,6 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
      */
     @SuppressLint("ClickableViewAccessibility")
     private void changeVisibility() {
-
         binding.passwordSeen.setOnClickListener(v -> {
             if (isPasswordSeen) {
                 isPasswordSeen = false;
@@ -122,15 +121,14 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
                     if (response.body().responseCode.equals(101)) {
                         checkVerifiedEKYC();
                     } else if (response.body().responseCode.equals(504)) {
-                        Intent intent = new Intent(MerchantLoginActivity.this, VerifyOtpActivity.class);
+                        Intent intent = new Intent(MerchantLoginActivity.this,
+                                VerifyOtpActivity.class);
                         intent.putExtra("userName", binding.edtUserName.getText().toString());
                         startActivity(intent);
-
                     } else {
                         Utils.hideCustomProgressDialog();
                         onMessage(response.body().description);
                     }
-
                 }
             }
 

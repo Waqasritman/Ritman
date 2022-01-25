@@ -6,6 +6,9 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -63,8 +66,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import angoothape.wallet.adapters.AEPSMiniStatementAdapter;
+import angoothape.wallet.adapters.BusSeatingLayoutAdapter;
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
+import angoothape.wallet.di.JSONdi.restResponse.AEPSTransactionResponseOne;
 import angoothape.wallet.di.JSONdi.restResponse.AEPS_Trans_Response;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
@@ -171,9 +177,9 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     private Serializer serializer = null;
     private ArrayList<String> positions;
     String amount_a, iin_, txn_code_, customer_consent_, BankName_;
-    String[] columns_;
-    DataTable dataTable;
-    String typeMini;
+    // String[] columns_;
+    // DataTable dataTable;
+    // String typeMini;
     Bitmap bitmap;
     String PDF_Name, PDF_Type, PDF_Date;
 
@@ -191,7 +197,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     @Override
     protected void initUi(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(AEPSViewModel.class);
-        dataTable = findViewById(R.id.data_table);
+        //   dataTable = findViewById(R.id.data_table);
         ButterKnife.bind(this);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -210,51 +216,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
             txn_code_ = bundle.getString("TxnTypeCode");
         }
 
-//
-//        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-//                .getKey(getSessionManager().getMerchantName())).trim();
-//        Log.e("gKey: ", gKey);
-//        String bodyy = AESHelper.decrypt("8isXkblNu5rp8H12Scp9vNq1xxVEwk3e15DOJDz7u+ne8R7ehieSM8sQymJ88beJ+1qiyf53LE0NyIB1nqBsxOeyUsZVK4yg+dE31ipI3z5ZXbqcIuhdiZDVE9kAm1qormXSMkWpShYgZzSUHNrTTTBpsPEkl0cPZ5HvkNNVKDEReq5/FrUZR2mNK+hZAiGuCc1XZsbPWcSgtLu8IVRrtE5tnLUR082CmO5mSAubyzGhUi5+XD0GLawq9a9hj7o1CrRDm1hxlIxKHsCXNKOoVbiXLWSddF/uv/vKJqWpBANEs427kVPA8BG0equKEz10sEtSedzmh2w7K1N2bHitnGBIZ/QXatw5DoyqCCMRS3QR9H5PUDahbGdbNBKANL5BMCM35OpAmn6vVmYJ8xc7B++R2JbVRzweFNfpB0xAOQv/TFe+M7wNCLt1TGt+lldskOv9W35PFbL0MpqM6VjxPWnNHf4Uv3kN38kygmwclWew5dEGKqVd1Yb2l2olxyUcBL38AgoSTtheocHL2VMD6NmrZp38vXrgTM5P16P0NmTB0b+8bujtYQ2RhF5aInzqoeVKufS89PGCqXtvejSdvJA4ns8nXDkganb5bVj5DfUsINs5LFjVb1NFPkQNdyAV+vCGM4AAe42E5wvJQ6GDWDjJWjGlGN2eSghwvFmYN+E7ZxReVhD+zCs2Y5vS+WqFS6aE50PV692ODl+v1jg33MYP8T04DjGLW2EP7GGADB/8Am1cgqydlG7d2OQ3cYrxJcD+TbeAC3T66184B2lnybrNtxIDYAU9x4MZmSy4eiu1nx7CTC/K7WqZjKGLw1CPonEVZS9d5QMKwqOZV0Kgp14CFSD23spG3ywOtQDUGu6z3ac4xYmymR1PAsjNKAcM+3ZSkvrcrp2PWSy1hbiCQg==", gKey);
-//
-//        Log.e("setUp: ", bodyy);
-//
-//        binding.activityMain.setVisibility(View.INVISIBLE);
-//        binding.relativeReciept.setVisibility(View.VISIBLE);
-//
-//        try {
-//            Gson gson = new Gson();
-//            Type type = new TypeToken<AEPS_Trans_Response>() {
-//            }.getType();
-//
-//
-//            AEPS_Trans_Response data = gson.fromJson(bodyy, type);
-//
-//
-//            getTransactionData(data.decrypted_Response);
-//
-//
-//            binding.bcName.setText(data.bC_Name);
-//            binding.agentId.setText(data.agent_ID);
-//
-//
-////            float actualAmount = 0;
-////            try {
-////                float parsed = Float.parseFloat(data.decrypted_Response.balanceAmountActual);
-////                actualAmount = parsed / 100;
-////            } catch (Exception e) {
-////                Toast.makeText(this, String.valueOf(e.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
-////            }
-//
-////
-////            Log.e("setUp: ", String.valueOf(actualAmount));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-
-
-
-
         String[] arrayServiceType = {"Yes", "No"};
         ArrayAdapter adptService = new ArrayAdapter(AEPSActivity.this, android.R.layout.simple_list_item_1, arrayServiceType);
         adptService.setDropDownViewResource(android.R.layout.simple_list_item_1);
@@ -262,11 +223,8 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         binding.customerConsent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView parent, View view, int position, long id) {
-
-
                 if (position == 0) {
                     customer_consent_ = "1";
-
                 } else if (position == 1) {
                     customer_consent_ = "0";
                 }
@@ -278,59 +236,34 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         });
 
 
-      /*  String MiniStatementData="040621DR UMA 0000000000000125010004062100000000000000000000000000000000000000000000000000DR UMA   000002200000000000000000000000000040621DR UMA 000004500000040619DR ATM 000001500000040619DR UMA 000004500000040619DR UMA 000001400000040619DR000000000000000000000000 UMA 000001400000040618DR ATM 000001500000040617DR ATM 000000540000Balance 000014354300";
-
-        String MiniStatemen_ = MiniStatementData.substring(0,31);
-
-        ListItem li_ = null ;
-
-        for (int z = 0; z< MiniStatementData.length();z++)
-        {
-
-
-
-        }
-
-        String[] arrayMini=MiniStatementData.split("\\s");
-        List<String> al = new ArrayList<String>();
-        // Array to ArrayList Conversion
-        for (String ArrayListmini : arrayMini)
-            al.add(ArrayListmini);*/
-
-
-        binding.testu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                if (txn_code_.equals("31")) {
-                    binding.transAmountLinear.setVisibility(View.GONE);
-                    binding.activityMain.setVisibility(View.INVISIBLE);
-                    binding.relativeReciept.setVisibility(View.VISIBLE);
-                    // binding.titleService.setText("");
-
-                } else if (txn_code_.equals("07")) {
-                    binding.acBalanceLinear.setVisibility(View.GONE);
-                    binding.transAmountLinear.setVisibility(View.GONE);
-                    binding.activityMain.setVisibility(View.INVISIBLE);
-                    binding.relativeReciept.setVisibility(View.VISIBLE);
-                    binding.titleService.setText("Mini Statement");
-                } else if (txn_code_.equals("01")) {
-                    binding.transAmountLinear.setVisibility(View.VISIBLE);
-                    binding.activityMain.setVisibility(View.INVISIBLE);
-                    binding.relativeReciept.setVisibility(View.VISIBLE);
-                    binding.titleService.setText("Mini Statement");
-                    getColomData();
-                    SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss ");
-                    String currentDateandTime1 = sdf1.format(new Date());
-                    binding.timeAeps.setText(currentDateandTime1);
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy ");
-                    String currentDateandTime = sdf.format(new Date());
-                    binding.dateAeps.setText(currentDateandTime);
-                    binding.inernAmount.setVisibility(View.GONE);
-                }
-            }
-        });
+//        binding.testu.setOnClickListener(v -> {
+//            if (txn_code_.equals("31")) {
+//                binding.transAmountLinear.setVisibility(View.GONE);
+//                binding.activityMain.setVisibility(View.INVISIBLE);
+//                binding.relativeReciept.setVisibility(View.VISIBLE);
+//                // binding.titleService.setText("");
+//
+//            } else if (txn_code_.equals("07")) {
+//                binding.acBalanceLinear.setVisibility(View.GONE);
+//                binding.transAmountLinear.setVisibility(View.GONE);
+//                binding.activityMain.setVisibility(View.INVISIBLE);
+//                binding.relativeReciept.setVisibility(View.VISIBLE);
+//                binding.titleService.setText("Mini Statement");
+//            } else if (txn_code_.equals("01")) {
+//                binding.transAmountLinear.setVisibility(View.VISIBLE);
+//                binding.activityMain.setVisibility(View.INVISIBLE);
+//                binding.relativeReciept.setVisibility(View.VISIBLE);
+//                binding.titleService.setText("Mini Statement");
+//                getColomData();
+//                SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss ");
+//                String currentDateandTime1 = sdf1.format(new Date());
+//                binding.timeAeps.setText(currentDateandTime1);
+//                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//                String currentDateandTime = sdf.format(new Date());
+//                binding.dateAeps.setText(currentDateandTime);
+//                binding.inernAmount.setVisibility(View.GONE);
+//            }
+//        });
 
         binding.shareBtn.setOnClickListener(v -> {
             ShareDialog dialog = new ShareDialog(AEPSActivity.this);
@@ -341,69 +274,116 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
 
     }
 
-    public void getColomData() {
-        DataTableHeader header = new DataTableHeader.Builder()
-                .item("Date", 3)
-                .item("Mode of TXN", 5)
-                /* .item("Type", 2)
-                 .item("REF No", 3)*/
-                .item("D/C", 2)
-                .item("Amount", 4)
-
-                .build();
-        //Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/iran_sans.ttf");
-        String MiniStatementData = "38100100207002003UID00500210006350 040621DR UMA\n" +
-                "000001250100 040621CR UMA 000002200000 040621DR UMA 000004500000\n" +
-                "040619DR ATM 000001500000 040619DR UMA 000004500000 040619DR\n" +
-                "UMA 000001400000 040619DR UMA 000001400000 040618DR ATM\n" +
-                "000001500000 040617DR ATM 000000540000 Balance 000014354303";
-
-        String MiniStatemen_ = MiniStatementData.substring(35, MiniStatementData.length());
-
-        String MiniState_ = MiniStatemen_.split("Balance")[0].toString().replace("\n", " ");
-
-        String[] final_MiniState_ = MiniState_.split(" ");
-
-        String test_ = "", final_test_ = "";
-        int k_ = 0;
-        ArrayList<DataTableRow> rows_ = new ArrayList<>();
-        for (int i_ = 0; i_ < final_MiniState_.length / 3; i_++) {
-            test_ = "";
-            k_ = i_ * 3 + 3;
-            for (int j_ = i_ * 3; j_ < k_; j_++) {
-                test_ = test_ + "," + final_MiniState_[j_];
-            }
-
-            columns_ = test_.substring(1).split(",");
-
-            String final_date_ = (columns_[0].substring(0, 6)).substring(0, 2) + "/" +
-                    (columns_[0].substring(0, 6)).substring(2, 4) + "/" +
-                    (columns_[0].substring(0, 6)).substring(4);
-           /* if (columns_[0].substring(6).equals("DR")){
-                 typeMini="D";
-            }else if (columns_[0].substring(6).equals("CR")){
-               typeMini="C";
-            }*/
+    public void getColomData(AEPS_Trans_Response getAEPSTransactionResponse) {
+        binding.uidaiCode.setText(getAEPSTransactionResponse.decrypted_Response.uIDAIAuthenticationCode);
+        binding.stanTxt.setText(getAEPSTransactionResponse.decrypted_Response.sTAN);
+        binding.rrnTxt.setText(getAEPSTransactionResponse.decrypted_Response.rRN);
 
 
-            DataTableRow row = new DataTableRow.Builder()
-                    .value(final_date_)
-                    .value(columns_[1])
-                    /* .value(typeMini)*/
-                    /*.value("12145252")*/
-                    .value(columns_[0].substring(6))
-                    .value(columns_[2])
+        String adhar_no_last_4_digit = "", masked_aadhar_no = "";
 
-                    .build();
-            rows_.add(row);
-
+        if (binding.edtxAdharNo.getText().toString().length() == 12) {
+            adhar_no_last_4_digit = binding.edtxAdharNo.getText().toString().substring(8);
+            masked_aadhar_no = "********" + adhar_no_last_4_digit;
+        } else {
+            adhar_no_last_4_digit = binding.edtxAdharNo.getText().toString().substring(12);
+            masked_aadhar_no = "************" + adhar_no_last_4_digit;
         }
 
-        //  dataTable.setTypeface(tf);
-        dataTable.setHeader(header);
-        dataTable.setRows(rows_);
-        dataTable.inflate(this);
-        // binding.dataTable.setHeaderBackgroundColor(Color.parseColor("#141E61"));
+        binding.adharTxt.setText(masked_aadhar_no);
+        //  binding.adharTxt.setText(binding.edtxAdharNo.getText().toString());
+        // binding.aepsStatus.setText(getAEPSTransactionResponse.responseCode);
+        if (getAEPSTransactionResponse.decrypted_Response.responseCode == String.valueOf(68)) {
+            binding.aepsStatus.setText("Decline" + " (" + getAEPSTransactionResponse.responseCode + ")");
+        } else {
+            binding.aepsStatus.setText("Successful" + " (" + getAEPSTransactionResponse.responseCode + ")");
+        }
+        float actualAmount = 0;
+        try {
+            float parsed = Float.parseFloat(getAEPSTransactionResponse.decrypted_Response.balanceAmountActual);
+            actualAmount = parsed / 100;
+        } catch (Exception e) {
+            Toast.makeText(this, String.valueOf(e.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
+        }
+
+        binding.acBalanceAeps.setText("₹ " + String.valueOf(actualAmount));
+
+        binding.timeAeps.setText(getTime());
+        binding.dateAeps.setText(getDate());
+        PDF_Name = getAEPSTransactionResponse.decrypted_Response.retailerTxnId + "_" + PDF_Type;
+
+        AEPSMiniStatementAdapter lowerAdapter = new
+                AEPSMiniStatementAdapter(this, getAEPSTransactionResponse.miniStatementList);
+        binding.miniStatementRecycler.setLayoutManager(new LinearLayoutManager(getBaseContext()
+         , RecyclerView.VERTICAL , false));
+        binding.miniStatementRecycler.setHasFixedSize(true);
+        binding.miniStatementRecycler.setAdapter(lowerAdapter);
+
+
+
+
+//        DataTableHeader header = new DataTableHeader.Builder()
+//                .item("Date", 3)
+//                .item("Mode of TXN", 5)
+//                /* .item("Type", 2)
+//                 .item("REF No", 3)*/
+//                .item("D/C", 2)
+//                .item("Amount", 4)
+//
+//                .build();
+//        //Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/iran_sans.ttf");
+//        String MiniStatementData = "38100100207002003UID00500210006350 040621DR UMA\n" +
+//                "000001250100 040621CR UMA 000002200000 040621DR UMA 000004500000\n" +
+//                "040619DR ATM 000001500000 040619DR UMA 000004500000 040619DR\n" +
+//                "UMA 000001400000 040619DR UMA 000001400000 040618DR ATM\n" +
+//                "000001500000 040617DR ATM 000000540000 Balance 000014354303";
+//
+//        String MiniStatemen_ = MiniStatementData.substring(35, MiniStatementData.length());
+//
+//        String MiniState_ = MiniStatemen_.split("Balance")[0].toString().replace("\n", " ");
+//
+//        String[] final_MiniState_ = MiniState_.split(" ");
+//
+//        String test_ = "", final_test_ = "";
+//        int k_ = 0;
+//        ArrayList<DataTableRow> rows_ = new ArrayList<>();
+//        for (int i_ = 0; i_ < final_MiniState_.length / 3; i_++) {
+//            test_ = "";
+//            k_ = i_ * 3 + 3;
+//            for (int j_ = i_ * 3; j_ < k_; j_++) {
+//                test_ = test_ + "," + final_MiniState_[j_];
+//            }
+//
+//            columns_ = test_.substring(1).split(",");
+//
+//            String final_date_ = (columns_[0].substring(0, 6)).substring(0, 2) + "/" +
+//                    (columns_[0].substring(0, 6)).substring(2, 4) + "/" +
+//                    (columns_[0].substring(0, 6)).substring(4);
+//           /* if (columns_[0].substring(6).equals("DR")){
+//                 typeMini="D";
+//            }else if (columns_[0].substring(6).equals("CR")){
+//               typeMini="C";
+//            }*/
+//
+//
+//            DataTableRow row = new DataTableRow.Builder()
+//                    .value(final_date_)
+//                    .value(columns_[1])
+//                    /* .value(typeMini)*/
+//                    /*.value("12145252")*/
+//                    .value(columns_[0].substring(6))
+//                    .value(columns_[2])
+//
+//                    .build();
+//            rows_.add(row);
+//
+//        }
+//
+//        //  dataTable.setTypeface(tf);
+//        dataTable.setHeader(header);
+//        dataTable.setRows(rows_);
+//        dataTable.inflate(this);
+//        // binding.dataTable.setHeaderBackgroundColor(Color.parseColor("#141E61"));
 
 
     }
@@ -450,8 +430,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                             "</PidOptions>";*/
                         if (pidOption != null) {
                             Log.e("PidOptions", pidOption);
-
-
                             Intent intent2 = new Intent();
                             intent2.setAction("in.gov.uidai.rdservice.fp.CAPTURE");
                             intent2.putExtra("PID_OPTIONS", pidOption);
@@ -611,6 +589,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case 1:
                 if (resultCode == Activity.RESULT_OK) {
@@ -851,7 +830,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                         onMessage(getString(response.messageResourceId));
+                        onMessage(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -861,17 +840,48 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                             String bodyy = AESHelper.decrypt(response.resource.data.body
                                     , gKey);
                             try {
-                                Gson gson = new Gson();
-                                Type type = new TypeToken<AEPS_Trans_Response>() {
-                                }.getType();
 
+                                if (txn_code_.equals("31") || txn_code_.equals("01")) {
+                                    Gson gson = new Gson();
+                                    Type type = new TypeToken<AEPSTransactionResponseOne>() {}.getType();
+                                    AEPSTransactionResponseOne data = gson.fromJson(bodyy, type);
+                                    getTransactionData(data);
+                                    binding.bcName.setText(data.bC_Name);
+                                    binding.agentId.setText(data.agent_ID);
 
-                                AEPS_Trans_Response data = gson.fromJson(bodyy, type);
-                                getTransactionData(data.decrypted_Response);
-                                binding.bcName.setText(data.bC_Name);
-                                binding.agentId.setText(data.agent_ID);
+                                } else if (txn_code_.equals("07")) {
+                                    binding.acBalanceLinear.setVisibility(View.GONE);
+                                    binding.transAmountLinear.setVisibility(View.GONE);
+                                    binding.activityMain.setVisibility(View.GONE);
+                                    binding.relativeReciept.setVisibility(View.VISIBLE);
+                                    binding.titleService.setText("Mini Statement");
+                                    PDF_Type = "Mini_Statement";
+                                    try {
+                                        //if error is not there on mini
+                                        Gson gson1 = new Gson();
+                                        Type type1 = new TypeToken<AEPS_Trans_Response>(){}.getType();
+
+                                        AEPS_Trans_Response data1 = gson1.fromJson(bodyy, type1);
+                                        binding.bcName.setText(data1.bC_Name);
+                                        binding.agentId.setText(data1.agent_ID);
+                                        getColomData(data1);
+
+                                    } catch (Exception e1) {
+                                        e1.printStackTrace();
+                                        try {
+                                            Gson gson1 = new Gson();
+                                            Type type1 = new TypeToken<AEPSTransactionResponseOne>() {}.getType();
+                                            AEPSTransactionResponseOne data1 = gson1.fromJson(bodyy, type1);
+                                            showPopup(data1.miniStatementError.error, "Error", true);
+                                        } catch (Exception e2) {
+                                            e2.printStackTrace();
+                                        }
+                                    }
+                                }
+
                             } catch (Exception e) {
                                 e.printStackTrace();
+
                             }
                         } else {
                             showPopup(response.resource.description, "Error", true);
@@ -879,8 +889,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                         }
                     }
                 });
-
-
     }
 
 
@@ -893,8 +901,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         dialog.show(transaction, "");
     }
 
-    public void getTransactionData(DecryptedResponse getAEPSTransactionResponse) {
-
+    public void getTransactionData(AEPSTransactionResponseOne getAEPSTransactionResponse) {
 
         if (txn_code_.equals("31")) {
             binding.transAmountLinear.setVisibility(View.GONE);
@@ -903,14 +910,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
             // binding.titleService.setText("");
             PDF_Type = "Balance_Enquiry";
 
-        } else if (txn_code_.equals("07")) {
-            binding.acBalanceLinear.setVisibility(View.GONE);
-            binding.transAmountLinear.setVisibility(View.GONE);
-            binding.activityMain.setVisibility(View.INVISIBLE);
-            binding.relativeReciept.setVisibility(View.VISIBLE);
-            binding.titleService.setText("Mini Statement");
-            PDF_Type = "Mini_Statement";
-            getColomData();
         } else if (txn_code_.equals("01")) {
             binding.transAmountLinear.setVisibility(View.VISIBLE);
             binding.activityMain.setVisibility(View.INVISIBLE);
@@ -919,10 +918,9 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
             PDF_Type = "Cash_Withdrawal";
             binding.transAmountAeps.setText(amount_a);
         }
-
-        binding.uidaiCode.setText(getAEPSTransactionResponse.uIDAIAuthenticationCode);
-        binding.stanTxt.setText(getAEPSTransactionResponse.sTAN);
-        binding.rrnTxt.setText(getAEPSTransactionResponse.rRN);
+        binding.uidaiCode.setText(getAEPSTransactionResponse.decrypted_Response.uIDAIAuthenticationCode);
+        binding.stanTxt.setText(getAEPSTransactionResponse.decrypted_Response.sTAN);
+        binding.rrnTxt.setText(getAEPSTransactionResponse.decrypted_Response.rRN);
 
 
         String adhar_no_last_4_digit = "", masked_aadhar_no = "";
@@ -936,28 +934,28 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         }
 
         binding.adharTxt.setText(masked_aadhar_no);
-      //  binding.adharTxt.setText(binding.edtxAdharNo.getText().toString());
-       // binding.aepsStatus.setText(getAEPSTransactionResponse.responseCode);
-        if (getAEPSTransactionResponse.responseCode == String.valueOf(68)) {
+        //  binding.adharTxt.setText(binding.edtxAdharNo.getText().toString());
+        // binding.aepsStatus.setText(getAEPSTransactionResponse.responseCode);
+        if (getAEPSTransactionResponse.decrypted_Response.responseCode == String.valueOf(68)) {
             binding.aepsStatus.setText("Decline" + " (" + getAEPSTransactionResponse.responseCode + ")");
         } else {
             binding.aepsStatus.setText("Successful" + " (" + getAEPSTransactionResponse.responseCode + ")");
         }
         float actualAmount = 0;
         try {
-            float parsed = Float.parseFloat(getAEPSTransactionResponse.balanceAmountActual);
+            float parsed = Float.parseFloat(getAEPSTransactionResponse.decrypted_Response.balanceAmountActual);
             actualAmount = parsed / 100;
         } catch (Exception e) {
             Toast.makeText(this, String.valueOf(e.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
         }
 
         binding.acBalanceAeps.setText("₹ " + String.valueOf(actualAmount));
-      //  binding.transAmountAeps.setText("INR " + getAEPSTransactionResponse.balanceAmount);
+        //  binding.transAmountAeps.setText("INR " + getAEPSTransactionResponse.balanceAmount);
 
 
         binding.timeAeps.setText(getTime());
         binding.dateAeps.setText(getDate());
-        PDF_Name = getAEPSTransactionResponse.retailerTxnId + "_" + PDF_Type;
+        PDF_Name = getAEPSTransactionResponse.decrypted_Response.retailerTxnId + "_" + PDF_Type;
     }
 
 

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -609,27 +609,10 @@
                                 android:layout_gravity="center"
                                 android:orientation="vertical">
 
-                                <ir.androidexception.datatable.DataTable
-                                    android:id="@+id/data_table"
-                                    style="@style/textStyl"
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/mini_statement_recycler"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-
-                                    mask:corner_radius="8dp"
-                                    mask:direction="ltr"
-                                    mask:header_background_color="#000"
-                                    mask:header_gravity="center"
-                                    mask:header_horizontal_padding="1dp"
-                                    mask:header_text_color="#fff"
-                                    mask:header_text_size="5sp"
-                                    mask:header_vertical_padding="16dp"
-                                    mask:persian_number="false"
-                                    mask:row_background_color="#fff"
-                                    mask:row_gravity="center"
-                                    mask:row_text_color="#000"
-                                    mask:row_text_size="4sp"
-                                    mask:row_vertical_padding="16dp"
-                                    mask:shadow="8dp" />
+                                    android:layout_height="wrap_content" />
                             </LinearLayout>
 
 
@@ -663,6 +646,7 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/share_btn"
+                android:layout_margin="@dimen/margin_25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -679,7 +663,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/_5sdp"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ScrollView
                 android:layout_width="match_parent"

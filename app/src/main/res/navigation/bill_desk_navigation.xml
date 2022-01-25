@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bill_desk_navigation"
+    app:startDestination="@id/billDeskOptionsFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_bill_desk_options"
+        android:id="@+id/billDeskOptionsFragment"
+        android:name="angoothape.wallet.bill_desk.fragments.BillDeskOptionsFragment"
+        android:label="BillDeskOptionsFragment" />
+    <fragment
+        android:id="@+id/checkComplaintStatusFragment"
+        android:name="angoothape.wallet.bill_desk.fragments.CheckComplaintStatusFragment"
+        android:label="CheckComplaintStatusFragment" />
+    <fragment
+        android:id="@+id/complaintHistoryFragment"
+        android:name="angoothape.wallet.bill_desk.fragments.ComplaintHistoryFragment"
+        android:label="ComplaintHistoryFragment" />
+    <fragment
+        android:id="@+id/quickTransactionFragment"
+        android:name="angoothape.wallet.bill_desk.fragments.QuickTransactionFragment"
+        android:label="QuickTransactionFragment" />
+</navigation>

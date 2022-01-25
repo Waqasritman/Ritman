@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_15dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="@string/passenger_info"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_22sp" />
+
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_margin="@dimen/margin_10dp"
+            android:elevation="3dp"
+            app:cardCornerRadius="@dimen/margin_5dp"
+            app:cardElevation="3dp"
+            app:cardMaxElevation="3dp">
+
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_15dp">
+
+
+                <EditText
+                    android:inputType="phone"
+                    android:id="@+id/contact_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@drawable/border_circle_gray"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Contact no"
+                    android:paddingStart="@dimen/margin_10dp"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <EditText
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/email_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_below="@id/contact_no"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@drawable/border_circle_gray"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Email address"
+                    android:paddingStart="@dimen/margin_10dp"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:layout_below="@id/email_address"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@drawable/border_circle_gray"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Address"
+                    android:paddingStart="@dimen/margin_10dp"
+                    android:textSize="@dimen/text_size_14sp" />
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/book_ticket"
+            android:layout_below="@id/data_layout" />
+
+
+        <Button
+            android:id="@+id/book_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_15dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:layout_marginEnd="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:background="@drawable/background_select_mood"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="@string/book_tickets_txt"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+</layout>

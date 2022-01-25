@@ -28,11 +28,11 @@ public class AlertDialog extends BaseDialogFragment<AlertDialogLayoutBinding> {
     @Override
     protected void setUp(Bundle savedInstanceState) {
 
-        if(title != "") {
+        if (title != "") {
             binding.title.setText(title);
             binding.message.setText(message);
 
-            if (getActivity() instanceof NewDashboardActivity ){
+            if (getActivity() instanceof NewDashboardActivity) {
                 binding.yes.setBackgroundTintList(getContext().getResources().getColorStateList(R.color.colorPrimary));
             }
         }

@@ -305,7 +305,7 @@
                                     android:layout_height="25dp"
                                     android:layout_margin="@dimen/_5sdp"
                                     android:adjustViewBounds="true"
-                                    android:src="@drawable/mobile_top_up"
+                                    android:src="@drawable/bus"
                                     app:tint="@color/colorWhite" />
 
                                 <TextView
@@ -313,7 +313,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/lato_regular"
                                     android:gravity="center"
-                                    android:text="@string/mobile_top_up_home"
+                                    android:text="@string/bus_book_txt_home"
                                     android:textColor="@color/colorWhite"
                                     android:textSize="@dimen/_10sdp" />
                             </LinearLayout>

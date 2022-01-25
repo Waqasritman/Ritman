@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,14 +32,41 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
     @Override
     public int getLayoutId() {
         return R.layout.splash_login;
-        //return R.layout.option_login;
     }
 
 
     @Override
     protected void initUi(Bundle savedInstanceState) {
-        getOsVersion();
-        //  getCountry();
+
+        mHandler = new Handler();
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mHandler.removeCallbacks(this);
+                getOsVersion();
+
+            }
+        }, 7000);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startVideo();
+    }
+
+
+    void startVideo() {
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.logo);
+        binding.videoView.setVideoURI(uri);
+        binding.imgLogo.setVisibility(View.GONE);
+        binding.videoView.setVisibility(View.VISIBLE);
+        binding.videoView.setOnPreparedListener(mp -> {
+            binding.videoView.start();
+        });
+        binding.videoView.setOnCompletionListener(mp -> {
+            // Toast.makeText(getApplicationContext(), "Video completed", Toast.LENGTH_LONG).show();
+        });
     }
 
     public void getOsVersion() {
@@ -143,17 +171,9 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
 
 
     void goToNext() {
-        mHandler = new Handler();
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mHandler.removeCallbacks(this);
-                //  if (AppVersion.equals(ServerVersion)){
-                startActivity(new Intent(getApplicationContext(), MerchantLoginActivity.class));
-                finish();
+        startActivity(new Intent(getApplicationContext(), MerchantLoginActivity.class));
+        finish();
 
-            }
-        }, 2000);
     }
 
 

@@ -298,7 +298,7 @@ public class TakeKYCDataFragment extends BaseFragment<FragmentTakeKycDataBinding
 //        }
         datePickerDialog.setThemeDark(false);
         datePickerDialog.showYearPickerFirst(true);
-        datePickerDialog.setAccentColor(Color.parseColor("#332D78"));
+        datePickerDialog.setAccentColor(Color.parseColor("#342E78"));
         datePickerDialog.setLocale(new Locale("en"));
         if (isIssueDateSelect) {
             datePickerDialog.setMaxDate(calendar);

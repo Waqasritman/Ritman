@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
@@ -17,7 +18,9 @@ import angoothape.wallet.di.JSONdi.Status;
 import angoothape.wallet.di.JSONdi.models.BoardingInfo;
 import angoothape.wallet.fragments.BaseFragment;
 import angoothape.wallet.interfaces.OnSelectSeat;
+import angoothape.wallet.utils.Utils;
 import angoothape.wallet.viewmodels.BusBookingViewModel;
+import okhttp3.internal.Util;
 
 public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
         implements OnSelectSeat {
@@ -29,14 +32,11 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
 
     List<BoardingInfo> selectedSeats;
 
-    BusBookingViewModel viewModel;
+    public BusBookingViewModel viewModel;
 
     BusSeatingLayoutAdapter lowerAdapter;
     BusSeatingLayoutAdapter upperAdapter;
 
-    public BusSeatingFragment() {
-        // Required empty public constructor
-    }
 
     @Override
     protected void injectView() {
@@ -46,15 +46,16 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
     @Override
     protected void setUp(Bundle savedInstanceState) {
         viewModel = ((BusBookingMainActivity) getBaseActivity()).viewModel;
-        upperBoardingInfo = new ArrayList<>();
-        lowerBoardingInfo = new ArrayList<>();
+
         selectedSeats = new ArrayList<>();
+        selectedSeats.addAll(viewModel.selectedSeats);
+
         setupLowerRecyclerView();
         setupUpperRecyclerView();
+
         getSeatingLayout();
 
         binding.fare.setText("Fare: INR ".concat(viewModel.busSeatingLayoutRequest.seatFareList));
-
 
         binding.upperDesk.setOnClickListener(v -> {
             binding.upperDesk.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -64,9 +65,6 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
             binding.lowerDesk.setTextColor(getResources().getColor(R.color.colorBlack));
             binding.upperRecyclerView.setVisibility(View.VISIBLE);
             binding.lowerRecyclerView.setVisibility(View.GONE);
-//            boardingInfoList.clear();
-//            boardingInfoList.addAll(getSeatLayout(upperDiskSeats, false));
-//            adapter.notifyDataSetChanged();
         });
 
 
@@ -78,9 +76,14 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
             binding.upperDesk.setTextColor(getResources().getColor(R.color.colorBlack));
             binding.upperRecyclerView.setVisibility(View.GONE);
             binding.lowerRecyclerView.setVisibility(View.VISIBLE);
-//            boardingInfoList.clear();
-//            boardingInfoList.addAll(getSeatLayout(lowerDiskSeats, true));
-//            adapter.notifyDataSetChanged();
+        });
+
+
+        binding.findBus.setOnClickListener(v -> {
+            viewModel.selectedSeats.clear();
+            viewModel.selectedSeats.addAll(selectedSeats);
+            Navigation.findNavController(binding.getRoot())
+                    .navigate(R.id.busPassengerDetails);
         });
     }
 
@@ -88,7 +91,7 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
     private void setupLowerRecyclerView() {
         GridLayoutManager mLayoutManager = new GridLayoutManager(getBaseActivity(), 3);
         lowerAdapter = new
-                BusSeatingLayoutAdapter(getContext(), lowerBoardingInfo, this);
+                BusSeatingLayoutAdapter(this, lowerBoardingInfo, this);
         binding.lowerRecyclerView.setLayoutManager(mLayoutManager);
         binding.lowerRecyclerView.setHasFixedSize(true);
         binding.lowerRecyclerView.setAdapter(lowerAdapter);
@@ -97,7 +100,7 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
     private void setupUpperRecyclerView() {
         GridLayoutManager mLayoutManager = new GridLayoutManager(getBaseActivity(), 3);
         upperAdapter = new
-                BusSeatingLayoutAdapter(getContext(), upperBoardingInfo, this);
+                BusSeatingLayoutAdapter(this, upperBoardingInfo, this);
         binding.upperRecyclerView.setLayoutManager(mLayoutManager);
         binding.upperRecyclerView.setHasFixedSize(true);
         binding.upperRecyclerView.setAdapter(upperAdapter);
@@ -105,13 +108,18 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
 
 
     public void getSeatingLayout() {
-        viewModel.getBusSeatingLayoutRequest(viewModel.busSeatingLayoutRequest, getSessionManager().getMerchantName())
+        Utils.showCustomProgressDialog(getBaseActivity(), false);
+        viewModel.getBusSeatingLayoutRequest(viewModel.busSeatingLayoutRequest,
+                getSessionManager().getMerchantName())
                 .observe(getViewLifecycleOwner(), response -> {
+                    Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
                         onMessage(getString(response.messageResourceId));
                     } else if (response.status == Status.SUCCESS) {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
+                            upperBoardingInfo = new ArrayList<>();
+                            lowerBoardingInfo = new ArrayList<>();
                             lowerBoardingInfo.clear();
                             upperBoardingInfo.clear();
                             lowerDiskSeats = new ArrayList<>();
@@ -125,12 +133,25 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
                             binding.lowerRecyclerView.setVisibility(View.VISIBLE);
                             binding.upperRecyclerView.setVisibility(View.GONE);
 
+                            lowerAdapter.fillData(lowerBoardingInfo);
+                            upperAdapter.fillData(upperBoardingInfo);
                             lowerAdapter.notifyDataSetChanged();
                             upperAdapter.notifyDataSetChanged();
+
+                            if (response.resource.data.seatLayout.isAcSeat != null) {
+                                viewModel.isAcSeat = response.resource.data.seatLayout.isAcSeat;
+                            }
+                            viewModel.seatLayoutUniqueId = response.resource.data.seatLayout.seatLayoutUniqueId;
+                            viewModel.additionalInfoValue = response.resource.data.seatLayout.additionalInfoValue;
+
+                            if (!selectedSeats.isEmpty()) {
+                                detectInvoice();
+                            }
                         }
                     }
                 });
     }
+
 
     public List<BoardingInfo> getSeatLayout(List<String> seatsLayout, boolean lower) {
         List<BoardingInfo> boardingInfoList = new ArrayList<>();
@@ -146,16 +167,16 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
             count++;
             BoardingInfo boardingInfo = new BoardingInfo();
             boardingInfo.id = count;
-            boardingInfo.seatNo = layout[0];
-            boardingInfo.rowNo = layout[1];
-            boardingInfo.colNo = layout[2];
-            boardingInfo.seatType = layout[3];
-            boardingInfo.availbility = layout[4];
-            boardingInfo.gender = layout[5];
-            boardingInfo.fare = layout[6];
-            boardingInfo.seatTypeId = layout[7];
-            boardingInfo.serviceTax = layout[8];
-            boardingInfo.childFare = layout[9];
+            boardingInfo.seatNo = layout[0].replace(" ", "");
+            boardingInfo.rowNo = layout[1].replace(" ", "");
+            boardingInfo.colNo = layout[2].replace(" ", "");
+            boardingInfo.seatType = layout[3].replace(" ", "");
+            boardingInfo.availbility = layout[4].replace(" ", "");
+            boardingInfo.gender = layout[5].replace(" ", "");
+            boardingInfo.fare = layout[6].replace(" ", "");
+            boardingInfo.seatTypeId = layout[7].replace(" ", "");
+            boardingInfo.serviceTax = layout[8].replace(" ", "");
+            boardingInfo.childFare = layout[9].replace(" ", "");
 
             boardingInfoList.add(boardingInfo);
         }
@@ -170,28 +191,23 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
     @Override
     public void onSelectSeat(BoardingInfo boardingInfo) {
         binding.summaryView.setVisibility(View.VISIBLE);
-        selectedSeats.add(boardingInfo);
-        addInvoice(boardingInfo);
 
-//        if (viewModel.busBlockTicketRequest.seatNumbersList.isEmpty()) {
-//            viewModel.busBlockTicketRequest.seatNumbersList = boardingInfo.seatNo;
-//            viewModel.busBlockTicketRequest.genderlist = boardingInfo.gender;
-//            viewModel.busBlockTicketRequest.seatFareList = boardingInfo.fare;
-//            viewModel.busBlockTicketRequest.seatTypeIds = boardingInfo.seatTypeId;
-//            viewModel.busBlockTicketRequest.seatTypesList = boardingInfo.seatType;
-//        } else {
-//            viewModel.busBlockTicketRequest.seatNumbersList =
-//                    viewModel.busBlockTicketRequest.seatNumbersList.concat(",").concat(boardingInfo.seatNo);
-//            viewModel.busBlockTicketRequest.genderlist =
-//                    viewModel.busBlockTicketRequest.genderlist.concat(",").concat(boardingInfo.gender);
-//            viewModel.busBlockTicketRequest.seatFareList =
-//                    viewModel.busBlockTicketRequest.seatFareList.concat(",").concat(boardingInfo.fare);
-//            viewModel.busBlockTicketRequest.seatTypeIds =
-//                    viewModel.busBlockTicketRequest.seatTypeIds.concat(",").concat(boardingInfo.seatTypeId);
-//            viewModel.busBlockTicketRequest.seatTypesList =
-//                    viewModel.busBlockTicketRequest.seatTypesList.concat(",").concat(boardingInfo.seatType);
-//        }
+        if (!boardingInfo.isSelected) {
+            boardingInfo.isSelected = true;
+            selectedSeats.add(boardingInfo);
+            addInvoice(boardingInfo);
+        }
 
+
+    }
+
+    public boolean getIsThere(BoardingInfo selectedSeats) {
+        for (int i = 0; i < viewModel.selectedSeats.size(); i++) {
+            if (selectedSeats.id == viewModel.selectedSeats.get(i).id) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -243,7 +259,17 @@ public class BusSeatingFragment extends BaseFragment<FragmentBusSeatingBinding>
             binding.tvInvoiceOderTotal.setText(String.valueOf(total));
 
         }
+        if (selectedSeats.isEmpty()) {
+            binding.summaryView.setVisibility(View.GONE);
+        } else {
+            binding.summaryView.setVisibility(View.VISIBLE);
+        }
 
+
+    }
+
+
+    public void showSummary() {
 
     }
 

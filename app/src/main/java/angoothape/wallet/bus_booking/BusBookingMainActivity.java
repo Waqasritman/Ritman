@@ -47,7 +47,8 @@ public class BusBookingMainActivity extends RitmanBaseActivity<ActivityBusBookin
 
     @Override
     public void onBackPressed() {
-        if (navController.getCurrentDestination().getId() == R.id.busStationsFragment) {
+        if (navController.getCurrentDestination().getId() == R.id.busSeatConfirmedFragment
+                || navController.getCurrentDestination().getId() == R.id.busStationsFragment) {
             finish();
         } else {
             navController.navigateUp();

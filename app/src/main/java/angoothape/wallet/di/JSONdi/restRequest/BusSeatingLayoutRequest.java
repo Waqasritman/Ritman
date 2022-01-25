@@ -14,9 +14,18 @@ public class BusSeatingLayoutRequest implements Parcelable {
     public String layoutId;
     public String Source_ID;
     public String seatFareList;
+    public String boardingPointID;
+    public String droppingPointID;
+
+
+    public String startStation;
+    public String startTime;
+    public String endStation;
+    public String endTime;
 
     public BusSeatingLayoutRequest() {
     }
+
 
     protected BusSeatingLayoutRequest(Parcel in) {
         Credentials = in.readParcelable(angoothape.wallet.di.JSONdi.restRequest.Credentials.class.getClassLoader());
@@ -29,39 +38,8 @@ public class BusSeatingLayoutRequest implements Parcelable {
         layoutId = in.readString();
         Source_ID = in.readString();
         seatFareList = in.readString();
-    }
-
-    public static final Creator<BusSeatingLayoutRequest> CREATOR = new Creator<BusSeatingLayoutRequest>() {
-        @Override
-        public BusSeatingLayoutRequest createFromParcel(Parcel in) {
-            return new BusSeatingLayoutRequest(in);
-        }
-
-        @Override
-        public BusSeatingLayoutRequest[] newArray(int size) {
-            return new BusSeatingLayoutRequest[size];
-        }
-    };
-
-    @Override
-    public String toString() {
-        return "{" +
-                "Credentials=" + Credentials +
-                ", operator_id='" + operator_id + '\'' +
-                ", journey_date='" + journey_date + '\'' +
-                ", service_id='" + service_id + '\'' +
-                ", designation_id='" + designation_id + '\'' +
-                ", singleLady='" + singleLady + '\'' +
-                ", concessionId='" + concessionId + '\'' +
-                ", layoutId='" + layoutId + '\'' +
-                ", Source_ID='" + Source_ID + '\'' +
-                ", seatFareList='" + seatFareList + '\'' +
-                '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        boardingPointID = in.readString();
+        droppingPointID = in.readString();
     }
 
     @Override
@@ -76,5 +54,24 @@ public class BusSeatingLayoutRequest implements Parcelable {
         dest.writeString(layoutId);
         dest.writeString(Source_ID);
         dest.writeString(seatFareList);
+        dest.writeString(boardingPointID);
+        dest.writeString(droppingPointID);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<BusSeatingLayoutRequest> CREATOR = new Creator<BusSeatingLayoutRequest>() {
+        @Override
+        public BusSeatingLayoutRequest createFromParcel(Parcel in) {
+            return new BusSeatingLayoutRequest(in);
+        }
+
+        @Override
+        public BusSeatingLayoutRequest[] newArray(int size) {
+            return new BusSeatingLayoutRequest[size];
+        }
+    };
 }

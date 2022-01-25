@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_15dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_semibold"
+                android:text="Query Transaction"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_22sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:lineSpacingExtra="5dp"
+                android:text="You can verify the status of your online Transaction by entering your mobile number or transaction ref.id"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_14sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:text="Enter Mobile no"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <EditText
+                android:id="@+id/seach_bene"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@drawable/background_select_mood"
+                android:hint="@string/phone_number_hint"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="@dimen/margin_10dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/issuance_country_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/select_from_date" />
+
+            <TextView
+                android:id="@+id/issuance_country"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_select_mood"
+                android:drawableEnd="@drawable/ic_calendar"
+                android:gravity="center_vertical"
+                android:hint="DD/MM/YYYY"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/select_to_date" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_select_mood"
+                android:drawableEnd="@drawable/ic_calendar"
+                android:gravity="center_vertical"
+                android:hint="DD/MM/YYYY"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_25dp"
+                android:fontFamily="@font/lato_semibold"
+                android:text="Or"
+                android:textSize="@dimen/text_size_22sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:text="Enter Transaction ref.id"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@drawable/background_select_mood"
+                android:hint="@string/phone_number_hint"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="@dimen/margin_10dp"
+                android:singleLine="true" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_25dp"
+                android:background="@drawable/background_button"
+                android:fontFamily="@font/lato_semibold"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/colorYellow"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_18sp" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

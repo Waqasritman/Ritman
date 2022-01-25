@@ -87,12 +87,11 @@ public class BusStationsFragment extends BaseFragment<FragmentBusStationsBinding
 
 
         binding.selectDate.setOnClickListener(v -> {
-            showPickerDialog("Select journey date");
+            showPickerDialog();
         });
 
 
         binding.findBus.setOnClickListener(v -> {
-
             if (binding.selectSource.getText().toString().isEmpty()) {
                 onMessage("Select Source Bus station");
             } else if (binding.selectDestination.getText().toString().isEmpty()) {
@@ -102,12 +101,9 @@ public class BusStationsFragment extends BaseFragment<FragmentBusStationsBinding
             } else {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("data", busAvailableServiceRequest);
-
                 Navigation.findNavController(binding.getRoot())
                         .navigate(R.id.busServiceFragment, bundle);
             }
-
-
         });
 
     }
@@ -139,7 +135,7 @@ public class BusStationsFragment extends BaseFragment<FragmentBusStationsBinding
     /**
      * dialog code for show date picker
      */
-    private void showPickerDialog(String title) {
+    private void showPickerDialog() {
         Calendar calendar = Calendar.getInstance();
 
 
@@ -148,18 +144,16 @@ public class BusStationsFragment extends BaseFragment<FragmentBusStationsBinding
         int Day = calendar.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = DatePickerDialog
                 .newInstance(this, Year, Month, Day);
-//        if(isDateOfBirth) {
-//            Year = calendar.get(Calendar.YEAR - 18);
-//        }
+
         datePickerDialog.setThemeDark(false);
         datePickerDialog.showYearPickerFirst(false);
-        datePickerDialog.setAccentColor(Color.parseColor("#332D78"));
+        datePickerDialog.setAccentColor(Color.parseColor("#342E78"));
         datePickerDialog.setLocale(new Locale("en"));
 
         datePickerDialog.setMinDate(calendar);
 
 
-        datePickerDialog.setTitle(title);
+        datePickerDialog.setTitle("Select journey date");
         datePickerDialog.show(getParentFragmentManager(), "");
         datePickerDialog.setOnCancelListener(DialogInterface::dismiss);
     }

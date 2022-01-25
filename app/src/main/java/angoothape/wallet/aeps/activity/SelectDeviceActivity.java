@@ -40,10 +40,10 @@ import angoothape.wallet.utils.Utils;
 public class SelectDeviceActivity extends RitmanBaseActivity<ActivitySelectDeviceBinding>
         implements OnDecisionMade, InterfaceIINList {
 
-  //  String morpho, matchdata, evolute, mantra;
+    //  String morpho, matchdata, evolute, mantra;
 
     Integer value;
-   // boolean temp = true;
+    // boolean temp = true;
     List<IINListResponse> IINList;
     AEPSViewModel viewModel;
     String IINNo, Amount, TxnTypeCode, BankName;

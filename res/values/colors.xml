@@ -6,7 +6,7 @@
   <color name="pink_light">#C19AE3</color>
   <color name="pinkblue_light">#9581F0</color>
   <color name="colorBlueSkyTwo">#DBE4F2</color>
-  <color name="colorGreen">#332D78</color>
+  <color name="colorGreen">#342E78</color>
   <color name="colorWhite">#FFFFFF</color>
   <color name="colorBlack">#000000</color>
   <color name="colorGrey">#5D5C5C</color>
@@ -29,8 +29,8 @@
   <color name="gray_lite">#E2E2E2</color>
   <color name="gray_miner_lite">#F7F7F7</color>
 
-  <color name="color_toti">#332D78</color>
-  <color name="colorPrimary">#332D78</color>
+  <color name="color_toti">#342E78</color>
+  <color name="colorPrimary">#342E78</color>
   <color name="colorPrimaryDark">#3700B3</color>
   <color name="colorAccent">#03DAC5</color>
   <color name="darkgrey">#707070</color>

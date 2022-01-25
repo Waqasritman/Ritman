@@ -9,7 +9,7 @@
                 <shape>
                     <!--<gradient android:angle="90" android:endColor="#B3BBCC" android:startColor="#E8EBEF" android:type="linear" />-->
                     <stroke android:width="1dp"
-                        android:color="#332D78" />
+                        android:color="#342E78" />
                     <solid android:color="@android:color/white" />
                     <corners android:radius="6dp" />
                 </shape>
@@ -17,7 +17,7 @@
             <item android:bottom="6dp" android:left="6dp" android:right="6dp" android:top="6dp">
                 <bitmap android:gravity="center|left"
                     android:src="@drawable/dropdown"
-                    android:tint="#332D78"/>
+                    android:tint="#342E78"/>
             </item>
 
         </layer-list>

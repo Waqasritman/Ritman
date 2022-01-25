@@ -123,14 +123,6 @@ public class RegistrationActivity extends BaseFragment<ActivityRegistrationBindi
     }
 
     public void getUserRegister() {
-//        Utils.showCustomProgressDialog(getContext(), false);
-//        RegisterModel registerModel = new RegisterModel();
-//        registerModel.credentials.LanguageID = Integer.parseInt(getSessionManager().getlanguageselection());
-//        registerModel.firstName = binding.firstNameEditTextRegi.getText().toString();
-//        registerModel.gender = gender;
-//        registerModel.mobileNumber = binding.mobileNumberEditTextRegi.getText().toString();
-
-
         Utils.showCustomProgressDialog(getContext(), false);
 
         RegisterModel registerModel = new RegisterModel();

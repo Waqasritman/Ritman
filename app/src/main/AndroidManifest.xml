@@ -39,9 +39,10 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="false"
-        tools:replace="android:supportsRtl"
-        android:theme="@style/AppTheme">
-        <activity android:name=".bus_booking.BusBookingMainActivity"/>
+        android:theme="@style/AppTheme"
+        tools:replace="android:supportsRtl">
+        <activity android:name=".bill_desk.BillDeskMainActivity"></activity>
+        <activity android:name=".bus_booking.BusBookingMainActivity" />
         <activity android:name=".AEPSReceiptActivity" />
         <activity android:name=".menumodules.CustomerServiceDetailsActivity" />
         <activity android:name=".CustomerTransactionHistoryActivity" />

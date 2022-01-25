@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/splashmainRelativelayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/img_logo"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_logo" />
+    <RelativeLayout
+        android:background="#342D77"
+        android:id="@+id/splashmainRelativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="70dp"
-        android:background="@drawable/ic_dot_image_splash" />
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/select_currecny"
+            android:src="@drawable/ic_logo"
+            android:visibility="gone" />
 
-</RelativeLayout>
+
+        <angoothape.wallet.utils.MyVideoView
+            android:layout_marginEnd="-20dp"
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible" />
+
+
+    </RelativeLayout>
 </layout>

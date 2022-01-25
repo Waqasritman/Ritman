@@ -108,7 +108,7 @@ public class ForgotPinUserSecurityDataFragment extends BaseFragment<ForgotPinUse
         DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, Year, Month, Day);
         datePickerDialog.setThemeDark(false);
         datePickerDialog.showYearPickerFirst(true);
-        datePickerDialog.setAccentColor(Color.parseColor("#332D78"));
+        datePickerDialog.setAccentColor(Color.parseColor("#342E78"));
         datePickerDialog.setMinDate(calendar);
         //datePickerDialog.setMaxDate(calendar);
         datePickerDialog.setTitle(getActivity().getResources().getString(R.string.select_date_txt));

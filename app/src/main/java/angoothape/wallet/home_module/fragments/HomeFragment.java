@@ -8,6 +8,7 @@ import android.view.View;
 import angoothape.wallet.FundTransferToMerchantActivity;
 import angoothape.wallet.MerchantLedgerActivity;
 import angoothape.wallet.UploadCashDetailsActivity;
+import angoothape.wallet.bill_desk.BillDeskMainActivity;
 import angoothape.wallet.bus_booking.BusBookingMainActivity;
 import angoothape.wallet.refund_module.RefundActivity;
 import retrofit2.Call;
@@ -58,8 +59,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
         });
 
         binding.mobileTopUpCarview.setOnClickListener(view ->
-                startActivity(new Intent(getActivity(), BusBookingMainActivity.class))
-                    //    startActivity(new Intent(getActivity(), MobileTopUpMainActivity.class))
+                startActivity(new Intent(getActivity(), BillDeskMainActivity.class))
+                // startActivity(new Intent(getActivity(), BusBookingMainActivity.class))
+                //    startActivity(new Intent(getActivity(), MobileTopUpMainActivity.class))
                 //startActivity(new Intent(getActivity(), LoyalityPointsActivity.class))
         );
         binding.billPaymentCarview.setOnClickListener(view ->
@@ -116,11 +118,11 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
 
 
         binding.refund.setOnClickListener(v -> {
-          //  if (getSessionManager().getIsVerified()) {
-                startActivity(new Intent(getActivity(), RefundActivity.class));
-                //  startActivity(new Intent(getActivity(), SelectDeviceActivity.class));
+            //  if (getSessionManager().getIsVerified()) {
+            startActivity(new Intent(getActivity(), RefundActivity.class));
+            //  startActivity(new Intent(getActivity(), SelectDeviceActivity.class));
             //} else {
-              //  onMessage(getString(R.string.kyc_not_approved));
+            //  onMessage(getString(R.string.kyc_not_approved));
             //}
 
         });
@@ -143,7 +145,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
     }
 
     @Override
-    public void onCancel(boolean goBack)  {
+    public void onCancel(boolean goBack) {
 
     }
 

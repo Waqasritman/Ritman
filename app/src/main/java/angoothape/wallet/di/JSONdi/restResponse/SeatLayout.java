@@ -38,7 +38,7 @@ public class SeatLayout {
     @SerializedName("seatLayoutUniqueId")
     public String seatLayoutUniqueId;
     @SerializedName("isAcSeat")
-    public boolean isAcSeat;
+    public String isAcSeat;
     @SerializedName("fareDetails")
     public String fareDetails;
     @SerializedName("minimumAge")

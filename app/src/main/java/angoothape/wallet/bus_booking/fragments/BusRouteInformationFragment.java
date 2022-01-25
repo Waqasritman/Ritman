@@ -35,12 +35,6 @@ public class BusRouteInformationFragment extends BaseFragment<FragmentBusRouteIn
 
     BusSeatingLayoutRequest busSeatingLayoutRequest;
 
-    public BusRouteInformationFragment() {
-        // Required empty public constructor
-
-    }
-
-
     @Override
     public boolean isValidate() {
         if (binding.selectedService.getText().toString().isEmpty()) {
@@ -83,7 +77,7 @@ public class BusRouteInformationFragment extends BaseFragment<FragmentBusRouteIn
 
         binding.selectDestination.setOnClickListener(v -> {
             isPickUpSelected = false;
-            openDialog("DropOff Station", viewModel.getBusRoute(services.dropping_info));
+            openDialog("DropOff Station", viewModel.getDropRoute(services.dropping_info));
         });
 
 
@@ -115,8 +109,14 @@ public class BusRouteInformationFragment extends BaseFragment<FragmentBusRouteIn
     public void onSelectRoute(RoutePickUp routePickUp) {
         if (isPickUpSelected) {
             binding.selectSource.setText(routePickUp.station.concat(" ").concat(routePickUp.time));
+            busSeatingLayoutRequest.boardingPointID = routePickUp.pointID;
+            busSeatingLayoutRequest.startStation = routePickUp.station;
+            busSeatingLayoutRequest.startTime = routePickUp.time;
         } else {
             binding.selectDestination.setText(routePickUp.station.concat(" ").concat(routePickUp.time));
+            busSeatingLayoutRequest.droppingPointID = routePickUp.pointID;
+            busSeatingLayoutRequest.endStation = routePickUp.station;
+            busSeatingLayoutRequest.endTime = routePickUp.time;
         }
     }
 }

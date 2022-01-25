@@ -45,7 +45,7 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
     public SessionManager sessionManager;
     public String walletBalance = "";
 
-    // private Timer timer;
+    //private Timer timer;
     private Boolean isUserTimedOut = false;
     public String customerNo;
 
@@ -90,10 +90,10 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //  if (BuildConfig.FLAVOR_country.equals("saudi") && "ar".equals(LanguageUtil.getSelectedLanguageFromSharedPreferences(this))) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
-                WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE);
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+         //       WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+          //      WindowManager.LayoutParams.FLAG_SECURE);
         //  } else {
         //      getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         //  }
@@ -135,7 +135,6 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
         snackbar.show();
     }
 
-
     @Override
     public void onUserInteraction() {
         super.onUserInteraction();
@@ -163,7 +162,6 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
         }
     }
 
-
     /**
      * method will show lock screen if user is not
      * in registration module if user login then showing
@@ -176,11 +174,9 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
         finish();
     }
 
-
     public void clearUserData() {
         sessionManager.clearUser();
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -232,7 +228,6 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
     protected void onDestroy() {
         super.onDestroy();
     }
-
 
     private Context updateBaseContextLocale(Context context) {
         String language = sessionManager.getDefaultLanguage();

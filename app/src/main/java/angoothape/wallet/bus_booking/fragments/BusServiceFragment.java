@@ -25,6 +25,7 @@ import java.util.List;
 import angoothape.wallet.R;
 import angoothape.wallet.adapters.BusServicesAdapter;
 import angoothape.wallet.adapters.BusStationsDetailAdapter;
+import angoothape.wallet.bus_booking.BusBookingMainActivity;
 import angoothape.wallet.databinding.FragmentBusServiceBinding;
 import angoothape.wallet.databinding.FragmentBusStationsBinding;
 import angoothape.wallet.di.JSONdi.NetworkResource;
@@ -54,7 +55,7 @@ public class BusServiceFragment extends BaseFragment<FragmentBusServiceBinding>
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(BusBookingViewModel.class);
+        viewModel = ((BusBookingMainActivity) getBaseActivity()).viewModel;
         GetBusAvailableServiceRequest busAvailableServiceRequest = getArguments().getParcelable("data");
         servicesResponseList = new ArrayList<>();
         setupRecyclerView(busAvailableServiceRequest);
@@ -114,6 +115,7 @@ public class BusServiceFragment extends BaseFragment<FragmentBusServiceBinding>
 
     @Override
     public void onSelectBusService(Services selectedService) {
+        viewModel.selectedServices = selectedService;
         Bundle bundle = new Bundle();
         bundle.putParcelable("selected_service", selectedService);
         Navigation.findNavController(binding.getRoot())

@@ -14,8 +14,17 @@ public class BoardingInfo {
     public String serviceTax;
     public String childFare;
 
+    public boolean isSelected = false;
+
+    public String passengerName = "";
+    public String passengerAge = "";
+
 
     public boolean getMale() {
         return gender.equalsIgnoreCase("m");
+    }
+
+    public boolean isAvailable() {
+        return availbility.equalsIgnoreCase("y");
     }
 }

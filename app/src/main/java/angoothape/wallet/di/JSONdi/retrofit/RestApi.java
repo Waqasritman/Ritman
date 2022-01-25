@@ -2,7 +2,11 @@ package angoothape.wallet.di.JSONdi.retrofit;
 
 
 import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
+import angoothape.wallet.di.JSONdi.restResponse.BusBlockTicketResponse;
+import angoothape.wallet.di.JSONdi.restResponse.BusBookingCancelResponse;
+import angoothape.wallet.di.JSONdi.restResponse.BusBookingPreCancelResponse;
 import angoothape.wallet.di.JSONdi.restResponse.BusSeatingLayoutResponse;
+import angoothape.wallet.di.JSONdi.restResponse.BusTicketConfirmResponse;
 import angoothape.wallet.di.JSONdi.restResponse.DistributorDetailsResponse;
 import angoothape.wallet.di.JSONdi.restResponse.GetAvailableServicesResponse;
 import angoothape.wallet.di.JSONdi.restResponse.GetBalanceCustomerLimit;
@@ -80,6 +84,16 @@ public interface RestApi {
 
 
     @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("BusBooking/preCancellation")
+    Call<BusBookingPreCancelResponse> busBookingPreCancellation(@Body RequestBody request, @Header("Username") String userName);
+
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("BusBooking/preCancellation")
+    Call<BusBookingCancelResponse> busCancelBooking(@Body RequestBody request, @Header("Username") String userName);
+
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Agent/FundTransferToMerchant")
     Call<SimpleResponse> fundTransferToMerchant(@Body RequestBody request, @Header("Username") String userName);
 
@@ -97,6 +111,16 @@ public interface RestApi {
     @POST("BusBooking/GetBUSDestinationStations")
     Call<GetBusStationsResponse> getDestinationBus(@Body RequestBody request,
                                                    @Header("Username") String userName);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("BusBooking/BlockTickets")
+    Call<BusBlockTicketResponse> busBlockTicket(@Body RequestBody request,
+                                                @Header("Username") String userName);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("BusBooking/ConfirmationSeatBooking")
+    Call<BusTicketConfirmResponse> busConfirmTickets(@Body RequestBody request,
+                                                     @Header("Username") String userName);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("BusBooking/GetBusAvailableServices")
