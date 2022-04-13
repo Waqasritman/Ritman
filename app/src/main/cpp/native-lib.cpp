@@ -70,7 +70,7 @@ jstring
 Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_IndiaFirsturl(
         JNIEnv *env,
         jclass clazz) {
-    std::string baseURL = "https://122.187.215.20/RitpayDomesticRestAPIUAT/RIT/";
+    std::string baseURL = "https://122.187.215.20/RitpayDomesticRestAPIUAT/";
     return env->NewStringUTF(baseURL.c_str());
 }
 

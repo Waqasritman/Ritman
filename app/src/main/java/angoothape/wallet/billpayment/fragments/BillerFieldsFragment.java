@@ -12,11 +12,10 @@ import angoothape.wallet.di.JSONdi.Status;
 import angoothape.wallet.di.JSONdi.restRequest.GetWRBillerFieldsRequestN;
 import angoothape.wallet.fragments.BaseFragment;
 
-public class BillerFieldsFragment extends BaseFragment<FragmentBillerFieldDetailBinding>
-        {
+public class BillerFieldsFragment extends BaseFragment<FragmentBillerFieldDetailBinding> {
 
     BankTransferViewModel viewModel;
-            Integer billerId,SkuId;
+    Integer billerId, SkuId;
 
 
     @Override
@@ -30,7 +29,7 @@ public class BillerFieldsFragment extends BaseFragment<FragmentBillerFieldDetail
 
 
         billerId = getArguments().getInt("billerId");
-         SkuId = getArguments().getInt("SkuId");
+        SkuId = getArguments().getInt("SkuId");
 
        /*binding.descriptionOne;
 
@@ -53,39 +52,36 @@ public class BillerFieldsFragment extends BaseFragment<FragmentBillerFieldDetail
     }
 
 
-
-
-
     @Override
     public void onResponseMessage(String message) {
         onMessage(message);
     }
 
 
-    private  void getWRBillerFields() {
-        GetWRBillerFieldsRequestN request =((BillPaymentMainActivity) getBaseActivity()).request;
+    private void getWRBillerFields() {
+        GetWRBillerFieldsRequestN request = ((BillPaymentMainActivity) getBaseActivity()).request;
 //        request.countryCode="IN";
 //        request.BillerID= 107;//Integer.valueOf(billerId);
 //        request.SkuID=94; //Integer.valueOf(SkuId);
 
 
-        viewModel.GetWRBillerFields(request ,getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-
-                , response -> {
-                    if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
-                    } else {
-                        assert response.resource != null;
-                        if (response.resource.responseCode.equals(101)) {
-                           String S= response.resource.labelName;
-
-
-
-                     //       onBillerTypeList(response.resource.data);
-                        } else {
-                            onMessage(response.resource.description);
-                        }
-                    }
-                });
+//        viewModel.GetWRBillerFields(request ,getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
+//
+//                , response -> {
+//                    if (response.status == Status.ERROR) {
+//                        onError(getString(response.messageResourceId));
+//                    } else {
+//                        assert response.resource != null;
+//                        if (response.resource.responseCode.equals(101)) {
+//                           String S= response.resource.labelName;
+//
+//
+//
+//                     //       onBillerTypeList(response.resource.data);
+//                        } else {
+//                            onError(response.resource.description);
+//                        }
+//                    }
+//                });
     }
 }

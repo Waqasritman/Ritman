@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/utilityCategoryBFragment"
-        android:name="angoothape.wallet.billpayment.fragments.UtilityCategoryBFragment"
+        android:name="angoothape.wallet.billpayment.updated_fragments.UtilityCategoryBFragment"
         android:label="UtilityCategoryBFragment" >
         <action
             android:id="@+id/action_utilityCategoryBFragment_to_utilityBillPaymentPlanFragment"

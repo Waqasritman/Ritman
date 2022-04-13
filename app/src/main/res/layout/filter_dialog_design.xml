@@ -79,7 +79,7 @@
                 <TextView
                     android:id="@+id/from_date"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/background_select_mood"
                     android:drawableEnd="@drawable/dropdown_arrow"
@@ -97,7 +97,7 @@
                 <TextView
                     android:id="@+id/to_date"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/background_select_mood"
                     android:drawableEnd="@drawable/dropdown_arrow"
@@ -115,7 +115,7 @@
                 <EditText
                     android:id="@+id/transaction_no"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/background_select_mood"
                     android:hint="@string/transaction_hint"
@@ -132,7 +132,7 @@
                 <EditText
                     android:id="@+id/mobile_number"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/background_select_mood"
                     android:gravity="center_vertical"
@@ -150,7 +150,7 @@
                 <EditText
                     android:id="@+id/bene_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/background_select_mood"
                     android:gravity="center_vertical"
@@ -168,7 +168,7 @@
                 <EditText
                     android:id="@+id/account_no"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/background_select_mood"
                     android:gravity="center_vertical"
@@ -181,7 +181,7 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/apply_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_45dp"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_marginTop="@dimen/margin_15dp"
                     android:background="@drawable/background_button"
                     android:text="@string/apply_txt"

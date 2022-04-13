@@ -36,7 +36,7 @@
                 android:layout_marginStart="@dimen/margin_15dp"
                 android:layout_marginTop="@dimen/margin_15dp"
                 android:layout_marginEnd="@dimen/margin_15dp"
-                android:text="Enter Customer Number*"
+                android:text="Enter Customer Mobile Number*"
                 android:textSize="@dimen/text_size_16sp" />
 
             <EditText
@@ -54,7 +54,6 @@
                 android:singleLine="true" />
 
             <Button
-
                 android:id="@+id/search_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

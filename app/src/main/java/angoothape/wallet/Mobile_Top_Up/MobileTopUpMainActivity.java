@@ -48,7 +48,7 @@ public class MobileTopUpMainActivity extends RitmanBaseActivity<ActivityMobileTo
     @Override
     public void onBackPressed() {
         if (navController.getCurrentDestination().getId() == R.id.mobileTopUpFirstActivity
-                || navController.getCurrentDestination().getId() == R.id.mobileTopupStatusFragment) {
+                || navController.getCurrentDestination().getId() == R.id.mobileTopUpPrepaidBillPaymentFragment) {
             finish();
         } else {
             navController.navigateUp();

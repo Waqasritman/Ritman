@@ -414,7 +414,7 @@ public class Partner_Bank_Fragment extends BaseFragment<FragmentPartnerBankBindi
                     if (response.body().responseCode.equals(101)) {
                         showBankList(response.body().data);
                     } else {
-                        onMessage(response.body().description);
+                        onError(response.body().description);
                     }
                 } else {
                     onMessage(getString(R.string.some_thing_wrong));

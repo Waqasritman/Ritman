@@ -55,15 +55,13 @@ String billerId,SkuId,Mob_Acc_No,Mob_Acc_No1,Mob_Acc_No2,PayOutAmount;
             viewModel.getBillPay(request, sessionManager.getMerchantName()).observe(this
                     , response -> {
                         if (response.status == Status.ERROR) {
-                            onMessage(getString(response.messageResourceId));
+                            onError(getString(response.messageResourceId));
                         } else {
                             assert response.resource != null;
                             if (response.resource.responseCode.equals(101)) {
-                                onMessage(response.resource.description);
-
 
                             } else {
-                                onMessage(response.resource.description);
+                                onError(response.resource.description);
                             }
                         }
                     });

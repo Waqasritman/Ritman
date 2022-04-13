@@ -71,10 +71,10 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
     public static final int REQUEST_PDF1 = 109;
     public static final int REQUEST_PDF2 = 110;
     public static final int REQUEST_PDF3 = 111;
-    public static final int REQUEST_PDF4= 112;
+    public static final int REQUEST_PDF4 = 112;
     public static final int REQUEST_PDF5 = 113;
-    public static final int REQUEST_PDF6= 114;
-    public static final int REQUEST_PDF7= 115;
+    public static final int REQUEST_PDF6 = 114;
+    public static final int REQUEST_PDF7 = 115;
 
     String ImageOne = "";
     String ImageTwo = "";
@@ -128,7 +128,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
     @Override
     protected void setUp(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(PersonalLoanViewModel.class);
-       // viewModel = ((PLActivity) getBaseActivity()).viewModel;
+        // viewModel = ((PLActivity) getBaseActivity()).viewModel;
 
         uploadKYCImageRequest = new UploadKYCImage();
         binding.title.setText(getString(R.string.plz_upload_front_image));
@@ -140,7 +140,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
         binding.addProofSpinner.setAdapter(aa);
 
         SharedPreferences sp = getActivity().getSharedPreferences("customerId", MODE_PRIVATE);
-        customerId=sp.getString("customerId","");
+        customerId = sp.getString("customerId", "");
 
         if (SelectedImageType1 != null && ImageOne != null) {
             SelectedImageType1 = getArguments().getString("SelectedImageType1");
@@ -297,12 +297,10 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
             if (binding.edtCustomerNo.getText().toString().equals("")) {
                 onMessage("Please enter Application Number (Registered Customer No.)");
                 binding.edtCustomerNo.requestFocus();
-            }  else if (!binding.edtCustomerNo.getText().toString().equals(customerId)){
+            } else if (!binding.edtCustomerNo.getText().toString().equals(customerId)) {
                 onMessage("Please enter valid Application Number (Registered Customer No.)");
                 binding.edtCustomerNo.requestFocus();
-            }
-
-            else if (binding.addProofSpinner.getSelectedItemId() == 0) {
+            } else if (binding.addProofSpinner.getSelectedItemId() == 0) {
                 onMessage("Please select Address Proof");
                 binding.addProofSpinner.requestFocus();
             } else if (binding.imgAddressProof.getDrawable() == null) {
@@ -356,7 +354,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
                 launchPDF1();
                 // Navigation.findNavController(binding.getRoot()).navigate(R.id.action_uploadDocumentFragment_to_selectPDF2);
 
-               // ImageNname[0] = viewModel.SelectedImageName.getValue();
+                // ImageNname[0] = viewModel.SelectedImageName.getValue();
 
 
 //                    Intent intent = new Intent();
@@ -491,7 +489,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
         } else if (x == 6) {
             startActivityForResult(Intent.createChooser(intent, "Select PDF"), REQUEST_PDF6);
             binding.linearEmpId.setVisibility(View.VISIBLE);
-        }else if (x == 7) {
+        } else if (x == 7) {
             startActivityForResult(Intent.createChooser(intent, "Select PDF"), REQUEST_PDF7);
             binding.linearAadharCard.setVisibility(View.VISIBLE);
         }
@@ -610,7 +608,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
                 }
             }
 
-        }else if (requestCode == REQUEST_PDF2) {
+        } else if (requestCode == REQUEST_PDF2) {
             SelectedImageType2 = "";
             assert data != null;
             ImageTwo = getStringPdf(data.getData());
@@ -656,7 +654,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else if (requestCode == REQUEST_PDF3) {
+        } else if (requestCode == REQUEST_PDF3) {
             SelectedImageType3 = "";
             assert data != null;
             ImageThree = getStringPdf(data.getData());
@@ -731,7 +729,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
 
                 }
             }
-        }else if (requestCode == REQUEST_IMAGE5) {
+        } else if (requestCode == REQUEST_IMAGE5) {
             assert data != null;
             uri = data.getParcelableExtra("path");
             String path = String.valueOf(uri);
@@ -750,7 +748,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else if (requestCode == REQUEST_PDF5) {
+        } else if (requestCode == REQUEST_PDF5) {
             SelectedImageType5 = "";
             assert data != null;
             ImageFive = getStringPdf(data.getData());
@@ -825,7 +823,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
 
                 }
             }
-        }else if (requestCode == REQUEST_IMAGE7) {
+        } else if (requestCode == REQUEST_IMAGE7) {
             assert data != null;
             uri = data.getParcelableExtra("path");
             String path = String.valueOf(uri);
@@ -843,7 +841,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else if (requestCode == REQUEST_PDF7) {
+        } else if (requestCode == REQUEST_PDF7) {
             SelectedImageType7 = "";
             assert data != null;
             ImageSeven = getStringPdf(data.getData());
@@ -958,38 +956,37 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
                 "|" + ImageSix + "|" + ImageSeven;
 
 
-
-        String DocName =SelectedImageType1 + "|" + SelectedImageType2 + "|" + SelectedImageType3 + "|" +
+        String DocName = SelectedImageType1 + "|" + SelectedImageType2 + "|" + SelectedImageType3 + "|" +
                 SelectedImageType4 + "|" + SelectedImageType5 + "|" + SelectedImageType6 + "|" + SelectedImageType7;
 
-        request.document_name =DocName.replaceAll("%20","_");
+        request.document_name = DocName.replaceAll("%20", "_");
 
         request.document_type = selected_address_proof + "|" + "profile" + "|" + "payslip" + "|" + "pancard" + "|" +
                 "bankStatement" + "|" + "empBadge" + "|" + "aadharcard";
 
         String request_document_pdfPWD =
-                SelectedImageType1 +","+binding.edtAddProofPdfPassword.getText().toString() + "|" +
-                        SelectedImageType3 +","+binding.edtPaySlipPdfPassword.getText().toString() + "|" +
-                        SelectedImageType4 +","+binding.edtPancardPdfPassword.getText().toString() + "|" +
-                        SelectedImageType5+","+binding.edtBankStatePassword.getText().toString()  + "|" +
-                        SelectedImageType6 +","+binding.edtEmpBadgePdfPassword.getText().toString() + "|" +
-                        SelectedImageType7+","+binding.edtAadharCardPdfPassword.getText().toString() ;
+                SelectedImageType1 + "," + binding.edtAddProofPdfPassword.getText().toString() + "|" +
+                        SelectedImageType3 + "," + binding.edtPaySlipPdfPassword.getText().toString() + "|" +
+                        SelectedImageType4 + "," + binding.edtPancardPdfPassword.getText().toString() + "|" +
+                        SelectedImageType5 + "," + binding.edtBankStatePassword.getText().toString() + "|" +
+                        SelectedImageType6 + "," + binding.edtEmpBadgePdfPassword.getText().toString() + "|" +
+                        SelectedImageType7 + "," + binding.edtAadharCardPdfPassword.getText().toString();
 
-        request.document_pdfPWD = request_document_pdfPWD.replaceAll("%20","_");
+        request.document_pdfPWD = request_document_pdfPWD.replaceAll("%20", "_");
 
         viewModel.uploadDocuments(request, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
 
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             onMessage(response.resource.description);
                             showSucces();
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     }
                 });
@@ -1052,7 +1049,7 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
     }
 
     @Override
-    public void onCancel(boolean goBack)  {
+    public void onCancel(boolean goBack) {
 
     }
 }

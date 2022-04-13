@@ -290,7 +290,7 @@ public class E_KYC_Two_Fragment extends BaseFragment<FragmentEKYCTwoBinding> {
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -302,7 +302,7 @@ public class E_KYC_Two_Fragment extends BaseFragment<FragmentEKYCTwoBinding> {
                             Utils.hideCustomProgressDialog();
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             //binding.edtCity.setText("");
                             binding.edtKycState.setText("");
                             Utils.hideCustomProgressDialog();

@@ -8,6 +8,10 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
 
 import angoothape.wallet.aeps.activity.SelectDeviceActivity;
 import angoothape.wallet.base.RitmanBaseActivity;
@@ -119,7 +123,19 @@ public class RegisterFromAEPS extends RitmanBaseActivity<ActivityRegisterFromAEP
 
 
                 } else {
-                    onMessage(response.body().description);
+                    Utils.hideCustomProgressDialog();
+                    if (response.body().data != null) {
+
+                        Log.e("getBillDetails: ", bodyy);
+                        if (!body.isEmpty()) {
+                            onError(bodyy);
+                        } else {
+                            onError(response.body().description);
+                        }
+                    } else {
+                        onError(response.body().description);
+                    }
+
                 }
             }
 

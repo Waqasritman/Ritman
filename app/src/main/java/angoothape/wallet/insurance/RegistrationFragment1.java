@@ -266,7 +266,7 @@ public class RegistrationFragment1 extends BaseFragment<RegistrationFragment1Lay
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -277,7 +277,7 @@ public class RegistrationFragment1 extends BaseFragment<RegistrationFragment1Lay
                             binding.edtState.setText(viewModel.state.getValue());
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             binding.edtCity.setText("");
                             binding.edtState.setText("");
                         }

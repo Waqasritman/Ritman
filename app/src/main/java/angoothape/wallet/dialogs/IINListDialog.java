@@ -55,7 +55,7 @@ public class IINListDialog extends BaseDialogFragment<TransferDialogPurposeBindi
         setSearchView();
         setupRecyclerView();
 
-        binding.titleOfPage.setText(getString(R.string.select_type));
+        binding.titleOfPage.setText(getString(R.string.select_bank));
 
         binding.closeDialog.setOnClickListener(v -> {
             cancelUpload();
@@ -105,7 +105,7 @@ public class IINListDialog extends BaseDialogFragment<TransferDialogPurposeBindi
                 o1.Issuer_Bank_Name.compareToIgnoreCase(o2.Issuer_Bank_Name));
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         adapter = new
-                IINTypeAdapter(getContext() ,IINListResponseList, this);
+                IINTypeAdapter(getContext(), IINListResponseList, this);
         binding.transferPurposeList.setLayoutManager(mLayoutManager);
         binding.transferPurposeList.setHasFixedSize(true);
         binding.transferPurposeList.setAdapter(adapter);

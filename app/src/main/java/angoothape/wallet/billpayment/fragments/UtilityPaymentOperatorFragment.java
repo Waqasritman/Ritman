@@ -142,19 +142,19 @@ public class UtilityPaymentOperatorFragment extends BaseFragment<ActivityBillPay
         request.BillerCategoryId= 9;
 
 
-        viewModel.GetWRBillerNames(request ,getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-
-                , response -> {
-                    if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
-                    } else {
-                        assert response.resource != null;
-                        if (response.resource.responseCode.equals(101)) {
-                            onBillerNamesList(response.resource.data);
-                        } else {
-                            onMessage(response.resource.description);
-                        }
-                    }
-                });
+//        viewModel.GetWRBillerNames(request ,getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
+//
+//                , response -> {
+//                    if (response.status == Status.ERROR) {
+//                        onError(getString(response.messageResourceId));
+//                    } else {
+//                        assert response.resource != null;
+//                        if (response.resource.responseCode.equals(101)) {
+//                            onBillerNamesList(response.resource.data);
+//                        } else {
+//                            onError(response.resource.description);
+//                        }
+//                    }
+//                });
     }
 }

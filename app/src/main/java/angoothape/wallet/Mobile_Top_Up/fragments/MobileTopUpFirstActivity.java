@@ -2,9 +2,15 @@ package angoothape.wallet.Mobile_Top_Up.fragments;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import angoothape.wallet.Mobile_Top_Up.MobileTopUpMainActivity;
@@ -12,10 +18,15 @@ import angoothape.wallet.Mobile_Top_Up.viewmodels.MobileTopUpViewModel;
 import angoothape.wallet.R;
 
 import angoothape.wallet.databinding.ActivityMobileTopUpFirstBinding;
+import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
+import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.PrepaidOperatorRequest;
 
+import angoothape.wallet.di.JSONdi.restResponse.PayBillPaymentResponse;
 import angoothape.wallet.di.JSONdi.restResponse.PrepaidOperatorResponse;
+import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
+import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.fragments.BaseFragment;
 import angoothape.wallet.utils.CheckValidation;
 import angoothape.wallet.utils.IsNetworkConnection;
@@ -24,7 +35,7 @@ import angoothape.wallet.utils.Utils;
 public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFirstBinding> {
 
     MobileTopUpViewModel viewModel;
-    String billerid, circle_name, MobileNumber,Field1Name,Field2Name,Field3Name,billerlogo;
+    String billerid, circle_name, MobileNumber, Field1Name, Field2Name, Field3Name, billerlogo;
     ArrayList<PrepaidOperatorResponse.BillerField> billerFields;
 
     @Override
@@ -70,7 +81,7 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
     @Override
     protected void setUp(Bundle savedInstanceState) {
         billerFields = new ArrayList<>();
-        viewModel = ((MobileTopUpMainActivity) getBaseActivity()).viewModel;
+        viewModel = new ViewModelProvider(this).get(MobileTopUpViewModel.class);
         binding.nextLayout.setOnClickListener(v -> {
             if (isNumberValidate()) {
                 MobileNumber = binding.numberLayout.mobilesignupb.getText().toString();
@@ -82,49 +93,83 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
     void getPrepaidOperator() {
         if (IsNetworkConnection.checkNetworkConnection(getContext())) {
             Utils.showCustomProgressDialog(getContext(), false);
+            String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                    .getKey(getSessionManager().getMerchantName())).trim();
             PrepaidOperatorRequest request = new PrepaidOperatorRequest();
             request.MobileNo = binding.numberLayout.mobilesignupb.getText().toString();
             request.CountryCode = "IN";
+            String body = RestClient.makeGSONString(request);
 
-            viewModel.getOperator(request, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-                    , response -> {
+            AERequest aeRequest = new AERequest();
+            aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
+            viewModel.getOperator(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
+                    KeyHelper.getSKey(KeyHelper
+                            .getKey(getSessionManager().getMerchantName())))
+                    .observe(getViewLifecycleOwner(), response -> {
                         Utils.hideCustomProgressDialog();
                         if (response.status == Status.ERROR) {
-                            onMessage(getString(response.messageResourceId));
+                            onError(getString(response.messageResourceId));
                         } else {
                             assert response.resource != null;
                             if (response.resource.responseCode.equals(101)) {
-                                billerid = response.resource.data.getBillerid();
-                                circle_name = response.resource.data.getCircleName();
-                                billerlogo = response.resource.data.getBillerLogo();
-                                billerFields.addAll(response.resource.data.getBillerFields());
-                                for (int i = 0; i < billerFields.size(); i++) {
-                                    if (billerFields.size()==1){
-                                        Field1Name=billerFields.get(0).getParameterName();
-                                    }
-                                     if (billerFields.size()==2){
-                                        Field1Name=billerFields.get(0).getParameterName();
-                                        Field2Name=billerFields.get(1).getParameterName();
-                                    }
-                                    if (billerFields.size()==3){
-                                        Field1Name=billerFields.get(0).getParameterName();
-                                        Field2Name=billerFields.get(1).getParameterName();
-                                        Field3Name=billerFields.get(2).getParameterName();
-                                    }
-                                }
-                                Bundle bundle = new Bundle();
-                                bundle.putString("billerid", billerid);
-                                bundle.putString("circle_name", circle_name);
-                                bundle.putString("MobileNumber", MobileNumber);
-                                bundle.putString("Field1Name", Field1Name);
-                                bundle.putString("Field2Name", Field2Name);
-                                bundle.putString("Field3Name", Field3Name);
-                                bundle.putString("billerlogo", billerlogo);
+                                Utils.hideCustomProgressDialog();
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                Log.e("getPrepaidOperator: ", bodyy);
+                                try {
+                                    Gson gson = new Gson();
+                                    Type type = new TypeToken<PrepaidOperatorResponse>() {
+                                    }.getType();
+                                    PrepaidOperatorResponse data = gson.fromJson(bodyy, type);
 
-                                Navigation.findNavController(binding.getRoot()).navigate(R.id
-                                        .action_mobileTopUpFirstActivity_to_planNameFragment, bundle);
+                                    billerid = data.getBillerid();
+                                    circle_name = data.getCircleName();
+                                    billerlogo = data.getBillerLogo();
+                                    billerFields.addAll(data.getBillerFields());
+                                    for (int i = 0; i < billerFields.size(); i++) {
+                                        if (billerFields.size() == 1) {
+                                            Field1Name = billerFields.get(0).getParameterName();
+                                        }
+                                        if (billerFields.size() == 2) {
+                                            Field1Name = billerFields.get(0).getParameterName();
+                                            Field2Name = billerFields.get(1).getParameterName();
+                                        }
+                                        if (billerFields.size() == 3) {
+                                            Field1Name = billerFields.get(0).getParameterName();
+                                            Field2Name = billerFields.get(1).getParameterName();
+                                            Field3Name = billerFields.get(2).getParameterName();
+                                        }
+                                    }
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("billerid", billerid);
+                                    bundle.putString("circle_name", circle_name);
+                                    bundle.putString("MobileNumber", MobileNumber);
+                                    bundle.putString("Field1Name", Field1Name);
+                                    bundle.putString("Field2Name", Field2Name);
+                                    bundle.putString("Field3Name", Field3Name);
+                                    bundle.putString("billerlogo", billerlogo);
+
+                                    Navigation.findNavController(binding.getRoot()).navigate(R.id
+                                            .action_mobileTopUpFirstActivity_to_planNameFragment, bundle);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+
                             } else {
-                                onMessage(response.resource.description);
+                                Utils.hideCustomProgressDialog();
+                                if (response.resource.data != null) {
+                                    String bodyy = AESHelper.decrypt(response.resource.data.body
+                                            , gKey);
+                                    Log.e("getBillDetails: ", bodyy);
+                                    if (!body.isEmpty()) {
+                                        onError(bodyy);
+                                    } else {
+                                        onError(response.resource.description);
+                                    }
+                                } else {
+                                    onError(response.resource.description);
+                                }
                             }
                         }
                     });

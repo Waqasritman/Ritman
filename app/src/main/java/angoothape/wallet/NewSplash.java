@@ -47,6 +47,7 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
 
             }
         }, 7000);
+      //  throw new RuntimeException("Test Crash"); // Force a crash
     }
 
     @Override
@@ -99,7 +100,7 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
                             getCountry();
                         }
                     } else {
-                        onMessage(response.body().description);
+                        onError(response.body().description);
                     }
                     Utils.hideCustomProgressDialog();
                 }
@@ -149,13 +150,12 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
                     assert response.body() != null;
                     sessionManager.setIpAddress(response.body().ip);
                     sessionManager.IpCountryName(response.body().country_name);
-                    goToNext();
                 } else {
                     //   onMessage(getString(R.string.contact_to_admin));
                     sessionManager.setIpAddress("");
                     sessionManager.IpCountryName("");
-                    goToNext();
                 }
+                goToNext();
             }
 
             @Override

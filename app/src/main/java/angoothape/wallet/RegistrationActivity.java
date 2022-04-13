@@ -104,7 +104,7 @@ public class RegistrationActivity extends BaseFragment<ActivityRegistrationBindi
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
 
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -116,7 +116,7 @@ public class RegistrationActivity extends BaseFragment<ActivityRegistrationBindi
                                     .navigate(R.id.sendMoneyViaBankFirstActivity, bundle);
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     }
                 });
@@ -168,7 +168,18 @@ public class RegistrationActivity extends BaseFragment<ActivityRegistrationBindi
                         }
                     } else {
                         Utils.hideCustomProgressDialog();
-                        onMessage(response.body().description);
+                        if (response.body().data != null) {
+                            String bodyy = AESHelper.decrypt(response.body().data.body
+                                    , gKey);
+                            if (!body.isEmpty()) {
+                                onError(bodyy);
+                            } else {
+                                onError(response.body().description);
+                            }
+                        } else {
+                            onError(response.body().description);
+                        }
+
                     }
                 } else {
                     Utils.hideCustomProgressDialog();
@@ -196,7 +207,7 @@ public class RegistrationActivity extends BaseFragment<ActivityRegistrationBindi
 //                    Navigation.findNavController(binding.getRoot())
 //                            .navigate(R.id.sendMoneyViaBankFirstActivity , bundle);
 //                } else {
-//                    onMessage(response.body().description);
+//                    onError(response.body().description);
 //                }
 //            }
 //

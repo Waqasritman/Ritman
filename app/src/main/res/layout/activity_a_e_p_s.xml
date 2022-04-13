@@ -8,16 +8,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- <include
-             android:id="@+id/tool_bar"
-             layout="@layout/tool_bar" />-->
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
 
         <RelativeLayout
             android:id="@+id/relative_reciept"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -646,11 +646,11 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/share_btn"
-                android:layout_margin="@dimen/margin_25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/margin_25dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:src="@drawable/ic_baseline_share_24" />
 
@@ -663,7 +663,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/_5sdp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -999,23 +999,20 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:orientation="horizontal">
 
-                        <angoothape.wallet.aeps.maskedittext.MaskedEditText
+                        <EditText
                             android:id="@+id/edtxAdharNo"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_gravity="center"
                             android:background="@drawable/border_background_green_colour"
                             android:gravity="center_vertical"
+                            android:hint="00000000000"
                             android:imeOptions="actionDone"
                             android:inputType="phone"
                             android:paddingStart="@dimen/margin_10dp"
                             android:paddingEnd="@dimen/margin_10dp"
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_14sdp"
-                            android:typeface="monospace"
-                            mask:allowed_chars="12345678900000"
-                            mask:char_representation="#"
-                            mask:mask="############" />
+                            android:textSize="@dimen/_14sdp" />
 
                     </LinearLayout>
 

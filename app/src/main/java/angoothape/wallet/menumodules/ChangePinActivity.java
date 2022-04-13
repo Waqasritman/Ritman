@@ -67,7 +67,7 @@ public class ChangePinActivity extends RitmanBaseActivity<ActivityChangePinBindi
                                 if (response.body().responseCode.equals(101)) {
                                     onSuccess("");
                                 } else {
-                                    onMessage(response.body().description);
+                                    onError(response.body().description);
                                 }
                             }
                         }

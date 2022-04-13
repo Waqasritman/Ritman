@@ -7,14 +7,24 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
 import java.util.List;
 
 import angoothape.wallet.base.RitmanBaseActivity;
 import angoothape.wallet.databinding.ActivityFundTransferToMerchantBinding;
+import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
+import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.FundTransferToMerchantRequest;
 import angoothape.wallet.di.JSONdi.restRequest.SimpleRequest;
 import angoothape.wallet.di.JSONdi.restResponse.DistributorAgents;
+import angoothape.wallet.di.JSONdi.restResponse.DistributorDetailsResponse;
+import angoothape.wallet.di.JSONdi.restResponse.FundTransferToMerchantResponse;
+import angoothape.wallet.di.JSONdi.restResponse.FundingBankingDetailsResponse;
+import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.dialogs.DistributorAgentDialog;
 import angoothape.wallet.dialogs.SingleButtonMessageDialog;
@@ -60,30 +70,69 @@ public class FundTransferToMerchantActivity extends RitmanBaseActivity<ActivityF
         binding.tranferBtn.setOnClickListener(v -> {
             if (isValidate()) {
                 binding.tranferBtn.setEnabled(false);
-                tranferFund();
+                transferFund();
             }
         });
     }
 
 
     public void getMerchants() {
-        viewModel.getDistributorMerchants(new SimpleRequest(), sessionManager.getMerchantName().trim()).observe(this
-                , response -> {
-                    if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
-                    } else {
-                        assert response.resource != null;
-                        if (response.resource.responseCode.equals(101)) {
-                            if (response.resource.data.getDistributorAgents().size() > 0) {
-                                showDialog(response.resource.data.getDistributorAgents());
-                            } else {
-                                showSucces("No Agent found", "Sorry", true);
-                            }
+        Utils.showCustomProgressDialog(this, false);
+        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                .getKey(getSessionManager().getMerchantName())).trim();
+        SimpleRequest simpleRequest = new SimpleRequest();
+        String body = RestClient.makeGSONString(simpleRequest);
+        AERequest aeRequest = new AERequest();
+        aeRequest.body = AESHelper.encrypt(body, gKey.trim());
+
+
+        viewModel.getDistributorMerchants(aeRequest
+                , KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
+                        .getKey(getSessionManager().getMerchantName())).trim()).observe(this, response -> {
+            Utils.hideCustomProgressDialog();
+            if (response.status == Status.ERROR) {
+                onError(getString(response.messageResourceId));
+            } else {
+                assert response.resource != null;
+                if (response.resource.responseCode.equals(101)) {
+
+                    String bodyy = AESHelper.decrypt(response.resource.data.body
+                            , gKey);
+                    Log.e("getMerchants: ", bodyy);
+                    try {
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<DistributorDetailsResponse>() {
+                        }.getType();
+                        DistributorDetailsResponse data = gson.fromJson(bodyy, type);
+                        if (data.getDistributorAgents().size() > 0) {
+                            showDialog(data.getDistributorAgents());
                         } else {
-                            onMessage(response.resource.description);
+                            showSucces("No Agent found", "Sorry", true);
                         }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
+
+                } else {
+                    Utils.hideCustomProgressDialog();
+                    if (response.resource.data != null) {
+                        String bodyy = AESHelper.decrypt(response.resource.data.body
+                                , gKey);
+                        Log.e("getBillDetails: ", bodyy);
+                        if (!body.isEmpty()) {
+                            onError(bodyy);
+                        } else {
+                            onError(response.resource.description);
+                        }
+                    } else {
+                        onError(response.resource.description);
+                    }
+                }
+
+
+            }
+        });
     }
 
 
@@ -96,28 +145,65 @@ public class FundTransferToMerchantActivity extends RitmanBaseActivity<ActivityF
         dialog.show(transaction, "");
     }
 
-    public void tranferFund() {
-        Utils.showCustomProgressDialog(this , false);
+    public void transferFund() {
+        Utils.showCustomProgressDialog(this, false);
         request.TransferAmount = binding.amountTxt.getText().toString();
-        viewModel.fundTransferToMerchant(request, sessionManager.getMerchantName()).observe(this
-                , response -> {
-                    Utils.hideCustomProgressDialog();
-                    if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
-                    } else {
-                        assert response.resource != null;
-                        if (response.resource.responseCode.equals(101)) {
-                            SingleButtonMessageDialog dialog = new
-                                    SingleButtonMessageDialog(getString(R.string.successfully_tranfared)
-                                    , getString(R.string.fund_successfully), this,
-                                    false);
-                            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                            dialog.show(transaction, "");
-                        } else {
-                            showSucces(response.resource.description , "Error", true);
-                        }
+
+        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                .getKey(getSessionManager().getMerchantName())).trim();
+
+        String body = RestClient.makeGSONString(request);
+        AERequest aeRequest = new AERequest();
+        aeRequest.body = AESHelper.encrypt(body, gKey.trim());
+
+
+        viewModel.fundTransferToMerchant(aeRequest
+                , KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
+                        .getKey(getSessionManager().getMerchantName())).trim()).observe(this, response -> {
+            Utils.hideCustomProgressDialog();
+            if (response.status == Status.ERROR) {
+                onError(getString(response.messageResourceId));
+            } else {
+
+                if (response.resource.responseCode.equals(101)) {
+
+                    String bodyy = AESHelper.decrypt(response.resource.data.body
+                            , gKey);
+                    Log.e("getMerchants: ", bodyy);
+                    try {
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<FundTransferToMerchantResponse>() {
+                        }.getType();
+                        FundTransferToMerchantResponse data = gson.fromJson(bodyy, type);
+                        SingleButtonMessageDialog dialog = new
+                                SingleButtonMessageDialog(getString(R.string.successfully_tranfared)
+                                , data.status, this,
+                                false);
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        dialog.show(transaction, "");
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
+
+                } else {
+                    Utils.hideCustomProgressDialog();
+                    if (response.resource.data != null) {
+                        String bodyy = AESHelper.decrypt(response.resource.data.body
+                                , gKey);
+                        Log.e("getBillDetails: ", bodyy);
+                        if (!body.isEmpty()) {
+                            onError(bodyy);
+                        } else {
+                            onError(response.resource.description);
+                        }
+                    } else {
+                        onError(response.resource.description);
+                    }
+                }
+
+            }
+        });
     }
 
 
@@ -140,7 +226,7 @@ public class FundTransferToMerchantActivity extends RitmanBaseActivity<ActivityF
     }
 
     @Override
-    public void onCancel(boolean goBack)  {
+    public void onCancel(boolean goBack) {
         finish();
     }
 }

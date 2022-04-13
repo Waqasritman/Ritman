@@ -145,20 +145,20 @@ public class UtilityPaymentCategoryFragment extends BaseFragment<ActivityBillPay
         GetWRBillerCategoryRequestC request = new GetWRBillerCategoryRequestC();
         request.CountryCode="IN";
 
-
-        viewModel.GetWRBillerCategory(request ,getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-
-                , response -> {
-                    if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
-                    } else {
-                        assert response.resource != null;
-                        if (response.resource.responseCode.equals(101)) {
-                            onWRCategory(response.resource.data);
-                        } else {
-                            onMessage(response.resource.description);
-                        }
-                    }
-                });
+//
+//        viewModel.GetWRBillerCategory(request ,getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
+//
+//                , response -> {
+//                    if (response.status == Status.ERROR) {
+//                        onError(getString(response.messageResourceId));
+//                    } else {
+//                        assert response.resource != null;
+//                        if (response.resource.responseCode.equals(101)) {
+//                            onWRCategory(response.resource.data);
+//                        } else {
+//                            onError(response.resource.description);
+//                        }
+//                    }
+//                });
     }
 }

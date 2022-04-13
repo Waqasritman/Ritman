@@ -97,13 +97,12 @@ public class CustomerTransactionHistoryActivity extends
                 .observe(this, response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             binding.searchBtn.setVisibility(View.GONE);
                             binding.mainView.setVisibility(View.VISIBLE);
-                            onMessage(response.resource.description);
                             historyList = new ArrayList<>();
                             historyList.clear();
 
@@ -124,7 +123,19 @@ public class CustomerTransactionHistoryActivity extends
                                 e.printStackTrace();
                             }
                         } else {
-                            onMessage(response.resource.description);
+                            Utils.hideCustomProgressDialog();
+                            if (response.resource.data != null) {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                Log.e("getBillDetails: ", bodyy);
+                                if (!body.isEmpty()) {
+                                    onError(bodyy);
+                                } else {
+                                    onError(response.resource.description);
+                                }
+                            } else {
+                                onError(response.resource.description);
+                            }
                         }
                     }
                 });

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import angoothape.wallet.AdpatersViewHolder.CountryListViewHolder;
+import angoothape.wallet.R;
 import angoothape.wallet.databinding.CountryDesignBinding;
 import angoothape.wallet.di.JSONdi.restResponse.IINListResponse;
 import angoothape.wallet.interfaces.InterfaceIINList;
@@ -93,7 +95,7 @@ public class IINTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     .placeholder(R.drawable.ic_utilities)
                     .into(((CountryListViewHolder) holder).binding.iconImage);
 */
-
+            ((CountryListViewHolder) holder).binding.iconImage.setImageResource(R.drawable.ic_bank);
             Log.e("list: ", String.valueOf(position));
             ((CountryListViewHolder) holder).binding.getRoot().setOnClickListener(v ->
                     type.onSelectIINList(listFiltered.get(position)));

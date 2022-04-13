@@ -83,6 +83,7 @@ public class TransactionHistoryActivity extends RitmanBaseActivity<ActivityTrans
             binding.allReceived.setVisibility(View.GONE);
             adapter.notifyDataSetChanged();
         });
+
         binding.allLayout.setOnClickListener(v -> {
             filteredList.clear();
             filteredList.addAll(responseList);
@@ -127,7 +128,7 @@ public class TransactionHistoryActivity extends RitmanBaseActivity<ActivityTrans
                         Utils.hideCustomProgressDialog();
                         assert response.resource != null;
                         if (response.status == Status.ERROR) {
-                            onMessage(getString(response.messageResourceId));
+                            onError(getString(response.messageResourceId));
                         } else if (response.status == Status.SUCCESS) {
                             if (response.resource.responseCode.equals(101)) {
                                 onGetHistoryList(response.resource.data);
@@ -135,7 +136,7 @@ public class TransactionHistoryActivity extends RitmanBaseActivity<ActivityTrans
                                 onMessage(response.resource.description);
                             }
                         } else if (response.status == Status.UNSUCCESS) {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     });
         } else {

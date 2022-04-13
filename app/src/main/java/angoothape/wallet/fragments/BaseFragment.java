@@ -3,6 +3,7 @@ package angoothape.wallet.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,15 @@ import androidx.fragment.app.FragmentTransaction;
 import angoothape.wallet.R;
 import angoothape.wallet.base.RitmanBaseActivity;
 import angoothape.wallet.dialogs.PinVerificationDialog;
+import angoothape.wallet.dialogs.SingleButtonMessageDialog;
+import angoothape.wallet.interfaces.OnDecisionMade;
 import angoothape.wallet.interfaces.OnUserPin;
 import angoothape.wallet.utils.Constants;
 import angoothape.wallet.utils.SessionManager;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * program is using in every fragment to implement this functionality
@@ -30,10 +35,11 @@ import com.google.android.material.snackbar.Snackbar;
  * @param <T>
  */
 public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
- implements OnUserPin  {
+        implements OnUserPin, OnDecisionMade {
 
     protected T binding;
     private Activity mActivity;
+
     public Fragment baseFragment;
 
     public SessionManager getSessionManager() {
@@ -42,7 +48,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
 
 
     public boolean isYemenClient() {
-        return getSessionManager().getCustomerPhone().substring(0 , 3).equalsIgnoreCase("967");
+        return getSessionManager().getCustomerPhone().substring(0, 3).equalsIgnoreCase("967");
     }
 
     public void showProgress() {
@@ -75,12 +81,10 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
     int getLayoutId();
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         if (context instanceof Activity) {
-            Activity activity = (Activity) context;
-            this.mActivity = activity;
-            //  activity.onFragmentAttached();
+            this.mActivity = (Activity) context;
         }
     }
 
@@ -95,17 +99,51 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
-        //getBaseActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         return binding.getRoot();
     }
 
 
     public void onMessage(String message) {
+        Constants.hideKeyboard(getBaseActivity());
         Snackbar snackbar = Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT);
         snackbar.setAction(getString(R.string.cancel), v -> snackbar.dismiss());
         snackbar.show();
     }
-    
+
+    public void onSuccess(String message) {
+        Constants.hideKeyboard(getBaseActivity());
+        Snackbar snackbar = Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT);
+        snackbar.setAction(getString(R.string.cancel), v -> snackbar.dismiss());
+        snackbar.show();
+    }
+
+    public void onError(String message) {
+        Handler mHandler = new Handler();
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mHandler.removeCallbacks(this);
+                showPOPUP(message);
+            }
+        }, 400);
+
+
+
+    }
+
+    private void showPOPUP(String message) {
+        try {
+            SingleButtonMessageDialog dialog = new
+                    SingleButtonMessageDialog("Error"
+                    , message, this,
+                    false, true);
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            dialog.show(transaction, "");
+        } catch (IllegalStateException e) {
+            
+        }
+
+    }
 
 
     @Override
@@ -127,6 +165,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
         setUp(savedInstanceState);
     }
 
+
     public Activity getBaseActivity() {
         return mActivity;
     }
@@ -143,12 +182,22 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
     }
 
 
-   public void getPin() {
+    public void getPin() {
         PinVerificationDialog dialog = new PinVerificationDialog(this);
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         dialog.show(transaction, "");
     }
 
+
+    @Override
+    public void onProceed() {
+
+    }
+
+    @Override
+    public void onCancel(boolean goBack) {
+
+    }
 
     @Override
     public void onVerifiedPin() {

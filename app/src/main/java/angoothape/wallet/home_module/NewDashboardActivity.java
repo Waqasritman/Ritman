@@ -10,6 +10,7 @@ import angoothape.wallet.CustomerTransactionHistoryActivity;
 import angoothape.wallet.EditProfileActivity;
 import angoothape.wallet.FundingBankActivity;
 import angoothape.wallet.MerchantLedgerActivity;
+import angoothape.wallet.NewSplash;
 import angoothape.wallet.NotificationActivity;
 import angoothape.wallet.TransactionHistory.TransactionHistoryActivity;
 import angoothape.wallet.base.RitmanBaseActivity;
@@ -101,34 +102,6 @@ public class NewDashboardActivity extends RitmanBaseActivity<ActivityNewDashboar
             startActivity(new Intent(getApplicationContext(), BeneficiaryListActivity.class));
         });
 
-//        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-//                .getKey(getSessionManager().getMerchantName())).trim();
-//        Log.e("gKey: ", gKey);
-//        String bodyy = AESHelper.decrypt("8isXkblNu5rp8H12Scp9vNq1xxVEwk3e15DOJDz7u+ne8R7ehieSM8sQymJ88beJ+1qiyf53LE0NyIB1nqBsxOeyUsZVK4yg+dE31ipI3z5ZXbqcIuhdiZDVE9kAm1qormXSMkWpShYgZzSUHNrTTTBpsPEkl0cPZ5HvkNNVKDEReq5/FrUZR2mNK+hZAiGuCc1XZsbPWcSgtLu8IVRrtE5tnLUR082CmO5mSAubyzGhUi5+XD0GLawq9a9hj7o1CrRDm1hxlIxKHsCXNKOoVbiXLWSddF/uv/vKJqWpBANEs427kVPA8BG0equKEz10sEtSedzmh2w7K1N2bHitnGBIZ/QXatw5DoyqCCMRS3QR9H5PUDahbGdbNBKANL5BMCM35OpAmn6vVmYJ8xc7B++R2JbVRzweFNfpB0xAOQv/TFe+M7wNCLt1TGt+lldskOv9W35PFbL0MpqM6VjxPWnNHf4Uv3kN38kygmwclWew5dEGKqVd1Yb2l2olxyUcBL38AgoSTtheocHL2VMD6NmrZp38vXrgTM5P16P0NmTB0b+8bujtYQ2RhF5aInzqoeVKufS89PGCqXtvejSdvJA4ns8nXDkganb5bVj5DfUsINs5LFjVb1NFPkQNdyAV+vCGM4AAe42E5wvJQ6GDWDjJWjGlGN2eSghwvFmYN+E7ZxReVhD+zCs2Y5vS+WqFS6aE50PV692ODl+v1jg33MYP8T04DjGLW2EP7GGADB/8Am1cgqydlG7d2OQ3cYrxJcD+TbeAC3T66184B2lnybrNtxIDYAU9x4MZmSy4eiu1nx7CTC/K7WqZjKGLw1CPonEVZS9d5QMKwqOZV0Kgp14CFSD23spG3ywOtQDUGu6z3ac4xYmymR1PAsjNKAcM+3ZSkvrcrp2PWSy1hbiCQg==", gKey);
-//
-//        Log.e("setUp: ", bodyy);
-//
-//        try {
-//            Gson gson = new Gson();
-//            Type type = new TypeToken<AEPS_Trans_Response>() {
-//            }.getType();
-//
-//
-//            AEPS_Trans_Response data = gson.fromJson(bodyy, type);
-//
-//            float actualAmount = 0;
-//            try {
-//                float parsed = Float.parseFloat(data.decrypted_Response.balanceAmountActual);
-//                actualAmount = parsed / 100;
-//            } catch (Exception e) {
-//                Toast.makeText(this, String.valueOf(e.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
-//            }
-//
-//
-//            Log.e("setUp: ", String.valueOf(actualAmount));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
         binding.customerTransactionHistory.setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), CustomerTransactionHistoryActivity.class));
@@ -139,34 +112,13 @@ public class NewDashboardActivity extends RitmanBaseActivity<ActivityNewDashboar
         });
 
 
-//        binding.inculdeLayout.refreshBalance.setOnClickListener(v -> {
-//            startActivity(new Intent(getApplicationContext(), WalletViaQRCodeActivity.class));
-//        });
-
-
-//        binding.myQrCodeLayout.setOnClickListener(v -> {
-//            startActivity(new Intent(getApplicationContext(), QrCodeActivity.class));
-//        });
-
         binding.inculdeLayout.send.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), MoneyTransferMainLayout.class));
         });
 
         binding.inculdeLayout.historyLayout.setOnClickListener(view -> {
-         //   changeImageColor(binding.inculdeLayout.historyImg.getId());
-           // binding.inculdeLayout.historyTv.setTextColor(getResources().getColor(R.color.colorPrimary));
-           // binding.inculdeLayout.homeTv.setTextColor(getResources().getColor(R.color.colorDarkGray));
-       //     moveToFragment(new MainHistoryFragment());
-          startActivity(new Intent(getApplicationContext(), TransactionHistoryActivity.class));
+            startActivity(new Intent(getApplicationContext(), TransactionHistoryActivity.class));
         });
-
-
-//        binding.inculdeLayout.homeLayout.setOnClickListener(view -> {
-//            changeImageColor(binding.inculdeLayout.homeImg.getId());
-//            binding.inculdeLayout.historyTv.setTextColor(getResources().getColor(R.color.colorDarkGray));
-//            binding.inculdeLayout.homeTv.setTextColor(getResources().getColor(R.color.colorPrimary));
-//            moveToFragment(new HomeFragment());
-//        });
 
 
         binding.inculdeLayout.drawerImgBtn.setOnClickListener(v -> {
@@ -200,8 +152,6 @@ public class NewDashboardActivity extends RitmanBaseActivity<ActivityNewDashboar
     @Override
     protected void onResume() {
         super.onResume();
-
-
     }
 
 
@@ -262,9 +212,11 @@ public class NewDashboardActivity extends RitmanBaseActivity<ActivityNewDashboar
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         } else if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            isLogout = false;
             showExitDialog();
             return;
         } else {
+            isLogout = false;
             showExitDialog();
         }
         mBackPressed = System.currentTimeMillis();
@@ -272,7 +224,6 @@ public class NewDashboardActivity extends RitmanBaseActivity<ActivityNewDashboar
 
 
     public void showExitDialog() {
-        isLogout = true;
         AlertDialog alertDialog = new AlertDialog(getString(R.string.exit)
                 , getString(R.string.are_sure_exit), this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -289,8 +240,20 @@ public class NewDashboardActivity extends RitmanBaseActivity<ActivityNewDashboar
     public void onProceed() {
         if (isLogout) {
             // finish();
-            finishAffinity();
+            goToSplashScreen();
+        } else {
+            finish();
         }
+    }
+
+    private void goToSplashScreen() {
+        Intent intent = new Intent(this, NewSplash.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+        // overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override

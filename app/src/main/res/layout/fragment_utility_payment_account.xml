@@ -13,6 +13,8 @@
             android:scrollbars="none">
 
             <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/main_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_5sdp"
@@ -24,7 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_semibold"
-                    android:text="@string/plz_enter_uitlitu_payment_account"
+                    android:text="@string/please_enter_be"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_16sp" />
 
@@ -36,6 +38,7 @@
                     android:visibility="gone">
 
                     <RelativeLayout
+                        android:layout_marginTop="@dimen/margin_10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -115,6 +118,23 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_14sp" />
 
+                    <TextView
+                        android:id="@+id/size_four_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/size_four_title_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:background="@drawable/background_select_mood"
+                        android:hint="@string/account_no_hint"
+                        android:padding="@dimen/margin_10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14sp" />
+
                     <LinearLayout
                         android:id="@+id/linear_amount"
                         android:layout_width="match_parent"
@@ -149,7 +169,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:text="Mobile Number"
+                        android:text="Mobile Number*"
                         android:textColor="@color/grey_40" />
 
                     <EditText

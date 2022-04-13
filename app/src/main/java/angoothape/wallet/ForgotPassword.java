@@ -32,7 +32,7 @@ public class ForgotPassword extends RitmanBaseActivity<ActivityForgotPasswordBin
 
     @Override
     protected void initUi(Bundle savedInstanceState) {
-        binding.toolBar.titleTxt.setText(getString(R.string.app_name));
+        binding.toolBar.titleTxt.setText("Forgot Password");
         binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
 
         binding.toolBar.toolBarFinal
@@ -46,7 +46,7 @@ public class ForgotPassword extends RitmanBaseActivity<ActivityForgotPasswordBin
 
         binding.btnSubmit.setOnClickListener(v -> {
             if(binding.edtUserName.getText().toString().isEmpty()) {
-                onMessage("Enter user name");
+                onMessage("Enter valid user name or email address");
             } else {
                 getMerchantLogin();
             }
@@ -81,7 +81,19 @@ public class ForgotPassword extends RitmanBaseActivity<ActivityForgotPasswordBin
                                 , gKey);
                         showMessage(response.body().description , bodyy);
                     } else {
-                        onMessage(response.body().description);
+                        Utils.hideCustomProgressDialog();
+                        if (response.body().data != null) {
+                            String bodyy = AESHelper.decrypt(response.body().data.body
+                                    , gKey);
+                            Log.e("getBillDetails: ", bodyy);
+                            if (!body.isEmpty()) {
+                                onError(bodyy);
+                            } else {
+                                onError(response.body().description);
+                            }
+                        } else {
+                            onError(response.body().description);
+                        }
                     }
                 }
             }
@@ -107,11 +119,11 @@ public class ForgotPassword extends RitmanBaseActivity<ActivityForgotPasswordBin
 
     @Override
     public void onProceed() {
-        finish();
+      //  finish();
     }
 
     @Override
     public void onCancel(boolean goBack) {
-        finish();
+        //finish();
     }
 }

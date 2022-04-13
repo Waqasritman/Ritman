@@ -76,7 +76,7 @@ public class BusServiceFragment extends BaseFragment<FragmentBusServiceBinding>
                 , getSessionManager().getMerchantName()).observe(getViewLifecycleOwner(), response -> {
             Utils.hideCustomProgressDialog();
             if (response.status == Status.ERROR) {
-                onMessage(getString(response.messageResourceId));
+                onError(getString(response.messageResourceId));
             } else if (response.status == Status.SUCCESS) {
                 assert response.resource != null;
                 if (response.resource.responseCode.equals(101)) {
@@ -84,7 +84,7 @@ public class BusServiceFragment extends BaseFragment<FragmentBusServiceBinding>
                     servicesResponseList.addAll(response.resource.data.servicesList);
                     adapter.notifyDataSetChanged();
                 } else {
-                    onMessage(response.resource.description);
+                    onError(response.resource.description);
                 }
 
                 Log.e("services count: ", String.valueOf(servicesResponseList.size()));

@@ -22,6 +22,8 @@ import android.widget.Toast;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import com.mantra.mfs100.FingerData;
 import com.mantra.mfs100.MFS100;
 
@@ -32,6 +34,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -42,6 +45,8 @@ import java.util.Locale;
 
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
+import angoothape.wallet.di.JSONdi.restResponse.BiometricKYCErrorResponse;
+import angoothape.wallet.di.JSONdi.restResponse.aepssattlement.AEPSSettlementTransaction;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.dialogs.SingleButtonMessageDialog;
@@ -299,7 +304,8 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
 
                 try {
                     String aadharNo1 = binding.edtxAdharNo.getText().toString();
-                    if (binding.edtxAdharNo.length() != 12 || !Verhoeff.validateVerhoeff(aadharNo1)) {
+                    //if (binding.edtxAdharNo.length() != 12 || !Verhoeff.validateVerhoeff(aadharNo1)) {
+                    if (binding.edtxAdharNo.length() != 12) {
                         onMessage("Please enter valid aadhaar number.");
                     }/* else if (customer_consent_=="0"){
                         onMessage("Please select Customer Consent (YES)");
@@ -343,7 +349,8 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
                 if (aadharNo.contains("-")) {
                     aadharNo = aadharNo.replaceAll("-", "").trim();
                 }
-                if (aadharNo.length() != 12 || !Verhoeff.validateVerhoeff(aadharNo)) {
+                // if (aadharNo.length() != 12 || !Verhoeff.validateVerhoeff(aadharNo)) {
+                if (aadharNo.length() != 12) {
                     setText("Please enter valid aadhaar number.");
                 } else if (pidData == null) {
                     setText("Please scan your finger.");
@@ -677,7 +684,7 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
     }
 
     void getBioData() {
-        Utils.showCustomProgressDialog(this , false);
+        Utils.showCustomProgressDialog(this, false);
         AdharBioKycRequest request = new AdharBioKycRequest();
         request.mobile_no = mobile_no;//viewModel.mobile.getValue();
         request.kyc_token = kyc_token;//viewModel.kycToken.getValue();
@@ -713,13 +720,31 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             showPopup(response.resource.description, "Successfully", true);
                         } else {
-                            showPopup(response.resource.description, "Error", true);
+                            String bodyy = AESHelper.decrypt(response.resource.data.body
+                                    , gKey);
+                            if(bodyy != null) {
+                                try {
+
+                                    Gson gson = new Gson();
+                                    Type type = new TypeToken<BiometricKYCErrorResponse>() {
+                                    }.getType();
+                                    BiometricKYCErrorResponse data = gson.fromJson(bodyy, type);
+                                    showPopup(data.responseMessage, "Error", true);
+                                } catch (Exception e) {
+                                    showPopup(response.resource.description, "Error", true);
+                                }
+                            } else {
+                                showPopup(response.resource.description, "Error", true);
+                            }
+
+
+
                         }
                     }
                 });

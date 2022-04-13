@@ -73,10 +73,10 @@ public class BankDetailsActivity extends RitmanBaseActivity<ActivityBankDetailsB
 
 
                 } else {
-                    onMessage(getString(R.string.no_internet));
+                    onError(getString(R.string.no_internet));
                 }
             } else {
-                onMessage("Enter bank name or ifsc code for bank details");
+                onError("Enter bank name or ifsc code for bank details");
             }
 
         });
@@ -103,16 +103,16 @@ public class BankDetailsActivity extends RitmanBaseActivity<ActivityBankDetailsB
                     if (response.body().responseCode.equals(101)) {
                         showBankList(response.body().data);
                     } else {
-                        onMessage(response.body().description);
+                        onError(response.body().description);
                     }
                 } else {
-                    onMessage(getString(R.string.some_thing_wrong));
+                    onError(getString(R.string.some_thing_wrong));
                 }
             }
 
             @Override
             public void onFailure(Call<BankListResponse> call, Throwable t) {
-                onMessage(t.getLocalizedMessage());
+                onError(t.getLocalizedMessage());
                 binding.progressBar.setVisibility(View.GONE);
                 // binding.txtSearchBank.setVisibility(View.VISIBLE);
             }

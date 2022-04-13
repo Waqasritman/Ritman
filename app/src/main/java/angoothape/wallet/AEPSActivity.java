@@ -70,6 +70,7 @@ import angoothape.wallet.adapters.AEPSMiniStatementAdapter;
 import angoothape.wallet.adapters.BusSeatingLayoutAdapter;
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
+import angoothape.wallet.di.JSONdi.restResponse.AEPSErrorResponse;
 import angoothape.wallet.di.JSONdi.restResponse.AEPSTransactionResponseOne;
 import angoothape.wallet.di.JSONdi.restResponse.AEPS_Trans_Response;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
@@ -151,7 +152,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     @BindView(R.id.linearSelectPosition)
     LinearLayout linearSelectPosition;
     @BindView(R.id.edtxAdharNo)
-    MaskedEditText edtxAdharNo;
+    EditText edtxAdharNo;
     @BindView(R.id.linearAdharNo)
     LinearLayout linearAdharNo;
     @BindView(R.id.btnDeviceInfo)
@@ -197,6 +198,17 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     @Override
     protected void initUi(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(AEPSViewModel.class);
+        binding.toolBar.titleTxt.setText("AEPS");
+        binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
+        binding.toolBar.toolBarFinal
+                .setBackgroundColor(getResources().getColor(R.color.posGreen));
+        binding.toolBar.backBtn
+                .setColorFilter(ContextCompat.getColor(this,
+                        R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
+        binding.toolBar.crossBtn.setOnClickListener(v -> {
+            onClose();
+        });
+
         //   dataTable = findViewById(R.id.data_table);
         ButterKnife.bind(this);
 
@@ -315,76 +327,9 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         AEPSMiniStatementAdapter lowerAdapter = new
                 AEPSMiniStatementAdapter(this, getAEPSTransactionResponse.miniStatementList);
         binding.miniStatementRecycler.setLayoutManager(new LinearLayoutManager(getBaseContext()
-         , RecyclerView.VERTICAL , false));
+                , RecyclerView.VERTICAL, false));
         binding.miniStatementRecycler.setHasFixedSize(true);
         binding.miniStatementRecycler.setAdapter(lowerAdapter);
-
-
-
-
-//        DataTableHeader header = new DataTableHeader.Builder()
-//                .item("Date", 3)
-//                .item("Mode of TXN", 5)
-//                /* .item("Type", 2)
-//                 .item("REF No", 3)*/
-//                .item("D/C", 2)
-//                .item("Amount", 4)
-//
-//                .build();
-//        //Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/iran_sans.ttf");
-//        String MiniStatementData = "38100100207002003UID00500210006350 040621DR UMA\n" +
-//                "000001250100 040621CR UMA 000002200000 040621DR UMA 000004500000\n" +
-//                "040619DR ATM 000001500000 040619DR UMA 000004500000 040619DR\n" +
-//                "UMA 000001400000 040619DR UMA 000001400000 040618DR ATM\n" +
-//                "000001500000 040617DR ATM 000000540000 Balance 000014354303";
-//
-//        String MiniStatemen_ = MiniStatementData.substring(35, MiniStatementData.length());
-//
-//        String MiniState_ = MiniStatemen_.split("Balance")[0].toString().replace("\n", " ");
-//
-//        String[] final_MiniState_ = MiniState_.split(" ");
-//
-//        String test_ = "", final_test_ = "";
-//        int k_ = 0;
-//        ArrayList<DataTableRow> rows_ = new ArrayList<>();
-//        for (int i_ = 0; i_ < final_MiniState_.length / 3; i_++) {
-//            test_ = "";
-//            k_ = i_ * 3 + 3;
-//            for (int j_ = i_ * 3; j_ < k_; j_++) {
-//                test_ = test_ + "," + final_MiniState_[j_];
-//            }
-//
-//            columns_ = test_.substring(1).split(",");
-//
-//            String final_date_ = (columns_[0].substring(0, 6)).substring(0, 2) + "/" +
-//                    (columns_[0].substring(0, 6)).substring(2, 4) + "/" +
-//                    (columns_[0].substring(0, 6)).substring(4);
-//           /* if (columns_[0].substring(6).equals("DR")){
-//                 typeMini="D";
-//            }else if (columns_[0].substring(6).equals("CR")){
-//               typeMini="C";
-//            }*/
-//
-//
-//            DataTableRow row = new DataTableRow.Builder()
-//                    .value(final_date_)
-//                    .value(columns_[1])
-//                    /* .value(typeMini)*/
-//                    /*.value("12145252")*/
-//                    .value(columns_[0].substring(6))
-//                    .value(columns_[2])
-//
-//                    .build();
-//            rows_.add(row);
-//
-//        }
-//
-//        //  dataTable.setTypeface(tf);
-//        dataTable.setHeader(header);
-//        dataTable.setRows(rows_);
-//        dataTable.inflate(this);
-//        // binding.dataTable.setHeaderBackgroundColor(Color.parseColor("#141E61"));
-
 
     }
 
@@ -404,12 +349,14 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
 
                 try {
                     String aadharNo1 = binding.edtxAdharNo.getText().toString();
-                    if (binding.edtxAdharNo.length() != 12 || !Verhoeff.validateVerhoeff(aadharNo1)) {
+                    //if (binding.edtxAdharNo.length() != 12 || !Verhoeff.validateVerhoeff(aadharNo1)) {
+                    if (binding.edtxAdharNo.getText().toString().isEmpty()) {
+                        onMessage("Please enter aadhaar number.");
+                    } else if (binding.edtxAdharNo.getText().toString().length() != 12) {
                         onMessage("Please enter valid aadhaar number.");
-                    } else if (customer_consent_ == "0") {
+                    } else if (customer_consent_.equals("0")) {
                         onMessage("Please select Customer Consent (YES)");
                     } else {
-
                         String pidOption = getPIDOptions();
 
                     /*String pidOption = "<PidOptions ver=\"2.0\">" +
@@ -429,16 +376,20 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                             "   </Demo>" +
                             "</PidOptions>";*/
                         if (pidOption != null) {
-                            Log.e("PidOptions", pidOption);
+                            //Log.e("PidOptions", pidOption);
+                            //    Toast.makeText(this, "Jumped to RDservice \n" + pidOption, Toast.LENGTH_SHORT).show();
                             Intent intent2 = new Intent();
                             intent2.setAction("in.gov.uidai.rdservice.fp.CAPTURE");
                             intent2.putExtra("PID_OPTIONS", pidOption);
                             startActivityForResult(intent2, 2);
+                        } else {
+                            onError("PID is null");
                         }
+
                     }
                 } catch (Exception e) {
                     Log.e("Error", e.toString());
-                    onMessage("Please enter valid aadhaar number.");
+                    onError("Please enter valid aadhaar number.");
                 }
                 break;
             case R.id.btnAuthRequest:
@@ -446,7 +397,8 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                 if (aadharNo.contains("-")) {
                     aadharNo = aadharNo.replaceAll("-", "").trim();
                 }
-                if (aadharNo.length() != 12 || !Verhoeff.validateVerhoeff(aadharNo)) {
+                // if (aadharNo.length() != 12 || !Verhoeff.validateVerhoeff(aadharNo)) {
+                if (aadharNo.length() != 12) {
                     setText("Please enter valid aadhaar number.");
                 } else if (pidData == null) {
                     setText("Please scan your finger.");
@@ -462,8 +414,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                 break;
 
             case R.id.btnSubmit:
-                // txtOutput.setText("");
-
                 getBioData();
                 break;
         }
@@ -531,12 +481,9 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     }
 
     private void setText(final String message) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                txtOutput.setText(message);
-                mainResult = message;
-            }
+        this.runOnUiThread(() -> {
+            txtOutput.setText(message);
+            mainResult = message;
         });
     }
 
@@ -568,8 +515,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
             opts.format = String.valueOf(fingerFormat);
             opts.pidVer = pidVer;
             opts.timeout = timeOut;
-//            opts.otp = "123456";
-//            opts.wadh = "Hello";
+
             opts.posh = posh;
             opts.env = spinnerEnv.getSelectedItem().toString();
 
@@ -589,7 +535,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case 1:
                 if (resultCode == Activity.RESULT_OK) {
@@ -802,93 +747,117 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     }
 
     void getBioData() {
-        Utils.showCustomProgressDialog(AEPSActivity.this, false);
-        GetAEPSTransaction request = new GetAEPSTransaction();
-        request.aadhar_number_ = binding.edtxAdharNo.getText().toString();
-        request.iin_ = iin_;
-        request.amount_ = amount_a;
-        request.biometric_data_ = "<PidData" + mainResult.split("PidData")[1] + "PidData>";
-        request.txn_code_ = txn_code_;
-        request.customer_consent_ = customer_consent_;
-        request.txn_latitude_ = "0.0";
-        request.txn_longitude_ = "0.0";
-        request.terminal_IP_address_ = "10.0.0.1";
 
 
-        String gKey = KeyHelper.getKey(sessionManager.getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-                .getKey(sessionManager.getMerchantName())).trim();
+        if (mainResult != null) {
+            Utils.showCustomProgressDialog(AEPSActivity.this, false);
+            GetAEPSTransaction request = new GetAEPSTransaction();
+            request.aadhar_number_ = binding.edtxAdharNo.getText().toString();
+            request.iin_ = iin_;
+            request.amount_ = amount_a;
+            request.biometric_data_ = "<PidData" + mainResult.split("PidData")[1] + "PidData>";
+            request.txn_code_ = txn_code_;
+            request.customer_consent_ = customer_consent_;
+            request.txn_latitude_ = "0.0";
+            request.txn_longitude_ = "0.0";
+            request.terminal_IP_address_ = "10.0.0.1";
 
 
-        String body = RestClient.makeGSONString(request);
-
-        AERequest aeRequest = new AERequest();
-        aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
+            String gKey = KeyHelper.getKey(sessionManager.getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                    .getKey(sessionManager.getMerchantName())).trim();
 
 
-        viewModel.getAEPSData(aeRequest, KeyHelper.getKey(sessionManager.getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
-                .getKey(sessionManager.getMerchantName())).trim()).observe(this
-                , response -> {
-                    Utils.hideCustomProgressDialog();
-                    if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
-                    } else {
-                        assert response.resource != null;
-                        if (response.resource.responseCode.equals(101)) {
-                            Toast.makeText(this, response.resource.description, Toast.LENGTH_SHORT).show();
-                            binding.activityMain.setVisibility(View.INVISIBLE);
-                            binding.relativeReciept.setVisibility(View.VISIBLE);
-                            String bodyy = AESHelper.decrypt(response.resource.data.body
-                                    , gKey);
-                            try {
+            String body = RestClient.makeGSONString(request);
 
-                                if (txn_code_.equals("31") || txn_code_.equals("01")) {
-                                    Gson gson = new Gson();
-                                    Type type = new TypeToken<AEPSTransactionResponseOne>() {}.getType();
-                                    AEPSTransactionResponseOne data = gson.fromJson(bodyy, type);
-                                    getTransactionData(data);
-                                    binding.bcName.setText(data.bC_Name);
-                                    binding.agentId.setText(data.agent_ID);
+            AERequest aeRequest = new AERequest();
+            aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
-                                } else if (txn_code_.equals("07")) {
-                                    binding.acBalanceLinear.setVisibility(View.GONE);
-                                    binding.transAmountLinear.setVisibility(View.GONE);
-                                    binding.activityMain.setVisibility(View.GONE);
-                                    binding.relativeReciept.setVisibility(View.VISIBLE);
-                                    binding.titleService.setText("Mini Statement");
-                                    PDF_Type = "Mini_Statement";
-                                    try {
-                                        //if error is not there on mini
-                                        Gson gson1 = new Gson();
-                                        Type type1 = new TypeToken<AEPS_Trans_Response>(){}.getType();
 
-                                        AEPS_Trans_Response data1 = gson1.fromJson(bodyy, type1);
-                                        binding.bcName.setText(data1.bC_Name);
-                                        binding.agentId.setText(data1.agent_ID);
-                                        getColomData(data1);
+            viewModel.getAEPSData(aeRequest, KeyHelper.getKey(sessionManager.getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
+                    .getKey(sessionManager.getMerchantName())).trim()).observe(this
+                    , response -> {
+                        Utils.hideCustomProgressDialog();
+                        if (response.status == Status.ERROR) {
+                            onError(getString(response.messageResourceId));
+                        } else {
+                            assert response.resource != null;
+                            if (response.resource.responseCode.equals(101)) {
+                                Toast.makeText(this, response.resource.description, Toast.LENGTH_SHORT).show();
+                                binding.activityMain.setVisibility(View.INVISIBLE);
+                                binding.relativeReciept.setVisibility(View.VISIBLE);
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                try {
 
-                                    } catch (Exception e1) {
-                                        e1.printStackTrace();
+                                    if (txn_code_.equals("31") || txn_code_.equals("01")) {
+                                        Gson gson = new Gson();
+                                        Type type = new TypeToken<AEPSTransactionResponseOne>() {
+                                        }.getType();
+                                        AEPSTransactionResponseOne data = gson.fromJson(bodyy, type);
+                                        getTransactionData(data);
+                                        binding.bcName.setText(data.bC_Name);
+                                        binding.agentId.setText(data.agent_ID);
+
+                                    } else if (txn_code_.equals("07")) {
+                                        binding.acBalanceLinear.setVisibility(View.GONE);
+                                        binding.transAmountLinear.setVisibility(View.GONE);
+                                        binding.activityMain.setVisibility(View.GONE);
+                                        binding.relativeReciept.setVisibility(View.VISIBLE);
+                                        binding.titleService.setText("Mini Statement");
+                                        PDF_Type = "Mini_Statement";
                                         try {
+                                            //if error is not there on mini
                                             Gson gson1 = new Gson();
-                                            Type type1 = new TypeToken<AEPSTransactionResponseOne>() {}.getType();
-                                            AEPSTransactionResponseOne data1 = gson1.fromJson(bodyy, type1);
-                                            showPopup(data1.miniStatementError.error, "Error", true);
-                                        } catch (Exception e2) {
-                                            e2.printStackTrace();
+                                            Type type1 = new TypeToken<AEPS_Trans_Response>() {
+                                            }.getType();
+
+                                            AEPS_Trans_Response data1 = gson1.fromJson(bodyy, type1);
+                                            binding.bcName.setText(data1.bC_Name);
+                                            binding.agentId.setText(data1.agent_ID);
+                                            getColomData(data1);
+
+                                        } catch (Exception e1) {
+                                            e1.printStackTrace();
+                                            try {
+                                                Gson gson1 = new Gson();
+                                                Type type1 = new TypeToken<AEPSTransactionResponseOne>() {
+                                                }.getType();
+                                                AEPSTransactionResponseOne data1 = gson1.fromJson(bodyy, type1);
+                                                showPopup(data1.miniStatementError.error, "Error", true);
+                                            } catch (Exception e2) {
+                                                e2.printStackTrace();
+                                            }
                                         }
                                     }
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+
+                                }
+                            } else {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                try {
+
+                                    Gson gson = new Gson();
+                                    Type type = new TypeToken<AEPSErrorResponse>() {
+                                    }.getType();
+                                    AEPSErrorResponse data = gson.fromJson(bodyy, type);
+
+
+                                    onError(data.message);
+                                } catch (Exception e) {
+                                    onError(response.resource.description);
                                 }
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
-
                             }
-                        } else {
-                            showPopup(response.resource.description, "Error", true);
-
                         }
-                    }
-                });
+                    });
+        } else {
+            onError("Biometric data is not found Please Rescan");
+        }
+
+
     }
 
 

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 
+import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,13 +37,19 @@ import java.util.List;
 
 import angoothape.wallet.R;
 import angoothape.wallet.adapters.BillerDetailsAdapter;
+import angoothape.wallet.billpayment.BillPaymentMainActivity;
 import angoothape.wallet.billpayment.viewmodel.BillPaymentViewModel;
 import angoothape.wallet.databinding.FragmentUtilityBillerDetailsBinding;
+import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
+import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.BillDetailRequest;
 import angoothape.wallet.di.JSONdi.restRequest.PayBillPaymentRequest;
 import angoothape.wallet.di.JSONdi.restResponse.BillDetailResponse;
+import angoothape.wallet.di.JSONdi.restResponse.BillDetailsMainResponse;
 import angoothape.wallet.di.JSONdi.restResponse.PayBillPaymentResponse;
+import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
+import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.dialogs.SingleButtonMessageDialog;
 import angoothape.wallet.fragments.BaseFragment;
 import angoothape.wallet.home_module.NewDashboardActivity;
@@ -52,12 +62,10 @@ import static android.content.Context.WIFI_SERVICE;
 public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBillerDetailsBinding>
         implements OnDecisionMade {
 
-
     public List<BillDetailResponse.billlist> billlists;
     public List<PayBillPaymentResponse.Bill> bill;
     BillerDetailsAdapter billerDetailsAdapter;
 
-    // BankTransferViewModel viewModel;
     BillPaymentViewModel viewModel;
 
     String Field1, Field2, Field3, MobileNumber, payment_amount, paymentamount_validation, currency, partial_payment;
@@ -88,8 +96,9 @@ public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBi
     protected void setUp(Bundle savedInstanceState) {
         billlists = new ArrayList<>();
         bill = new ArrayList<>();
-        viewModel = new ViewModelProvider(this).get(BillPaymentViewModel.class);
+        viewModel = ((BillPaymentMainActivity)getBaseActivity()).viewModel;
 
+        assert getArguments() != null;
         Field1 = getArguments().getString("Field1");
         Field2 = getArguments().getString("Field2");
         Field3 = getArguments().getString("Field3");
@@ -160,37 +169,31 @@ public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBi
 
                 if (binding.billAmount.getText().toString().length() == 0) {
                     onMessage("Please enter bill amount");
-                }
-
-                else {
+                } else {
                     if (pay_after_duedate.equals("Y")) {
                         // onMessage(getString(R.string.billdue_date));
-                       if (billduedate!=null && current_date!=null) {
-                           if (billduedate.compareTo(current_date) > 0) {
-                               onMessage(getString(R.string.billdue_date));
-                           }
-                           else {
-                               partial_payment_double = Double.parseDouble(binding.billAmount.getText().toString());
-                               DecimalFormat decim = new DecimalFormat("0.00");
-                               partial_payment = (decim.format(partial_payment_double));
+                        if (billduedate != null && current_date != null) {
+                            if (billduedate.compareTo(current_date) > 0) {
+                                onMessage(getString(R.string.billdue_date));
+                            } else {
+                                partial_payment_double = Double.parseDouble(binding.billAmount.getText().toString());
+                                DecimalFormat decim = new DecimalFormat("0.00");
+                                partial_payment = (decim.format(partial_payment_double));
 
-                               netbillamount_double = Double.parseDouble(netbillamount);
+                                netbillamount_double = Double.parseDouble(netbillamount);
 
-                               if (partial_payment_double > netbillamount_double) {
-                                   onMessage("Bill amount cannot be greater than Netbill amount");
-                               }
+                                if (partial_payment_double > netbillamount_double) {
+                                    onMessage("Bill amount cannot be greater than Netbill amount");
+                                }
 
-                               if (partial_payment_double <= netbillamount_double) {
-                                   getBillPaymnet();
-                               }
-                           }
-                       }
-                       else {
-                           getBillPaymnet();
-                       }
-                    }
-
-                    else {
+                                if (partial_payment_double <= netbillamount_double) {
+                                    getBillPaymnet();
+                                }
+                            }
+                        } else {
+                            getBillPaymnet();
+                        }
+                    } else {
                         partial_payment_double = Double.parseDouble(binding.billAmount.getText().toString());
                         DecimalFormat decim = new DecimalFormat("0.00");
                         partial_payment = (decim.format(partial_payment_double));
@@ -208,28 +211,22 @@ public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBi
 
 
                 }
-            }
-
-
-            else {
+            } else {
 
                 if (pay_after_duedate.equals("Y")) {
-                   // onMessage(getString(R.string.billdue_date));
+                    // onMessage(getString(R.string.billdue_date));
                     if (billduedate != null && current_date != null) {
                         if (billduedate.compareTo(current_date) > 0) {
                             onMessage(getString(R.string.billdue_date));
-                        }
-                        else {
+                        } else {
                             getBillPaymnet();
                         }
-                    }
-                    else {
+                    } else {
                         getBillPaymnet();
                     }
 
 
-                }
-                else {
+                } else {
                     getBillPaymnet();
                 }
             }
@@ -301,6 +298,8 @@ public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBi
     void getBillDetails() {
         Utils.showCustomProgressDialog(getContext(), false);
         //binding.progressBar.setVisibility(View.VISIBLE);
+        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                .getKey(getSessionManager().getMerchantName())).trim();
         BillDetailRequest request = new BillDetailRequest();
         if (paymentamount_validation.equals("Y")) {
             request.countryCode = "IN";
@@ -329,70 +328,96 @@ public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBi
             request.imei = IMEINumber;//"5468748458458454";
             request.ip = ipAddress;
         }
+        String body = RestClient.makeGSONString(request);
+        AERequest requestc = new AERequest();
+        requestc.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
-
-        viewModel.getBillDetails(request, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-
-                , response -> {
+        viewModel.getBillDetails(requestc, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
+                KeyHelper.getSKey(KeyHelper
+                        .getKey(getSessionManager().getMerchantName())))
+                .observe(getViewLifecycleOwner(), response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             //  binding.progressBar.setVisibility(View.GONE);
                             Utils.hideCustomProgressDialog();
-                            validationid = response.resource.data.validationid;
-                            billercategory = response.resource.data.biller_category;
-                            payment_amount = response.resource.data.payment_amount;
+                            Utils.hideCustomProgressDialog();
 
-                            billlists.addAll(response.resource.data.billlist);
-                            if (paymentamount_validation.equals("Y")) {
-                                binding.billAmount.setText(payment_amount);
-                                binding.customerName.setText("NA");
-                                binding.netBillAmount.setText("NA");
-                                binding.billDate.setText("NA");
-                                binding.billDueDate.setText("NA");
-                                binding.billStatus.setText("NA");
-                            } else {
-                                for (int i = 0; i < billlists.size(); i++) {
-                                    CustomerName = billlists.get(i).customer_name;
-                                    billamount = billlists.get(i).billamount;
-                                    netbillamount = billlists.get(i).net_billamount;
-                                    billdate = billlists.get(i).billdate;
-                                    billduedate = billlists.get(i).billduedate;
-                                    billstatus = billlists.get(i).billstatus;
-                                    billnumber = billlists.get(i).billnumber;
-                                    billperiod = billlists.get(i).billperiod;
+                            String bodyy = AESHelper.decrypt(response.resource.data.body
+                                    , gKey);
+                            Log.e( "getBillDetails: ",bodyy );
+                            try {
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<BillDetailsMainResponse>() {
+                                }.getType();
+                                BillDetailsMainResponse data = gson.fromJson(bodyy, type);
+                                validationid = data.billDetailResponse.validationid;
+                                billercategory = data.billDetailResponse.biller_category;
+                                payment_amount = data.billDetailResponse.payment_amount;
+                                viewModel.customerId = data.customerID;
+                                billlists.addAll(data.billDetailResponse.billlist);
+                                if (paymentamount_validation.equals("Y")) {
+                                    binding.billAmount.setText(payment_amount);
+                                    binding.customerName.setText("NA");
+                                    binding.netBillAmount.setText("NA");
+                                    binding.billDate.setText("NA");
+                                    binding.billDueDate.setText("NA");
+                                    binding.billStatus.setText("NA");
+                                } else {
+                                    for (int i = 0; i < billlists.size(); i++) {
+                                        CustomerName = billlists.get(i).customer_name;
+                                        billamount = billlists.get(i).billamount;
+                                        netbillamount = billlists.get(i).net_billamount;
+                                        billdate = billlists.get(i).billdate;
+                                        billduedate = billlists.get(i).billduedate;
+                                        billstatus = billlists.get(i).billstatus;
+                                        billnumber = billlists.get(i).billnumber;
+                                        billperiod = billlists.get(i).billperiod;
 
-                                    binding.customerName.setText(CustomerName);
-                                    binding.billAmount.setText(billamount);
-                                    binding.netBillAmount.setText(netbillamount);
-                                    binding.billDate.setText(billdate);
-                                    binding.billDueDate.setText(billduedate);
-                                    binding.billStatus.setText(billstatus);
+                                        binding.customerName.setText(CustomerName);
+                                        binding.billAmount.setText(billamount);
+                                        binding.netBillAmount.setText(netbillamount);
+                                        binding.billDate.setText(billdate);
+                                        binding.billDueDate.setText(billduedate);
+                                        binding.billStatus.setText(billstatus);
 
 
-                                    if (billnumber == null || billnumber.equals("")) {
-                                        binding.billNumber.setText("NA");
-                                    } else {
-                                        binding.billNumber.setText(billnumber);
-                                    }
+                                        if (billnumber == null || billnumber.equals("")) {
+                                            binding.billNumber.setText("NA");
+                                        } else {
+                                            binding.billNumber.setText(billnumber);
+                                        }
 
-                                    if (billperiod == null || billperiod.equals("")) {
-                                        binding.billPeriod.setText("NA");
-                                    } else {
-                                        binding.billPeriod.setText(billperiod);
+                                        if (billperiod == null || billperiod.equals("")) {
+                                            binding.billPeriod.setText("NA");
+                                        } else {
+                                            binding.billPeriod.setText(billperiod);
+                                        }
+
                                     }
 
                                 }
-
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
 
                             //billerDetailsAdapter.notifyDataSetChanged();
 
                         } else if (response.resource.responseCode.equals(100)) {
-                            onMessage(response.resource.data.message);
                             Utils.hideCustomProgressDialog();
+                            String bodyy = AESHelper.decrypt(response.resource.data.body
+                                    , gKey);
+                            try {
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<BillDetailsMainResponse>() {
+                                }.getType();
+                                BillDetailsMainResponse data = gson.fromJson(bodyy, type);
+                                onError(data.billDetailResponse.message);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             // binding.progressBar.setVisibility(View.GONE);
                         } else {
                             // binding.progressBar.setVisibility(View.GONE);
@@ -409,7 +434,8 @@ public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBi
 
     void getBillPaymnet() {
         Utils.showCustomProgressDialog(getContext(), false);
-        // binding.progressBar.setVisibility(View.VISIBLE);
+        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                .getKey(getSessionManager().getMerchantName())).trim();
         PayBillPaymentRequest request = new PayBillPaymentRequest();
         if (partial_pay.equals("Y")) {
             request.validationid = validationid;
@@ -449,100 +475,125 @@ public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBi
         request.payment_method = "Wallet";
         request.mobileno = "9876543210";
         request.wallet_name = "RITpay";
+        request.Customer_ID = viewModel.customerId;
+        String body = RestClient.makeGSONString(request);
+        Log.e( "getBillPaymnet: ",body );
+        AERequest aeRequest = new AERequest();
+        aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
-
-        viewModel.getPayBill(request, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-
-                , response -> {
+        viewModel.getPayBill(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
+                KeyHelper.getSKey(KeyHelper
+                        .getKey(getSessionManager().getMerchantName())))
+                .observe(getViewLifecycleOwner(), response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             // binding.progressBar.setVisibility(View.GONE);
                             Utils.hideCustomProgressDialog();
-                            if (paymentamount_validation.equals("Y")) {
-                                billamount = response.resource.data.getBillPayRespData().getPaymentAmount();
-                                billerid = response.resource.data.getBillPayRespData().getBillerid();
-                                biller_status = response.resource.data.getBillPayRespData().getBillerStatus();
-                                paymentmethod = response.resource.data.getBillPayRespData().getPaymentAccount().getPaymentMethod();
-                                transaction_date_time = response.resource.data.getBillPayRespData().getTxnDateTime();
-                                paymentstatus = response.resource.data.getBillPayRespData().getPaymentStatus();
-                                payeemobileno = MobileNumber;
-                                bbps_ref_no = response.resource.data.getBillPayRespData().getBbpsRefNo();
-                                transactionrefno = response.resource.data.getBillPayRespData().getPaymentid();
-                                source_ref_no = response.resource.data.getBillPayRespData().getSourceRefNo();
+                            String bodyy = AESHelper.decrypt(response.resource.data.body
+                                    , gKey);
+                            try {
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<PayBillPaymentResponse>() {
+                                }.getType();
+                                PayBillPaymentResponse data = gson.fromJson(bodyy, type);
+                                if (paymentamount_validation.equals("Y")) {
+                                    billamount = data.getBillPayRespData().getPaymentAmount();
+                                    billerid = data.getBillPayRespData().getBillerid();
+                                    biller_status = data.getBillPayRespData().getBillerStatus();
+                                    paymentmethod = data.getBillPayRespData().getPaymentAccount().getPaymentMethod();
+                                    transaction_date_time = data.getBillPayRespData().getTxnDateTime();
+                                    paymentstatus = data.getBillPayRespData().getPaymentStatus();
+                                    payeemobileno = MobileNumber;
+                                    bbps_ref_no = data.getBillPayRespData().getBbpsRefNo();
+                                    transactionrefno = data.getBillPayRespData().getPaymentid();
+                                    source_ref_no = data.getBillPayRespData().getSourceRefNo();
 
-                                Bundle bundle = new Bundle();
-                                bundle.putString("billamount", billamount);
-                                bundle.putString("billerid", billerid);
-                                bundle.putString("biller_status", biller_status);
-                                bundle.putString("paymentmethod", paymentmethod);
-                                bundle.putString("transaction_date_time", transaction_date_time);
-                                bundle.putString("paymentstatus", paymentstatus);
-                                bundle.putString("payeemobileno", payeemobileno);
-                                bundle.putString("bbps_ref_no", bbps_ref_no);
-                                bundle.putString("transactionrefno", transactionrefno);
-                                bundle.putString("source_ref_no", source_ref_no);
-                                bundle.putString("paymentamount_validation", paymentamount_validation);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("billamount", billamount);
+                                    bundle.putString("billerid", billerid);
+                                    bundle.putString("biller_status", biller_status);
+                                    bundle.putString("paymentmethod", paymentmethod);
+                                    bundle.putString("transaction_date_time", transaction_date_time);
+                                    bundle.putString("paymentstatus", paymentstatus);
+                                    bundle.putString("payeemobileno", payeemobileno);
+                                    bundle.putString("bbps_ref_no", bbps_ref_no);
+                                    bundle.putString("transactionrefno", transactionrefno);
+                                    bundle.putString("source_ref_no", source_ref_no);
+                                    bundle.putString("paymentamount_validation", paymentamount_validation);
 
-                                Navigation.findNavController(binding.getRoot()).navigate(R.id
-                                        .action_utilityBillerDetailsFragment_to_payBillFragment, bundle);
-                            } else {
-                                bill.addAll(response.resource.data.getBillPayRespData().getBilllist());
+                                    Navigation.findNavController(binding.getRoot()).navigate(R.id
+                                            .action_utilityBillerDetailsFragment_to_payBillFragment, bundle);
+                                } else {
+                                    bill.addAll(data.getBillPayRespData().getBilllist());
 
-                                for (int i = 0; i < bill.size(); i++) {
-                                    billamount = bill.get(i).getBillamount();
-                                    netbillamount = bill.get(i).getNetBillamount();
-                                    billdate = bill.get(i).getBilldate();
-                                    billduedate = bill.get(i).getBillduedate();
-                                    billstatus = bill.get(i).getBillstatus();
-                                    billnumber = bill.get(i).getBillnumber();
-                                    billerid = bill.get(i).getBillerid();
+                                    for (int i = 0; i < bill.size(); i++) {
+                                        billamount = bill.get(i).getBillamount();
+                                        netbillamount = bill.get(i).getNetBillamount();
+                                        billdate = bill.get(i).getBilldate();
+                                        billduedate = bill.get(i).getBillduedate();
+                                        billstatus = bill.get(i).getBillstatus();
+                                        billnumber = bill.get(i).getBillnumber();
+                                        billerid = bill.get(i).getBillerid();
+                                    }
+
+
+                                    paymentmethod = data.getBillPayRespData().getPaymentAccount().getPaymentMethod();
+                                    biller_status = data.getBillPayRespData().getBillerStatus();
+                                    transaction_date_time = data.getBillPayRespData().getTxnDateTime();
+                                    paymentstatus = data.getBillPayRespData().getPaymentStatus();
+                                    payeemobileno = MobileNumber;
+                                    bbps_ref_no = data.getBillPayRespData().getBbpsRefNo();
+                                    transactionrefno = data.getBillPayRespData().getPaymentid();
+                                    source_ref_no = data.getBillPayRespData().getSourceRefNo();
+
+                                    Bundle bundle = new Bundle();
+
+                                    bundle.putString("CustomerName", CustomerName);
+                                    bundle.putString("billamount", billamount);
+                                    bundle.putString("netbillamount", netbillamount);
+                                    bundle.putString("billdate", billdate);
+                                    bundle.putString("billduedate", billduedate);
+                                    bundle.putString("billstatus", billstatus);
+                                    bundle.putString("billnumber", billnumber);
+                                    bundle.putString("billerid", billerid);
+                                    bundle.putString("paymentmethod", paymentmethod);
+                                    bundle.putString("biller_status", biller_status);
+                                    bundle.putString("transaction_date_time", transaction_date_time);
+                                    bundle.putString("paymentstatus", paymentstatus);
+                                    bundle.putString("payeemobileno", payeemobileno);
+                                    bundle.putString("bbps_ref_no", bbps_ref_no);
+                                    bundle.putString("transactionrefno", transactionrefno);
+                                    bundle.putString("source_ref_no", source_ref_no);
+                                    bundle.putString("paymentamount_validation", paymentamount_validation);
+                                    bundle.putString("partial_payment", partial_payment);
+                                    bundle.putString("partial_pay", partial_pay);
+
+                                    Navigation.findNavController(binding.getRoot()).navigate(R.id
+                                            .action_utilityBillerDetailsFragment_to_payBillFragment, bundle);
+
+
+                                    onMessage(response.resource.description);
                                 }
 
-
-                                paymentmethod = response.resource.data.getBillPayRespData().getPaymentAccount().getPaymentMethod();
-                                biller_status = response.resource.data.getBillPayRespData().getBillerStatus();
-                                transaction_date_time = response.resource.data.getBillPayRespData().getTxnDateTime();
-                                paymentstatus = response.resource.data.getBillPayRespData().getPaymentStatus();
-                                payeemobileno = MobileNumber;
-                                bbps_ref_no = response.resource.data.getBillPayRespData().getBbpsRefNo();
-                                transactionrefno = response.resource.data.getBillPayRespData().getPaymentid();
-                                source_ref_no = response.resource.data.getBillPayRespData().getSourceRefNo();
-
-                                Bundle bundle = new Bundle();
-
-                                bundle.putString("CustomerName", CustomerName);
-                                bundle.putString("billamount", billamount);
-                                bundle.putString("netbillamount", netbillamount);
-                                bundle.putString("billdate", billdate);
-                                bundle.putString("billduedate", billduedate);
-                                bundle.putString("billstatus", billstatus);
-                                bundle.putString("billnumber", billnumber);
-                                bundle.putString("billerid", billerid);
-                                bundle.putString("paymentmethod", paymentmethod);
-                                bundle.putString("biller_status", biller_status);
-                                bundle.putString("transaction_date_time", transaction_date_time);
-                                bundle.putString("paymentstatus", paymentstatus);
-                                bundle.putString("payeemobileno", payeemobileno);
-                                bundle.putString("bbps_ref_no", bbps_ref_no);
-                                bundle.putString("transactionrefno", transactionrefno);
-                                bundle.putString("source_ref_no", source_ref_no);
-                                bundle.putString("paymentamount_validation", paymentamount_validation);
-                                bundle.putString("partial_payment", partial_payment);
-                                bundle.putString("partial_pay", partial_pay);
-
-                                Navigation.findNavController(binding.getRoot()).navigate(R.id
-                                        .action_utilityBillerDetailsFragment_to_payBillFragment, bundle);
-
-
-                                onMessage(response.resource.description);
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
                         } else {
-                            // binding.progressBar.setVisibility(View.GONE);
                             Utils.hideCustomProgressDialog();
-                            onMessage(response.resource.description);
+                            if (response.resource.data != null) {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                if (!body.isEmpty()) {
+                                    onError(bodyy);
+                                } else {
+                                    onError(response.resource.description);
+                                }
+                            } else {
+                                onError(response.resource.description);
+                            }
                         }
                     }
                 });
@@ -580,7 +631,7 @@ public class UtilityBillerDetailsFragment extends BaseFragment<FragmentUtilityBi
     }
 
     @Override
-    public void onCancel(boolean goBack)  {
+    public void onCancel(boolean goBack) {
 
     }
 }

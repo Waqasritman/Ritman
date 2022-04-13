@@ -8,6 +8,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,11 +21,16 @@ import angoothape.wallet.R;
 import angoothape.wallet.adapters.WRBillerTypeAdapter;
 import angoothape.wallet.billpayment.BillPaymentMainActivity;
 import angoothape.wallet.databinding.ActivityBillPaymentsBinding;
+import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
+import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.GetWRBillerTypeRequestNew;
 import angoothape.wallet.di.JSONdi.restResponse.GetWRBillerTypeResponse;
+import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
+import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.fragments.BaseFragment;
 import angoothape.wallet.interfaces.OnWRBillerType;
+import angoothape.wallet.utils.Utils;
 
 public class BillPaymentsTypeFragment extends BaseFragment<ActivityBillPaymentsBinding>
         implements OnWRBillerType {
@@ -107,7 +116,7 @@ public class BillPaymentsTypeFragment extends BaseFragment<ActivityBillPaymentsB
                 o1.getName().compareToIgnoreCase(o2.getName()));
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         adapter = new
-                WRBillerTypeAdapter(getContext() , wrBillerTypeResponseList, this);
+                WRBillerTypeAdapter(getContext(), wrBillerTypeResponseList, this);
         binding.recyclerView.setLayoutManager(mLayoutManager);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(adapter);
@@ -132,22 +141,52 @@ public class BillPaymentsTypeFragment extends BaseFragment<ActivityBillPaymentsB
     }
 
 
-    private  void getBillPaymentType() {
-        GetWRBillerTypeRequestNew request = new GetWRBillerTypeRequestNew();
-        request.CountryCode="IN";
+    private void getBillPaymentType() {
 
+        GetWRBillerTypeRequestNew requestc = new GetWRBillerTypeRequestNew();
+        requestc.CountryCode = "IN";
+        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                .getKey(getSessionManager().getMerchantName())).trim();
+        String body = RestClient.makeGSONString(requestc);
 
-        viewModel.GetWRBillerType(request ,getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
+        AERequest request = new AERequest();
+        request.body = AESHelper.encrypt(body.trim(), gKey.trim());
+        viewModel.GetWRBillerType(request, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
+                KeyHelper.getSKey(KeyHelper
+                        .getKey(getSessionManager().getMerchantName())))
+                .observe(getViewLifecycleOwner(), response -> {
 
-                , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
-                            onBillerTypeList(response.resource.data);
+
+                            String bodyy = AESHelper.decrypt(response.resource.data.body
+                                    , gKey);
+                            try {
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<List<GetWRBillerTypeResponse>>() {
+                                }.getType();
+                                List<GetWRBillerTypeResponse> data = gson.fromJson(bodyy, type);
+                                onBillerTypeList(data);
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         } else {
-                            onMessage(response.resource.description);
+                            Utils.hideCustomProgressDialog();
+                            if (response.resource.data != null) {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                if (!body.isEmpty()) {
+                                    onError(bodyy);
+                                } else {
+                                    onError(response.resource.description);
+                                }
+                            } else {
+                                onError(response.resource.description);
+                            }
                         }
                     }
                 });

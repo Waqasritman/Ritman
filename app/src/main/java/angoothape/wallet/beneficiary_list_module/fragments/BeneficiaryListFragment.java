@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import angoothape.wallet.di.JSONdi.restResponse.aepssattlement.AEPSBeneficiary;
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import angoothape.wallet.R;
 import angoothape.wallet.adapters.CustomerBeneficiaryListAdapter;
@@ -136,6 +137,11 @@ public class BeneficiaryListFragment extends BaseFragment<FragmentBeneficiaryLis
                     .navigate(R.id.action_beneficiaryListFragment_to_showCashBeneficiaryFragment
                             , bundle);
         }
+    }
+
+    @Override
+    public void onSelectAEPSBeneficiary(AEPSBeneficiary response) {
+
     }
 
     @Override

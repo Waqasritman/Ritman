@@ -9,6 +9,7 @@
     <permission android:name="android.permission.INTERACT_ACROSS_USERS" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <uses-feature
@@ -41,7 +42,9 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
-        <activity android:name=".bill_desk.BillDeskMainActivity"></activity>
+        <activity android:name=".settlementaeps.AEPSSettlementTransactionActivity"/>
+        <activity android:name=".customerekyc.CustomerEKYCMainActivity" />
+        <activity android:name=".bill_desk.BillDeskMainActivity" />
         <activity android:name=".bus_booking.BusBookingMainActivity" />
         <activity android:name=".AEPSReceiptActivity" />
         <activity android:name=".menumodules.CustomerServiceDetailsActivity" />

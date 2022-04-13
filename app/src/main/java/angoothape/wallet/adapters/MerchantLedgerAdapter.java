@@ -11,17 +11,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import angoothape.wallet.AdpatersViewHolder.EmptyBeneficiaryListViewHolder;
 import angoothape.wallet.R;
+import angoothape.wallet.databinding.EmptyViewBeneBinding;
 import angoothape.wallet.databinding.LedgerDesignMerchantBinding;
 import angoothape.wallet.databinding.TransactionHistoryDesignBinding;
 import angoothape.wallet.di.JSONdi.restResponse.ledger.StatementOfAccount;
 
 public class MerchantLedgerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private final int EMPTY_VIEW = 1;
+    private final int ITEM = 0;
+
     Context context;
     List<StatementOfAccount> statementOfAccounts;
     int showType = 0;
-    // 0 - all , 1 - credit 2 - debit
 
     public MerchantLedgerAdapter(List<StatementOfAccount> statementOfAccounts, Context context) {
         this.statementOfAccounts = statementOfAccounts;
@@ -31,9 +35,16 @@ public class MerchantLedgerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LedgerDesignMerchantBinding binding =
-                LedgerDesignMerchantBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new MerchantLedgerViewHolder(binding);
+        if (ITEM == viewType) {
+            LedgerDesignMerchantBinding binding =
+                    LedgerDesignMerchantBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+            return new MerchantLedgerViewHolder(binding);
+        } else {
+            EmptyViewBeneBinding binding =
+                    EmptyViewBeneBinding.inflate(LayoutInflater.from(parent.getContext())
+                            , parent, false);
+            return new EmptyBeneficiaryListViewHolder(binding);
+        }
     }
 
     @Override
@@ -64,39 +75,10 @@ public class MerchantLedgerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             } catch (Exception e) {
 
             }
-
-
-            // if (showType == 0) {
-//            ((MerchantLedgerViewHolder) holder).binding.allLayout.setVisibility(View.VISIBLE);
-//            //    ((MerchantLedgerViewHolder) holder).binding.creditLayout.setVisibility(View.GONE);
-//            //  ((MerchantLedgerViewHolder) holder).binding.debitLayout.setVisibility(View.GONE);
-//            ((MerchantLedgerViewHolder) holder).binding.date.setText(account.date);
-//            ((MerchantLedgerViewHolder) holder).binding.description.setText(account.description);
-//
-//            ((MerchantLedgerViewHolder) holder).binding.debit.setText(account.debit_INR);
-//            ((MerchantLedgerViewHolder) holder).binding.credit.setText(account.credit_INR);
-//            } else if (showType == 1) {
-//                ((MerchantLedgerViewHolder) holder).binding.allLayout.setVisibility(View.GONE);
-//                ((MerchantLedgerViewHolder) holder).binding.creditLayout.setVisibility(View.VISIBLE);
-//                ((MerchantLedgerViewHolder) holder).binding.debitLayout.setVisibility(View.GONE);
-//                ((MerchantLedgerViewHolder) holder).binding.creditDate.setText(account.date);
-//                ((MerchantLedgerViewHolder) holder).binding.creditDescription.setText(account.description);
-//
-//                ((MerchantLedgerViewHolder) holder).binding.creditcr.setText(account.credit_INR);
-//            } else if (showType == 2) {
-//                ((MerchantLedgerViewHolder) holder).binding.allLayout.setVisibility(View.GONE);
-//                ((MerchantLedgerViewHolder) holder).binding.creditLayout.setVisibility(View.GONE);
-//                ((MerchantLedgerViewHolder) holder).binding.debitLayout.setVisibility(View.VISIBLE);
-//                ((MerchantLedgerViewHolder) holder).binding.debitDate.setText(account.date);
-//                ((MerchantLedgerViewHolder) holder).binding.debitDescription.setText(account.description);
-//
-//                ((MerchantLedgerViewHolder) holder).binding.debitdebit.setText(account.debit_INR);
-//            }
-
+        } else if (holder instanceof EmptyBeneficiaryListViewHolder) {
 
         }
     }
-
 
     public void setType(int type) {
         this.showType = type;
@@ -105,9 +87,23 @@ public class MerchantLedgerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemCount() {
+        if (statementOfAccounts == null) {
+            return 0;
+        } else if (statementOfAccounts.size() == 0) {
+            //Return 1 here to show nothing
+            return EMPTY_VIEW;
+        }
         return statementOfAccounts.size();
     }
 
+
+    @Override
+    public int getItemViewType(int position) {
+        if (statementOfAccounts.isEmpty()) {
+            return EMPTY_VIEW;
+        }
+        return super.getItemViewType(position);
+    }
 
     public static class MerchantLedgerViewHolder extends RecyclerView.ViewHolder {
         LedgerDesignMerchantBinding binding;

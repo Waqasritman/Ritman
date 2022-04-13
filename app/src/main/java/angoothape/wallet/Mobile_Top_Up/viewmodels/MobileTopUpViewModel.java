@@ -10,25 +10,15 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.ConnectException;
 
+import angoothape.wallet.di.JSONdi.restRequest.AERequest;
+import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
 import retrofit2.Call;
 import retrofit2.Response;
 import angoothape.wallet.R;
 import angoothape.wallet.di.JSONdi.AppExecutors;
 import angoothape.wallet.di.JSONdi.NetworkResource;
-import angoothape.wallet.di.JSONdi.restRequest.BillDetailRequest;
 import angoothape.wallet.di.JSONdi.restRequest.MobileTopUpRequest;
-import angoothape.wallet.di.JSONdi.restRequest.PayBillPaymentRequest;
-import angoothape.wallet.di.JSONdi.restRequest.PlanCategoriesRequest;
-import angoothape.wallet.di.JSONdi.restRequest.PrepaidOperatorRequest;
-import angoothape.wallet.di.JSONdi.restRequest.PrepaidPlanRequest;
-import angoothape.wallet.di.JSONdi.restRequest.RechargePlansRequest;
-import angoothape.wallet.di.JSONdi.restResponse.BillDetailResponse;
 import angoothape.wallet.di.JSONdi.restResponse.MobileTopUpResponse;
-import angoothape.wallet.di.JSONdi.restResponse.PayBillPaymentResponse;
-import angoothape.wallet.di.JSONdi.restResponse.PlanCategoriesResponse;
-import angoothape.wallet.di.JSONdi.restResponse.PrepaidOperatorResponse;
-import angoothape.wallet.di.JSONdi.restResponse.PrepaidPlanResponse;
-import angoothape.wallet.di.JSONdi.restResponse.RechargePlansResponse;
 import angoothape.wallet.di.JSONdi.retrofit.RestApi;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.di.XMLdi.RequestHelper.WRPrepaidRechargeRequest;
@@ -36,46 +26,45 @@ import angoothape.wallet.di.generic_response.SimpleResponse;
 
 public class MobileTopUpViewModel extends ViewModel {
 
-    RestApi restApi = RestClient.getBase();
+    RestApi restApi = RestClient.getEKYC();
     AppExecutors appExecutors = new AppExecutors();
 
-    public MutableLiveData<WRPrepaidRechargeRequest> rechargeRequestLiveData = new MutableLiveData<>();
     public MutableLiveData<String> operatorCode = new MutableLiveData<>();
     public MutableLiveData<String> circleCode = new MutableLiveData<>();
     public MutableLiveData<String> mobileNo = new MutableLiveData<>();
-    public MutableLiveData<String> operatorName = new MutableLiveData<>();
 
+    public String customerID = "";
 
-
-    public LiveData<NetworkResource<PrepaidOperatorResponse>> getOperator (PrepaidOperatorRequest request , String userName){
-        MutableLiveData<NetworkResource<PrepaidOperatorResponse>> data = new MutableLiveData<>(); // receiving
-        Call<PrepaidOperatorResponse> call = restApi.getOperator(RestClient.makeGSONRequestBody(request)
-                ,userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> getOperator(AERequest request,
+                                                             String key, String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.getOperator(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<PrepaidOperatorResponse>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<PrepaidOperatorResponse> call1, Response<PrepaidOperatorResponse> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        PrepaidOperatorResponse model = new PrepaidOperatorResponse();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
                     } catch (JSONException | IOException e) {
                         e.printStackTrace();
                     }
-                } else if(response.isSuccessful()) {
+                } else if (response.isSuccessful()) {
                     data.postValue(NetworkResource.success(response.body()));
                 }
             }
 
             @Override
-            public void onFailure(Call<PrepaidOperatorResponse> call1, Throwable t) {
-                PrepaidOperatorResponse temp = new PrepaidOperatorResponse();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -92,35 +81,36 @@ public class MobileTopUpViewModel extends ViewModel {
         return data;
     }
 
-    public LiveData<NetworkResource<PrepaidPlanResponse>> getPrepaidPlan (PrepaidPlanRequest request , String userName){//old one
-        MutableLiveData<NetworkResource<PrepaidPlanResponse>> data = new MutableLiveData<>(); // receiving
-        Call<PrepaidPlanResponse> call = restApi.getPrepaidPlan(RestClient.makeGSONRequestBody(request)
-                ,userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> getPrepaidPlan(AERequest request, String key
+            , String sKey) {//old one
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.getPrepaidPlan(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<PrepaidPlanResponse>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<PrepaidPlanResponse> call1, Response<PrepaidPlanResponse> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        PrepaidPlanResponse model = new PrepaidPlanResponse();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
                     } catch (JSONException | IOException e) {
                         e.printStackTrace();
                     }
-                } else if(response.isSuccessful()) {
+                } else if (response.isSuccessful()) {
                     data.postValue(NetworkResource.success(response.body()));
                 }
             }
 
             @Override
-            public void onFailure(Call<PrepaidPlanResponse> call1, Throwable t) {
-                PrepaidPlanResponse temp = new PrepaidPlanResponse();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -137,10 +127,10 @@ public class MobileTopUpViewModel extends ViewModel {
         return data;
     }
 
-    public LiveData<NetworkResource<MobileTopUpResponse>> getMobileTopUp (MobileTopUpRequest request , String userName){
+    public LiveData<NetworkResource<MobileTopUpResponse>> getMobileTopUp(MobileTopUpRequest request, String userName) {
         MutableLiveData<NetworkResource<MobileTopUpResponse>> data = new MutableLiveData<>(); // receiving
         Call<MobileTopUpResponse> call = restApi.getMobileTopUp(RestClient.makeGSONRequestBody(request)
-                ,userName); // rest api declaration
+                , userName); // rest api declaration
         //init
         appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<MobileTopUpResponse>() {
             @Override
@@ -158,7 +148,7 @@ public class MobileTopUpViewModel extends ViewModel {
                     } catch (JSONException | IOException e) {
                         e.printStackTrace();
                     }
-                } else if(response.isSuccessful()) {
+                } else if (response.isSuccessful()) {
                     data.postValue(NetworkResource.success(response.body()));
                 }
             }
@@ -184,10 +174,10 @@ public class MobileTopUpViewModel extends ViewModel {
 
 
     public LiveData<NetworkResource<SimpleResponse>> mobileRecharge(WRPrepaidRechargeRequest request
-            , String userName){
+            , String userName) {
         MutableLiveData<NetworkResource<SimpleResponse>> data = new MutableLiveData<>(); // receiving
         Call<SimpleResponse> call = restApi.prepaidRecharge(RestClient.makeGSONRequestBody(request)
-                ,userName); // rest api declaration
+                , userName); // rest api declaration
         //init
         appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<SimpleResponse>() {
             @Override
@@ -205,7 +195,7 @@ public class MobileTopUpViewModel extends ViewModel {
                     } catch (JSONException | IOException e) {
                         e.printStackTrace();
                     }
-                } else if(response.isSuccessful()) {
+                } else if (response.isSuccessful()) {
                     data.postValue(NetworkResource.success(response.body()));
                 }
             }
@@ -230,112 +220,22 @@ public class MobileTopUpViewModel extends ViewModel {
     }//old one
 
 
-    public LiveData<NetworkResource<PlanCategoriesResponse>> getPlanName (PlanCategoriesRequest request , String userName){
-        MutableLiveData<NetworkResource<PlanCategoriesResponse>> data = new MutableLiveData<>(); // receiving
-        Call<PlanCategoriesResponse> call = restApi.getPlanName(RestClient.makeGSONRequestBody(request)
-                ,userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> getPlanName(AERequest request,
+                                                             String key, String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.getPlanName(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<PlanCategoriesResponse>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<PlanCategoriesResponse> call1, Response<PlanCategoriesResponse> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        PlanCategoriesResponse model = new PlanCategoriesResponse();
-                        model.responseCode = 500;
-                        model.description = message;
-                        data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
-                    } catch (JSONException | IOException e) {
-                        e.printStackTrace();
-                    }
-                } else if(response.isSuccessful()) {
-                    data.postValue(NetworkResource.success(response.body()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PlanCategoriesResponse> call1, Throwable t) {
-                PlanCategoriesResponse temp = new PlanCategoriesResponse();
-                if (t instanceof ConnectException) {
-                    // COMPLETED handle no internet access case
-
-                    data.postValue(NetworkResource.error(R.string.error_internet, temp));
-                } else if (t instanceof IOException) {
-                    // handle server error case
-                    data.postValue(NetworkResource.error(R.string.error_server, temp));
-                } else {
-                    // serialization case, throw abort message (maybe save crash log)
-                    data.postValue(NetworkResource.error(R.string.error_fatal, temp));
-                }
-            }
-        }));
-        return data;
-    }
-
-
-    public LiveData<NetworkResource<RechargePlansResponse>> getRechargePlanName (RechargePlansRequest request , String userName){
-        MutableLiveData<NetworkResource<RechargePlansResponse>> data = new MutableLiveData<>(); // receiving
-        Call<RechargePlansResponse> call = restApi.getRechargePlanName(RestClient.makeGSONRequestBody(request)
-                ,userName); // rest api declaration
-        //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<RechargePlansResponse>() {
-            @Override
-            public void onResponse(Call<RechargePlansResponse> call1, Response<RechargePlansResponse> response) {
-                if (!response.isSuccessful() && response.errorBody() != null) {
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response.errorBody().string());
-                        String message = jsonObject.getString("Message");
-
-                        RechargePlansResponse model = new RechargePlansResponse();
-                        model.responseCode = 500;
-                        model.description = message;
-                        data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
-                    } catch (JSONException | IOException e) {
-                        e.printStackTrace();
-                    }
-                } else if(response.isSuccessful()) {
-                    data.postValue(NetworkResource.success(response.body()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RechargePlansResponse> call1, Throwable t) {
-                RechargePlansResponse temp = new RechargePlansResponse();
-                if (t instanceof ConnectException) {
-                    // COMPLETED handle no internet access case
-
-                    data.postValue(NetworkResource.error(R.string.error_internet, temp));
-                } else if (t instanceof IOException) {
-                    // handle server error case
-                    data.postValue(NetworkResource.error(R.string.error_server, temp));
-                } else {
-                    // serialization case, throw abort message (maybe save crash log)
-                    data.postValue(NetworkResource.error(R.string.error_fatal, temp));
-                }
-            }
-        }));
-        return data;
-    }
-
-    public LiveData<NetworkResource<BillDetailResponse>> getBillDetails(BillDetailRequest request, String userName) {
-        MutableLiveData<NetworkResource<BillDetailResponse>> data = new MutableLiveData<>(); // receiving
-        Call<BillDetailResponse> call = restApi.getBillDetails(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
-        //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<BillDetailResponse>() {
-            @Override
-            public void onResponse(Call<BillDetailResponse> call1, Response<BillDetailResponse> response) {
-                if (!response.isSuccessful() && response.errorBody() != null) {
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response.errorBody().string());
-                        String message = jsonObject.getString("Message");
-
-                        BillDetailResponse model = new BillDetailResponse();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -348,8 +248,8 @@ public class MobileTopUpViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<BillDetailResponse> call1, Throwable t) {
-                BillDetailResponse temp = new BillDetailResponse();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -366,21 +266,23 @@ public class MobileTopUpViewModel extends ViewModel {
         return data;
     }
 
-    public LiveData<NetworkResource<PayBillPaymentResponse>> getPayBill(PayBillPaymentRequest request, String userName) {
-        MutableLiveData<NetworkResource<PayBillPaymentResponse>> data = new MutableLiveData<>(); // receiving
-        Call<PayBillPaymentResponse> call = restApi.getPayBill(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
+
+    public LiveData<NetworkResource<AEResponse>> getRechargePlanName(AERequest request, String key
+            , String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.getRechargePlanName(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<PayBillPaymentResponse>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<PayBillPaymentResponse> call1, Response<PayBillPaymentResponse> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        PayBillPaymentResponse model = new PayBillPaymentResponse();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -393,8 +295,100 @@ public class MobileTopUpViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<PayBillPaymentResponse> call1, Throwable t) {
-                PayBillPaymentResponse temp = new PayBillPaymentResponse();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
+                if (t instanceof ConnectException) {
+                    // COMPLETED handle no internet access case
+
+                    data.postValue(NetworkResource.error(R.string.error_internet, temp));
+                } else if (t instanceof IOException) {
+                    // handle server error case
+                    data.postValue(NetworkResource.error(R.string.error_server, temp));
+                } else {
+                    // serialization case, throw abort message (maybe save crash log)
+                    data.postValue(NetworkResource.error(R.string.error_fatal, temp));
+                }
+            }
+        }));
+        return data;
+    }
+
+    public LiveData<NetworkResource<AEResponse>> getBillDetails(AERequest request, String key,
+                                                                String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.getBillDetails(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
+        //init
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
+            @Override
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
+                if (!response.isSuccessful() && response.errorBody() != null) {
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(response.errorBody().string());
+                        String message = jsonObject.getString("Message");
+
+                        AEResponse model = new AEResponse();
+                        model.responseCode = 500;
+                        model.description = message;
+                        data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (response.isSuccessful()) {
+                    data.postValue(NetworkResource.success(response.body()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
+                if (t instanceof ConnectException) {
+                    // COMPLETED handle no internet access case
+
+                    data.postValue(NetworkResource.error(R.string.error_internet, temp));
+                } else if (t instanceof IOException) {
+                    // handle server error case
+                    data.postValue(NetworkResource.error(R.string.error_server, temp));
+                } else {
+                    // serialization case, throw abort message (maybe save crash log)
+                    data.postValue(NetworkResource.error(R.string.error_fatal, temp));
+                }
+            }
+        }));
+        return data;
+    }
+
+    public LiveData<NetworkResource<AEResponse>> getPayBill(AERequest request, String key
+            , String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.getPayBill(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
+        //init
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
+            @Override
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
+                if (!response.isSuccessful() && response.errorBody() != null) {
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(response.errorBody().string());
+                        String message = jsonObject.getString("Message");
+
+                        AEResponse model = new AEResponse();
+                        model.responseCode = 500;
+                        model.description = message;
+                        data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (response.isSuccessful()) {
+                    data.postValue(NetworkResource.success(response.body()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 

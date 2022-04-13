@@ -76,15 +76,15 @@ public class RefundHistoryFragment extends BaseFragment<FragmentRefundHistoryBin
                         Utils.hideCustomProgressDialog();
                         assert response.resource != null;
                         if (response.status == Status.ERROR) {
-                            onMessage(getString(response.messageResourceId));
+                            onError(getString(response.messageResourceId));
                         } else if (response.status == Status.SUCCESS) {
                             if (response.resource.responseCode.equals(101)) {
                                 onGetHistoryList(response.resource.data);
                             } else {
-                                onMessage(response.resource.description);
+                                onError(response.resource.description);
                             }
                         } else if (response.status == Status.UNSUCCESS) {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     });
         } else {

@@ -89,6 +89,53 @@ public class EKYCViewModel extends ViewModel {
         return data;
     }
 
+    //YB_Create_Agent
+    public LiveData<NetworkResource<AEResponse>> YBCreateCustomer(AERequest request, String key
+            , String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.YBCreateCustomerKYC(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
+        //init
+        appExecutors.networkIO().execute(() -> call.enqueue(new Callback<AEResponse>() {
+            @Override
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
+                if (!response.isSuccessful() && response.errorBody() != null) {
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(response.errorBody().string());
+                        String message = jsonObject.getString("Message");
+
+                        AEResponse model = new AEResponse();
+                        model.responseCode = 500;
+                        model.description = message;
+                        data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (response.isSuccessful()) {
+                    data.postValue(NetworkResource.success(response.body()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
+                if (t instanceof ConnectException) {
+                    // COMPLETED handle no internet access case
+
+                    data.postValue(NetworkResource.error(R.string.error_internet, temp));
+                } else if (t instanceof IOException) {
+                    // handle server error case
+                    data.postValue(NetworkResource.error(R.string.error_server, temp));
+                } else {
+                    // serialization case, throw abort message (maybe save crash log)
+                    data.postValue(NetworkResource.error(R.string.error_fatal, temp));
+                }
+            }
+        }));
+        return data;
+    }
+
     //YB_VALIDATE_OTP
     public LiveData<NetworkResource<AEResponse>> YBValidateOTP(AERequest request, String key
             , String sKey) {
@@ -136,7 +183,6 @@ public class EKYCViewModel extends ViewModel {
         return data;
     }
 
-
     //GetBioData
     public LiveData<NetworkResource<AEResponse>> YBAdharBioKYC(AERequest request, String key
             , String sKey) {
@@ -183,5 +229,4 @@ public class EKYCViewModel extends ViewModel {
         }));
         return data;
     }
-
 }

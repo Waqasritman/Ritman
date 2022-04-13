@@ -184,9 +184,7 @@ public class RestClient {
 
 
     public static RestApi getREST() {
-       // if (REST_CLIENT == null) {
         REST_EKYC = restAdapterRest.create(RestApi.class);
-       // }
         return REST_EKYC;
     }
 

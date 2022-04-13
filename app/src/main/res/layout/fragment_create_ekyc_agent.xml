@@ -49,6 +49,7 @@
 
 
                         <TextView
+                            android:id="@+id/name_fleid"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -72,54 +73,32 @@
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/text_size_16sp" />
 
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/mobile_fleid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/mobile_number"
+                            android:textSize="@dimen/text_size_14sp" />
 
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="match_parent"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:text="@string/first_name"-->
-                        <!--                        android:textSize="@dimen/text_size_14sp" />-->
-
-
-                        <!--                    <EditText-->
-                        <!--                        android:id="@+id/firstNameEditTextRegi"-->
-                        <!--                        android:layout_width="match_parent"-->
-                        <!--                        android:layout_height="@dimen/height_50dp"-->
-                        <!--                        android:layout_marginTop="10dp"-->
-                        <!--                        android:layout_marginRight="@dimen/_5sdp"-->
-                        <!--                        android:background="@drawable/background_beneficiary_bank_pos_red"-->
-                        <!--                        android:gravity="center_vertical"-->
-                        <!--                        android:hint="First Name"-->
-                        <!--                        android:inputType="text"-->
-                        <!--                        android:paddingLeft="@dimen/margin_10dp"-->
-                        <!--                        android:singleLine="true"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:textSize="@dimen/text_size_16sp" />-->
-
-
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="match_parent"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:layout_marginTop="10dp"-->
-                        <!--                        android:layout_marginBottom="10dp"-->
-                        <!--                        android:text="@string/last_name_text"-->
-                        <!--                        android:textSize="@dimen/text_size_14sp" />-->
-
-                        <!--                    <EditText-->
-                        <!--                        android:id="@+id/lastNameEditTextRegi"-->
-                        <!--                        android:layout_width="match_parent"-->
-                        <!--                        android:layout_height="@dimen/height_50dp"-->
-                        <!--                        android:layout_marginRight="@dimen/_5sdp"-->
-                        <!--                        android:background="@drawable/background_beneficiary_bank_pos_red"-->
-                        <!--                        android:gravity="center_vertical"-->
-                        <!--                        android:hint="@string/last_name_text"-->
-                        <!--                        android:inputType="text"-->
-                        <!--                        android:maxLength="25"-->
-                        <!--                        android:paddingLeft="@dimen/_5sdp"-->
-                        <!--                        android:singleLine="true"-->
-                        <!--                        android:text=""-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:textSize="@dimen/text_size_16sp" />-->
-
+                        <EditText
+                            android:visibility="gone"
+                            android:id="@+id/mobile_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/background_beneficiary_bank_pos_red"
+                            android:gravity="center_vertical"
+                            android:hint="@string/phone_number_hint"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/text_size_16sp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -201,6 +180,7 @@
                         android:textSize="@dimen/text_size_16sp" />
 
                     <TextView
+                        android:id="@+id/gender_txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -209,6 +189,7 @@
                         android:textSize="@dimen/text_size_14sp" />
 
                     <LinearLayout
+                        android:id="@+id/gender_layout"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
                         android:layout_marginRight="@dimen/_5sdp"

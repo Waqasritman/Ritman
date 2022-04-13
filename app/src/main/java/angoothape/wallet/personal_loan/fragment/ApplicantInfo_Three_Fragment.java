@@ -226,7 +226,7 @@ public class ApplicantInfo_Three_Fragment extends BaseFragment<FragmentApplicant
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -234,7 +234,7 @@ public class ApplicantInfo_Three_Fragment extends BaseFragment<FragmentApplicant
                             Utils.hideCustomProgressDialog();
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             Utils.hideCustomProgressDialog();
                         }
                     }
@@ -250,7 +250,7 @@ public class ApplicantInfo_Three_Fragment extends BaseFragment<FragmentApplicant
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -258,7 +258,7 @@ public class ApplicantInfo_Three_Fragment extends BaseFragment<FragmentApplicant
                             Utils.hideCustomProgressDialog();
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             Utils.hideCustomProgressDialog();
                         }
                     }
@@ -274,7 +274,7 @@ public class ApplicantInfo_Three_Fragment extends BaseFragment<FragmentApplicant
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -282,7 +282,7 @@ public class ApplicantInfo_Three_Fragment extends BaseFragment<FragmentApplicant
                             Utils.hideCustomProgressDialog();
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             Utils.hideCustomProgressDialog();
                         }
                     }
@@ -297,17 +297,15 @@ public class ApplicantInfo_Three_Fragment extends BaseFragment<FragmentApplicant
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             onAccomodation(response.resource.data);
-                            Utils.hideCustomProgressDialog();
-
                         } else {
-                            onMessage(response.resource.description);
-                            Utils.hideCustomProgressDialog();
+                            onError(response.resource.description);
                         }
+                        Utils.hideCustomProgressDialog();
                     }
                 });
     }

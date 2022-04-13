@@ -16,6 +16,7 @@ import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.ValidateOtpRequest;
+import angoothape.wallet.di.JSONdi.restResponse.BiometricKYCErrorResponse;
 import angoothape.wallet.di.JSONdi.restResponse.ValidateOtpResponse;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
@@ -81,7 +82,7 @@ public class OTPVerifyFragment extends BaseFragment<FragmentOTPVerifyBinding> {
                         , response -> {
                             Utils.hideCustomProgressDialog();
                             if (response.status == Status.ERROR) {
-                                onMessage(getString(response.messageResourceId));
+                                onError(getString(response.messageResourceId));
                             } else {
                                 assert response.resource != null;
                                 if (response.resource.responseCode.equals(101)) {
@@ -116,11 +117,20 @@ public class OTPVerifyFragment extends BaseFragment<FragmentOTPVerifyBinding> {
                                         e.printStackTrace();
                                     }
 
-                                   /* Navigation.findNavController(binding.getRoot()).navigate(R.id
-                                            .action_OTPVerifyFragment_to_adharBioKYCFragment);*/
-                                    //  onBillerNamesList(response.resource.data);
                                 } else {
-                                    onMessage(response.resource.description);
+                                    Utils.hideCustomProgressDialog();
+                                    String bodyy = AESHelper.decrypt(response.resource.data.body
+                                            , gKey);
+                                    try {
+
+                                        Gson gson = new Gson();
+                                        Type type = new TypeToken<BiometricKYCErrorResponse>() {
+                                        }.getType();
+                                        BiometricKYCErrorResponse data = gson.fromJson(bodyy, type);
+                                        onError(data.responseMessage);
+                                    } catch (Exception e) {
+                                        onError(response.resource.description);
+                                    }
                                 }
                             }
                         });

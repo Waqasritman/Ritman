@@ -156,7 +156,18 @@ public class SelectDeviceActivity extends RitmanBaseActivity<ActivitySelectDevic
                                 e.printStackTrace();
                             }
                         } else {
-                            onMessage(response.resource.description);
+                            Utils.hideCustomProgressDialog();
+                            if (response.resource.data != null) {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                if (!body.isEmpty()) {
+                                    onError(bodyy);
+                                } else {
+                                    onError(response.resource.description);
+                                }
+                            } else {
+                                onError(response.resource.description);
+                            }
                         }
 
                     });
@@ -230,15 +241,6 @@ public class SelectDeviceActivity extends RitmanBaseActivity<ActivitySelectDevic
 
     }
 
-    @Override
-    public void onCancel(boolean goBack) {
-
-    }
-
-    @Override
-    public void onCancel() {
-
-    }
 
     @Override
     public void IINList(List<IINListResponse> IINlist) {

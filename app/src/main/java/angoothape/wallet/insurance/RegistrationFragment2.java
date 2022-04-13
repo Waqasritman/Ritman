@@ -460,7 +460,7 @@ public class RegistrationFragment2 extends BaseFragment<RegistrationFragment2Lay
         hospicareGroup.email_ID=emailId;
         hospicarememebrFormrequest.esb_hospicare_group_req=hospicareGroup;
 
-        Call<HospicareMemebrFormResponse> call = RestClient.get1().getHospicareMemberForm(hospicarememebrFormrequest, getSessionManager().getMerchantName());
+        Call<HospicareMemebrFormResponse> call = RestClient.getEKYC().getHospicareMemberForm(hospicarememebrFormrequest, getSessionManager().getMerchantName());
         call.enqueue(new retrofit2.Callback<HospicareMemebrFormResponse>() {
             @Override
             public void onResponse(Call<HospicareMemebrFormResponse> call, Response<HospicareMemebrFormResponse> response) {
@@ -475,7 +475,7 @@ public class RegistrationFragment2 extends BaseFragment<RegistrationFragment2Lay
                 }
 
                 else {
-                    onMessage(response.body().description);
+                    onError(response.body().description);
                     Utils.hideCustomProgressDialog();
                 }
 
@@ -485,7 +485,7 @@ public class RegistrationFragment2 extends BaseFragment<RegistrationFragment2Lay
             public void onFailure(Call<HospicareMemebrFormResponse> call, Throwable t) {
                 Utils.hideCustomProgressDialog();
                 // Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                //onMessage(response.body().description);
+                //onError(response.body().description);
             }
         });
     }

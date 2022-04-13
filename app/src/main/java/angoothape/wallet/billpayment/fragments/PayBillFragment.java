@@ -68,7 +68,7 @@ public class PayBillFragment extends BaseFragment<ActivityBillPaymentCountryBind
         viewModel.getBillPay(request ,getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {

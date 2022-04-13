@@ -47,7 +47,7 @@
     <string name="skip">Skip</string>
     <string name="back">Back</string>
     <string name="verify">Verify &amp; Proceed</string>
-    <string name="forgot_pin">Forgot PIN?</string>
+    <string name="forgot_pin">Forgot Password?</string>
     <string name="first_name">First Name*</string>
     <string name="member_first_name">First Name</string>
 
@@ -142,7 +142,7 @@
     <string name="home">Home</string>
     <string name="add_beneficiary">Add Beneficiary</string>
     <string name="send_now">Send now</string>
-    <string name="enter_pin">Enter PIN</string>
+    <string name="enter_pin">Enter Password</string>
     <string name="cancel">Cancel</string>
     <string name="next">Next</string>
     <string name="pay_bill">Pay Bill</string>
@@ -385,7 +385,7 @@
     <string name="plz_select_send_purpose_error">Please select purpose of transfer</string>
 
     <string name="plz_select_source_of_income_error">Please select source of income</string>
-    <string name="enter_name_bene__first_name_error">Enter first name</string>
+    <string name="enter_name_bene__first_name_error">Enter Full name</string>
     <string name="enter_name_bene__last_name_error">Enter last name</string>
     <string name="enter_name_bene__middle_name_error">Enter middle name</string>
     <string name="plz_enter_mobile_no">Enter mobile number</string>
@@ -426,13 +426,13 @@
     <string name="nationality_m">Nationality*</string>
     <string name="Please_Enter_email_txt">Please enter your e-mail address</string>
     <string name="Please_Enter_email_txt_phone">Enter your e-mail address or mobile number</string>
-    <string name="old_pin">Enter old Pin*</string>
+    <string name="old_pin">Enter old Password*</string>
     <string name="pinhint">1234</string>
-    <string name="new_pin">Enter new PIN*</string>
-    <string name="confirm_pin">Re-enter new PIN*</string>
-    <string name="enter_old_pin">Please enter Old PIN</string>
-    <string name="enter_new_pin">Please enter New PIN</string>
-    <string name="enter_confirm_pin">Please re-enter new PIN</string>
+    <string name="new_pin">Enter new Password*</string>
+    <string name="confirm_pin">Re-enter new Password*</string>
+    <string name="enter_old_pin">Please enter Old Password</string>
+    <string name="enter_new_pin">Please enter New Password</string>
+    <string name="enter_confirm_pin">Please re-enter new Password</string>
     <string name="pin_must_be_same">PIN doesn\'t match</string>
     <string name="pin_changed_successfully">PIN changed successfully</string>
     <string name="plz_select_sending_currency">Please select sending currency</string>
@@ -529,7 +529,7 @@
     <string name="off_text">Off</string>
     <string name="wallet_to_wallet">Wallet To Wallet</string>
     <string name="search">Search</string>
-    <string name="phone_number_hint">123456789</string>
+    <string name="phone_number_hint">2012185234</string>
     <string name="did_not_receive_otp">Did not received the OTP?</string>
     <string name="text_empty_string">--</string>
     <string name="msg_share_referral">Share Referral</string>
@@ -618,7 +618,7 @@
     <string name="enter_payment_details">Enter payment details</string>
     <string name="enter_beneficiary_bank_details">Enter beneficiary bank details</string>
     <string name="account_no_txt">Account number*</string>
-    <string name="bank_name_txt">Bank name</string>
+    <string name="bank_name_txt">Bank name*</string>
     <string name="bank_branch_txt">Bank branch*</string>
     <string name="account_no_hint">345612213</string>
     <string name="bankaddress_txt">Bank address*</string>
@@ -682,7 +682,8 @@
     <string name="NA">NA</string>
     <string name="service_provider">Service provider</string>
     <string name="add_account">Add Account</string>
-    <string name="mobile_top_up">Mobile top-up</string>
+    <string name="mobile_top_up">Mobile Top up</string>
+    <string name="mobile_top_up_home">Mobile \nTop up</string>
     <string name="select_operator">Select operator</string>
     <string name="billdue_date">Your Bill Due Date has been expired\nYou cannot make the payment</string>
     <string name="browse_plans">Browse plans</string>
@@ -802,7 +803,7 @@
     <string name="KYC_customer">e-KYC Customer</string>
     <string name="details">Please enter the below details to complete the payment</string>
 
-    <string name="mobile_top_up_home">Mobile \nTop up</string>
+
     <string name="biller_name_home">Bill \nPayments</string>
     <string name="prepaid_card_home">Prepaid \nCards</string>
     <string name="offer_of_home">Offers for you</string>
@@ -837,6 +838,7 @@
     <string name="prepaid_card_number">Prepaid card number</string>
     <string name="generate_prepaid_card">Generate prepaid card</string>
     <string name="confirm_title_money">Please confirm the below details for the money transfer</string>
+    <string name="confirm_details">Please confirm the below details</string>
     <string name="transfer_amount">Transfer amount</string>
     <string name="summary">Summary</string>
     <string name="cash_beneficiary">Cash Beneficiary</string>
@@ -1198,7 +1200,7 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="create_agent_tool_title">Create Agent</string>
 
 
-    <string name="customer_ser_txt">Customer service</string>
+    <string name="customer_ser_txt">Customer Service</string>
     <string name="funding_banks">Funding banks</string>
     <string name="upload_cash_details">Cash IN\n</string>
     <string name="deposit_amount">Deposit amount</string>
@@ -1211,7 +1213,7 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="edit_bene_txt">Activate Beneficiary</string>
     <string name="text_reset">Reset</string>
     <string name="text_apply">Apply</string>
-    <string name="customer_histroy">Customer Transaction history</string>
+    <string name="customer_histroy">Customer Transaction History</string>
 
     <string name="transaction_no_txt">Please enter your transaction number for refund</string>
     <string name="transaction_hint">XXXXXXXXXXXX</string>
@@ -1224,7 +1226,7 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="title_bene">Title</string>
     <string name="select_from_date">Select from date*</string>
     <string name="select_to_date">Select to date*</string>
-    <string name="transaction_id_txt">Transacation id</string>
+    <string name="transaction_id_txt">Transaction id</string>
     <string name="beneficiary_name_txt">Beneficiary name</string>
     <string name="beneficiary_account_no">Beneficiary account number</string>
     <string name="error_selct_from_date">Select from date</string>
@@ -1251,6 +1253,13 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="cancel_txt">Cancellation Charges:</string>
     <string name="bus_book_txt_home">Bus \nBooking</string>
     <string name="bill_desk">Bill desk</string>
+    <string name="customer_eKYC">Customer \neKYC</string>
+    <string name="please_enter_customr_name">Please enter customer name</string>
+    <string name="aeps_beneficiary">AEPS Beneficiary</string>
+    <string name="aeps_settlement">AEPS Settlement</string>
+    <string name="aeps_settlement_home">AEPS \nSettlement</string>
+    <string name="please_enter_customr_number">Please enter customer mobile number</string>
+    <string name="please_enter_be">Please enter below details</string>
 
     <string-array name="arrayFingerTypeThumb">
         <item>6~RightThumb</item>

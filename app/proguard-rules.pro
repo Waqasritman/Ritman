@@ -21,6 +21,7 @@
 #-renamesourcefileattribute SourceFile
 -keep class  angoothape.wallet.di.** { *; }
 -keep class  angoothape.wallet.aeps.** { *; }
+-keep class  angoothape.wallet.ekyc.** { *; }
 -dontwarn retrofit.**
 -keep class retrofit.** { *; }
 -keepattributes Signature

@@ -70,7 +70,7 @@ public class RefundOTPFragment extends RitmanBaseActivity<GenerateOtpFragmentLay
 
                             Utils.hideCustomProgressDialog();
                             if (response.status == Status.ERROR) {
-                                onMessage(getString(response.messageResourceId));
+                                onError(getString(response.messageResourceId));
                             } else if (response.status == Status.SUCCESS) {
                                 assert response.resource != null;
                                 onMessage(response.resource.description);

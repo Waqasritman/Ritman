@@ -195,7 +195,6 @@ public class FilterDialog extends BaseDialogFragment<FilterDialogDesignBinding> 
      */
     private void showPickerDialog(String title) {
         Calendar calendar = Calendar.getInstance();
-
         int Year = calendar.get(Calendar.YEAR);
         int Month = calendar.get(Calendar.MONTH);
         int Day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -211,7 +210,6 @@ public class FilterDialog extends BaseDialogFragment<FilterDialogDesignBinding> 
         // } else {
         //   datePickerDialog.setMinDate(calendar);
         // }
-
 
         datePickerDialog.setTitle(title);
         datePickerDialog.show(getParentFragmentManager(), "");

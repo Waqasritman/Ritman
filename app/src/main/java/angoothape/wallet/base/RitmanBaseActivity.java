@@ -25,12 +25,15 @@ import angoothape.wallet.R;
 import angoothape.wallet.TotiWallet;
 import angoothape.wallet.dialogs.CloseDialog;
 import angoothape.wallet.dialogs.PinVerificationDialog;
+import angoothape.wallet.dialogs.SingleButtonMessageDialog;
 import angoothape.wallet.fragments.BaseFragment;
 import angoothape.wallet.interfaces.OnCancelInterface;
+import angoothape.wallet.interfaces.OnDecisionMade;
 import angoothape.wallet.interfaces.OnUserPin;
 import angoothape.wallet.interfaces.SessionOutListener;
 import angoothape.wallet.utils.Constants;
 import angoothape.wallet.utils.SessionManager;
+import angoothape.wallet.utils.Utils;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -38,7 +41,7 @@ import java.util.Locale;
 
 public abstract class RitmanBaseActivity<T extends ViewDataBinding>
         extends AppCompatActivity implements BaseFragment.Callback, SessionOutListener
-        , OnUserPin, OnCancelInterface {
+        , OnUserPin, OnCancelInterface , OnDecisionMade {
 
     private static final String TAG = RitmanBaseActivity.class.getName();
     public T binding;
@@ -130,6 +133,7 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
     }
 
     public void onMessage(String message) {
+        Constants.hideKeyboard(this);
         Snackbar snackbar = Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT);
         snackbar.setAction(getString(R.string.cancel), v -> snackbar.dismiss());
         snackbar.show();
@@ -283,6 +287,31 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
 
     @Override
     public void onResponseMessage(String message) {
+
+    }
+
+    public void onSuccess(String message) {
+        Snackbar snackbar = Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT);
+        snackbar.setAction(getString(R.string.cancel), v -> snackbar.dismiss());
+        snackbar.show();
+    }
+
+    public void onError(String message) {
+        SingleButtonMessageDialog dialog = new
+                SingleButtonMessageDialog("Error"
+                , message, this,
+                false, true);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        dialog.show(transaction, "");
+    }
+
+    @Override
+    public void onProceed() {
+
+    }
+
+    @Override
+    public void onCancel(boolean goBack) {
 
     }
 

@@ -55,7 +55,7 @@ public class CheckCustomerStatusFragment extends BaseFragment<CheckCustomerStatu
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -68,7 +68,7 @@ public class CheckCustomerStatusFragment extends BaseFragment<CheckCustomerStatu
                         }
 
                         else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             Utils.hideCustomProgressDialog();
                         }
                     }

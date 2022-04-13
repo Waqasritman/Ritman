@@ -78,7 +78,7 @@ public class CashTransferSummaryFragment extends BaseFragment<FragmentMoneyTrans
         PayInAmount = getArguments().getDouble("PayInAmount");
 
         binding.totalPayableAmount.setText(totalPayable);
-        binding.transferAmount.setText(PayInAmount.toString());
+        binding.transferAmount.setText(String.valueOf(PayInAmount));
 
         binding.beneficairyName.setText(benedetails.firstName.concat("  ").concat(benedetails.lastName));
         binding.sendingCurrency.setText("INR");
@@ -89,7 +89,6 @@ public class CashTransferSummaryFragment extends BaseFragment<FragmentMoneyTrans
             getSummary();
         });
     }
-
 
 
     public void getSummary() {
@@ -116,7 +115,7 @@ public class CashTransferSummaryFragment extends BaseFragment<FragmentMoneyTrans
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
                         binding.confirmBtn.setEnabled(true);
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
 
@@ -152,7 +151,19 @@ public class CashTransferSummaryFragment extends BaseFragment<FragmentMoneyTrans
                             }
                         } else {
                             binding.confirmBtn.setEnabled(true);
-                            onMessage(response.resource.description);
+                            Utils.hideCustomProgressDialog();
+                            if (response.resource.data != null) {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                Log.e("getBillDetails: ", bodyy);
+                                if (!body.isEmpty()) {
+                                    onError(bodyy);
+                                } else {
+                                    onError(response.resource.description);
+                                }
+                            } else {
+                                onError(response.resource.description);
+                            }
                         }
                     }
                 });

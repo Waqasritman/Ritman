@@ -19,6 +19,7 @@ public class EKYCMainActivity extends RitmanBaseActivity<ActivityEKYCMainBinding
 
     public EKYCViewModel viewModel;
 
+    public boolean isCustomer = false;
 
     @Override
     public int getLayoutId() {
@@ -27,25 +28,23 @@ public class EKYCMainActivity extends RitmanBaseActivity<ActivityEKYCMainBinding
 
     @Override
     protected void initUi(Bundle savedInstanceState) {
+        viewModel = new ViewModelProvider(this).get(EKYCViewModel.class);
+        isCustomer = getIntent().getExtras().getBoolean("is_customer");
+
+        navController = Navigation.findNavController(this, R.id.ekycnav);
+        binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
         binding.toolBar.backBtn
                 .setColorFilter(ContextCompat.getColor(this,
                         R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
         binding.toolBar.toolBar.setBackgroundColor(getResources().getColor(R.color.posRed));
-        binding.toolBar.titleTxt.setText(getString(R.string.create_agent_tool_title));
+        binding.toolBar.titleTxt.setText("EKYC");
 
-        binding.toolBar.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        binding.toolBar.crossBtn.setOnClickListener(v->{
+        binding.toolBar.backBtn.setOnClickListener((View.OnClickListener) v -> finish());
+        binding.toolBar.crossBtn.setOnClickListener(v -> {
             onClose();
         });
 
-        navController = Navigation.findNavController(this, R.id.ekycnav);
-        viewModel = new ViewModelProvider(this).get(EKYCViewModel.class);
-        binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
+
     }
 
     @Override

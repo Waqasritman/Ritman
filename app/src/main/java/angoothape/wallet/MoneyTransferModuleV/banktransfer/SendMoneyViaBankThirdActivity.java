@@ -21,8 +21,10 @@ import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.CalTransferRequest;
+import angoothape.wallet.di.JSONdi.restRequest.ConfirmRitmanPayRequest;
 import angoothape.wallet.di.JSONdi.restRequest.GetModeRequest;
 import angoothape.wallet.di.JSONdi.restResponse.CaltransferResponse;
+import angoothape.wallet.di.JSONdi.restResponse.ConfirmRitmanPayTransfer;
 import angoothape.wallet.di.JSONdi.restResponse.PaymentModes;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
@@ -61,6 +63,8 @@ import angoothape.wallet.interfaces.OnSelectSourceOfIncome;
 import angoothape.wallet.interfaces.OnSelectTransferPurpose;
 import angoothape.wallet.utils.IsNetworkConnection;
 import angoothape.wallet.utils.MoneyValueFilter;
+import angoothape.wallet.utils.Utils;
+import okhttp3.internal.Util;
 
 import static angoothape.wallet.utils.MoneyValueFilter.getDecimalFormattedString;
 
@@ -141,6 +145,8 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
 
         binding.convertNow.setOnClickListener(v -> {
             if (isValidate()) {
+                binding.convertNow.setEnabled(false);
+                Utils.showCustomProgressDialog(getContext(), false);
                 CalTransferRequest request = new CalTransferRequest();
                 request.PayInCurrency = "INR";
                 request.PayoutCurrency = "INR";
@@ -150,16 +156,18 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
 
                 viewModel.getCalTransfer(request, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
                         , response -> {
+                            binding.convertNow.setEnabled(true);
+                            Utils.hideCustomProgressDialog();
                             if (response.status == Status.ERROR) {
-                                onMessage(getString(response.messageResourceId));
+                                onError(getString(response.messageResourceId));
                             } else {
                                 assert response.resource != null;
                                 if (response.resource.responseCode.equals(101)) {
-                                    onMessage(response.resource.description);
+                                    onSuccess(response.resource.description);
                                     showRates(response.resource.data);
                                     PayInAmount = response.resource.data.getPayInAmount();
                                 } else {
-                                    onMessage(response.resource.description);
+                                    onError(response.resource.description);
                                 }
                             }
                         });
@@ -240,7 +248,7 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
                         .getKey(getSessionManager().getMerchantName())).trim()).observe(getViewLifecycleOwner()
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -262,7 +270,7 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
 
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     }
                 });
@@ -275,7 +283,7 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
         ArrayAdapter userAdapter = new ArrayAdapter(getContext(), R.layout.spinner, paymentModes);
 
         binding.paymentModesSpinner.setAdapter(userAdapter);
-       // binding.paymentModesSpinner.setSelection(1);
+        // binding.paymentModesSpinner.setSelection(1);
         binding.paymentModesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -290,19 +298,70 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
         });
     }
 
+    private void confirmRitmanPay() {
+        Utils.showCustomProgressDialog(getContext(), false);
+        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                .getKey(getSessionManager().getMerchantName())).trim();
+
+        ConfirmRitmanPayRequest confirmRitmanPayRequest = new ConfirmRitmanPayRequest();
+        confirmRitmanPayRequest.BeneficiaryNo = benedetails.beneficiaryNumber;
+        confirmRitmanPayRequest.PaymentID = selectedPaymentMode.paymentID;
+        String body = RestClient.makeGSONString(confirmRitmanPayRequest);
+        Log.e("confirmRitmanPay: ", body);
+        AERequest request = new AERequest();
+        request.body = AESHelper.encrypt(body.trim(), gKey.trim());
+
+        viewModel.confirmRitmanPay(request, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
+                KeyHelper.getSKey(KeyHelper
+                        .getKey(getSessionManager().getMerchantName())).trim()).observe(getViewLifecycleOwner()
+                , response -> {
+                    Utils.hideCustomProgressDialog();
+                    if (response.status == Status.ERROR) {
+                        onError(getString(response.messageResourceId));
+                    } else {
+                        assert response.resource != null;
+                        if (response.resource.responseCode.equals(101)) {
+                            //         onMessage(response.resource.description);
+                            String bodyy = AESHelper.decrypt(response.resource.data.body
+                                    , gKey);
+                            try {
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<ConfirmRitmanPayTransfer>() {
+                                }.getType();
+                                ConfirmRitmanPayTransfer data = gson.fromJson(bodyy, type);
+                                if (data.verification) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("total_payable", binding.totalPayableAmount.getText().toString());
+                                    bundle.putBoolean("is_from_cash", false);
+                                    bundle.putParcelable("bene", benedetails);
+                                    bundle.putDouble("PayInAmount", PayInAmount);
+                                    bundle.putParcelable("payment_mode", selectedPaymentMode);
+                                    Navigation.findNavController(binding.getRoot())
+                                            .navigate(R.id.action_sendMoneyViaBankThirdActivity_to_cashTransferSummaryFragment2
+                                                    , bundle);
+                                } else {
+                                    onError("Payment mode is not verified");
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+                        } else {
+                            onError(response.resource.description);
+                        }
+                    }
+                });
+
+
+    }
+
+
     public void goToNext() {
         if (!isModeSelected) {
             onMessage("Select Payment mode");
         } else {
-            Bundle bundle = new Bundle();
-            bundle.putString("total_payable", binding.totalPayableAmount.getText().toString());
-            bundle.putBoolean("is_from_cash", false);
-            bundle.putParcelable("bene", benedetails);
-            bundle.putDouble("PayInAmount", PayInAmount);
-            bundle.putParcelable("payment_mode", selectedPaymentMode);
-            Navigation.findNavController(binding.getRoot())
-                    .navigate(R.id.action_sendMoneyViaBankThirdActivity_to_cashTransferSummaryFragment2
-                            , bundle);
+            confirmRitmanPay();
         }
     }
 
@@ -405,6 +464,7 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
                     }
                 });
     }
+
     public void setReceivingCurrencyImage(String url) {
         Glide.with(this)
                 .asBitmap()

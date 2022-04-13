@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
 import angoothape.wallet.R;
 import angoothape.wallet.databinding.MiniStatementAepsDesignBinding;
 import angoothape.wallet.di.JSONdi.restResponse.AEPS_Trans_Response;
@@ -47,10 +48,16 @@ public class AEPSMiniStatementAdapter extends RecyclerView.Adapter<AEPSMiniState
             holder.binding.modeOfTxn.setTextColor(context.getResources().getColor(R.color.black));
             holder.binding.drDc.setTextColor(context.getResources().getColor(R.color.black));
 
-            holder.binding.amount.setText(miniStatementList.get(position + 1).amount);
-            holder.binding.date.setText(miniStatementList.get(position + 1).date);
-            holder.binding.drDc.setText(miniStatementList.get(position + 1).dc);
-            holder.binding.modeOfTxn.setText(miniStatementList.get(position + 1).modeOfTxn);
+            try {
+                holder.binding.amount.setText(miniStatementList.get(position + 1).amount);
+                holder.binding.date.setText(miniStatementList.get(position + 1).date);
+                holder.binding.drDc.setText(miniStatementList.get(position + 1).dc);
+                holder.binding.modeOfTxn.setText(miniStatementList.get(position + 1).modeOfTxn);
+            } catch (IndexOutOfBoundsException exception) {
+
+            }
+
+
         }
 
     }

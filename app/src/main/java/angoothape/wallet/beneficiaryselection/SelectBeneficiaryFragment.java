@@ -32,6 +32,7 @@ import angoothape.wallet.di.JSONdi.restRequest.ActiveDeActiveBeneRequest;
 import angoothape.wallet.di.JSONdi.restRequest.GetBeneficiaryRequest;
 import angoothape.wallet.di.JSONdi.restRequest.VerifyBeneficiaryRequest;
 import angoothape.wallet.di.JSONdi.restResponse.GetBalanceCustomerLimit;
+import angoothape.wallet.di.JSONdi.restResponse.aepssattlement.AEPSBeneficiary;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.di.XMLdi.ResponseHelper.GetBeneficiaryListResponse;
@@ -106,6 +107,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
             Bundle bundle = new Bundle();
             bundle.putString("customer_no", customerN0);
             bundle.putBoolean("isDMTLive", isDMTLive);
+            bundle.putBoolean("isAEPSBene", false);
             Navigation.findNavController(binding.getRoot())
                     .navigate(R.id.action_selectBeneficiaryFragment_to_sendMoneyViaBankFirstActivity
                             , bundle);
@@ -114,7 +116,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
 
         binding.searchBtn.setOnClickListener(v -> {
             if (TextUtils.isEmpty(binding.seachBene.getText().toString())) {
-                onMessage(getString(R.string.enter_beneficairy_number));
+                onMessage(getString(R.string.please_enter_customr_number));
             } else {
                 Utils.showCustomProgressDialog(getContext(), false);
 
@@ -133,7 +135,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                         .observe(getViewLifecycleOwner(), response -> {
                             Utils.hideCustomProgressDialog();
                             if (response.status == Status.ERROR) {
-                                onMessage(getString(response.messageResourceId));
+                                onError(getString(response.messageResourceId));
                             } else {
                                 assert response.resource != null;
                                 if (response.resource.responseCode.equals(101)) {
@@ -173,7 +175,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                                     binding.seachBene.requestFocus();
                                     getBalanceCustomerLimit();
                                 } else {
-                                    onMessage(response.resource.description);
+                                  onError(response.resource.description);
                                 }
                             }
                         });
@@ -211,7 +213,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                     if (response.status == Status.ERROR) {
                         binding.searchBtn.setVisibility(View.GONE);
                         binding.mainView.setVisibility(View.VISIBLE);
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -226,7 +228,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                         } else {
                             binding.searchBtn.setVisibility(View.GONE);
                             binding.mainView.setVisibility(View.VISIBLE);
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     }
                 });
@@ -282,6 +284,11 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
     }
 
     @Override
+    public void onSelectAEPSBeneficiary(AEPSBeneficiary response) {
+
+    }
+
+    @Override
     public void onChangeTheStatusOfBeneficiary(GetBeneficiaryListResponse response, int pushToActive
             , int position) {
         activeDeactive(response.beneficiaryNumber, pushToActive, position);
@@ -309,11 +316,11 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                 .observe(getViewLifecycleOwner(), response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
+                        String bodyy = AESHelper.decrypt(response.resource.data.body, gKey);
                         if (response.resource.responseCode.equals(101)) {
-                            String bodyy = AESHelper.decrypt(response.resource.data.body, gKey);
                             Log.e("bodyy: ", bodyy);
 
                             list.remove(position);
@@ -324,8 +331,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                                 binding.addBene.setVisibility(View.VISIBLE);
                             }
                             Log.e("activeDeactive: ", bodyy);
-                        } else {
-                            onMessage(response.resource.description);
+                        } else {onError(response.resource.description);
                         }
                     }
                 });
@@ -352,7 +358,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                 .observe(getViewLifecycleOwner(), response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         assert response.resource != null;

@@ -123,7 +123,7 @@ public class BusPassengerDetails extends BaseFragment<FragmentBusPassengerDetail
                 .observe(getViewLifecycleOwner(), response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else if (response.status == Status.SUCCESS) {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {

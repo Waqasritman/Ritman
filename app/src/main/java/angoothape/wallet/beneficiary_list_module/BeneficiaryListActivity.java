@@ -32,6 +32,7 @@ import angoothape.wallet.di.JSONdi.Status;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.ActiveDeActiveBeneRequest;
 import angoothape.wallet.di.JSONdi.restRequest.GetBeneficiaryRequest;
+import angoothape.wallet.di.JSONdi.restResponse.aepssattlement.AEPSBeneficiary;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.di.XMLdi.ResponseHelper.GetBeneficiaryListResponse;
@@ -105,13 +106,13 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
         AERequest aeRequest = new AERequest();
         aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
         Log.e("getBeneficiary: ",body );
-
-        viewModel.getDeActiveBenficiary(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
+        viewModel.getDeActiveBenficiary(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
+                KeyHelper.getSKey(KeyHelper
                 .getKey(getSessionManager().getMerchantName())).trim())
                 .observe(this, response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -130,10 +131,7 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
                                 List<GetBeneficiaryListResponse> data = gson.fromJson(bodyy, type);
                                 list.addAll(data);
                                 customerN0 = data.get(0).customerNo;
-
-
                                 adapter.notifyDataSetChanged();
-
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -155,7 +153,18 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
                             customerN0 = a[2];
                             binding.seachBene.requestFocus();
                         } else {
-                            onMessage(response.resource.description);
+                            Utils.hideCustomProgressDialog();
+                            if (response.resource.data != null) {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                if (!body.isEmpty()) {
+                                    onError(bodyy);
+                                } else {
+                                    onError(response.resource.description);
+                                }
+                            } else {
+                                onError(response.resource.description);
+                            }
                         }
                     }
                 });
@@ -210,6 +219,11 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
     }
 
     @Override
+    public void onSelectAEPSBeneficiary(AEPSBeneficiary response) {
+
+    }
+
+    @Override
     public void onChangeTheStatusOfBeneficiary(GetBeneficiaryListResponse response, int pushToActive, int position) {
         activeDeactive(response.beneficiaryNumber, pushToActive, position);
     }
@@ -235,7 +249,7 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
                 .observe(this, response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -246,7 +260,7 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
                             adapter.notifyDataSetChanged();
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     }
                 });

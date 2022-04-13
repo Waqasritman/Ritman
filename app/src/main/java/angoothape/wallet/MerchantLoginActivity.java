@@ -127,7 +127,7 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
                         startActivity(intent);
                     } else {
                         Utils.hideCustomProgressDialog();
-                        onMessage(response.body().description);
+                        onError(response.body().description);
                     }
                 }
             }
@@ -167,9 +167,7 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
                     if (response.body().responseCode.equals(101)) {
                         String bodyy = AESHelper.decrypt(response.body().data.body
                                 , gKey);
-                        Log.e("vv", bodyy.trim());
                         sessionManager.setIsVerified("true");
-
                         startActivity(new Intent(MerchantLoginActivity.this,
                                 NewDashboardActivity.class));
 
@@ -178,9 +176,10 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
 
                         startActivity(new Intent(MerchantLoginActivity.this,
                                 NewDashboardActivity.class));
+                        finish();
 
                     } else {
-                        onMessage(response.body().description);
+                        onError(response.body().description);
                     }
                 }
             }

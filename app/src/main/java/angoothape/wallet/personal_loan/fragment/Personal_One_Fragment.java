@@ -175,7 +175,7 @@ public class Personal_One_Fragment extends BaseFragment<FragmentPersonalOneBindi
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -186,7 +186,7 @@ public class Personal_One_Fragment extends BaseFragment<FragmentPersonalOneBindi
                             binding.edtState.setText(viewModel.state.getValue());
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             binding.edtCity.setText("");
                             binding.edtState.setText("");
                             Utils.hideCustomProgressDialog();
@@ -204,7 +204,7 @@ public class Personal_One_Fragment extends BaseFragment<FragmentPersonalOneBindi
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -212,7 +212,7 @@ public class Personal_One_Fragment extends BaseFragment<FragmentPersonalOneBindi
                             onAccomodation(response.resource.data);
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             Utils.hideCustomProgressDialog();
                         }
                     }
@@ -227,7 +227,7 @@ public class Personal_One_Fragment extends BaseFragment<FragmentPersonalOneBindi
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -235,7 +235,7 @@ public class Personal_One_Fragment extends BaseFragment<FragmentPersonalOneBindi
                             onAccomodation(response.resource.data);
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             Utils.hideCustomProgressDialog();
                         }
                     }

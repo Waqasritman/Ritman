@@ -95,7 +95,7 @@
                             android:drawablePadding="@dimen/_5sdp"
                             android:fontFamily="@font/lato_semibold"
                             android:gravity="center_vertical"
-                            android:hint="INR"
+                            android:text="INR"
                             android:padding="@dimen/_10sdp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_16sp"

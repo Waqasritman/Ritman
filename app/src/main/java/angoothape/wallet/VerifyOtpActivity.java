@@ -63,7 +63,7 @@ public class VerifyOtpActivity extends RitmanBaseActivity<ActivityVerifyOtpBindi
                         checkVerifiedEKYC();
                     } else {
                         Utils.hideCustomProgressDialog();
-                        onMessage(response.body().description);
+                        onError(response.body().description);
                         // binding.edtOtp.getText().clear();
 
                     }
@@ -111,7 +111,18 @@ public class VerifyOtpActivity extends RitmanBaseActivity<ActivityVerifyOtpBindi
                         startActivity(new Intent(VerifyOtpActivity.this,
                                 NewDashboardActivity.class));
                     } else {
-                        onMessage(response.body().description);
+                        Utils.hideCustomProgressDialog();
+                        if (response.body().data != null) {
+                            String bodyy = AESHelper.decrypt(response.body().data.body
+                                    , gKey);
+                            if (!body.isEmpty()) {
+                                onError(bodyy);
+                            } else {
+                                onError(response.body().description);
+                            }
+                        } else {
+                            onError(response.body().description);
+                        }
                     }
                 }
             }

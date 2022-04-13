@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aeps_settlement_navigation"
+    app:startDestination="@id/AEPSBeneficiaryListFragment">
+
+    <fragment
+        android:id="@+id/AEPSBeneficiaryListFragment"
+        android:name="angoothape.wallet.settlementaeps.fragments.AEPSBeneficiaryListFragment"
+        android:label="AEPSBeneficiaryListFragment"
+        tools:layout="@layout/activity_select_beneficialy" />
+
+    <fragment
+        android:id="@+id/sendMoneyViaBankFirstActivity"
+        android:name="angoothape.wallet.beneficairyRegistration.fragments.AddBeneficiaryBankTransferPersonalDetailFragment"
+        android:label="SendMoneyViaBankFirstActivity"
+        tools:layout="@layout/activity_send_money_via_bank_first" />
+    <fragment
+        android:id="@+id/AEPSSettlementTransferRate"
+        android:name="angoothape.wallet.settlementaeps.fragments.AEPSSettlementTransferRate"
+        android:label="AEPSSettlementTransferRate"
+        tools:layout="@layout/fragment_aeps_settlement_rate" />
+    <fragment
+        android:id="@+id/AEPSSettlementSummaryFragment"
+        android:name="angoothape.wallet.settlementaeps.fragments.AEPSSettlementSummaryFragment"
+        android:label="AEPSSettlementSummaryFragment"
+        tools:layout="@layout/fragment_aeps_settlement" />
+
+
+</navigation>

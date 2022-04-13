@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout  android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
@@ -10,7 +11,6 @@
         <include
             android:id="@+id/tool_bar"
             layout="@layout/tool_bar" />
-
 
         <LinearLayout
             android:id="@+id/closing_view_layout"
@@ -290,87 +290,9 @@
                 android:id="@+id/recyclerView_ledger"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/filter_options" />
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/total_debit_layout"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/height_45dp"-->
-            <!--                android:layout_above="@+id/debit_view"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                android:weightSum="2">-->
-
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_gravity="center_vertical"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:fontFamily="@font/montserrat_medium"-->
-            <!--                    android:paddingStart="@dimen/margin_10dp"-->
-            <!--                    android:paddingEnd="0dp"-->
-            <!--                    android:text="@string/debit_balance"-->
-            <!--                    android:textSize="@dimen/text_size_14sp" />-->
-
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/debit_balance"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_gravity="center_vertical"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:fontFamily="@font/lato_semibold"-->
-            <!--                    android:textColor="@color/black"-->
-            <!--                    android:textSize="@dimen/text_size_16sp" />-->
-
-            <!--            </LinearLayout>-->
-
-            <!--            <View-->
-            <!--                android:id="@+id/debit_view"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="1dp"-->
-            <!--                android:layout_above="@id/credit_view_layout"-->
-            <!--                android:background="@color/gray_lite" />-->
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/credit_view_layout"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/height_45dp"-->
-            <!--                android:layout_above="@id/credit_view"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                android:weightSum="2">-->
-
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_gravity="center_vertical"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:fontFamily="@font/montserrat_medium"-->
-            <!--                    android:paddingStart="@dimen/margin_10dp"-->
-            <!--                    android:paddingEnd="0dp"-->
-            <!--                    android:text="@string/credit_balance"-->
-            <!--                    android:textSize="@dimen/text_size_14sp" />-->
-
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/credit_balance"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_gravity="center_vertical"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:fontFamily="@font/lato_semibold"-->
-            <!--                    android:textColor="@color/black"-->
-            <!--                    android:textSize="@dimen/text_size_16sp" />-->
-
-            <!--            </LinearLayout>-->
-
-            <!--            <View-->
-            <!--                android:id="@+id/credit_view"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="1dp"-->
-            <!--                android:layout_above="@id/closing_view_layout"-->
-            <!--                android:background="@color/gray_lite" />-->
+                android:layout_below="@id/filter_options"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/margin_10dp" />
 
 
         </RelativeLayout>

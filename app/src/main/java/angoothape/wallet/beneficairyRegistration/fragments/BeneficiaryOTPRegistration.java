@@ -62,6 +62,7 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
     @Override
     protected void setUp(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(RegisterBeneficiaryViewModel.class);
+        assert getArguments() != null;
         registerBeneficiaryRequest = getArguments().getParcelable("bene");
         //  viewModel.beneRegister.postValue(registerBeneficiaryRequest);
         binding.txtResendOtp.setOnClickListener(v -> {
@@ -86,12 +87,12 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
         if (isValidate()) {
             Utils.showCustomProgressDialog(getContext(), false);
             registerBeneficiaryRequest.otp = binding.edtOtp.getText().toString();
-            //   viewModel.beneRegister.setValue(registerBeneficiaryRequest);
+            //viewModel.beneRegister.setValue(registerBeneficiaryRequest);
 
             String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
                     .getKey(getSessionManager().getMerchantName())).trim();
             String body = RestClient.makeGSONString(registerBeneficiaryRequest);
-            Log.e("body", body);
+            Log.e("regiterBene", body);
             AERequest request = new AERequest();
             request.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
@@ -102,16 +103,12 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
                     , response -> {
                         Utils.hideCustomProgressDialog();
                         if (response.status == Status.ERROR) {
-                            onMessage(getString(response.messageResourceId));
+                            onError(getString(response.messageResourceId));
                         } else {
                             assert response.resource != null;
-
-
                             if (response.resource.responseCode.equals(101)) {
                                 String bodyy = AESHelper.decrypt(response.resource.data.body
                                         , gKey);
-
-
                                 try {
                                     Gson gson = new Gson();
                                     Type type = new TypeToken<List<GetBeneficiaryListResponse>>() {
@@ -128,7 +125,18 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
                                     e.printStackTrace();
                                 }
                             } else {
-                                onMessage(response.resource.description);
+                                Utils.hideCustomProgressDialog();
+                                if (response.resource.data != null) {
+                                    String bodyy = AESHelper.decrypt(response.resource.data.body
+                                            , gKey);
+                                    if (!body.isEmpty()) {
+                                        onError(bodyy);
+                                    } else {
+                                        onError(response.resource.description);
+                                    }
+                                } else {
+                                    onError(response.resource.description);
+                                }
                             }
 
 
@@ -159,7 +167,7 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
 
@@ -235,7 +243,7 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
                 .observe(getViewLifecycleOwner(), response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {

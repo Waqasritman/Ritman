@@ -60,6 +60,8 @@ import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -238,7 +240,7 @@ public class BarcodeReaderFragment extends BaseFragment<FragmentBarcodeReaderBin
 
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         if (context instanceof BarcodeReaderListener) {
             mListener = (BarcodeReaderListener) context;

@@ -1,12 +1,17 @@
 package angoothape.wallet.Mobile_Top_Up.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +20,14 @@ import angoothape.wallet.Mobile_Top_Up.viewmodels.MobileTopUpViewModel;
 import angoothape.wallet.R;
 import angoothape.wallet.adapters.WrBillerPrepaidPlansAdapter;
 import angoothape.wallet.databinding.FragmentWRBillerNamesBinding;
+import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
+import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.PrepaidPlanRequest;
+import angoothape.wallet.di.JSONdi.restResponse.GetWRBillerFieldsResponseN;
 import angoothape.wallet.di.JSONdi.restResponse.PrepaidPlanResponse;
+import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
+import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.di.XMLdi.RequestHelper.WRPrepaidRechargeRequest;
 import angoothape.wallet.dialogs.SingleButtonMessageDialog;
 import angoothape.wallet.fragments.BaseFragment;
@@ -50,14 +60,6 @@ public class WRBillerPlansFragment extends BaseFragment<FragmentWRBillerNamesBin
         viewModel = ((MobileTopUpMainActivity) getBaseActivity()).viewModel;
         operatorCode = viewModel.operatorCode.getValue();
         circleCode = viewModel.circleCode.getValue();
-//        viewModel.operatorCode.observe(getViewLifecycleOwner(), s -> {
-//            = s;
-//        });
-//
-//        viewModel.circleCode.observe(getViewLifecycleOwner(), s -> {
-//            circleCode = s;
-//        });
-
 
         setupPrePaidRecyclerView();
         getPrepaidPlan();
@@ -101,36 +103,67 @@ public class WRBillerPlansFragment extends BaseFragment<FragmentWRBillerNamesBin
     public void getPrepaidPlan() {
         if (IsNetworkConnection.checkNetworkConnection(getContext())) {
             Utils.showCustomProgressDialog(getContext(), false);
-            PrepaidPlanRequest request = new PrepaidPlanRequest();
-            request.OperatorCode = Integer.parseInt(operatorCode);
-            request.CircleCode = Integer.parseInt(circleCode);
-            request.CountryCode = "IN";
-
-            viewModel.getPrepaidPlan(request, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-                    , response -> {
+            String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                    .getKey(getSessionManager().getMerchantName())).trim();
+            PrepaidPlanRequest requestc = new PrepaidPlanRequest();
+            requestc.OperatorCode = Integer.parseInt(operatorCode);
+            requestc.CircleCode = Integer.parseInt(circleCode);
+            requestc.CountryCode = "IN";
+            String body = RestClient.makeGSONString(requestc);
+            // PrepaidPlanResponse
+            AERequest request = new AERequest();
+            request.body = AESHelper.encrypt(body.trim(), gKey.trim());
+            viewModel.getPrepaidPlan(request, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
+                    KeyHelper.getSKey(KeyHelper
+                            .getKey(getSessionManager().getMerchantName())))
+                    .observe(getViewLifecycleOwner(), response -> {
                         Utils.hideCustomProgressDialog();
                         if (response.status == Status.ERROR) {
-                            onMessage(getString(response.messageResourceId));
+                            onError(getString(response.messageResourceId));
                         } else {
                             assert response.resource != null;
                             if (response.resource.responseCode.equals(101)) {
-                                // onMessage(response.resource.description);
-                                if (response.resource.data.plans.TOPUP != null) {
-                                    prepaidPlansList.addAll(response.resource.data.plans.TOPUP);
-                                }
-                                if (response.resource.data.plans.DATA_3G != null) {
-                                    prepaidPlansList.addAll(response.resource.data.plans.DATA_3G);
-                                }
-                                if (response.resource.data.plans.SPECIAL != null) {
-                                    prepaidPlansList.addAll(response.resource.data.plans.SPECIAL);
-                                }
-                                filteredList.addAll(prepaidPlansList);
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                try {
+                                    Gson gson = new Gson();
+                                    Type type = new TypeToken<PrepaidPlanResponse>() {
+                                    }.getType();
+                                    PrepaidPlanResponse data = gson.fromJson(bodyy, type);
 
-                                getParsedData("topup");
+                                    if (data.plans.TOPUP != null) {
+                                        prepaidPlansList.addAll(data.plans.TOPUP);
+                                    }
+                                    if (data.plans.DATA_3G != null) {
+                                        prepaidPlansList.addAll(data.plans.DATA_3G);
+                                    }
+                                    if (data.plans.SPECIAL != null) {
+                                        prepaidPlansList.addAll(data.plans.SPECIAL);
+                                    }
+                                    filteredList.addAll(prepaidPlansList);
 
-                                prepaidPlansAdapter.notifyDataSetChanged();
+                                    getParsedData("topup");
+
+                                    prepaidPlansAdapter.notifyDataSetChanged();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+
                             } else {
-                                onMessage(response.resource.description);
+                                Utils.hideCustomProgressDialog();
+                                if (response.resource.data != null) {
+                                    String bodyy = AESHelper.decrypt(response.resource.data.body
+                                            , gKey);
+                                    Log.e("getBillDetails: ", bodyy);
+                                    if (!body.isEmpty()) {
+                                        onError(bodyy);
+                                    } else {
+                                        onError(response.resource.description);
+                                    }
+                                } else {
+                                    onError(response.resource.description);
+                                }
                             }
                         }
                     });
@@ -187,7 +220,7 @@ public class WRBillerPlansFragment extends BaseFragment<FragmentWRBillerNamesBin
                     .observe(getViewLifecycleOwner(), response -> {
                         Utils.hideCustomProgressDialog();
                         if (response.status == Status.ERROR) {
-                            onMessage(getString(response.messageResourceId));
+                            onError(getString(response.messageResourceId));
                         } else {
                             assert response.resource != null;
                             if (response.resource.responseCode.equals(101)) {
@@ -200,7 +233,7 @@ public class WRBillerPlansFragment extends BaseFragment<FragmentWRBillerNamesBin
                                 showSuccess(response.resource.data);
 
                             } else {
-                                onMessage(response.resource.description);
+                                onError(response.resource.description);
                             }
                         }
                     });
@@ -225,7 +258,7 @@ public class WRBillerPlansFragment extends BaseFragment<FragmentWRBillerNamesBin
     }
 
     @Override
-    public void onCancel(boolean goBack)  {
+    public void onCancel(boolean goBack) {
 
     }
 }

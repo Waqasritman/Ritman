@@ -3,7 +3,6 @@ package angoothape.wallet;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +20,6 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -32,8 +30,6 @@ import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.LedgerRequest;
-import angoothape.wallet.di.JSONdi.restRequest.SimpleRequest;
-import angoothape.wallet.di.JSONdi.restResponse.CustomerTransactionHistory;
 import angoothape.wallet.di.JSONdi.restResponse.ledger.LedgerRoot;
 import angoothape.wallet.di.JSONdi.restResponse.ledger.StatementOfAccount;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
@@ -72,12 +68,10 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
         binding.toolBar.crossBtn.setVisibility(View.GONE);
         statementOfAccounts = new ArrayList<>();
         filteredStatementOfAccounts = new ArrayList<>();
-        //  setupRecyclerView();
+
         getLedger(DateAndTime.getLastMothDate()
                 , DateAndTime.getCurrentDate());
 
-
-        //  setupRecyclerView();
         binding.tvApply.setOnClickListener(v -> {
             if (binding.tvFromDate.getText().toString().isEmpty()) {
                 onMessage("Please select starting date");
@@ -87,7 +81,6 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
                 getLedger(binding.tvFromDate.getText().toString()
                         , binding.tvToDate.getText().toString());
             }
-
         });
 
 
@@ -107,8 +100,6 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
             binding.topDebitView.setVisibility(View.GONE);
             binding.topCreditView.setVisibility(View.GONE);
             binding.allReceived.setVisibility(View.VISIBLE);
-
-
         });
 
         binding.credit.setOnClickListener(v -> {
@@ -116,12 +107,10 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
             binding.topDebitView.setVisibility(View.GONE);
             binding.topCreditView.setVisibility(View.VISIBLE);
             binding.allReceived.setVisibility(View.GONE);
-
         });
 
         binding.debitLayout.setOnClickListener(v -> {
             setDebit();
-
             binding.topDebitView.setVisibility(View.VISIBLE);
             binding.topCreditView.setVisibility(View.GONE);
             binding.allReceived.setVisibility(View.GONE);
@@ -146,33 +135,33 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
 
             Utils.hideCustomProgressDialog();
             if (response.status == Status.ERROR) {
-                onMessage(getString(response.messageResourceId));
+                onError(getString(response.messageResourceId));
             } else {
                 assert response.resource != null;
                 if (response.resource.responseCode.equals(101)) {
-
-
                     String bodyy = AESHelper.decrypt(response.resource.data.body
                             , gKey);
 
+                    Log.e("getLedger: ", bodyy);
                     try {
                         Gson gson = new Gson();
                         Type type = new TypeToken<LedgerRoot>() {
                         }.getType();
                         LedgerRoot data = gson.fromJson(bodyy, type);
-                        ;
-
                         statementOfAccounts = new ArrayList<>();
                         statementOfAccounts.clear();
                         this.filteredStatementOfAccounts = new ArrayList<>();
                         this.filteredStatementOfAccounts.clear();
                         this.filteredStatementOfAccounts.addAll(data.statement_Of_Account_);
                         this.statementOfAccounts.addAll(data.statement_Of_Account_);
+
+                        if (this.filteredStatementOfAccounts.size() == 1) {
+                            if (this.filteredStatementOfAccounts.get(0).description.equalsIgnoreCase("No Records Found")) {
+                                this.filteredStatementOfAccounts.clear();
+                            }
+                        }
                         setupRecyclerView();
-
-
                         try {
-
                             if (data.closing_Bal_data_.get(0).closingBalancesINR.contains("Dr") ||
                                     data.closing_Bal_data_.get(0).closingBalancesINR.contains("DR") ||
                                     data.closing_Bal_data_.get(0).closingBalancesINR.contains("dr")) {
@@ -181,7 +170,7 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
                                 String bal = data.closing_Bal_data_.get(0).closingBalancesINR;
                                 bal = bal.toLowerCase();
                                 bal = bal.replace("dr", "");
-                                binding.closingBalance.setText(bal + " " + "₹");
+                                binding.closingBalance.setText("₹ " + bal);
                                 //Log.e("onBindViewHolder: ", String.valueOf(dValue));
                             } else if (data.closing_Bal_data_.get(0).closingBalancesINR.contains("Cr") ||
                                     data.closing_Bal_data_.get(0).closingBalancesINR.contains("CR") || data.closing_Bal_data_.get(0).closingBalancesINR.contains("cr")) {
@@ -189,7 +178,7 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
                                 String bal = data.closing_Bal_data_.get(0).closingBalancesINR;
                                 bal = bal.toLowerCase();
                                 bal = bal.replace("cr", "");
-                                binding.closingBalance.setText(bal + " " + "₹");
+                                binding.closingBalance.setText("₹ " + bal);
                                 //binding.closingBalance.setTextColor(ContextCompat.getColor(this, R.color.cardview0));
                             }
                             binding.topDebitView.setVisibility(View.GONE);
@@ -205,24 +194,26 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
 
 
                 } else {
-                    // onMessage(response.resource.description);
+                    // onError(response.resource.description);
                     statementOfAccounts = new ArrayList<>();
                     statementOfAccounts.clear();
                     this.filteredStatementOfAccounts = new ArrayList<>();
                     this.filteredStatementOfAccounts.clear();
-                    adapter.notifyDataSetChanged();
-                    showSucces(response.resource.description, "Error", true);
+                    if (adapter != null) {
+                        adapter.notifyDataSetChanged();
+                    }
+                    showSucces(response.resource.description);
                 }
             }
         });
     }
 
 
-    private void showSucces(String message, String title, boolean isError) {
+    private void showSucces(String message) {
         SingleButtonMessageDialog dialog = new
-                SingleButtonMessageDialog(title
+                SingleButtonMessageDialog("Error"
                 , message, this,
-                false, isError);
+                false, true);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         dialog.show(transaction, "");
     }
@@ -236,8 +227,6 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
                 MerchantLedgerAdapter(filteredStatementOfAccounts, this);
         binding.recyclerViewLedger.setLayoutManager(mLayoutManager);
         binding.recyclerViewLedger.setAdapter(adapter);
-//        binding.recyclerViewLedger.addItemDecoration(new DividerItemDecoration(binding.recyclerViewLedger.getContext(),
-//                DividerItemDecoration.VERTICAL));
     }
 
 
@@ -302,13 +291,11 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        //   binding.mainLayout.setVisibility(View.GONE);
         if (isStarting) {
             binding.tvFromDate.setText(DateAndTime.getLedgerFormat(year, monthOfYear, dayOfMonth));
         } else {
             binding.tvToDate.setText(DateAndTime.getLedgerFormat(year, monthOfYear, dayOfMonth));
         }
-        // binding.mainLayout.setVisibility(View.GONE);
     }
 
     @Override

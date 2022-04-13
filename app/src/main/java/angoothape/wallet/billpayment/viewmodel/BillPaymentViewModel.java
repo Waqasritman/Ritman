@@ -1,71 +1,52 @@
 package angoothape.wallet.billpayment.viewmodel;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.ConnectException;
 
+import angoothape.wallet.di.JSONdi.restRequest.AERequest;
+import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
 import retrofit2.Call;
 import retrofit2.Response;
 import angoothape.wallet.R;
 import angoothape.wallet.di.JSONdi.AppExecutors;
 import angoothape.wallet.di.JSONdi.NetworkResource;
-import angoothape.wallet.di.JSONdi.restRequest.BillDetailRequest;
 import angoothape.wallet.di.JSONdi.restRequest.BillPayRequest;
-import angoothape.wallet.di.JSONdi.restRequest.CalTransferRequest;
 import angoothape.wallet.di.JSONdi.restRequest.Credentials;
 import angoothape.wallet.di.JSONdi.restRequest.GetWRBillDetailRequestN;
-import angoothape.wallet.di.JSONdi.restRequest.GetWRBillerCategoryRequestC;
-import angoothape.wallet.di.JSONdi.restRequest.GetWRBillerFieldsRequestN;
-import angoothape.wallet.di.JSONdi.restRequest.GetWRBillerNamesRequestC;
-import angoothape.wallet.di.JSONdi.restRequest.GetWRBillerTypeRequestNew;
-import angoothape.wallet.di.JSONdi.restRequest.GetWRCountryListRequestC;
-import angoothape.wallet.di.JSONdi.restRequest.PayBillPaymentRequest;
-import angoothape.wallet.di.JSONdi.restResponse.BillDetailResponse;
 import angoothape.wallet.di.JSONdi.restResponse.BillPayResponse;
 import angoothape.wallet.di.JSONdi.restResponse.GetWRBillDetailResponseN;
-import angoothape.wallet.di.JSONdi.restResponse.GetWRBillerCategoryResponseC;
-import angoothape.wallet.di.JSONdi.restResponse.GetWRBillerFieldsResponseN;
-import angoothape.wallet.di.JSONdi.restResponse.GetWRBillerNamesResponseC;
-import angoothape.wallet.di.JSONdi.restResponse.GetWRBillerTypeResponse;
-import angoothape.wallet.di.JSONdi.restResponse.GetWRCountryListResponseC;
-import angoothape.wallet.di.JSONdi.restResponse.PayBillPaymentResponse;
 import angoothape.wallet.di.JSONdi.retrofit.RestApi;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
-import angoothape.wallet.di.XMLdi.RequestHelper.BeneficiaryAddRequest;
-import angoothape.wallet.di.XMLdi.RequestHelper.TootiPayRequest;
-import angoothape.wallet.di.XMLdi.ResponseHelper.GetBeneficiaryListResponse;
 import angoothape.wallet.di.XMLdi.ResponseHelper.WRCountryListResponse;
 
 public class BillPaymentViewModel extends ViewModel {
 
-    public MutableLiveData<CalTransferRequest> convertCurrency = new MutableLiveData<>();
-    public GetBeneficiaryListResponse beneficiaryDetails = new GetBeneficiaryListResponse();
-    public BeneficiaryAddRequest beneficiaryAddRequest = new BeneficiaryAddRequest();
-
-    public TootiPayRequest request = new TootiPayRequest();
-    RestApi restApi = RestClient.getBase();
-
+    RestApi restApi = RestClient.getEKYC();
+    public String customerId = "";
     AppExecutors appExecutors = new AppExecutors();
 
-    public LiveData<NetworkResource<GetWRBillerTypeResponse>> GetWRBillerType(GetWRBillerTypeRequestNew request, String userName) {
-        MutableLiveData<NetworkResource<GetWRBillerTypeResponse>> data = new MutableLiveData<>(); // receiving
-        Call<GetWRBillerTypeResponse> call = restApi.GetWRBillerType(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
-        //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<GetWRBillerTypeResponse>() {
+    public LiveData<NetworkResource<AEResponse>> GetWRBillerType(AERequest request,
+                                                                 String key, String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.GetWRBillerType(RestClient.makeGSONRequestBody(request)
+                , key, sKey);
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<GetWRBillerTypeResponse> call1, Response<GetWRBillerTypeResponse> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        GetWRBillerTypeResponse model = new GetWRBillerTypeResponse();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -78,8 +59,8 @@ public class BillPaymentViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<GetWRBillerTypeResponse> call1, Throwable t) {
-                GetWRBillerTypeResponse temp = new GetWRBillerTypeResponse();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -97,21 +78,22 @@ public class BillPaymentViewModel extends ViewModel {
     }
 
     //CountriList
-    public LiveData<NetworkResource<GetWRCountryListResponseC>> GetCountryList(GetWRCountryListRequestC request, String userName) {
-        MutableLiveData<NetworkResource<GetWRCountryListResponseC>> data = new MutableLiveData<>(); // receiving
-        Call<GetWRCountryListResponseC> call = restApi.GetCountryList(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> GetCountryList(AERequest request, String key,
+                                                                String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.GetCountryList(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<GetWRCountryListResponseC>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<GetWRCountryListResponseC> call1, Response<GetWRCountryListResponseC> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        GetWRCountryListResponseC model = new GetWRCountryListResponseC();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -124,8 +106,8 @@ public class BillPaymentViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<GetWRCountryListResponseC> call1, Throwable t) {
-                GetWRCountryListResponseC temp = new GetWRCountryListResponseC();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -142,23 +124,23 @@ public class BillPaymentViewModel extends ViewModel {
         return data;
     }
 
-
     //BillerCategory
-    public LiveData<NetworkResource<GetWRBillerCategoryResponseC>> GetWRBillerCategory(GetWRBillerCategoryRequestC request, String userName) {
-        MutableLiveData<NetworkResource<GetWRBillerCategoryResponseC>> data = new MutableLiveData<>(); // receiving
-        Call<GetWRBillerCategoryResponseC> call = restApi.GetWRBillerCategory(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> GetWRBillerCategory(AERequest request,
+                                                                     String key, String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.GetWRBillerCategory(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<GetWRBillerCategoryResponseC>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<GetWRBillerCategoryResponseC> call1, Response<GetWRBillerCategoryResponseC> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        GetWRBillerCategoryResponseC model = new GetWRBillerCategoryResponseC();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -171,8 +153,8 @@ public class BillPaymentViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<GetWRBillerCategoryResponseC> call1, Throwable t) {
-                GetWRBillerCategoryResponseC temp = new GetWRBillerCategoryResponseC();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -190,21 +172,22 @@ public class BillPaymentViewModel extends ViewModel {
     }
 
     //GetWRBillerNames
-    public LiveData<NetworkResource<GetWRBillerNamesResponseC>> GetWRBillerNames(GetWRBillerNamesRequestC request, String userName) {
-        MutableLiveData<NetworkResource<GetWRBillerNamesResponseC>> data = new MutableLiveData<>(); // receiving
-        Call<GetWRBillerNamesResponseC> call = restApi.GetWRBillerNames(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> GetWRBillerNames(AERequest request, String key
+            , String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.GetWRBillerNames(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<GetWRBillerNamesResponseC>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<GetWRBillerNamesResponseC> call1, Response<GetWRBillerNamesResponseC> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        GetWRBillerNamesResponseC model = new GetWRBillerNamesResponseC();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -217,8 +200,8 @@ public class BillPaymentViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<GetWRBillerNamesResponseC> call1, Throwable t) {
-                GetWRBillerNamesResponseC temp = new GetWRBillerNamesResponseC();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -236,14 +219,15 @@ public class BillPaymentViewModel extends ViewModel {
     }
 
     //GetWRBillerFields
-    public LiveData<NetworkResource<GetWRBillerFieldsResponseN>> GetWRBillerFields(GetWRBillerFieldsRequestN request, String userName) {
-        MutableLiveData<NetworkResource<GetWRBillerFieldsResponseN>> data = new MutableLiveData<>(); // receiving
-        Call<GetWRBillerFieldsResponseN> call = restApi.GetWRBillerFields(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> GetWRBillerFields(AERequest request,
+                                                                   String key, String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.GetWRBillerFields(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<GetWRBillerFieldsResponseN>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<GetWRBillerFieldsResponseN> call1, Response<GetWRBillerFieldsResponseN> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
@@ -251,7 +235,7 @@ public class BillPaymentViewModel extends ViewModel {
                         String message = jsonObject.getString("Message");
 
 
-                        GetWRBillerFieldsResponseN model = new GetWRBillerFieldsResponseN();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -264,8 +248,8 @@ public class BillPaymentViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<GetWRBillerFieldsResponseN> call1, Throwable t) {
-                GetWRBillerFieldsResponseN temp = new GetWRBillerFieldsResponseN();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -282,25 +266,22 @@ public class BillPaymentViewModel extends ViewModel {
         return data;
     }
 
-
-    //GetBillDetails
-
-    public LiveData<NetworkResource<GetWRBillDetailResponseN>> GetWRBillDetail(GetWRBillDetailRequestN request, String userName) {
-        MutableLiveData<NetworkResource<GetWRBillDetailResponseN>> data = new MutableLiveData<>(); // receiving
-        Call<GetWRBillDetailResponseN> call = restApi.GetWRBillDetail(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> getBillDetails(AERequest request,
+                                                                String key, String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.getBillDetails(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<GetWRBillDetailResponseN>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<GetWRBillDetailResponseN> call1, Response<GetWRBillDetailResponseN> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-
-                        GetWRBillDetailResponseN model = new GetWRBillDetailResponseN();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -313,8 +294,8 @@ public class BillPaymentViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<GetWRBillDetailResponseN> call1, Throwable t) {
-                GetWRBillDetailResponseN temp = new GetWRBillDetailResponseN();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 
@@ -331,23 +312,22 @@ public class BillPaymentViewModel extends ViewModel {
         return data;
     }
 
-
-    //BillPay
-    public LiveData<NetworkResource<BillPayResponse>> getBillPay(BillPayRequest request, String userName) {
-        MutableLiveData<NetworkResource<BillPayResponse>> data = new MutableLiveData<>(); // receiving
-        Call<BillPayResponse> call = restApi.getBillPay(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
+    public LiveData<NetworkResource<AEResponse>> getPayBill(AERequest request, String key
+            , String sKey) {
+        MutableLiveData<NetworkResource<AEResponse>> data = new MutableLiveData<>(); // receiving
+        Call<AEResponse> call = restApi.getPayBill(RestClient.makeGSONRequestBody(request)
+                , key, sKey); // rest api declaration
         //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<BillPayResponse>() {
+        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<AEResponse>() {
             @Override
-            public void onResponse(Call<BillPayResponse> call1, Response<BillPayResponse> response) {
+            public void onResponse(Call<AEResponse> call1, Response<AEResponse> response) {
                 if (!response.isSuccessful() && response.errorBody() != null) {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response.errorBody().string());
                         String message = jsonObject.getString("Message");
 
-                        BillPayResponse model = new BillPayResponse();
+                        AEResponse model = new AEResponse();
                         model.responseCode = 500;
                         model.description = message;
                         data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
@@ -360,149 +340,8 @@ public class BillPaymentViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<BillPayResponse> call1, Throwable t) {
-                BillPayResponse temp = new BillPayResponse();
-                if (t instanceof ConnectException) {
-                    // COMPLETED handle no internet access case
-
-                    data.postValue(NetworkResource.error(R.string.error_internet, temp));
-                } else if (t instanceof IOException) {
-                    // handle server error case
-                    data.postValue(NetworkResource.error(R.string.error_server, temp));
-                } else {
-                    // serialization case, throw abort message (maybe save crash log)
-                    data.postValue(NetworkResource.error(R.string.error_fatal, temp));
-                }
-            }
-        }));
-        return data;
-    }
-
-
-    public LiveData<NetworkResource<WRCountryListResponse>> getCountryList(Credentials request, String userName) {
-        MutableLiveData<NetworkResource<WRCountryListResponse>> data = new MutableLiveData<>(); // receiving
-        Call<WRCountryListResponse> call = restApi.getCountryList(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
-        //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<WRCountryListResponse>() {
-            @Override
-            public void onResponse(Call<WRCountryListResponse> call1, Response<WRCountryListResponse> response) {
-                if (!response.isSuccessful() && response.errorBody() != null) {
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response.errorBody().string());
-                        String message = jsonObject.getString("Message");
-
-                        WRCountryListResponse model = new WRCountryListResponse();
-                        model.responseCode = 500;
-                        model.description = message;
-                        data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
-                    } catch (JSONException | IOException e) {
-                        e.printStackTrace();
-                    }
-                } else if (response.isSuccessful()) {
-                    data.postValue(NetworkResource.success(response.body()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<WRCountryListResponse> call1, Throwable t) {
-                WRCountryListResponse temp = new WRCountryListResponse();
-                if (t instanceof ConnectException) {
-                    // COMPLETED handle no internet access case
-
-                    data.postValue(NetworkResource.error(R.string.error_internet, temp));
-                } else if (t instanceof IOException) {
-                    // handle server error case
-                    data.postValue(NetworkResource.error(R.string.error_server, temp));
-                } else {
-                    // serialization case, throw abort message (maybe save crash log)
-                    data.postValue(NetworkResource.error(R.string.error_fatal, temp));
-                }
-            }
-        }));
-        return data;
-    }
-
-
-
-
-    public LiveData<NetworkResource<BillDetailResponse>> getBillDetails(BillDetailRequest request, String userName) {
-        MutableLiveData<NetworkResource<BillDetailResponse>> data = new MutableLiveData<>(); // receiving
-        Call<BillDetailResponse> call = restApi.getBillDetails(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
-        //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<BillDetailResponse>() {
-            @Override
-            public void onResponse(Call<BillDetailResponse> call1, Response<BillDetailResponse> response) {
-                if (!response.isSuccessful() && response.errorBody() != null) {
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response.errorBody().string());
-                        String message = jsonObject.getString("Message");
-
-                        BillDetailResponse model = new BillDetailResponse();
-                        model.responseCode = 500;
-                        model.description = message;
-                        data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
-                    } catch (JSONException | IOException e) {
-                        e.printStackTrace();
-                    }
-                } else if (response.isSuccessful()) {
-                    data.postValue(NetworkResource.success(response.body()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BillDetailResponse> call1, Throwable t) {
-                BillDetailResponse temp = new BillDetailResponse();
-                if (t instanceof ConnectException) {
-                    // COMPLETED handle no internet access case
-
-                    data.postValue(NetworkResource.error(R.string.error_internet, temp));
-                } else if (t instanceof IOException) {
-                    // handle server error case
-                    data.postValue(NetworkResource.error(R.string.error_server, temp));
-                } else {
-                    // serialization case, throw abort message (maybe save crash log)
-                    data.postValue(NetworkResource.error(R.string.error_fatal, temp));
-                }
-            }
-        }));
-        return data;
-    }
-
-
-
-    public LiveData<NetworkResource<PayBillPaymentResponse>> getPayBill(PayBillPaymentRequest request, String userName) {
-        MutableLiveData<NetworkResource<PayBillPaymentResponse>> data = new MutableLiveData<>(); // receiving
-        Call<PayBillPaymentResponse> call = restApi.getPayBill(RestClient.makeGSONRequestBody(request)
-                , userName); // rest api declaration
-        //init
-        appExecutors.networkIO().execute(() -> call.enqueue(new retrofit2.Callback<PayBillPaymentResponse>() {
-            @Override
-            public void onResponse(Call<PayBillPaymentResponse> call1, Response<PayBillPaymentResponse> response) {
-                if (!response.isSuccessful() && response.errorBody() != null) {
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response.errorBody().string());
-                        String message = jsonObject.getString("Message");
-
-                        PayBillPaymentResponse model = new PayBillPaymentResponse();
-                        model.responseCode = 500;
-                        model.description = message;
-                        data.postValue(NetworkResource.unSuccess(R.string.error_fatal, model));
-                    } catch (JSONException | IOException e) {
-                        e.printStackTrace();
-                    }
-                } else if (response.isSuccessful()) {
-                    data.postValue(NetworkResource.success(response.body()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PayBillPaymentResponse> call1, Throwable t) {
-                PayBillPaymentResponse temp = new PayBillPaymentResponse();
+            public void onFailure(Call<AEResponse> call1, Throwable t) {
+                AEResponse temp = new AEResponse();
                 if (t instanceof ConnectException) {
                     // COMPLETED handle no internet access case
 

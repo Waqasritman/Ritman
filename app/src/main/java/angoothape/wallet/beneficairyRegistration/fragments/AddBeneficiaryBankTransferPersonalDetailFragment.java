@@ -14,9 +14,12 @@ import com.google.gson.Gson;
 
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
+import angoothape.wallet.di.JSONdi.restRequest.aepsSettlement.AEPSAddBeneficiaryRequest;
 import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
 import angoothape.wallet.di.JSONdi.restResponse.VerifyBeneficiary;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
+import angoothape.wallet.settlementaeps.AEPSSettlementTransactionActivity;
+import angoothape.wallet.settlementaeps.viewmodels.AEPSSettlementViewModel;
 import retrofit2.Call;
 import retrofit2.Response;
 import angoothape.wallet.MoneyTransferModuleV.MoneyTransferMainLayout;
@@ -47,20 +50,21 @@ import angoothape.wallet.utils.Utils;
 
 public class AddBeneficiaryBankTransferPersonalDetailFragment
         extends BaseFragment<ActivitySendMoneyViaBankFirstBinding> implements OnSelectBank
- , OnDecisionMade{
-
+        , OnDecisionMade {
 
     RegisterBeneficiaryViewModel viewModel;
+    AEPSSettlementViewModel aepsSettlementViewModel;
     RegisterBeneficiaryRequest request;
     List<BanksList> banksList;
     boolean isDMTLive = false;
+    boolean isAEPSBene = false;
     GetBeneficiaryListResponse benedetails;
+    AEPSAddBeneficiaryRequest aepsAddBeneficiaryRequest;
 
     @Override
     protected void injectView() {
 
     }
-
 
     @Override
     public void onResume() {
@@ -70,38 +74,49 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
             ((BeneficiaryRegistrationActivity) getBaseActivity()).binding.toolBar.titleTxt
                     .setText(getString(R.string.bank_beneficairy));
             viewModel = ((BeneficiaryRegistrationActivity) getBaseActivity()).viewModel;
+            viewModel.beneRegister.observe(this
+                    , registerBeneficiaryRequest -> {
+                        binding.firstName.setText(registerBeneficiaryRequest.FirstName);
+                        binding.merchaentNumber.setText(registerBeneficiaryRequest.CustomerNo);
+                    });
+        } else if (getBaseActivity() instanceof AEPSSettlementTransactionActivity) {
+            ((AEPSSettlementTransactionActivity) getBaseActivity()).binding.toolBar.titleTxt
+                    .setText(getString(R.string.aeps_beneficiary));
+            aepsSettlementViewModel = ((AEPSSettlementTransactionActivity) getBaseActivity()).viewModel;
+
         } else {
             ((MoneyTransferMainLayout) getBaseActivity()).binding.toolBar.titleTxt
                     .setText(getString(R.string.bank_beneficairy));
             viewModel = ((MoneyTransferMainLayout) getBaseActivity()).viewModel;
+            viewModel.beneRegister.observe(this
+                    , registerBeneficiaryRequest -> {
+                        binding.firstName.setText(registerBeneficiaryRequest.FirstName);
+                        binding.merchaentNumber.setText(registerBeneficiaryRequest.CustomerNo);
+                    });
 
-            binding.merchaentNumber.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.background_beneficiary_bank_pos_red));
-            binding.firstName.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.background_beneficiary_bank_pos_red));
-            binding.nextLayout.setBackgroundTintList(getContext().getResources().getColorStateList(R.color.colorPrimary));
-            binding.merchaentNumber.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.background_beneficiary_bank_pos_red));
-            binding.merchaentNumber.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.background_beneficiary_bank_pos_red));
         }
-
-        viewModel.beneRegister.observe(this
-                , registerBeneficiaryRequest -> {
-                    binding.firstName.setText(registerBeneficiaryRequest.FirstName);
-                    binding.merchaentNumber.setText(registerBeneficiaryRequest.CustomerNo);
-                });
+        binding.merchaentNumber.setBackground(ContextCompat.getDrawable(getBaseActivity(), R.drawable.background_beneficiary_bank_pos_red));
+        binding.firstName.setBackground(ContextCompat.getDrawable(getBaseActivity(),
+                R.drawable.background_beneficiary_bank_pos_red));
+        binding.nextLayout.setBackgroundTintList(getBaseActivity().getResources()
+                .getColorStateList(R.color.colorPrimary));
+        binding.merchaentNumber.setBackground(ContextCompat.getDrawable(getBaseActivity(), R.drawable.background_beneficiary_bank_pos_red));
+        binding.merchaentNumber.setBackground(ContextCompat.getDrawable(getBaseActivity(), R.drawable.background_beneficiary_bank_pos_red));
     }
 
     public boolean isValidate() {
-        if (TextUtils.isEmpty(binding.merchaentNumber.getText().toString())) {
+        if (TextUtils.isEmpty(binding.merchaentNumber.getText().toString()) && !isAEPSBene) {
             onMessage(getString(R.string.enter_merchant_number));
             return false;
         } else if (TextUtils.isEmpty(binding.firstName.getText().toString())) {
             onMessage(getString(R.string.enter_name_bene__first_name_error));
             return false;
         } else if (TextUtils.isEmpty(binding.indiaBankName.getText().toString())) {
-            binding.accountNumber.setError(getString(R.string.select_bank));
+            onMessage(getString(R.string.select_bank));
             return false;
         } else if (TextUtils.isEmpty(binding.accountNumber.getText().toString())) {
             //onMessage(getString(R.string.enter_account_no_error));
-            binding.accountNumber.setError(getString(R.string.enter_account_no_error));
+            onMessage(getString(R.string.enter_account_no_error));
             return false;
         }
         return true;
@@ -112,30 +127,31 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
         banksList = new ArrayList<>();
         request = new RegisterBeneficiaryRequest();
         benedetails = new GetBeneficiaryListResponse();
+        aepsAddBeneficiaryRequest = new AEPSAddBeneficiaryRequest();
         assert getArguments() != null;
         binding.merchaentNumber.setText(getArguments().getString("customer_no"));
         isDMTLive = getArguments().getBoolean("isDMTLive", false);
+        isAEPSBene = getArguments().getBoolean("isAEPSBene", false);
         binding.merchaentNumber.setEnabled(false);
 
         binding.nextLayout.setOnClickListener(v -> {
             if (isValidate()) {
-                request.FirstName = binding.firstName.getText().toString();
-                request.title = binding.beneficairyTitle.getSelectedItem().toString();
-                request.CustomerNo = binding.merchaentNumber.getText().toString();
-                request.AccountNumber = binding.accountNumber.getText().toString();
-                viewModel.beneRegister.setValue(request);
+                if (!isAEPSBene) {
+                    request.FirstName = binding.firstName.getText().toString();
+                    request.title = binding.beneficairyTitle.getSelectedItem().toString();
+                    request.CustomerNo = binding.merchaentNumber.getText().toString();
+                    request.AccountNumber = binding.accountNumber.getText().toString();
+                    viewModel.beneRegister.setValue(request);
 
-
-              //  if (isDMTLive) {
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("bene", viewModel.beneRegister.getValue());
 
                     Navigation.findNavController(binding.getRoot())
                             .navigate(R.id.action_sendMoneyViaBankFirstActivity_to_beneficiaryOTPRegistration
                                     , bundle);
-               // } else {
-                 //   regiterBene();
-               // }
+                } else {
+                    createAEPSBeneficiary();
+                }
 
 
             }
@@ -149,6 +165,58 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
                 showBankList(banksList);
             }
         });
+
+    }
+
+    public void createAEPSBeneficiary() {
+        if (isValidate()) {
+            binding.nextLayout.setEnabled(false);
+            Utils.showCustomProgressDialog(getContext(), false);
+
+            aepsAddBeneficiaryRequest.Beneficiary_Name = binding.firstName.getText().toString();
+            aepsAddBeneficiaryRequest.Beneficiary_Account_No = binding.accountNumber.getText().toString();
+            String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                    .getKey(getSessionManager().getMerchantName())).trim();
+            String body = RestClient.makeGSONString(aepsAddBeneficiaryRequest);
+            Log.e("body", body);
+            AERequest request = new AERequest();
+            request.body = AESHelper.encrypt(body.trim(), gKey.trim());
+
+            aepsSettlementViewModel.addAEPSBeneficiary(request
+                    , KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
+                            .getKey(getSessionManager().getMerchantName())).trim()).observe(getViewLifecycleOwner()
+                    , response -> {
+                        Utils.hideCustomProgressDialog();
+                        binding.nextLayout.setEnabled(true);
+                        if (response.status == Status.ERROR) {
+                            onError(getString(response.messageResourceId));
+                        } else {
+                            assert response.resource != null;
+                            if (response.resource.responseCode.equals(101)) {
+                                onMessage("Beneficiary Added Successfully");
+                                Navigation.findNavController(binding.getRoot())
+                                        .navigateUp();
+                            } else {
+
+                                Utils.hideCustomProgressDialog();
+                                if (response.resource.data != null) {
+                                    String bodyy = AESHelper.decrypt(response.resource.data.body
+                                            , gKey);
+                                    if (!body.isEmpty()) {
+                                        onError(bodyy);
+                                    } else {
+                                        onError(response.resource.description);
+                                    }
+                                } else {
+                                    onError(response.resource.description);
+                                }
+
+                            }
+
+
+                        }
+                    });
+        }
 
     }
 
@@ -172,7 +240,7 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
                     , response -> {
                         Utils.hideCustomProgressDialog();
                         if (response.status == Status.ERROR) {
-                            onMessage(getString(response.messageResourceId));
+                            onError(getString(response.messageResourceId));
                         } else {
                             assert response.resource != null;
 
@@ -198,7 +266,18 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
                                     e.printStackTrace();
                                 }
                             } else {
-                                onMessage(response.resource.description);
+                                Utils.hideCustomProgressDialog();
+                                if (response.resource.data != null) {
+                                    String bodyy = AESHelper.decrypt(response.resource.data.body
+                                            , gKey);
+                                    if (!body.isEmpty()) {
+                                        onError(bodyy);
+                                    } else {
+                                        onError(response.resource.description);
+                                    }
+                                } else {
+                                    onError(response.resource.description);
+                                }
                             }
 
 
@@ -217,7 +296,6 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
     public void onResponseMessage(String message) {
         onMessage(message);
     }
-
 
     void getBankList() {
         Utils.showCustomProgressDialog(getContext(), false);
@@ -251,7 +329,18 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
                             e.printStackTrace();
                         }
                     } else {
-                        onMessage(response.body().description);
+                        Utils.hideCustomProgressDialog();
+                        if (response.body().data != null) {
+                            String bodyy = AESHelper.decrypt(response.body().data.body
+                                    , gKey);
+                            if (!body.isEmpty()) {
+                                onError(bodyy);
+                            } else {
+                                onError(response.body().description);
+                            }
+                        } else {
+                            onError(response.body().description);
+                        }
                     }
                 } else {
                     onMessage(getString(R.string.some_thing_wrong));
@@ -282,10 +371,16 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
     @Override
     public void onSelectBank(BanksList bankDetails) {
         binding.indiaBankName.setText(bankDetails.bank_name);
-        request.BankCode = bankDetails.ifscCode;
-        request.BranchNameAndAddress = bankDetails.bank_name;
-        request.BankBranch = bankDetails.bank_name;
-        request.BankName = bankDetails.bank_name;
+        if (isAEPSBene) {
+            aepsAddBeneficiaryRequest.Beneficiary_IFSC_Code = bankDetails.ifscCode;
+        } else {
+            request.BankCode = bankDetails.ifscCode;
+            request.BranchNameAndAddress = bankDetails.bank_name;
+            request.BankBranch = bankDetails.bank_name;
+            request.BankName = bankDetails.bank_name;
+        }
+
+
     }
 
     @Override
@@ -297,7 +392,6 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
     public void onSelectBranch(BankListResponse branchName) {
 
     }
-
 
     @Override
     public void onProceed() {
@@ -319,7 +413,6 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
         }
     }
 
-
     private void verifyBeneficiary(String beneNo, String customerNo) {
         Utils.showCustomProgressDialog(getContext(), false);
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
@@ -331,7 +424,7 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
         verifyBeneficiaryRequest.customerNo = customerNo;
         verifyBeneficiaryRequest.BeneficiaryNo = beneNo;
         String body = RestClient.makeGSONString(verifyBeneficiaryRequest);
-        Log.e("verifyBeneficiary: ",body );
+        Log.e("verifyBeneficiary: ", body);
         AERequest request = new AERequest();
         request.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
@@ -341,7 +434,7 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
                 .observe(getViewLifecycleOwner(), response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -366,13 +459,12 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
                             }
                         } else {
                             showSuccess(response.resource.description
-                                    , "Error" , true);
+                                    , "Error", true);
                             //   onMessage("Beneficiary verification failed");
                         }
                     }
                 });
     }
-
 
     private void showSuccess(String message, String title, boolean isError) {
         SingleButtonMessageDialog dialog = new

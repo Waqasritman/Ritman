@@ -18,11 +18,11 @@ public class GetBeneficiaryListResponse extends ApiResponse<List<GetBeneficiaryL
     @SerializedName("CustomerNo")
     public String customerNo;
     @SerializedName("FirstName")
-    public String firstName;
+    public String firstName = "";
     @SerializedName("MiddleName")
-    public String middleName;
+    public String middleName = "";
     @SerializedName("LastName")
-    public String lastName;
+    public String lastName = "";
     @SerializedName("NickName")
     public String nickName;
     @SerializedName("Address")

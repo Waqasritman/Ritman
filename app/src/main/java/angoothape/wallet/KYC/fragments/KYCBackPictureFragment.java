@@ -223,6 +223,6 @@ public class KYCBackPictureFragment extends BaseFragment<KycPictureLayoutBinding
 
     @Override
     public void onResponseMessage(String message) {
-        onMessage(message);
+        onSuccess(message);
     }
 }

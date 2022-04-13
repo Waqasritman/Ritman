@@ -44,10 +44,11 @@
 
                 <ImageView
                     android:id="@+id/cross_btn"
-                    android:layout_width="50dp"
+                    android:layout_width="35dp"
                     android:layout_height="match_parent"
-                   android:layout_toStartOf="@+id/bbps_toolbar"
                     android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_5dp"
+                    android:layout_toStartOf="@+id/bbps_toolbar"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_baseline_close_24"
                     app:tint="@color/white" />
@@ -56,14 +57,13 @@
                     android:id="@+id/bbps_toolbar"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_centerVertical="true"
-                    android:scaleType="centerInside"
-                    android:layout_marginEnd="@dimen/margin_10dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="@dimen/margin_20dp"
                     android:layout_alignParentRight="true"
-                    android:tint="@color/colorWhite"
-                    android:src="@drawable/bbps_new_logo_1" />
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/margin_5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bbps_new_logo_1"
+                    app:tint="@color/colorWhite" />
 
             </RelativeLayout>
 

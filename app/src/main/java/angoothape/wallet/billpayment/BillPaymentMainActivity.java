@@ -1,10 +1,9 @@
-    package angoothape.wallet.billpayment;
+package angoothape.wallet.billpayment;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.view.View;
 
 import angoothape.wallet.R;
 import angoothape.wallet.base.RitmanBaseActivity;
+import angoothape.wallet.billpayment.viewmodel.BillPaymentViewModel;
 import angoothape.wallet.databinding.ActivityBillMainBinding;
 import angoothape.wallet.di.JSONdi.restRequest.GetWRBillDetailRequestN;
 import angoothape.wallet.di.JSONdi.restRequest.GetWRBillerFieldsRequestN;
@@ -24,7 +24,7 @@ public class BillPaymentMainActivity extends RitmanBaseActivity<ActivityBillMain
     public WRBillerPlansRequest plansRequest;
     public WRPayBillRequest payBillRequest;
 
-
+    public BillPaymentViewModel viewModel;
     public GetWRBillerFieldsRequestN request;
 
     public GetWRBillDetailRequestN BillDetailRequest;
@@ -39,6 +39,7 @@ public class BillPaymentMainActivity extends RitmanBaseActivity<ActivityBillMain
     @Override
     protected void initUi(Bundle savedInstanceState) {
         navController = Navigation.findNavController(this, R.id.dashboard);
+        viewModel = new ViewModelProvider(this).get(BillPaymentViewModel.class);
         binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
         plansRequest = new WRBillerPlansRequest();
         payBillRequest = new WRPayBillRequest();
@@ -62,15 +63,13 @@ public class BillPaymentMainActivity extends RitmanBaseActivity<ActivityBillMain
         });
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if(destination.getId() == R.id.payBillFragment) {
-               // binding.toolBar.toolBarFinal.setVisibility(View.GONE);
+            if (destination.getId() == R.id.payBillFragment) {
+                // binding.toolBar.toolBarFinal.setVisibility(View.GONE);
+                binding.toolBar.bbpsToolbar.setVisibility(View.GONE);
+                // bottomNavigationView.setVisibility(View.GONE);
+            } else if (destination.getId() == R.id.paymentAmountValidationFragment) {
                 binding.toolBar.bbpsToolbar.setVisibility(View.INVISIBLE);
-               // bottomNavigationView.setVisibility(View.GONE);
-            }
-            else if (destination.getId()==R.id.paymentAmountValidationFragment){
-                binding.toolBar.bbpsToolbar.setVisibility(View.INVISIBLE);
-            }
-            else {
+            } else {
                 binding.toolBar.bbpsToolbar.setVisibility(View.VISIBLE);
                 //bottomNavigationView.setVisibility(View.VISIBLE);
             }
@@ -86,7 +85,8 @@ public class BillPaymentMainActivity extends RitmanBaseActivity<ActivityBillMain
 
     @Override
     public void onBackPressed() {
-        if (navController.getCurrentDestination().getId() == R.id.utilityCategoryBFragment) {
+        if (navController.getCurrentDestination().getId() == R.id.utilityCategoryBFragment
+                || navController.getCurrentDestination().getId() == R.id.payBillFragment) {
             finish();
         } else {
             navController.navigateUp();

@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -114,7 +115,6 @@ public class UploadCashDetailsActivity extends RitmanBaseActivity<ActivityUpload
 
 
     public void uploadCashDetails() {
-        Utils.showCustomProgressDialog(this, false);
 
         Utils.showCustomProgressDialog(this, false);
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
@@ -130,7 +130,7 @@ public class UploadCashDetailsActivity extends RitmanBaseActivity<ActivityUpload
                         .getKey(getSessionManager().getMerchantName())).trim()).observe(this, response -> {
             Utils.hideCustomProgressDialog();
             if (response.status == Status.ERROR) {
-                onMessage(getString(response.messageResourceId));
+                onError(getString(response.messageResourceId));
             } else if (response.status == Status.SUCCESS) {
                 assert response.resource != null;
                 onMessage(response.resource.description);
@@ -181,7 +181,7 @@ public class UploadCashDetailsActivity extends RitmanBaseActivity<ActivityUpload
                 .observe(this, response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -199,7 +199,19 @@ public class UploadCashDetailsActivity extends RitmanBaseActivity<ActivityUpload
                             }
 
                         } else {
-                            onMessage(response.resource.description);
+                            Utils.hideCustomProgressDialog();
+                            if (response.resource.data != null) {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                Log.e("getBillDetails: ", bodyy);
+                                if (!body.isEmpty()) {
+                                    onError(bodyy);
+                                } else {
+                                    onError(response.resource.description);
+                                }
+                            } else {
+                                onError(response.resource.description);
+                            }
                         }
                     }
                 });

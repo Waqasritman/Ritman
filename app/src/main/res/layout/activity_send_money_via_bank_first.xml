@@ -28,16 +28,15 @@
 
                 <TextView
 
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_marginBottom="@dimen/margin_10dp"
                     android:text="@string/merchant_number"
-                    android:textSize="@dimen/text_size_14sp" />
+                    android:textSize="@dimen/text_size_14sp"
+                    android:visibility="gone" />
 
                 <EditText
-                    android:visibility="gone"
                     android:id="@+id/merchaent_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -48,7 +47,8 @@
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_16sp" />
+                    android:textSize="@dimen/text_size_16sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_beneficiary_registeration"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="Full Name"
+                    android:hint="John smith"
                     android:inputType="textPersonName"
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_beneficiary_registeration"
                     android:gravity="center_vertical"
-                    android:hint="Bank name"
+                    android:hint="Select Bank"
                     android:padding="@dimen/_10sdp"
                     android:singleLine="true"
                     android:textColor="@color/black"
@@ -138,23 +138,17 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <Button
                     android:id="@+id/next_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="@dimen/margin_15dp"
                     android:background="@drawable/background_button"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:padding="@dimen/_3sdp"
-                        android:text="@string/submit_txt"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp" />
-                </LinearLayout>
+                    android:padding="@dimen/_3sdp"
+                    android:text="@string/submit_txt"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_15sdp" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>

@@ -94,14 +94,14 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             onMessage("OTP Sent Successfully");
 
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     }
                 });
@@ -121,7 +121,7 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -129,9 +129,9 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
                             getSummary();
 
                         } else if (response.resource.responseCode.equals(100)) {
-                            onMessage("Invalid OTP. Please enter correct OTP");
+                            onError("Invalid OTP. Please enter correct OTP");
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     }
                 });
@@ -169,7 +169,7 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
                 , response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         String bodyy = AESHelper.decrypt(response.resource.data.body
@@ -201,7 +201,18 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
                                 e.printStackTrace();
                             }
                         } else {
-                            onMessage(response.resource.description);
+                            Utils.hideCustomProgressDialog();
+                            if (response.resource.data != null) {
+
+                                Log.e("getBillDetails: ", bodyy);
+                                if (!body.isEmpty()) {
+                                    onError(bodyy);
+                                } else {
+                                    onError(response.resource.description);
+                                }
+                            } else {
+                                onError(response.resource.description);
+                            }
                         }
                     }
                 });
@@ -210,7 +221,7 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
 //                , response -> {
 //                    Utils.hideCustomProgressDialog();
 //                    if (response.status == Status.ERROR) {
-//                        onMessage(getString(response.messageResourceId));
+//                        onError(getString(response.messageResourceId));
 //                    } else {
 //                        assert response.resource != null;
 //                        if (response.resource.responseCode.equals(101)) {
@@ -229,7 +240,7 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
 //                            }, 200);
 //
 //                        } else {
-//                            onMessage(response.resource.description);
+//                            onError(response.resource.description);
 //                        }
 //                    }
 //                });

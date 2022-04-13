@@ -22,6 +22,7 @@ import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.GetBeneficiaryRequest;
+import angoothape.wallet.di.JSONdi.restResponse.aepssattlement.AEPSBeneficiary;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
 import angoothape.wallet.di.JSONdi.retrofit.RestClient;
 import angoothape.wallet.di.XMLdi.ResponseHelper.GetBeneficiaryListResponse;
@@ -172,6 +173,11 @@ public class CheckBeneForAeps  extends BaseDialogFragment<ActivitySelectBenefici
 
     @Override
     public void onSelectBeneficiary(GetBeneficiaryListResponse response) {
+
+    }
+
+    @Override
+    public void onSelectAEPSBeneficiary(AEPSBeneficiary response) {
 
     }
 

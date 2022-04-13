@@ -93,13 +93,13 @@ public class TransactionReceiptActivity extends RitmanBaseActivity<ReceiptLayout
         viewModel.getReciept(request, sessionManager.getMerchantName()).observe(this
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             onGetTransactionReceipt(response.resource.data);
                         } else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
                     }
                 });
@@ -303,7 +303,6 @@ public class TransactionReceiptActivity extends RitmanBaseActivity<ReceiptLayout
         if (requestCode == REQUEST_PERMISSIONS) {
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                 boolean_permission = true;
                 LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
                 RelativeLayout root = (RelativeLayout) inflater.inflate(R.layout.receipt_layout_money_send, null); //RelativeLayout is root view of my UI(xml) file.

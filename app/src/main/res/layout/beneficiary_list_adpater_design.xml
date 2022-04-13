@@ -19,6 +19,7 @@
 
 
         <LinearLayout
+            android:id="@+id/acc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/bene_name"
@@ -44,15 +45,41 @@
 
         </LinearLayout>
 
+        <LinearLayout
+android:id="@+id/bank_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/acc"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_medium"
+                android:text="Bank name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14sp" />
+
+
+            <TextView
+                android:id="@+id/bank_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_regular"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/deActive_bene"
-            android:checked="true"
-            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:checked="true"
+            android:visibility="visible" />
 
 
     </RelativeLayout>

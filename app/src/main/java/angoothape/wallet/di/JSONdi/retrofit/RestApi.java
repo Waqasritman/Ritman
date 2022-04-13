@@ -73,6 +73,13 @@ public interface RestApi {
                                            @Query("LanguageID") Integer languageId);
 
 
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/Transfer/Confirm")
+    Call<AEResponse> confirmRitmanPayTransfer(@Body RequestBody model,
+                                       @Header("key") String key, @Header("secretkey") String sKey);
+
+
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Agent/LedgerHistory")
     Call<AEResponse> getMerchantLedger(@Body RequestBody model,
@@ -95,7 +102,8 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Agent/FundTransferToMerchant")
-    Call<SimpleResponse> fundTransferToMerchant(@Body RequestBody request, @Header("Username") String userName);
+    Call<AEResponse> fundTransferToMerchant(@Body RequestBody model,
+                                                @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("BusBooking/GetServiceSeatingLayout")
@@ -129,7 +137,8 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Agent/GetDistributorMerchants")
-    Call<DistributorDetailsResponse> getDistributorMerchants(@Body RequestBody request, @Header("Username") String userName);
+    Call<AEResponse> getDistributorMerchants(@Body RequestBody model,
+                                                             @Header("key") String key, @Header("secretkey") String sKey);
 
 
     @POST("RitmanPay/AddCustomerImage")
@@ -175,6 +184,31 @@ public interface RestApi {
     Call<AEResponse> getBanks(@Body RequestBody request,
                               @Header("key") String key, @Header("secretkey") String sKey);
 
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/Agent/Beneficiary_List")
+    Call<AEResponse> getAEPSBeneficiaryList(@Body RequestBody request,
+                                            @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/Agent/Add_Beneficiary")
+    Call<AEResponse> addAEPSBeneficiary(@Body RequestBody request,
+                                        @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/Agent/AEPS_Closing_Balance")
+    Call<AEResponse> getAEPSClosingBalance(@Body RequestBody request,
+                                           @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("Rit/AEPS/Settlement_Transaction")
+    Call<AEResponse> settlementTransaction(@Body RequestBody request,
+                                           @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("Rit/AEPS/Settlement_Commision")
+    Call<AEResponse> settlementCommission(@Body RequestBody request,
+                                          @Header("key") String key, @Header("secretkey") String sKey);
+
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Beneficiary/BeneficiaryRegistration")
@@ -219,30 +253,30 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/WR/GetWRBillerType")
-    Call<GetWRBillerTypeResponse> GetWRBillerType(@Body RequestBody requestBody,
-                                                  @Header("Username") String Username);
+    Call<AEResponse> GetWRBillerType(@Body RequestBody requestBody,
+                                     @Header("key") String key, @Header("secretkey") String sKey);
 
     //Country
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/WR/GetWRCountryList")
-    Call<GetWRCountryListResponseC> GetCountryList(@Body RequestBody requestBody,
-                                                   @Header("Username") String Username);
+    Call<AEResponse> GetCountryList(@Body RequestBody requestBody,
+                                    @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/WR/GetWRBillerCategory")
-    Call<GetWRBillerCategoryResponseC> GetWRBillerCategory(@Body RequestBody requestBody,
-                                                           @Header("Username") String Username);
+    Call<AEResponse> GetWRBillerCategory(@Body RequestBody requestBody,
+                                         @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/WR/GetWRBillerNames")
-    Call<GetWRBillerNamesResponseC> GetWRBillerNames(@Body RequestBody requestBody,
-                                                     @Header("Username") String Username);
+    Call<AEResponse> GetWRBillerNames(@Body RequestBody requestBody,
+                                      @Header("key") String key, @Header("secretkey") String sKey);
 
     //GetWRBillerFields
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/WR/GetWRBillerFields")
-    Call<GetWRBillerFieldsResponseN> GetWRBillerFields(@Body RequestBody requestBody,
-                                                       @Header("Username") String Username);
+    Call<AEResponse> GetWRBillerFields(@Body RequestBody requestBody,
+                                       @Header("key") String key, @Header("secretkey") String sKey);
 
     //GetWRBillDetail
     @Headers("Content-Type:application/json;charset=UTF-8")
@@ -266,8 +300,8 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/BillPayment/GetPrepaidOperator")
-    Call<PrepaidOperatorResponse> getOperator(@Body RequestBody requestBody,
-                                              @Header("Username") String Username);
+    Call<AEResponse> getOperator(@Body RequestBody requestBody,
+                                 @Header("key") String key, @Header("secretkey") String sKey);
 
 
     @Headers("Content-Type:application/json;charset=UTF-8")
@@ -278,8 +312,8 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/BillPayment/GetRechargePlans")
-    Call<PrepaidPlanResponse> getPrepaidPlan(@Body RequestBody requestBody,
-                                             @Header("Username") String Username);
+    Call<AEResponse> getPrepaidPlan(@Body RequestBody requestBody,
+                                             @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Transfer/TxnRefundHistoryWithFilter")
@@ -432,19 +466,19 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/BillPayment/GetPlanCategories")
-    Call<PlanCategoriesResponse> getPlanName(@Body RequestBody requestBody,
-                                             @Header("Username") String Username);
+    Call<AEResponse> getPlanName(@Body RequestBody requestBody,
+                                 @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/BillPayment/GetRechargePlans")
-    Call<RechargePlansResponse> getRechargePlanName(@Body RequestBody requestBody,
-                                                    @Header("Username") String Username);
+    Call<AEResponse> getRechargePlanName(@Body RequestBody requestBody,
+                                                    @Header("key") String key, @Header("secretkey") String sKey);
 
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/BillPayment/GetBillDetail")
-    Call<BillDetailResponse> getBillDetails(@Body RequestBody requestBody,
-                                            @Header("Username") String Username);
+    Call<AEResponse> getBillDetails(@Body RequestBody requestBody,
+                                    @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Cashe/Run_PreApproval")
@@ -459,8 +493,8 @@ public interface RestApi {
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/BillPayment/PayBillPayment")
-    Call<PayBillPaymentResponse> getPayBill(@Body RequestBody requestBody,
-                                            @Header("Username") String Username);
+    Call<AEResponse> getPayBill(@Body RequestBody requestBody,
+                                @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/IndiaFirst_Life_Group/Hospicare_Member_Form")
@@ -511,6 +545,12 @@ public interface RestApi {
     @POST("RitmanPay/eKYC/YB_VALIDATE_OTP")
     Call<AEResponse> YBValidateOTP(@Body RequestBody requestBody,
                                    @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/eKYC/YB_Customer_KYC")
+    Call<AEResponse> YBCreateCustomerKYC(@Body RequestBody requestBody,
+                                         @Header("key") String key, @Header("secretkey") String sKey);
+
 
     //Adhar_Bio_kyc
     @Headers("Content-Type:application/json;charset=UTF-8")

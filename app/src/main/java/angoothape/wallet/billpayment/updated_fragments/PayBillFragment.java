@@ -5,19 +5,18 @@ import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
 
 import angoothape.wallet.R;
+import angoothape.wallet.billpayment.BillPaymentMainActivity;
 import angoothape.wallet.billpayment.viewmodel.BillPaymentViewModel;
 import angoothape.wallet.databinding.PayBillFragmentLayoutBinding;
 import angoothape.wallet.fragments.BaseFragment;
 
 public class PayBillFragment extends BaseFragment<PayBillFragmentLayoutBinding> {
 
-    String validationid, paymentamount, MobileNumber, iemiNumber, ipAddress, billercategory;
-
     String CustomerName, billamount, netbillamount, billdate, billduedate, billstatus, billnumber, billerid, paymentmethod, biller_status;
     String transaction_date_time, paymentstatus, payeemobileno, bbps_ref_no, transactionrefno, source_ref_no, partial_pay,
             partial_payment, paymentamount_validation;
 
-   // BankTransferViewModel viewModel;
+    // BankTransferViewModel viewModel;
     BillPaymentViewModel viewModel;
 
     String customerid;
@@ -29,8 +28,9 @@ public class PayBillFragment extends BaseFragment<PayBillFragmentLayoutBinding> 
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(BillPaymentViewModel.class);
+        viewModel = ((BillPaymentMainActivity) getBaseActivity()).viewModel;
 
+        assert getArguments() != null;
         CustomerName = getArguments().getString("CustomerName");
         billamount = getArguments().getString("billamount");
         netbillamount = getArguments().getString("netbillamount");
@@ -48,8 +48,8 @@ public class PayBillFragment extends BaseFragment<PayBillFragmentLayoutBinding> 
         transactionrefno = getArguments().getString("transactionrefno");
         source_ref_no = getArguments().getString("source_ref_no");
         paymentamount_validation = getArguments().getString("paymentamount_validation");
-          partial_pay = getArguments().getString("partial_pay");
-          partial_payment = getArguments().getString("partial_payment");
+        partial_pay = getArguments().getString("partial_pay");
+        partial_payment = getArguments().getString("partial_payment");
         if (paymentamount_validation.equals("Y")) {
             binding.billAmount.setText(billamount);
             binding.billerId.setText(billerid);
@@ -61,9 +61,7 @@ public class PayBillFragment extends BaseFragment<PayBillFragmentLayoutBinding> 
             binding.bbpsRefNo.setText(bbps_ref_no);
             binding.transactionrefno.setText(transactionrefno);
             binding.sourceRefNo.setText(source_ref_no);
-        }
-
-        else {
+        } else {
             binding.customerName.setText(CustomerName);
             binding.netBillAmount.setText(netbillamount);
             binding.billDate.setText(billdate);
@@ -78,7 +76,7 @@ public class PayBillFragment extends BaseFragment<PayBillFragmentLayoutBinding> 
             binding.bbpsRefNo.setText(bbps_ref_no);
             binding.transactionrefno.setText(transactionrefno);
             binding.sourceRefNo.setText(source_ref_no);
-          //  binding.billAmount.setText(billamount);
+            //  binding.billAmount.setText(billamount);
             //binding.billerId.setText(billerid);
 
             if (partial_pay.equals("Y")) {
@@ -89,11 +87,6 @@ public class PayBillFragment extends BaseFragment<PayBillFragmentLayoutBinding> 
                 binding.billerId.setText(billerid);
             }
         }
-
-
-
-
-
 
 
     }

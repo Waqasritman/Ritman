@@ -340,7 +340,7 @@ public class E_KYC_Three_Fragment extends BaseFragment<FragmentEKYCThreeBinding>
 
                 , response -> {
                     if (response.status == Status.ERROR) {
-                        onMessage(getString(response.messageResourceId));
+                        onError(getString(response.messageResourceId));
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
@@ -355,16 +355,16 @@ public class E_KYC_Three_Fragment extends BaseFragment<FragmentEKYCThreeBinding>
                         }
                         else if (response.resource.responseCode.equals(100)){
                             Utils.hideCustomProgressDialog();
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                        }
 
                         else if (response.resource.responseCode.equals(305)){
                             Utils.hideCustomProgressDialog();
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                         }
 
                         else {
-                            onMessage(response.resource.description);
+                            onError(response.resource.description);
                             Utils.hideCustomProgressDialog();
                         }
                     }
