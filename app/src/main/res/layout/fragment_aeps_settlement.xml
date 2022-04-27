@@ -11,13 +11,13 @@
             android:scrollbars="none">
 
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/mainView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_5sdp"
                 android:orientation="vertical"
-                android:padding="@dimen/_5sdp">
+                android:padding="@dimen/_5sdp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -29,11 +29,11 @@
 
 
                 <LinearLayout
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="?actionBarSize"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_marginEnd="@dimen/_5sdp"
-                    android:background="@drawable/background_select_mood"
                     android:orientation="horizontal"
                     android:padding="@dimen/margin_10dp"
                     android:weightSum="2">
@@ -55,11 +55,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="?actionBarSize"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_marginEnd="@dimen/_5sdp"
-                    android:background="@drawable/background_select_mood"
                     android:orientation="horizontal"
                     android:padding="@dimen/margin_10dp"
                     android:weightSum="2">
@@ -81,11 +81,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="?actionBarSize"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_marginEnd="@dimen/_5sdp"
-                    android:background="@drawable/background_select_mood"
                     android:orientation="horizontal"
                     android:padding="@dimen/margin_10dp"
                     android:visibility="gone"
@@ -108,11 +108,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="?actionBarSize"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_marginEnd="@dimen/_5sdp"
-                    android:background="@drawable/background_select_mood"
                     android:orientation="horizontal"
                     android:padding="@dimen/margin_10dp"
                     android:weightSum="2">
@@ -134,11 +134,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="?actionBarSize"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_marginEnd="@dimen/_5sdp"
-                    android:background="@drawable/background_select_mood"
                     android:orientation="horizontal"
                     android:padding="@dimen/margin_10dp"
                     android:weightSum="2">
@@ -159,24 +159,14 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <Button
                     android:id="@+id/confirm_btn"
+                    style="@style/ButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:layout_marginTop="@dimen/margin_15dp"
+                    android:text="@string/confirm_text" />
 
-                    android:background="@drawable/background_button"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:padding="@dimen/_3sdp"
-                        android:text="@string/confirm_text"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp" />
-                </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>

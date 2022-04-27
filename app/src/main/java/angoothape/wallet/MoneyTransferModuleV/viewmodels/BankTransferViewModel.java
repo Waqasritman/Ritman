@@ -61,7 +61,7 @@ public class BankTransferViewModel extends ViewModel {
 
     public TootiPayRequest request = new TootiPayRequest();
     RestApi restApi = RestClient.get();
-    RestApi restApii = RestClient.getREST();
+    RestApi restApii = RestClient.getEKYC();
 
     AppExecutors appExecutors = new AppExecutors();
 

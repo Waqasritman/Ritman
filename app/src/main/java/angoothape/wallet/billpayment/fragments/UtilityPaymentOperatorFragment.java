@@ -119,7 +119,7 @@ public class UtilityPaymentOperatorFragment extends BaseFragment<ActivityBillPay
 
     @Override
     public void onSelectBillerName(GetWRBillerNamesResponseC billerName) {
-        ((BillPaymentMainActivity) getBaseActivity()).plansRequest.billerID = billerName.Biller_ID;
+//        ((BillPaymentMainActivity) getBaseActivity()).plansRequest.billerID = billerName.Biller_ID;
 
     }
 

@@ -25,6 +25,7 @@
 
 
                 <TextView
+
                     android:id="@+id/card_details_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,6 +98,7 @@
 
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
@@ -105,11 +107,10 @@
 
                 <EditText
                     android:id="@+id/name"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_45dp"
                     android:layout_margin="@dimen/_5sdp"
-                    android:background="@drawable/round_bg"
-                    android:backgroundTint="@color/white"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/name"
                     android:inputType="text"
@@ -118,6 +119,7 @@
                     android:textColorHint="@color/colorSpinner" />
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
@@ -127,11 +129,11 @@
 
                 <EditText
                     android:id="@+id/number_txt"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_45dp"
                     android:layout_margin="@dimen/_5sdp"
-                    android:background="@drawable/round_bg"
-                    android:backgroundTint="@color/white"
+
                     android:hint="@string/card_number_hint"
                     android:inputType="number"
                     android:maxLength="19"
@@ -152,6 +154,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/_5sdp"
@@ -160,11 +163,10 @@
 
                         <EditText
                             android:id="@+id/expire_txt"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_45dp"
                             android:layout_margin="@dimen/_5sdp"
-                            android:background="@drawable/round_bg"
-                            android:backgroundTint="@color/white"
                             android:hint="@string/mm_txt_yy"
                             android:inputType="number"
                             android:maxLength="5"
@@ -181,6 +183,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/_5sdp"
@@ -190,11 +193,10 @@
 
                         <EditText
                             android:id="@+id/cvv"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_45dp"
                             android:layout_margin="@dimen/_5sdp"
-                            android:background="@drawable/round_bg"
-                            android:backgroundTint="@color/white"
                             android:hint="@string/cvv_txt"
                             android:inputType="number"
                             android:maxLength="4"
@@ -219,12 +221,11 @@
 
                 <Button
                     android:id="@+id/add_card_btn"
+                    style="@style/ButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_7sdp"
-                    android:background="@drawable/round_bg"
-                    android:backgroundTint="@color/colorPrimary"
                     android:text="@string/submit_txt"
                     android:textAllCaps="false"
                     android:textColor="@color/white" />

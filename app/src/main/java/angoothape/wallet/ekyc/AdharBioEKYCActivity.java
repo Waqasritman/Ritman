@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -127,7 +128,7 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
     @BindView(R.id.linearSelectPosition)
     LinearLayout linearSelectPosition;
     @BindView(R.id.edtxAdharNo)
-    MaskedEditText edtxAdharNo;
+    EditText edtxAdharNo;
     @BindView(R.id.linearAdharNo)
     LinearLayout linearAdharNo;
     @BindView(R.id.btnDeviceInfo)
@@ -186,6 +187,7 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
     String deviceTypeItem;
     DeviceInfo info;
     String mobile_no, kyc_token, wadh_value;
+    ActivityAdharBioEKYCBinding binding;
 
     @Override
     public int getLayoutId() {
@@ -194,9 +196,7 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
 
     @Override
     protected void initUi(Bundle savedInstanceState) {
-
-
-        //  viewModel = ((EKYCMainActivity) getBaseActivity()).viewModel;
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_adhar_bio_e_k_y_c);
         viewModel = new ViewModelProvider(this).get(EKYCViewModel.class);
 
         ButterKnife.bind(this);
@@ -207,7 +207,16 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         positions = new ArrayList<>();
         serializer = new Persister();
-
+        binding.toolBar.titleTxt.setText("Biometric");
+        binding.toolBar.backBtn.setOnClickListener(v -> onClose());
+//        binding.toolBar.toolBarFinal
+//                .setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+//        binding.toolBar.backBtn
+//                .setColorFilter(ContextCompat.getColor(this,
+//                        R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
+        binding.toolBar.crossBtn.setOnClickListener(v -> {
+            onClose();
+        });
        /* try {
             mfs100 = new MFS100(this);
             mfs100.SetApplicationContext(AdharBioEKYCActivity.this);
@@ -728,7 +737,7 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
                         } else {
                             String bodyy = AESHelper.decrypt(response.resource.data.body
                                     , gKey);
-                            if(bodyy != null) {
+                            if (bodyy != null) {
                                 try {
 
                                     Gson gson = new Gson();
@@ -742,7 +751,6 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
                             } else {
                                 showPopup(response.resource.description, "Error", true);
                             }
-
 
 
                         }

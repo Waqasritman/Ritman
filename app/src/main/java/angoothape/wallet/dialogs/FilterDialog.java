@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.DialogFragment;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -67,7 +68,7 @@ public class FilterDialog extends BaseDialogFragment<FilterDialogDesignBinding> 
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
-
+        binding.titleTxt.setText("Filter");
         codeInputs = new Integer[]{binding.transactionNo.getId(),
                 binding.mobileNumber.getId(), binding.beneName.getId(),
                 binding.accountNo.getId()
@@ -107,8 +108,8 @@ public class FilterDialog extends BaseDialogFragment<FilterDialogDesignBinding> 
             //   }
         });
         binding.applyBtn.setEnabled(false);
-        binding.applyBtn.setBackground(getResources().getDrawable(R.drawable.background_select_mood));
-        binding.applyBtn.setTextColor(getResources().getColor(R.color.black));
+        binding.applyBtn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.edit_text_gray_back, null));
+        binding.applyBtn.setTextColor(getResources().getColor(R.color.white));
         addTextWatcher();
         addEditWatcher();
     }
@@ -164,8 +165,8 @@ public class FilterDialog extends BaseDialogFragment<FilterDialogDesignBinding> 
                 binding.mobileNumber.getText().toString().isEmpty() && binding.beneName.getText().toString().isEmpty() &&
                 binding.accountNo.getText().toString().isEmpty()) {
             binding.applyBtn.setEnabled(false);
-            binding.applyBtn.setBackground(getResources().getDrawable(R.drawable.background_select_mood));
-            binding.applyBtn.setTextColor(getResources().getColor(R.color.black));
+            binding.applyBtn.setBackground(getResources().getDrawable(R.drawable.edit_text_gray_back));
+            binding.applyBtn.setTextColor(getResources().getColor(R.color.white));
         } else if (!binding.fromDate.getText().toString().isEmpty() &&
                 !binding.toDate.getText().toString().isEmpty()) {
             binding.applyBtn.setTextColor(getResources().getColor(R.color.white));
@@ -174,13 +175,13 @@ public class FilterDialog extends BaseDialogFragment<FilterDialogDesignBinding> 
         } else if (!binding.fromDate.getText().toString().isEmpty() &&
                 binding.toDate.getText().toString().isEmpty()) {
             binding.applyBtn.setEnabled(false);
-            binding.applyBtn.setBackground(getResources().getDrawable(R.drawable.background_select_mood));
-            binding.applyBtn.setTextColor(getResources().getColor(R.color.black));
+            binding.applyBtn.setBackground(getResources().getDrawable(R.drawable.edit_text_gray_back));
+            binding.applyBtn.setTextColor(getResources().getColor(R.color.white));
         } else if (binding.fromDate.getText().toString().isEmpty() &&
                 !binding.toDate.getText().toString().isEmpty()) {
             binding.applyBtn.setEnabled(false);
-            binding.applyBtn.setBackground(getResources().getDrawable(R.drawable.background_select_mood));
-            binding.applyBtn.setTextColor(getResources().getColor(R.color.black));
+            binding.applyBtn.setBackground(getResources().getDrawable(R.drawable.edit_text_gray_back));
+            binding.applyBtn.setTextColor(getResources().getColor(R.color.white));
         } else {
             binding.applyBtn.setTextColor(getResources().getColor(R.color.white));
             binding.applyBtn.setBackground(getResources().getDrawable(R.drawable.background_button));

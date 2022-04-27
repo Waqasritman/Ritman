@@ -70,6 +70,9 @@ public class TransactionReceiptActivity extends RitmanBaseActivity<ReceiptLayout
         viewModel = new ViewModelProvider(this).get(BankTransferViewModel.class);
         transactionNumber = getIntent().getStringExtra("TransactionNumber");
 
+
+        binding.toolbar.crossBtn.setVisibility(View.GONE);
+        binding.toolbar.titleTxt.setText("View Receipt");
         getReciept();
 
         binding.shareBtn.setOnClickListener(v -> {
@@ -168,10 +171,10 @@ public class TransactionReceiptActivity extends RitmanBaseActivity<ReceiptLayout
         filePath = new File(targetPdf);
         try {
             document.writeTo(new FileOutputStream(filePath));
-         //   Toast.makeText(this, getString(R.string.save_transaction_receipt), Toast.LENGTH_LONG).show();
+            //   Toast.makeText(this, getString(R.string.save_transaction_receipt), Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             Log.e("main", "error " + e.toString());
-           // Toast.makeText(this, getString(R.string.some_thing_wrong) + e.toString(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(this, getString(R.string.some_thing_wrong) + e.toString(), Toast.LENGTH_LONG).show();
         }
         document.close();
 

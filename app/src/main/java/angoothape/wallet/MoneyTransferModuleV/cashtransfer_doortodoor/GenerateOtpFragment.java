@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -67,15 +68,11 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
             } else {
                 VerifyOtp();
             }
-
-
         });
 
 
         binding.txtResendOtp.setOnClickListener(v -> {
-
             getOtp();
-
         });
     }
 
@@ -89,7 +86,6 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
         GetOtpRequest request = new GetOtpRequest();
         request.CustomerNo = benedetails.customerNo;
 
-
         viewModel.getOtp(request, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
                 , response -> {
                     Utils.hideCustomProgressDialog();
@@ -99,7 +95,9 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
                             onMessage("OTP Sent Successfully");
-
+                        } else if (response.resource.responseCode.equals(305)) {
+                            onMessage(response.resource.description + "\nTry again later");
+                            Navigation.findNavController(binding.getRoot()).navigateUp();
                         } else {
                             onError(response.resource.description);
                         }
@@ -110,12 +108,10 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
 
 
     public void VerifyOtp() {
-
         Utils.showCustomProgressDialog(getContext(), false);
         VerifyOtpRequest request = new VerifyOtpRequest();
         request.CustomerNo = benedetails.customerNo;
         request.CustomerOtp = binding.edtOtp.getText().toString();
-
 
         viewModel.verifyOtp(request, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
                 , response -> {
@@ -127,9 +123,11 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
                         if (response.resource.responseCode.equals(101)) {
                             onMessage("OTP Verified Successfully");
                             getSummary();
-
                         } else if (response.resource.responseCode.equals(100)) {
                             onError("Invalid OTP. Please enter correct OTP");
+                        } else if (response.resource.responseCode.equals(305)) {
+                            onMessage(response.resource.description + "\nTry again later");
+                            Navigation.findNavController(binding.getRoot()).navigateUp();
                         } else {
                             onError(response.resource.description);
                         }
@@ -138,16 +136,6 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
     }
 
     public void getSummary() {
-
-//        Utils.showCustomProgressDialog(getContext(), false);
-//        RitmanPaySendRequest ritmanPaySendRequest = new RitmanPaySendRequest();
-//        ritmanPaySendRequest.Customer_No = benedetails.customerNo;
-//        ritmanPaySendRequest.PayOutCurrency = "INR";
-//        ritmanPaySendRequest.TransferAmount = PayInAmount;
-//        ritmanPaySendRequest.Payin_Currency = "INR";
-//        ritmanPaySendRequest.Beneficiary_No = benedetails.beneficiaryNumber;
-//
-
         Utils.showCustomProgressDialog(getContext(), false);
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
                 .getKey(getSessionManager().getMerchantName())).trim();

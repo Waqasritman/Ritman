@@ -19,7 +19,7 @@ public class TotiWallet extends Application implements LifecycleObserver {
     public static TotiWallet myAutoLogoutApp;
     protected SessionOutListener listener;
     private Timer timer;
-    private  final long INACTIVE_TIMEOUT = 60000 * 5; // 5 min
+    private  final long INACTIVE_TIMEOUT = 60000 * 3; // 5 min
 
 
     @Override

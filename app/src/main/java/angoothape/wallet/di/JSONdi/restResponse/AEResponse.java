@@ -6,5 +6,5 @@ import angoothape.wallet.di.generic_response.ApiResponse;
 
 public class AEResponse extends ApiResponse<AEResponse> {
     @SerializedName("body")
-    public String body;
+    public String body = "";
 }

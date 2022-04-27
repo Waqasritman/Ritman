@@ -92,12 +92,7 @@ public class ApplicantInfoOneFragment extends BaseFragment<FragmentApplicantInfo
         mAwesomeValidation.addValidation(binding.edtOfficeAddress1, "^[a-zA-Z0-9-,. ]*$", getResources().getString(R.string.addre_line_one));
         mAwesomeValidation.addValidation(binding.edtLoanAmount, "[\\d.]+", getResources().getString(R.string.enter_loan_amount));
 
-        binding.txtDesignation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getCasheDesignationList();
-            }
-        });
+        binding.txtDesignation.setOnClickListener(v -> getCasheDesignationList());
 
 
         binding.personalNext.setOnClickListener(v -> {
@@ -183,13 +178,6 @@ public class ApplicantInfoOneFragment extends BaseFragment<FragmentApplicantInfo
                     bundle.putString("edt_spouse_status", edt_spouse_status);
                     bundle.putString("txt_no_of_kids", txt_no_of_kids);
                     bundle.putString("selected_marital_status", selected_marital_status);
-
-
-//                bundle.putString("txt_residing_with", txt_residing_with);
-//                bundle.putString("txt_number_of_years_at_current_addressr", txt_number_of_years_at_current_addressr);
-//                bundle.putString("edt_spouse_status", edt_spouse_status);
-//                bundle.putString("txt_no_of_kids", txt_no_of_kids);
-//                bundle.putString("selected_marital_status", selected_marital_status);
 
                     bundle.putString("edt_company_name", edt_company_name);
                     bundle.putString("edt_office_phone_no", edt_office_phone_no);

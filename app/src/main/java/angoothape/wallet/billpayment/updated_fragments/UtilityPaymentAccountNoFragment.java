@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -58,25 +59,18 @@ import okhttp3.internal.Util;
 
 import static android.content.Context.WIFI_SERVICE;
 
-
 public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilityPaymentAccountBinding>
         implements OnWRBillerFields {
 
-
     List<GetWRBillerFieldsResponseN> wrBillerList;
-
-    // BankTransferViewModel viewModel;
+    BillDetailRequest request;
     BillPaymentViewModel viewModel;
-
-    String billerId, fieldName1, fieldName2, fieldName3, MobileNumber, IMEINumber, ipAddress, validationid, billercategory;
+    String ipAddress = "";
+    String MobileNumber = "";
+    String billerId, IMEINumber, validationid, billercategory;
     String paymentamount_validation, currency, payment_amount, biller_logo, partial_pay, pay_after_duedate;
-    double total_payment_amount;
-    String mPattern, mPattern1, mPattern2;
     final Calendar myCalendar = Calendar.getInstance();
-    int day, month, year, age;
-    Calendar mcalendar;
-    SimpleDateFormat sdf;
-    String myFormat;
+    int indexNo = -1;
 
     @Override
     protected void injectView() {
@@ -84,106 +78,142 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
     }
 
     public boolean isValidateOne() {
-        fieldName1 = wrBillerList.get(0).labelName;
-        mPattern = wrBillerList.get(0).authenticator_regex;
-
+        request.Field1 = wrBillerList.get(0).labelName;
         if (TextUtils.isEmpty(binding.accountNo.getText().toString())) {
             onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct))
                     .concat(" ").concat(wrBillerList.get(0).labelName));
             return false;
-        } else if (binding.accountNo.getText().length() == 9 && fieldName1.equals("Consumer Number")) {
+        } else if (binding.accountNo.getText().length() == 9 && request.Field1.equals("Consumer Number*")) {
             binding.accountNo.getText().toString().concat(getString(R.string.comma));
-
-        } else if (mPattern != null) {
-
-            if (!binding.accountNo.getText().toString().matches(mPattern)) {
-                onMessage(getString(R.string.enter_txt).concat(" ")
-                        .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
-                return false;
-            }
+        } else if (!binding.accountNo.getText().toString().matches(wrBillerList.get(0).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
+            return false;
 
         }
 
-        fieldName1 = wrBillerList.get(0).labelName;
+        request.Field1 = wrBillerList.get(0).labelName;
         return true;
 
     }
 
-
     public boolean isValidateTwe() {
-        mPattern = wrBillerList.get(0).authenticator_regex;
-        mPattern1 = wrBillerList.get(1).authenticator_regex;
-
         if (TextUtils.isEmpty(binding.accountNo.getText().toString())) {
             onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
             return false;
-        } else if (mPattern != null) {
-            if (!binding.accountNo.getText().toString().matches(mPattern)) {
-                onMessage(getString(R.string.enter_txt).concat(" ")
-                        .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
+        } else if (!binding.accountNo.getText().toString().matches(wrBillerList.get(0).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
 
-                return false;
-            }
+            return false;
+
         } else if (TextUtils.isEmpty(binding.accountPolicyNo.getText().toString())) {
             onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(1).labelName));
             return false;
-        } else if (mPattern1 != null) {
-            if (!binding.accountPolicyNo.getText().toString().matches(mPattern1)) {
-                onMessage(getString(R.string.enter_txt).concat(" ")
-                        .concat(getString(R.string.correct)).concat(wrBillerList.get(1).labelName));
-                return false;
-            }
+        } else if (!binding.accountPolicyNo.getText().toString().matches(wrBillerList.get(1).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(wrBillerList.get(1).labelName));
+            return false;
+
         }
-        fieldName1 = wrBillerList.get(0).labelName;
-        fieldName2 = wrBillerList.get(1).labelName;
+        request.Field1 = wrBillerList.get(0).labelName;
+        request.Field2 = wrBillerList.get(1).labelName;
         return true;
 
     }
 
     public boolean isValidateThree() {
-        mPattern = wrBillerList.get(0).authenticator_regex;
-        mPattern1 = wrBillerList.get(1).authenticator_regex;
-        mPattern2 = wrBillerList.get(2).authenticator_regex;
 
         if (TextUtils.isEmpty(binding.accountNo.getText().toString())) {
             onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
             return false;
-        } else if (mPattern != null) {
-            if (!binding.accountNo.getText().toString().matches(mPattern)) {
-                onMessage(getString(R.string.enter_txt).concat(" ")
-                        .concat(getString(R.string.correct)).concat(wrBillerList.get(0).labelName));
+        } else if (!binding.accountNo.getText().toString().matches(wrBillerList.get(0).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
+            return false;
 
-                return false;
-            }
-        } else if (TextUtils.isEmpty(binding.accountPolicyNo.getText().toString())) {
+        } else if (TextUtils.isEmpty(binding.accountPolicyNo.getText().
+
+                toString())) {
             onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(1).labelName));
             return false;
-        } else if (mPattern1 != null) {
-            if (!binding.accountPolicyNo.getText().toString().matches(mPattern1)) {
-                onMessage(getString(R.string.enter_txt).concat(" ")
-                        .concat(getString(R.string.correct)).concat(wrBillerList.get(1).labelName));
+        } else if (!binding.accountPolicyNo.getText().toString().matches(wrBillerList.get(1).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(1).labelName));
+            return false;
 
-                return false;
-            }
-        } else if (TextUtils.isEmpty(binding.reEnterAccountPolicy.getText().toString())) {
+        } else if (TextUtils.isEmpty(binding.reEnterAccountPolicy.getText().
+
+                toString())) {
             onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(2).labelName));
             return false;
-        } else if (mPattern2 != null) {
-            if (!binding.reEnterAccountPolicy.getText().toString().matches(mPattern2)) {
-                onMessage(getString(R.string.enter_txt).concat(" ")
-                        .concat(getString(R.string.correct)).concat(wrBillerList.get(2).labelName));
-                return false;
-            }
+        } else if (!binding.reEnterAccountPolicy.getText().toString().matches(wrBillerList.get(2).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(2).labelName));
+            return false;
         }
-        fieldName1 = wrBillerList.get(0).labelName;
-        fieldName2 = wrBillerList.get(1).labelName;
-        fieldName3 = wrBillerList.get(2).labelName;
+
+
+        request.Field1 = wrBillerList.get(0).labelName;
+        request.Field2 = wrBillerList.get(1).labelName;
+        request.Field3 = wrBillerList.get(2).labelName;
+
+        return true;
+    }
+
+    public boolean isValidateFour() {
+
+        if (TextUtils.isEmpty(binding.accountNo.getText().toString())) {
+            onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
+            return false;
+        } else if (!binding.accountNo.getText().toString().matches(wrBillerList.get(0).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(0).labelName));
+            return false;
+
+        } else if (TextUtils.isEmpty(binding.accountPolicyNo.getText().
+
+                toString())) {
+            onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(1).labelName));
+            return false;
+        } else if (!binding.accountPolicyNo.getText().toString().matches(wrBillerList.get(1).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(1).labelName));
+            return false;
+
+        } else if (TextUtils.isEmpty(binding.reEnterAccountPolicy.getText().
+
+                toString())) {
+            onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(2).labelName));
+            return false;
+        } else if (!binding.reEnterAccountPolicy.getText().toString().matches(wrBillerList.get(2).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(2).labelName));
+            return false;
+
+        } else if (TextUtils.isEmpty(binding.sizeFourTitleInput.getText().
+
+                toString())) {
+            onMessage(getString(R.string.enter_txt).concat(" ").concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(3).labelName));
+            return false;
+        } else if (!binding.sizeFourTitleInput.getText().toString().matches(wrBillerList.get(3).authenticator_regex)) {
+            onMessage(getString(R.string.enter_txt).concat(" ")
+                    .concat(getString(R.string.correct)).concat(" ").concat(wrBillerList.get(3).labelName));
+            return false;
+
+        }
+
+        request.Field1 = wrBillerList.get(0).labelName;
+        request.Field2 = wrBillerList.get(1).labelName;
+        request.Field3 = wrBillerList.get(2).labelName;
+        request.Field4 = wrBillerList.get(3).labelName;
         return true;
     }
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
         wrBillerList = new ArrayList<>();
+        request = new BillDetailRequest();
         assert getArguments() != null;
         billerId = getArguments().getString("billerId");
         paymentamount_validation = getArguments().getString("paymentamount_validation");
@@ -204,52 +234,45 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
         }
 
         getWRBillerFields();
-
-
-        if (paymentamount_validation.equals("Y")) {
-            binding.nextLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (wrBillerList.size() == 1) {
-                        if (isValidateOne()) {
-                            fillData1();
-                        }
-                    } else if (wrBillerList.size() == 2) {
-                        if (isValidateTwe()) {
-
-                            fillData1();
-                        }
-                    } else if (wrBillerList.size() == 3) {
-                        if (isValidateThree()) {
-
-                            fillData1();
-                        }
-                    }
-
-                }
-            });
-        } else {
-            binding.nextLayout.setOnClickListener(v -> {
+        binding.nextLayout.setOnClickListener(v -> {
+            if (paymentamount_validation.equals("Y")) {
                 if (wrBillerList.size() == 1) {
                     if (isValidateOne()) {
-
+                        fillData1();
+                    }
+                } else if (wrBillerList.size() == 2) {
+                    if (isValidateTwe()) {
+                        fillData1();
+                    }
+                } else if (wrBillerList.size() == 3) {
+                    if (isValidateThree()) {
+                        fillData1();
+                    }
+                } else if (wrBillerList.size() == 4) {
+                    if (isValidateFour()) {
+                        fillData1();
+                    }
+                }
+            } else {
+                if (wrBillerList.size() == 1) {
+                    if (isValidateOne()) {
                         fillData();
                     }
                 } else if (wrBillerList.size() == 2) {
                     if (isValidateTwe()) {
-
                         fillData();
                     }
                 } else if (wrBillerList.size() == 3) {
                     if (isValidateThree()) {
-
+                        fillData();
+                    }
+                } else if (wrBillerList.size() == 4) {
+                    if (isValidateFour()) {
                         fillData();
                     }
                 }
-
-            });
-        }
-
+            }
+        });
 
         int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_PHONE_STATE);
 
@@ -284,13 +307,12 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
     }
 
     private void updateLabel() {
-        myFormat = "yyyy-MM-dd"; //In which you need put here
-        sdf = new SimpleDateFormat(myFormat, Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         binding.accountPolicyNo.setText(sdf.format(myCalendar.getTime()));
     }
 
     public void fillData() {
-        if (binding.accountNo.getText().length() == 9 && fieldName1.equals("Consumer Number")) {
+        if (binding.accountNo.getText().length() == 9 && request.Field1.equals("Consumer Number*")) {
             ((BillPaymentMainActivity) getBaseActivity())
                     .payBillRequest.mobileAccount = binding.accountNo.getText().toString().
                     concat(getString(R.string.comma));
@@ -303,20 +325,24 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
                     .payBillRequest.mobileAccount3 = binding.reEnterAccountPolicy.getText().toString();
         }
 
-        if (binding.mobileno.getText().toString().equals("")) {
-            onMessage("Please enter your mobile number");
-        } else if (binding.mobileno.getText().toString().length() != 10) {
-            onMessage("Please enter valid 10-digits mobile number");
-        } else {
-            MobileNumber = binding.mobileno.getText().toString();
-            getBillDetails();
+        if (indexNo == -1) {
+            if (binding.mobileno.getText().toString().equals("")) {
+                onMessage("Please enter your mobile number");
+            } else if (binding.mobileno.getText().toString().length() != 10) {
+                onMessage("Please enter valid 10-digits mobile number");
+            } else {
+                MobileNumber = binding.mobileno.getText().toString();
+                getBillDetails();
 
+            }
+        } else {
+            getBillDetails();
         }
 
     }
 
     public void fillData1() {
-        if (binding.accountNo.getText().length() == 9 && fieldName1.equals("Consumer Number")) {
+        if (binding.accountNo.getText().length() == 9 && request.Field1.equals("Consumer Number*")) {
             ((BillPaymentMainActivity) getBaseActivity())
                     .payBillRequest.mobileAccount = binding.accountNo.getText().toString().
                     concat(getString(R.string.comma));
@@ -338,10 +364,9 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
         } else {
             MobileNumber = binding.mobileno.getText().toString();
             payment_amount = binding.edtPaymentAmount.getText().toString().concat(getString(R.string.concat_zero));
-
+            double total_payment_amount = 0.0;
             try {
                 total_payment_amount = Double.parseDouble(payment_amount);
-
             } catch (NumberFormatException e) {
 
             }
@@ -368,10 +393,9 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
 
         if (response.size() == 1) {
             onSizeOne(response);
-
         } else if (response.size() == 2) {
-            fieldName2 = response.get(1).fieldName;
-            if (fieldName2.equals("Date Of Birth(YYYY-MM-DD)")) {
+            request.Field2 = response.get(1).fieldName;
+            if (request.Field2.equals("Date Of Birth(YYYY-MM-DD)")) {
                 binding.accountPolicyNo.setFocusable(false);
                 DatePickerDialog.OnDateSetListener date = (view, year, monthOfYear, dayOfMonth) -> {
                     // TODO Auto-generated method stub
@@ -382,7 +406,6 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
                 };
 
                 binding.accountPolicyNo.setOnClickListener(v -> {
-
                     binding.accountPolicyNo.setFocusableInTouchMode(true);
                     binding.accountPolicyNo.setCursorVisible(false);
                     binding.accountPolicyNo.setShowSoftInputOnFocus(false);
@@ -409,9 +432,20 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
     }
 
     void onSizeOne(List<GetWRBillerFieldsResponseN> response) {
+        if (Pattern.compile(Pattern.quote(response.get(0).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find()
+                || Pattern.compile(Pattern.quote(response.get(0).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 0;
+            binding.txtMobileno.setVisibility(View.GONE);
+            binding.mobileno.setVisibility(View.GONE);
+        }
 
+        request.Field1Name = response.get(0).labelName;
         binding.accountNoField.setHint(response.get(0).labelName + "*");
-        binding.accountNoField.getMaxWidth();
+        if (response.get(0).maxLength != null) {
+            binding.accountNoField.setMaxEms(response.get(0).maxLength);
+        }
         // binding.accountNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(wrBillerList.get(0).maxLength) });
 
         binding.accountNo.setHint(response.get(0).description);
@@ -432,16 +466,20 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
 
     void onSizeTwo(List<GetWRBillerFieldsResponseN> response) {
         binding.accountNoField.setHint(response.get(0).labelName + "*");
+        if (response.get(0).maxLength != null) {
+            binding.accountNoField.setMaxEms(response.get(0).maxLength);
+        }
         binding.accountNo.setHint(response.get(0).description);
-        //binding.accountNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(0).maxLength))) });
-
         if (response.get(0).type.equalsIgnoreCase(BillerInputTypes.NUMERIC)) {
             binding.accountNo.setInputType(InputType.TYPE_CLASS_NUMBER);
-            //binding.accountNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(0).maxLength))) });
-
+        }
+        request.Field1Name = response.get(0).labelName;
+        request.Field2Name = response.get(1).labelName;
+        binding.accountPolicyNoField.setHint(response.get(1).labelName + "*");
+        if (response.get(1).maxLength != null) {
+            binding.accountPolicyNoField.setMaxEms(response.get(1).maxLength);
         }
 
-        binding.accountPolicyNoField.setHint(response.get(1).labelName + "*");
         binding.accountPolicyNo.setHint(response.get(1).description);
         // binding.accountPolicyNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(1).maxLength))) });
 
@@ -449,6 +487,19 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
             binding.accountPolicyNo.setInputType(InputType.TYPE_CLASS_NUMBER);
             //binding.accountPolicyNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(1).maxLength))) });
 
+        }
+        if (Pattern.compile(Pattern.quote(response.get(0).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(0).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 0;
+        } else if (Pattern.compile(Pattern.quote(response.get(1).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(1).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 1;
+        }
+        if (indexNo > -1) {
+            binding.txtMobileno.setVisibility(View.GONE);
+            binding.mobileno.setVisibility(View.GONE);
         }
         binding.sizeFourTitleInput.setVisibility(View.GONE);
         binding.sizeFourTitle.setVisibility(View.GONE);
@@ -459,14 +510,14 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
     void onSizeThree(List<GetWRBillerFieldsResponseN> response) {
         binding.accountNoField.setHint(response.get(0).labelName + "*");
         binding.accountNo.setHint(response.get(0).description);
-        // binding.accountNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(0).maxLength))) });
+
 
         if (response.get(0).type.equalsIgnoreCase(BillerInputTypes.NUMERIC)) {
             binding.accountNo.setInputType(InputType.TYPE_CLASS_NUMBER);
-            //binding.accountNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(0).maxLength))) });
-
         }
-
+        request.Field1Name = response.get(0).labelName;
+        request.Field2Name = response.get(1).labelName;
+        request.Field3Name = response.get(2).labelName;
         binding.accountPolicyNoField.setHint(response.get(1).labelName + "*");
         binding.accountPolicyNo.setHint(response.get(1).description);
         // binding.accountPolicyNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(1).maxLength))) });
@@ -477,13 +528,39 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
         }
         binding.descriptionField.setHint(response.get(2).labelName + "*");
         binding.reEnterAccountPolicy.setHint(response.get(2).description);
-        // binding.reEnterAccountPolicy.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(2).maxLength))) });
 
         if (response.get(2).type.equalsIgnoreCase(BillerInputTypes.NUMERIC)) {
             binding.reEnterAccountPolicy.setInputType(InputType.TYPE_CLASS_NUMBER);
             // binding.reEnterAccountPolicy.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(2).maxLength))) });
 
         }
+        if (response.get(0).maxLength != null) {
+            binding.accountNoField.setMaxEms(response.get(0).maxLength);
+        }
+        if (response.get(1).maxLength != null) {
+            binding.accountPolicyNoField.setMaxEms(response.get(1).maxLength);
+        }
+        if (response.get(2).maxLength != null) {
+            binding.reEnterAccountPolicy.setMaxEms(response.get(2).maxLength);
+        }
+        if (Pattern.compile(Pattern.quote(response.get(0).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(0).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 0;
+        } else if (Pattern.compile(Pattern.quote(response.get(1).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(1).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 1;
+        } else if (Pattern.compile(Pattern.quote(response.get(2).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(2).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 2;
+        }
+        if (indexNo > -1) {
+            binding.txtMobileno.setVisibility(View.GONE);
+            binding.mobileno.setVisibility(View.GONE);
+        }
+
         binding.sizeFourTitleInput.setVisibility(View.GONE);
         binding.sizeFourTitle.setVisibility(View.GONE);
 
@@ -492,14 +569,16 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
     void onSizeFour(List<GetWRBillerFieldsResponseN> response) {
         binding.accountNoField.setHint(response.get(0).labelName + "*");
         binding.accountNo.setHint(response.get(0).description);
-        // binding.accountNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(0).maxLength))) });
 
         if (response.get(0).type.equalsIgnoreCase(BillerInputTypes.NUMERIC)) {
             binding.accountNo.setInputType(InputType.TYPE_CLASS_NUMBER);
             //binding.accountNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(0).maxLength))) });
 
         }
-
+        request.Field1Name = response.get(0).labelName;
+        request.Field2Name = response.get(1).labelName;
+        request.Field3Name = response.get(2).labelName;
+        request.Field4Name = response.get(3).labelName;
         binding.accountPolicyNoField.setHint(response.get(1).labelName + "*");
         binding.accountPolicyNo.setHint(response.get(1).description);
         // binding.accountPolicyNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(1).maxLength))) });
@@ -508,6 +587,7 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
             // binding.accountPolicyNo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(1).maxLength))) });
 
         }
+
         binding.descriptionField.setHint(response.get(2).labelName + "*");
         binding.reEnterAccountPolicy.setHint(response.get(2).description);
         // binding.reEnterAccountPolicy.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(2).maxLength))) });
@@ -517,23 +597,56 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
             // binding.reEnterAccountPolicy.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(2).maxLength))) });
 
         }
+        if (response.get(0).maxLength != null) {
+            binding.accountNoField.setMaxEms(response.get(0).maxLength);
+        }
+        if (response.get(1).maxLength != null) {
+            binding.accountPolicyNoField.setMaxEms(response.get(1).maxLength);
+        }
+        if (response.get(2).maxLength != null) {
+            binding.reEnterAccountPolicy.setMaxEms(response.get(2).maxLength);
+        }
+        if (response.get(3).maxLength != null) {
+            binding.sizeFourTitleInput.setMaxEms(response.get(3).maxLength);
+        }
 
         binding.sizeFourTitle.setHint(response.get(3).labelName + "*");
         binding.sizeFourTitleInput.setHint(response.get(3).description);
-        // binding.reEnterAccountPolicy.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(2).maxLength))) });
 
         if (response.get(3).type.equalsIgnoreCase(BillerInputTypes.NUMERIC)) {
             binding.sizeFourTitleInput.setInputType(InputType.TYPE_CLASS_NUMBER);
             // binding.reEnterAccountPolicy.setFilters(new InputFilter[] { new InputFilter.LengthFilter(Integer.parseInt(String.valueOf(wrBillerList.get(2).maxLength))) });
+        }
+        if (Pattern.compile(Pattern.quote(response.get(0).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(0).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 0;
+        } else if (Pattern.compile(Pattern.quote(response.get(1).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(1).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 1;
+        } else if (Pattern.compile(Pattern.quote(response.get(2).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(2).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 2;
+        }
+//        else if (response.get(3).labelName.contains("Mobile Number")) {
+//            indexNo = 3;
+//        }
+        else if (Pattern.compile(Pattern.quote(response.get(3).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Mobile Number").find() || Pattern.compile(Pattern.quote(response.get(3).labelName),
+                Pattern.CASE_INSENSITIVE).matcher("Registered Contact Number").find()) {
+            indexNo = 3;
+        }
+        if (indexNo > -1) {
+            binding.txtMobileno.setVisibility(View.GONE);
+            binding.mobileno.setVisibility(View.GONE);
         }
     }
 
     private void getWRBillerFields() {
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
                 .getKey(getSessionManager().getMerchantName())).trim();
-        // binding.progressBar.setVisibility(View.GONE);
-        // GetWRBillerFieldsRequestN request =((BillPaymentMainActivity) getBaseActivity()).request;
-
         GetWRBillerFieldsRequestN requestc = new GetWRBillerFieldsRequestN();
         requestc.BillerID = billerId;
         requestc.countryCode = "IN";
@@ -541,6 +654,7 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
 
         AERequest request = new AERequest();
         request.body = AESHelper.encrypt(body.trim(), gKey.trim());
+        Log.e("getWRBillerFields: ", body);
         Utils.showCustomProgressDialog(getContext(), false);
         viewModel.GetWRBillerFields(request, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
                 KeyHelper.getSKey(KeyHelper
@@ -555,6 +669,7 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
                             binding.colopsField.setVisibility(View.VISIBLE);
                             String bodyy = AESHelper.decrypt(response.resource.data.body
                                     , gKey);
+                            Log.e("getWRBillerFields: ", bodyy);
                             try {
                                 Gson gson = new Gson();
                                 Type type = new TypeToken<List<GetWRBillerFieldsResponseN>>() {
@@ -566,16 +681,38 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
                                 e.printStackTrace();
                             }
                             binding.mainView.setVisibility(View.VISIBLE);
+                        } else if (response.resource.responseCode.equals(206)) {
+                            onMessage(response.resource.description);
+                            Navigation.findNavController(binding.getRoot()).navigateUp();
+                        } else if (response.resource.responseCode.equals(305)) {
+                            onMessage(response.resource.description + "\nTry again later");
+                            Navigation.findNavController(binding.getRoot()).navigateUp();
                         } else {
                             Utils.hideCustomProgressDialog();
                             if (response.resource.data != null) {
                                 String bodyy = AESHelper.decrypt(response.resource.data.body
                                         , gKey);
-                                if (!body.isEmpty()) {
-                                    onError(bodyy);
-                                } else {
-                                    onError(response.resource.description);
+                                binding.colopsField.setVisibility(View.VISIBLE);
+
+                                Log.e("getWRBillerFields: ", bodyy);
+                                try {
+                                    Gson gson = new Gson();
+                                    Type type = new TypeToken<List<GetWRBillerFieldsResponseN>>() {
+                                    }.getType();
+                                    List<GetWRBillerFieldsResponseN> data = gson.fromJson(bodyy, type);
+
+                                    onWRBillerField(data);
+                                    binding.mainView.setVisibility(View.VISIBLE);
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    if (!body.isEmpty()) {
+                                        onError(bodyy);
+                                    } else {
+                                        onError(response.resource.description);
+                                    }
                                 }
+
                             } else {
                                 onError(response.resource.description);
                             }
@@ -615,34 +752,67 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
 
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
                 .getKey(getSessionManager().getMerchantName())).trim();
-        BillDetailRequest request = new BillDetailRequest();
+
         request.countryCode = "IN";
         request.BillerID = billerId;
-        request.MobileNumber = MobileNumber;
-        request.Field2 = binding.accountPolicyNo.getText().toString();
-        request.Field3 = binding.reEnterAccountPolicy.getText().toString();
-        if (fieldName1 != null && fieldName2 != null && fieldName3 != null) {
-            request.Field1Name = fieldName1;
-            request.Field2Name = fieldName2;
-            request.Field3Name = fieldName3;
-        } else if (fieldName1 != null && fieldName2 != null) {
-            request.Field1Name = fieldName1;
-            request.Field2Name = fieldName2;
-            request.Field3Name = "";
+
+        if (indexNo > -1) {
+            if (indexNo == 0) {
+                request.MobileNumber = binding.accountNo.getText().toString();
+            } else if (indexNo == 1) {
+                request.MobileNumber = binding.accountPolicyNo.getText().toString();
+            } else if (indexNo == 2) {
+                request.MobileNumber = binding.reEnterAccountPolicy.getText().toString();
+            } else if (indexNo == 3) {
+                request.MobileNumber = binding.sizeFourTitleInput.getText().toString();
+            }
         } else {
-            request.Field1Name = fieldName1;
-            request.Field2Name = "";
-            request.Field3Name = "";
+            request.MobileNumber = MobileNumber;
         }
-
-        request.imei = IMEINumber;//"5468748458458454";
-        request.ip = ipAddress;
-
-        if (binding.accountNo.getText().length() == 9 && fieldName1.equals("Consumer Number")) {
+        if (binding.accountNo.getText().length() == 9 && request.Field1.equals("Consumer Number*")) {
             request.Field1 = binding.accountNo.getText().toString().concat(getString(R.string.comma));
         } else {
             request.Field1 = binding.accountNo.getText().toString();
         }
+        request.Field4 = binding.sizeFourTitleInput.getText().toString();
+        request.Field2 = binding.accountPolicyNo.getText().toString();
+        request.Field3 = binding.reEnterAccountPolicy.getText().toString();
+
+//        request.Field1Name = request.Field1;
+//        request.Field2Name = request.Field2;
+//        request.Field3Name = request.Field3;
+//        request.Field4Name = request.Field4;
+
+//        if (request.Field1  != null && request.Field2 != null && request.Field3 != null) {
+//            request.Field1Name = request.Field1 ;
+//            request.Field2Name = request.Field2;
+//            request.Field3Name = request.Field3;
+//            request.Field4Name = "";
+//        } else if (request.Field1  != null && request.Field2 != null) {
+//            request.Field1Name = request.Field1 ;
+//            request.Field2Name = request.Field2;
+//            request.Field3Name = "";
+//            request.Field4Name = "";
+//        } else if (request.Field1  != null && request.Field2 != null && request.Field3 != null && request.Field4 != null) {
+//            request.Field1Name = request.Field1 ;
+//            request.Field2Name = request.Field2;
+//            request.Field3Name = request.Field3;
+//            request.Field4Name = request.Field4;
+//        } else {
+//            request.Field1Name = request.Field1 ;
+//            request.Field2Name = "";
+//            request.Field3Name = "";
+//            request.Field4Name = "";
+//        }
+
+
+        if (ipAddress.isEmpty()) {
+            IMEINumber = getDeviceId(getContext());
+            getIpAddressOfDevice();
+        }
+        request.ip = ipAddress;
+        request.imei = IMEINumber;//"5468748458458454";
+
 
         if (paymentamount_validation.equals("Y")) {
             request.payment_amount = payment_amount;
@@ -650,7 +820,7 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
         }
 
         String body = RestClient.makeGSONString(request);
-
+        Log.e("getBillDetails: ", body);
         AERequest aeRequest = new AERequest();
         aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
         Utils.showCustomProgressDialog(getContext(), false);
@@ -674,59 +844,50 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
                                 Type type = new TypeToken<BillDetailsMainResponse>() {
                                 }.getType();
                                 BillDetailsMainResponse data = gson.fromJson(bodyy, type);
+                                viewModel.customerId = data.customerID;
 
                                 validationid = data.billDetailResponse.validationid;
                                 billercategory = data.billDetailResponse.biller_category;
-                                viewModel.customerId = data.customerID;
+
                                 Bundle bundle = new Bundle();
-                                if (binding.accountNo.getText().length() == 9 && fieldName1.equals("Consumer Number")) {
-                                    bundle.putString("Field1", binding.accountNo.getText().toString().
-                                            concat(getString(R.string.comma)));
-
-                                    bundle.putString("Field2", binding.accountPolicyNo.getText().toString());
-                                    bundle.putString("Field3", binding.reEnterAccountPolicy.getText().toString());
+                                bundle.putParcelable("bill_details", data);
+                                if (binding.accountNo.getText().length() == 9 && request.Field1.equals("Consumer Number*")) {
+//                                    bundle.putString("Field1", binding.accountNo.getText().toString().
+//                                            concat(getString(R.string.comma)));
+//
+//                                    bundle.putString("Field2", binding.accountPolicyNo.getText().toString());
+//                                    bundle.putString("Field3", binding.reEnterAccountPolicy.getText().toString());
                                     bundle.putString("BillerID", billerId);
                                     bundle.putString("MobileNumber", MobileNumber);
-                                    bundle.putString("fieldName1", fieldName1);
-                                    bundle.putString("fieldName2", fieldName2);
-                                    bundle.putString("fieldName3", fieldName3);
+                                    bundle.putString("request.Field1 ", request.Field1);
+                                    bundle.putString("request.Field2", request.Field2);
+                                    bundle.putString("request.Field3", request.Field3);
                                     bundle.putString("biller_logo", biller_logo);
 
                                     bundle.putString("paymentamount_validation", paymentamount_validation);
                                     bundle.putString("partial_pay", partial_pay);
-                                    bundle.putString("pay_after_duedate", pay_after_duedate);
-
-                                    if (paymentamount_validation.equals("Y")) {
-                                        bundle.putString("payment_amount", payment_amount);
-                                        bundle.putString("currency", currency);
-                                    }
 
                                 } else {
-                                    bundle.putString("Field1", binding.accountNo.getText().toString());
-                                    bundle.putString("Field2", binding.accountPolicyNo.getText().toString());
-                                    bundle.putString("Field3", binding.reEnterAccountPolicy.getText().toString());
-                                    bundle.putString("BillerID", billerId);
+//                                    bundle.putString("Field1", binding.accountNo.getText().toString());
+//                                    bundle.putString("Field2", binding.accountPolicyNo.getText().toString());
+//                                    bundle.putString("Field3", binding.reEnterAccountPolicy.getText().toString());
+//                                    bundle.putString("BillerID", billerId);
                                     bundle.putString("MobileNumber", MobileNumber);
-                                    bundle.putString("fieldName1", fieldName1);
-                                    bundle.putString("fieldName2", fieldName2);
-                                    bundle.putString("fieldName3", fieldName3);
+                                    bundle.putString("request.Field1 ", request.Field1);
+                                    bundle.putString("request.Field2", request.Field2);
+                                    bundle.putString("request.Field3", request.Field3);
                                     bundle.putString("paymentamount_validation", paymentamount_validation);
                                     bundle.putString("partial_pay", partial_pay);
                                     bundle.putString("biller_logo", biller_logo);
-                                    bundle.putString("pay_after_duedate", pay_after_duedate);
 
-                                    if (paymentamount_validation.equals("Y")) {
-                                        bundle.putString("payment_amount", payment_amount);
-                                        bundle.putString("currency", currency);
-                                    }
                                 }
+                                bundle.putString("pay_after_duedate", pay_after_duedate);
                                 if (paymentamount_validation.equals("Y")) {
-                                    Navigation.findNavController(binding.getRoot()).navigate(R.id
-                                            .action_utilityPaymentAccountNoFragment_to_utilityBillerDetailsFragment, bundle);
-                                } else {
-                                    Navigation.findNavController(binding.getRoot()).navigate(R.id
-                                            .action_utilityPaymentAccountNoFragment_to_utilityBillerDetailsFragment, bundle);
+                                    bundle.putString("payment_amount", payment_amount);
+                                    bundle.putString("currency", currency);
                                 }
+                                Navigation.findNavController(binding.getRoot()).navigate(R.id
+                                        .action_utilityPaymentAccountNoFragment_to_utilityBillerDetailsFragment, bundle);
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -744,7 +905,8 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
                                         Type type = new TypeToken<BillDetailsErrorResponse>() {
                                         }.getType();
                                         BillDetailsErrorResponse data = gson.fromJson(bodyy, type);
-                                        onError(data.message);
+
+                                        onError(data.message.replace("ERR_1", ""));
                                     } catch (Exception e) {
                                         onError(response.resource.description);
                                     }
@@ -757,6 +919,8 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
                                 onError(response.resource.description);
                             }
 
+                        } else if (response.resource.responseCode.equals(305)) {
+                            onError(response.resource.description + "\nTry again later");
                         } else {
 
                             onError(response.resource.description);
@@ -776,7 +940,6 @@ public class UtilityPaymentAccountNoFragment extends BaseFragment<FragmentUtilit
     @Override
     public void hideProgress() {
         super.hideProgress();
-
         binding.progressBar.setVisibility(View.GONE);
     }
 

@@ -12,80 +12,153 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="12dp">
 
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/margin_10dp">
 
-            <TextView
-                android:layout_toStartOf="@id/sending_amount"
-                android:layout_alignParentStart="true"
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/lato_semibold"
-                android:gravity="start"
-                android:layout_marginEnd="@dimen/margin_10dp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_14sp" />
-
-            <TextView
-                android:singleLine="true"
-                android:id="@+id/sending_amount"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5dp"
-                android:layout_toStartOf="@+id/cr_dr_icon"
-                android:fontFamily="@font/lato_regular"
-                android:gravity="end"
-                android:textColor="@color/Green" />
-
-            <ImageView
-                android:src="@drawable/ic_arrow_down_green"
-                android:id="@+id/cr_dr_icon"
-                android:layout_alignParentEnd="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
 
-            <TextView
-                android:id="@+id/transaction_no_txt"
-                android:layout_width="wrap_content"
+                <TextView
+
+                    android:id="@+id/amount_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_semibold"
+                    android:gravity="start|center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+
+                    <TextView
+                        android:id="@+id/sending_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/cr_dr_icon"
+                        android:fontFamily="@font/lato_bold"
+                        android:gravity="end"
+                        android:singleLine="true"
+                        android:textColor="@color/Green"
+                        android:textSize="@dimen/text_size_14sp" />
+
+
+                    <ImageView
+                        android:id="@+id/cr_dr_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_arrow_down_green" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/status"
-                android:layout_marginTop="@dimen/margin_5dp"
-                android:fontFamily="@font/lato_regular"
-                android:text="@string/transaction_id_txt_"
-                android:textColor="@color/posOrange"
-                android:textSize="@dimen/text_size_12sp" />
+                android:weightSum="2">
 
-            <TextView
-                android:id="@+id/txn_date_time"
-                android:layout_width="wrap_content"
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_semibold"
+                    android:gravity="start"
+                    android:text="Status"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="end"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/status"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/margin_5dp"
-                android:fontFamily="@font/lato_regular"
-                android:textColor="@color/colorGrayTwo"
-                android:textSize="@dimen/text_size_12sp" />
+                android:weightSum="2">
 
-            <TextView
-                android:id="@+id/transaction_no"
-                android:layout_width="wrap_content"
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_semibold"
+                    android:gravity="start"
+                    android:text="Transaction no"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <TextView
+                    android:id="@+id/transaction_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="end"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/transaction_no_txt"
                 android:layout_marginTop="@dimen/margin_5dp"
-                android:fontFamily="@font/lato_regular"
-                android:textColor="@color/posOrange"
-                android:textSize="@dimen/text_size_12sp" />
+                android:weightSum="2">
 
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_semibold"
+                    android:gravity="start"
+                    android:text="Date &amp; Time"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
 
+                <TextView
+                    android:id="@+id/txn_date_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="end"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

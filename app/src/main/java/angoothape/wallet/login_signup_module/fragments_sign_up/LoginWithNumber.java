@@ -32,7 +32,7 @@ import angoothape.wallet.R;
 import angoothape.wallet.databinding.LoginWithNumberLayoutBinding;
 import angoothape.wallet.di.JSONdi.restRequest.GetCustomerProfileImageRequest;
 import angoothape.wallet.di.XMLdi.RequestHelper.GetCustomerProfileRequest;
-import angoothape.wallet.di.XMLdi.RequestHelper.LoginRequest;
+import angoothape.wallet.di.JSONdi.restRequest.LoginRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.CustomerProfile;
 import angoothape.wallet.di.XMLdi.ResponseHelper.GetCountryListResponse;
 import angoothape.wallet.di.XMLdi.apicaller.GetCustomerProfileTask;
@@ -191,10 +191,10 @@ public class LoginWithNumber extends BaseFragment<LoginWithNumberLayoutBinding> 
 
                 progressBar.showProgressDialogWithTitle(getContext(), getString(R.string.getting_data_loading));
                 LoginRequest loginRequest = new LoginRequest();
-                loginRequest.emailAddress = "";
-                loginRequest.mobileNumber = StringHelper.parseNumber(userNumber);
-                loginRequest.password = getCode();
-                loginRequest.languageId = getSessionManager().getlanguageselection();
+//                loginRequest.emailAddress = "";
+//                loginRequest.mobileNumber = StringHelper.parseNumber(userNumber);
+//                loginRequest.password = getCode();
+//                loginRequest.languageId = getSessionManager().getlanguageselection();
                 LoginRequestTask task = new LoginRequestTask(getContext(), true, this);
                 task.execute(loginRequest);
             }

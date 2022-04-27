@@ -12,7 +12,7 @@ public class TransactionHistoryResponse extends ApiResponse<List<TransactionHist
     @SerializedName("PURPOSEOFTRANSFER")
     public String purposeOfTransfer;
     @SerializedName("PAYMENTTYPE")
-    public String paymentType;
+    public String paymentType = "";
     @SerializedName("BANKNAME")
     public String bankName;
     @SerializedName("TRANSACTIONNUMBER")

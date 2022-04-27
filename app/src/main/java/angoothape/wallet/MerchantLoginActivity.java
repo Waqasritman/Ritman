@@ -7,11 +7,21 @@ import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.jetbrains.annotations.NotNull;
+
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
+import angoothape.wallet.di.JSONdi.restRequest.LoginRequest;
 import angoothape.wallet.di.JSONdi.restRequest.VerifyEKYCRequest;
 import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
+import angoothape.wallet.utils.CryptoHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,6 +35,8 @@ import angoothape.wallet.home_module.NewDashboardActivity;
 import angoothape.wallet.utils.Utils;
 
 public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLoginBinding> {
+
+    String token = "";
 
     @Override
     public int getLayoutId() {
@@ -61,6 +73,27 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
                         ForgotPassword.class)));
 
         changeVisibility();
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                        return;
+                    }
+
+                    // Get new FCM registration token
+                    token = task.getResult();
+                    Log.e("onComplete: ", token);
+                });
+
+//
+//        try {
+//            String encrypt = CryptoHelper.encrypt("waqas");
+//            Log.e("ENCRYPT: ", encrypt);
+//            Log.e("DECRYPT: ", CryptoHelper.decrypt(encrypt));
+//        } catch (Exception exception) {
+//            exception.printStackTrace();
+//        }
+
     }
 
 
@@ -106,25 +139,39 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
         });
     }
 
+    //
     public void getMerchantLogin() {
         Utils.showCustomProgressDialog(this, false);
-        Call<SimpleResponse> call = RestClient.get().createMerchant(new SimpleRequest(), binding.edtUserName.getText().toString()
-                , binding.edtPassword.getText().toString());
-        call.enqueue(new Callback<SimpleResponse>() {
-            @Override
-            public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
-                if (response.isSuccessful()) {
-                    sessionManager
-                            .merchantName(binding.edtUserName.getText().toString());
 
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.UserPassword = binding.edtPassword.getText().toString();
+        loginRequest.Device_Token = token;
+        String gKey = KeyHelper.getKey(binding.edtUserName.getText().toString()).trim() + KeyHelper.getSKey(KeyHelper
+                .getKey(binding.edtUserName.getText().toString())).trim();
+
+        String body = RestClient.makeGSONString(loginRequest);
+        Log.e("getMerchantLogin: ", body);
+        AERequest aeRequest = new AERequest();
+        aeRequest.body = AESHelper.encrypt(body, gKey.trim());
+
+        Call<AEResponse> call = RestClient.getEKYC().loginTokenUser(RestClient.makeGSONRequestBody(aeRequest),
+                KeyHelper.getKey(binding.edtUserName.getText().toString()).trim(), KeyHelper.getSKey(KeyHelper
+                        .getKey(binding.edtUserName.getText().toString())).trim());
+        call.enqueue(new Callback<AEResponse>() {
+            @Override
+            public void onResponse(@NotNull Call<AEResponse> call, @NotNull Response<AEResponse> response) {
+                if (response.isSuccessful()) {
+                    sessionManager.merchantName(binding.edtUserName.getText().toString());
                     assert response.body() != null;
                     if (response.body().responseCode.equals(101)) {
                         checkVerifiedEKYC();
                     } else if (response.body().responseCode.equals(504)) {
+                        Utils.hideCustomProgressDialog();
                         Intent intent = new Intent(MerchantLoginActivity.this,
                                 VerifyOtpActivity.class);
                         intent.putExtra("userName", binding.edtUserName.getText().toString());
                         startActivity(intent);
+//                        checkVerifiedEKYC();
                     } else {
                         Utils.hideCustomProgressDialog();
                         onError(response.body().description);
@@ -133,15 +180,59 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
             }
 
             @Override
-            public void onFailure(Call<SimpleResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<AEResponse> call, @NotNull Throwable t) {
                 Utils.hideCustomProgressDialog();
                 Log.e("TAG", "onFailure: " + t.getLocalizedMessage());
             }
         });
-
-
     }
+//
 
+//    public void getMerchantLogin() {
+//        Utils.showCustomProgressDialog(this, false);
+//        Call<SimpleResponse> call = RestClient.get().loginUser(new SimpleRequest(),
+//                binding.edtUserName.getText().toString()
+//                , binding.edtPassword.getText().toString());
+//        call.enqueue(new Callback<SimpleResponse>() {
+//            @Override
+//            public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
+//                if (response.isSuccessful()) {
+//                    sessionManager
+//                            .merchantName(binding.edtUserName.getText().toString());
+//
+//                    assert response.body() != null;
+//                    if (response.body().responseCode.equals(101)) {
+//                        // checkVerifiedEKYC();
+//
+//                        sessionManager.setIsVerified("true");
+//                        startActivity(new Intent(MerchantLoginActivity.this,
+//                                NewDashboardActivity.class));
+//
+//                    } else if (response.body().responseCode.equals(504)) {
+////                        Intent intent = new Intent(MerchantLoginActivity.this,
+////                                VerifyOtpActivity.class);
+////                        intent.putExtra("userName", binding.edtUserName.getText().toString());
+////                        startActivity(intent);
+//
+//                        sessionManager.setIsVerified("true");
+//                        startActivity(new Intent(MerchantLoginActivity.this,
+//                                NewDashboardActivity.class));
+//                    } else {
+//                        Utils.hideCustomProgressDialog();
+//                        onError(response.body().description);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<SimpleResponse> call, Throwable t) {
+//                Utils.hideCustomProgressDialog();
+//                Log.e("TAG", "onFailure: " + t.getLocalizedMessage());
+//            }
+//        });
+//
+//
+//    }
 
     void checkVerifiedEKYC() {
         String gKey = KeyHelper.getKey(binding.edtUserName.getText().toString()).trim() + KeyHelper.getSKey(KeyHelper
@@ -165,15 +256,12 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     if (response.body().responseCode.equals(101)) {
-                        String bodyy = AESHelper.decrypt(response.body().data.body
-                                , gKey);
                         sessionManager.setIsVerified("true");
                         startActivity(new Intent(MerchantLoginActivity.this,
                                 NewDashboardActivity.class));
-
+                        finish();
                     } else if (response.body().responseCode.equals(100)) {
                         sessionManager.setIsVerified("false");
-
                         startActivity(new Intent(MerchantLoginActivity.this,
                                 NewDashboardActivity.class));
                         finish();
@@ -191,7 +279,6 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
             }
         });
     }
-
 
     @Override
     public void onBackPressed() {

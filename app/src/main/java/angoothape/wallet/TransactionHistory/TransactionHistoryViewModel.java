@@ -28,7 +28,7 @@ public class TransactionHistoryViewModel extends ViewModel {
 
     RestApi restApi = RestClient.get();
     RestApi restApii = RestClient.getEKYC();
-    RestApi restApiii = RestClient.getREST();
+    RestApi restApiii = RestClient.getEKYC();
     AppExecutors appExecutors = new AppExecutors();
 
     public LiveData<NetworkResource<TransactionHistoryResponse>> getTransactionHistory(TransactionHistoryRequest request,

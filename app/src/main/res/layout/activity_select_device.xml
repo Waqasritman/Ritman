@@ -56,48 +56,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/spacing_large">
-
-                <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/toggleGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:checkedButton="@id/button1"
-                    app:singleSelection="true">
-
-                    <Button
-                        android:id="@+id/button1"
-                        style="?attr/materialButtonOutlinedStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Button 1"
-                        android:textColor="@color/Black" />
-
-                    <Button
-                        android:id="@+id/button2"
-                        style="?attr/materialButtonOutlinedStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Button 2"
-                        android:textColor="@color/Black" />
-
-                    <Button
-                        android:id="@+id/button3"
-                        style="?attr/materialButtonOutlinedStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Button 3"
-                        android:textColor="@color/Black" />
-
-                </com.google.android.material.button.MaterialButtonToggleGroup>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:descendantFocusability="blocksDescendants"
                 android:gravity="end"
@@ -168,10 +126,11 @@
 
 
             <TextView
+                style="@style/TitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:text="@string/select_bank_name"
+                android:text="@string/select_bank_name_m"
                 android:textSize="@dimen/_12ssp" />
 
             <LinearLayout
@@ -182,13 +141,13 @@
 
                 <TextView
                     android:id="@+id/select_bank"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_50dp"
-                    android:background="@drawable/border_background_green_colour"
                     android:drawableEnd="@drawable/dropdown_arrow"
                     android:drawablePadding="@dimen/_5sdp"
                     android:gravity="center_vertical"
-                    android:hint="@string/select_bank_name"
+                    android:hint="@string/select_bank"
                     android:paddingStart="@dimen/margin_10dp"
                     android:paddingEnd="@dimen/margin_10dp"
                     android:textColor="@color/black"
@@ -199,34 +158,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/margin_10dp"
                 android:orientation="vertical">
 
                 <TextView
-
+                    style="@style/TitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Select Service :" />
+                    android:text="Select Service*" />
                 <!--style="@style/lblTitleLight"-->
 
-                <Spinner
-                    android:id="@+id/serviceType"
+
+                <LinearLayout
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_50dp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/border_background_green_colour"
-                    android:drawableEnd="@drawable/dropdown_arrow"
-                    android:entries="@array/deviceType"
-                    android:spinnerMode="dropdown" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+                    <Spinner
+                        android:id="@+id/serviceType"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+
+                        android:entries="@array/deviceType"
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
 
             </LinearLayout>
 
             <TextView
+                style="@style/TitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="@string/amount"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="@string/amount_m"
                 android:textSize="@dimen/_12ssp" />
 
             <LinearLayout
@@ -237,10 +203,10 @@
                 android:weightSum="3">
 
                 <TextView
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_50dp"
                     android:layout_weight="2.5"
-                    android:background="@drawable/border_background_green_colour"
                     android:gravity="center"
                     android:text="@string/tramount"
                     android:textColor="@color/Black"
@@ -248,11 +214,11 @@
 
                 <EditText
                     android:id="@+id/t_amount"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_50dp"
                     android:layout_gravity="center"
                     android:layout_weight="0.5"
-                    android:background="@drawable/border_background_green_colour"
                     android:gravity="center_vertical"
                     android:hint="0"
                     android:imeOptions="actionDone"
@@ -300,16 +266,12 @@
 
             <Button
                 android:id="@+id/btn_next"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_45dp"
+                android:layout_height="@dimen/height_50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_25dp"
-                android:background="@drawable/edt_round_fill"
-                android:fontFamily="@font/lato_bold"
-                android:text="Next"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/text_18sp" />
+                android:text="Next" />
 
 
         </LinearLayout>

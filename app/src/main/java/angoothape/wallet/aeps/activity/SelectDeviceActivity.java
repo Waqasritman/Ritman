@@ -40,10 +40,7 @@ import angoothape.wallet.utils.Utils;
 public class SelectDeviceActivity extends RitmanBaseActivity<ActivitySelectDeviceBinding>
         implements OnDecisionMade, InterfaceIINList {
 
-    //  String morpho, matchdata, evolute, mantra;
-
     Integer value;
-    // boolean temp = true;
     List<IINListResponse> IINList;
     AEPSViewModel viewModel;
     String IINNo, Amount, TxnTypeCode, BankName;
@@ -56,7 +53,6 @@ public class SelectDeviceActivity extends RitmanBaseActivity<ActivitySelectDevic
 
     @Override
     protected void initUi(Bundle savedInstanceState) {
-
         binding.toolBar.titleTxt.setText("AEPS");
         binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
         binding.toolBar.toolBarFinal
@@ -143,7 +139,6 @@ public class SelectDeviceActivity extends RitmanBaseActivity<ActivitySelectDevic
                         Utils.hideCustomProgressDialog();
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
-
                             String bodyy = AESHelper.decrypt(response.resource.data.body
                                     , gKey);
                             try {

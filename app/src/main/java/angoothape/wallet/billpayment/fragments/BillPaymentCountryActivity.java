@@ -105,8 +105,8 @@ public class BillPaymentCountryActivity extends BaseFragment<ActivityBillPayment
 
     @Override
     public void onWRSelectCountry(GetWRCountryListResponseC country) {
-        ((BillPaymentMainActivity) getBaseActivity())
-                .plansRequest.countryCode = country.getCountry_Code();
+//        ((BillPaymentMainActivity) getBaseActivity())
+//                .plansRequest.countryCode = country.getCountry_Code();
 
     }
 

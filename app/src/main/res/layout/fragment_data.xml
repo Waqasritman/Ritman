@@ -28,87 +28,76 @@
             android:visibility="visible">
 
             <TextView
+                style="@style/TitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/ifsc_code"
-                android:textSize="@dimen/text_size_14sp" />
+                android:text="@string/ifsc_code" />
 
             <EditText
                 android:id="@+id/ifsc_code1"
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_50dp"
                 android:layout_marginRight="@dimen/_5sdp"
-                android:paddingLeft="@dimen/margin_10dp"
-                android:background="@drawable/background_beneficiary_registeration"
                 android:gravity="center_vertical"
                 android:hint="IFSC Code/IBAN No"
                 android:inputType="text"
                 android:maxLength="25"
-                android:singleLine="true"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_size_16sp" />
+                android:paddingLeft="@dimen/margin_10dp"
+                android:singleLine="true" />
 
 
             <TextView
+                style="@style/TitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/existing_bank"
-                android:textSize="@dimen/text_size_14sp" />
+                android:text="@string/existing_bank" />
 
-                <EditText
-                    android:id="@+id/existing_bank1"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_50dp"
-                    android:layout_marginRight="@dimen/_5sdp"
-                    android:paddingLeft="@dimen/margin_10dp"
-                    android:background="@drawable/background_beneficiary_registeration"
-                    android:gravity="center_vertical"
-                    android:hint="Existing Bank"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/text_size_16sp" />
+            <EditText
+                android:id="@+id/existing_bank1"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:hint="Existing Bank"
+                android:inputType="text"
+                android:paddingLeft="@dimen/margin_10dp"
+                android:singleLine="true" />
 
-             <TextView
+            <TextView
+                style="@style/TitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/location_txt"
-                android:textSize="@dimen/text_size_14sp" />
+                android:text="@string/location_txt" />
 
-                <EditText
-                    android:id="@+id/branch_name1"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_50dp"
-                    android:layout_marginRight="@dimen/_5sdp"
-                    android:paddingLeft="@dimen/margin_10dp"
-                    android:background="@drawable/background_beneficiary_registeration"
-                    android:gravity="center_vertical"
-                    android:hint="Location"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/text_size_16sp" />
+            <EditText
+                android:id="@+id/branch_name1"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:hint="Location"
+                android:inputType="text"
+                android:paddingLeft="@dimen/margin_10dp"
+                android:singleLine="true" />
 
 
             <Button
                 android:id="@+id/btn_search"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_50dp"
+                android:layout_height="?actionBarSize"
                 android:layout_marginTop="@dimen/margin_30dp"
                 android:layout_marginBottom="@dimen/margin_30dp"
-                android:background="@drawable/gradient_btn"
-
-                android:layout_marginStart="@dimen/margin_10dp"
-                android:layout_marginEnd="@dimen/margin_10dp"
                 android:text="@string/search_bank"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_18sp"
                 android:textAllCaps="false"
                 android:visibility="visible" />
 

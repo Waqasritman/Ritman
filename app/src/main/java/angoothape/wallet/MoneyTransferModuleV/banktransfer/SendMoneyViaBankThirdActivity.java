@@ -110,7 +110,6 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
             ((MoneyTransferMainLayout) getBaseActivity()).binding.toolBar.titleTxt
                     .setText(getString(R.string.bank_transfer));
 
-            binding.convertNow.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.background_beneficiary_bank_pos_red));
             binding.viewPriceBreakDown.setTextColor(Color.parseColor("#FF2D55"));
             binding.sendNowLayout.setBackgroundTintList(getContext().getResources().getColorStateList(R.color.colorPrimary));
         }
@@ -252,7 +251,7 @@ public class SendMoneyViaBankThirdActivity extends BaseFragment<ActivityCashPaym
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
-                            onMessage(response.resource.description);
+                            //  onMessage(response.resource.description);
 
                             String bodyy = AESHelper.decrypt(response.resource.data.body
                                     , gKey);

@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/txt_oops"
+                android:text="@string/alert_txt"
                 android:textColor="@color/colorPrimary" />
 
 

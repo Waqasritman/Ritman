@@ -42,7 +42,7 @@ import retrofit2.Response;
 
 public class BusBookingViewModel extends ViewModel {
 
-    RestApi restApi = RestClient.getBase();
+    RestApi restApi = RestClient.get();
     AppExecutors appExecutors = new AppExecutors();
 
 

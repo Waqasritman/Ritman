@@ -99,7 +99,7 @@ public class RegisterFromAEPS extends RitmanBaseActivity<ActivityRegisterFromAEP
 
 
 
-        Call<AEResponse> call = RestClient.getREST().createRegister(RestClient.makeGSONRequestBody(request)
+        Call<AEResponse> call = RestClient.get().createRegister(RestClient.makeGSONRequestBody(request)
                 , KeyHelper.getKey(sessionManager.getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
                         .getKey(sessionManager.getMerchantName())).trim());
 

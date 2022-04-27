@@ -10,13 +10,13 @@
 
         <include
             android:id="@+id/tool_bar"
-            layout="@layout/tool_bar"/>
+            layout="@layout/tool_bar" />
 
 
         <androidx.core.widget.NestedScrollView
-            android:layout_below="@id/tool_bar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/tool_bar"
             android:layout_marginTop="10dp"
             android:fillViewport="true"
             android:paddingBottom="@dimen/width_100dp"
@@ -42,207 +42,60 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="hi"
-                            android:visibility="gone" />
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/full_name"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:text="@string/full_name" />
 
 
                         <EditText
                             android:id="@+id/firstNameEditTextRegi"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
                             android:gravity="center_vertical"
                             android:hint="@string/name_hint"
                             android:inputType="text"
                             android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:singleLine="true" />
 
-
-                        <!--                        <TextView-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginTop="10dp"-->
-                        <!--                            android:layout_marginBottom="10dp"-->
-                        <!--                            android:text="@string/middle_name_txt"-->
-                        <!--                            android:textSize="@dimen/text_size_14sp" />-->
-
-                        <!--                        <EditText-->
-                        <!--                            android:id="@+id/middleNameEditTextRegi"-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="@dimen/height_50dp"-->
-                        <!--                            android:layout_marginRight="@dimen/_5sdp"-->
-                        <!--                            android:background="@drawable/background_customer_registeration"-->
-                        <!--                            android:gravity="center_vertical"-->
-                        <!--                            android:hint="Middle Name"-->
-                        <!--                            android:inputType="text"-->
-                        <!--                            android:maxLength="25"-->
-                        <!--                            android:paddingLeft="@dimen/_5sdp"-->
-                        <!--                            android:singleLine="true"-->
-                        <!--                            android:text=""-->
-                        <!--                            android:textColor="@color/colorBlack"-->
-                        <!--                            android:textSize="@dimen/text_size_16sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginTop="10dp"-->
-                        <!--                            android:layout_marginBottom="10dp"-->
-                        <!--                            android:text="@string/last_name_text"-->
-                        <!--                            android:textSize="@dimen/text_size_14sp" />-->
-
-                        <!--                        <EditText-->
-                        <!--                            android:id="@+id/lastNameEditTextRegi"-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="@dimen/height_50dp"-->
-                        <!--                            android:layout_marginRight="@dimen/_5sdp"-->
-                        <!--                            android:background="@drawable/background_customer_registeration"-->
-                        <!--                            android:gravity="center_vertical"-->
-                        <!--                            android:hint="@string/last_name_text"-->
-                        <!--                            android:inputType="text"-->
-                        <!--                            android:maxLength="25"-->
-                        <!--                            android:paddingLeft="@dimen/_5sdp"-->
-                        <!--                            android:singleLine="true"-->
-                        <!--                            android:text=""-->
-                        <!--                            android:textColor="@color/colorBlack"-->
-                        <!--                            android:textSize="@dimen/text_size_16sp" />-->
-
-
-                        <!--                        <TextView-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginTop="10dp"-->
-                        <!--                            android:layout_marginBottom="10dp"-->
-                        <!--                            android:text="@string/dob_text"-->
-                        <!--                            android:textSize="@dimen/text_size_14sp" />-->
-
-                        <!--                        <EditText-->
-                        <!--                            android:id="@+id/dobEditTextRegi"-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="@dimen/height_50dp"-->
-                        <!--                            android:layout_marginRight="@dimen/_5sdp"-->
-                        <!--                            android:background="@drawable/background_customer_registeration"-->
-                        <!--                            android:gravity="center_vertical"-->
-                        <!--                            android:hint="Date of Birth"-->
-                        <!--                            android:inputType="number"-->
-                        <!--                            android:maxLength="25"-->
-                        <!--                            android:paddingLeft="@dimen/_5sdp"-->
-                        <!--                            android:singleLine="true"-->
-                        <!--                            android:text=""-->
-                        <!--                            android:textColor="@color/colorBlack"-->
-                        <!--                            android:textSize="@dimen/text_size_16sp" />-->
-
-
-                        <!--                        <TextView-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginTop="10dp"-->
-                        <!--                            android:layout_marginBottom="10dp"-->
-                        <!--                            android:text="@string/pincode_text"-->
-                        <!--                            android:textSize="@dimen/text_size_14sp" />-->
-
-                        <!--                        <EditText-->
-                        <!--                            android:id="@+id/pincodeEditTextRegi"-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="@dimen/height_50dp"-->
-                        <!--                            android:layout_marginRight="@dimen/_5sdp"-->
-                        <!--                            android:background="@drawable/background_customer_registeration"-->
-                        <!--                            android:gravity="center_vertical"-->
-                        <!--                            android:hint="Pincode No."-->
-                        <!--                            android:inputType="number"-->
-                        <!--                            android:maxLength="6"-->
-                        <!--                            android:paddingLeft="@dimen/_5sdp"-->
-                        <!--                            android:singleLine="true"-->
-                        <!--                            android:text=""-->
-                        <!--                            android:textColor="@color/colorBlack"-->
-                        <!--                            android:textSize="@dimen/text_size_16sp" />-->
 
                     </LinearLayout>
 
 
                     <TextView
+                        style="@style/TitleStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="@string/mobile_number"
-                        android:textSize="@dimen/text_size_14sp" />
+                        android:text="@string/mobile_number" />
 
                     <EditText
                         android:id="@+id/mobileNumberEditTextRegi"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
                         android:layout_marginRight="@dimen/_5sdp"
-                        android:background="@drawable/background_customer_registeration"
                         android:gravity="center_vertical"
-                        android:hint="Mobile Number"
+                        android:hint="@string/phone_number_hint"
                         android:inputType="number"
                         android:maxLength="10"
                         android:paddingLeft="@dimen/_5sdp"
-                        android:singleLine="true"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/text_size_16sp" />
+                        android:singleLine="true" />
 
 
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_marginTop="10dp"-->
-                    <!--                        android:layout_marginBottom="10dp"-->
-                    <!--                        android:text="@string/email"-->
-                    <!--                        android:textSize="@dimen/text_size_14sp" />-->
-
-                    <!--                    <EditText-->
-                    <!--                        android:id="@+id/emailEditTextRegi"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="@dimen/height_50dp"-->
-                    <!--                        android:background="@drawable/background_customer_registeration"-->
-                    <!--                        android:gravity="center_vertical"-->
-                    <!--                        android:hint="E-mail"-->
-                    <!--                        android:layout_marginRight="@dimen/_5sdp"-->
-                    <!--                        android:paddingLeft="@dimen/_5sdp"-->
-                    <!--                        android:singleLine="true"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:textSize="@dimen/text_size_16sp" />-->
-
-
-                    <!-- <EditText
-                         android:id="@+id/dateOfBirthEditTextProfile"
-                         android:layout_width="match_parent"
-                         android:layout_height="@dimen/height_50dp"
-                         android:layout_marginTop="@dimen/_10sdp"
-                         android:background="@drawable/background_select_mood"
-                         android:drawableRight="@drawable/dropdown_arrow"
-                         android:drawableTint="@color/colorSpinner"
-                         android:editable="false"
-                         android:focusable="false"
-                         android:hint="@string/date_of_birth_txt"
-                         android:inputType="none"
-                         android:paddingLeft="@dimen/_5sdp"
-                         android:text=""
-
-                         android:textColor="@color/colorBlack"
-                         android:textSize="@dimen/text_size_14sp" />-->
                     <TextView
+                        style="@style/TitleStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="@string/gender"
-                        android:textSize="@dimen/text_size_14sp" />
+                        android:text="@string/gender" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -253,13 +106,13 @@
 
                         <TextView
                             android:id="@+id/textviewgendeprofile"
+                            style="@style/EditTextStyle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:text="Gender"
-                            android:textSize="@dimen/_12ssp" />
+                            android:text="Gender" />
 
                         <RadioGroup
                             android:id="@+id/maleFemaleRadioGroupRegi"
@@ -332,18 +185,14 @@
 
         <Button
             android:id="@+id/register_regi"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_50dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="@dimen/margin_10dp"
             android:layout_marginEnd="@dimen/margin_10dp"
             android:layout_marginBottom="@dimen/margin_20dp"
-            android:background="@drawable/background_button"
-            android:fontFamily="@font/lato_bold"
-            android:text="Register"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_18sp" />
+            android:text="Register" />
     </RelativeLayout>
 
 </layout>

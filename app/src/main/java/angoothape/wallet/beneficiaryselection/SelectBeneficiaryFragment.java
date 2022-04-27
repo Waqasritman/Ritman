@@ -89,12 +89,14 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                 binding.searchBtn.setVisibility(View.GONE);
                 binding.mainView.setVisibility(View.VISIBLE);
             }
+        } else if (!binding.seachBene.getText().toString().isEmpty()) {
+            getBeneficiary();
         }
     }
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
-        binding.backBtn.setVisibility(View.GONE);
+        binding.toolBarFinal.setVisibility(View.GONE);
         if (getArguments() != null) {
             type = getArguments().getInt("transfer_type", BeneficiarySelector.BANK_TRANSFER);
         }
@@ -118,67 +120,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
             if (TextUtils.isEmpty(binding.seachBene.getText().toString())) {
                 onMessage(getString(R.string.please_enter_customr_number));
             } else {
-                Utils.showCustomProgressDialog(getContext(), false);
-
-                String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-                        .getKey(getSessionManager().getMerchantName())).trim();
-
-                GetBeneficiaryRequest request = new GetBeneficiaryRequest();
-                request.CustomerNo = binding.seachBene.getText().toString();
-                String body = RestClient.makeGSONString(request);
-
-                AERequest aeRequest = new AERequest();
-                aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
-
-                viewModel.getBeneficiaryList(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
-                        .getKey(getSessionManager().getMerchantName())).trim())
-                        .observe(getViewLifecycleOwner(), response -> {
-                            Utils.hideCustomProgressDialog();
-                            if (response.status == Status.ERROR) {
-                                onError(getString(response.messageResourceId));
-                            } else {
-                                assert response.resource != null;
-                                if (response.resource.responseCode.equals(101)) {
-
-                                    list.clear();
-
-                                    String bodyy = AESHelper.decrypt(response.resource.data.body
-                                            , gKey);
-                                    try {
-                                        Gson gson = new Gson();
-                                        Type type = new TypeToken<List<GetBeneficiaryListResponse>>() {
-                                        }.getType();
-                                        List<GetBeneficiaryListResponse> data = gson.fromJson(bodyy, type);
-                                        list.addAll(data);
-                                        customerN0 = data.get(0).customerNo;
-                                        adapter.notifyDataSetChanged();
-                                        getBalanceCustomerLimit();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-
-
-                                    if (list.size() >= 25) {
-                                        binding.addBene.setVisibility(View.GONE);
-                                    }
-
-
-                                } else if (response.resource.responseCode.equals(721)) {
-                                    registerCustomerDialog();
-                                } else if (response.resource.responseCode.equals(206)) {
-                                    binding.searchBtn.setVisibility(View.GONE);
-                                    binding.mainView.setVisibility(View.VISIBLE);
-
-                                    String[] a = response.resource.description.split("\\|");
-
-                                    customerN0 = a[2];
-                                    binding.seachBene.requestFocus();
-                                    getBalanceCustomerLimit();
-                                } else {
-                                  onError(response.resource.description);
-                                }
-                            }
-                        });
+                getBeneficiary();
             }
         });
         binding.seachBene.addTextChangedListener(new TextWatcher() {
@@ -201,6 +143,70 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
         });
     }
 
+
+    public void getBeneficiary() {
+        Utils.showCustomProgressDialog(getContext(), false);
+
+        String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                .getKey(getSessionManager().getMerchantName())).trim();
+
+        GetBeneficiaryRequest request = new GetBeneficiaryRequest();
+        request.CustomerNo = binding.seachBene.getText().toString();
+        String body = RestClient.makeGSONString(request);
+
+        AERequest aeRequest = new AERequest();
+        aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
+
+        viewModel.getBeneficiaryList(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
+                .getKey(getSessionManager().getMerchantName())).trim())
+                .observe(getViewLifecycleOwner(), response -> {
+                    Utils.hideCustomProgressDialog();
+                    if (response.status == Status.ERROR) {
+                        onError(getString(response.messageResourceId));
+                    } else {
+                        assert response.resource != null;
+                        if (response.resource.responseCode.equals(101)) {
+
+                            list.clear();
+
+                            String bodyy = AESHelper.decrypt(response.resource.data.body
+                                    , gKey);
+                            try {
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<List<GetBeneficiaryListResponse>>() {
+                                }.getType();
+                                List<GetBeneficiaryListResponse> data = gson.fromJson(bodyy, type);
+                                list.addAll(data);
+                                customerN0 = data.get(0).customerNo;
+                                adapter.notifyDataSetChanged();
+                                getBalanceCustomerLimit();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+                            if (list.size() >= 25) {
+                                binding.addBene.setVisibility(View.GONE);
+                            }
+
+
+                        } else if (response.resource.responseCode.equals(721)) {
+                            registerCustomerDialog();
+                        } else if (response.resource.responseCode.equals(206)) {
+                            binding.searchBtn.setVisibility(View.GONE);
+                            binding.mainView.setVisibility(View.VISIBLE);
+
+                            String[] a = response.resource.description.split("\\|");
+
+                            customerN0 = a[2];
+                            binding.seachBene.requestFocus();
+                            getBalanceCustomerLimit();
+                        } else {
+                            onError(response.resource.description);
+                        }
+                    }
+                });
+    }
 
     public void getBalanceCustomerLimit() {
         Utils.showCustomProgressDialog(getContext(), false);
@@ -297,8 +303,6 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
 
     private void activeDeactive(String beneId, int pushToActive, int position) {
         Utils.showCustomProgressDialog(getContext(), false);
-
-
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
                 .getKey(getSessionManager().getMerchantName())).trim();
 
@@ -331,7 +335,8 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
                                 binding.addBene.setVisibility(View.VISIBLE);
                             }
                             Log.e("activeDeactive: ", bodyy);
-                        } else {onError(response.resource.description);
+                        } else {
+                            onError(response.resource.description);
                         }
                     }
                 });
@@ -404,6 +409,7 @@ public class SelectBeneficiaryFragment extends BaseFragment<ActivitySelectBenefi
     private void registerCustomerDialog() {
         LayoutInflater factory = LayoutInflater.from(getActivity());
         final View deleteDialogView = factory.inflate(R.layout.register_customer_dialog_layout, null);
+
         final AlertDialog deleteDialog = new AlertDialog.Builder(getActivity()).create();
         deleteDialog.setView(deleteDialogView);
         deleteDialogView.findViewById(R.id.btn_register).setOnClickListener(v -> {

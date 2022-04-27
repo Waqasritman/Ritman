@@ -57,34 +57,6 @@ public class Personal_ZeroFragment extends BaseFragment<FragmentPersonalZeroBind
 
         mAwesomeValidation.addValidation(binding.edtFirstname, "^[A-Za-z\\s]+", getResources().getString(R.string.firstname_personal));
         mAwesomeValidation.addValidation(binding.edtLastname, "^[A-Za-z\\s]+", getResources().getString(R.string.lastname_personal));
-        // mAwesomeValidation.addValidation(binding.addressLine1, "^[a-zA-Z0-9-,. ]*$", getResources().getString(R.string.addre_line_one));
-        //mAwesomeValidation.addValidation(binding.addressLine2, "^[a-zA-Z0-9-,. ]*$", getResources().getString(R.string.addre_line_two));
-        // mAwesomeValidation.addValidation(binding.edtLandmark, "[\\w\\s-,.]+$", getResources().getString(R.string.landmark));
-        //mAwesomeValidation.addValidation(binding.dobEditTextRegi, "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$", getResources().getString(R.string.date_of_birth_ex));
-
-//        mAwesomeValidation.addValidation(getActivity(), R.id.edt_dob, new SimpleCustomValidation() {
-//            @RequiresApi(api = Build.VERSION_CODES.O)
-//            @Override
-//            public boolean compare(String input) {
-//                LocalDate currentDate = LocalDate.now();
-//                yearOfToday = currentDate.getYear();
-//                yearOfBirthday = myCalendar.get(Calendar.YEAR);
-//                age = yearOfToday - yearOfBirthday;
-//                if (age >= 18 && age <= 55) {
-//                    mAwesomeValidation.clear();
-//                    return true;
-//                }
-//
-//                else {
-//
-//                    return false;
-//                }
-//
-//
-//            }
-//
-//        }, R.string.err_birth);
-
 
         binding.maleFemaleRadioGroupRegi.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = group.findViewById(checkedId);

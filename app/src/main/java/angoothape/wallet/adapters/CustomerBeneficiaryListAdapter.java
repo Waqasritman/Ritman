@@ -75,13 +75,13 @@ public class CustomerBeneficiaryListAdapter extends RecyclerView.Adapter<Recycle
             ((BeneficiaryListViewHolder) holder).binding.accountTitle.setText("Account no: ");
             ((BeneficiaryListViewHolder) holder).binding.getRoot().setOnClickListener(v ->
                     onSelectBeneficiary.onSelectBeneficiary(response));
-            ((BeneficiaryListViewHolder) holder).binding.bankName.setText("  " +response.bankName);
+            ((BeneficiaryListViewHolder) holder).binding.bankName.setText("  " + response.bankName);
             ((BeneficiaryListViewHolder) holder).binding.deActiveBene.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (!isChecked) {
                     onSelectBeneficiary.onChangeTheStatusOfBeneficiary(response, 0, position);
                 }
             });
-
+            ((BeneficiaryListViewHolder) holder).binding.deActiveBene.setChecked(true);
         } else if (holder instanceof EmptyBeneficiaryListViewHolder) {
 
         }

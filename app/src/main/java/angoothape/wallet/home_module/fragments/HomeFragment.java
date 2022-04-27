@@ -45,7 +45,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
-        getUpdatedBalance();
+     //   getUpdatedBalance();
         binding.swipeRefresh.setOnRefreshListener(this::getUpdatedBalance);
 
         if (getSessionManager().getIsVerified()) {

@@ -87,7 +87,10 @@ public class UploadCashDetailsActivity extends RitmanBaseActivity<ActivityUpload
         customerServiceViewModel = new ViewModelProvider(this).get(CustomerServiceViewModel.class);
         request = new UploadCashDetailsRequest();
 
-
+        binding.toolBar.titleTxt.setText("Cash IN");
+        binding.toolBar.crossBtn.setOnClickListener(v -> {
+            onClose();
+        });
         binding.toolBar.backBtn.setOnClickListener(v -> {
             onBackPressed();
         });

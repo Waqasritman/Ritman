@@ -61,27 +61,21 @@
 
                     <EditText
                         android:id="@+id/transaction_no"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
-                        android:background="@drawable/background_customer_registeration"
                         android:gravity="center"
                         android:hint="@string/transaction_hint"
-                        android:inputType="text"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/text_size_16sp" />
+                        android:inputType="text" />
 
                     <Button
                         android:id="@+id/btn_next"
+                        style="@style/ButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
                         android:layout_marginTop="@dimen/margin_25dp"
-                        android:background="@drawable/background_button"
-                        android:fontFamily="@font/lato_bold"
                         android:letterSpacing="0.01"
-                        android:text="Confirm"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18sp" />
+                        android:text="Confirm" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

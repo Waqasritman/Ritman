@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
         android:id="@+id/parent_relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <include
             android:id="@+id/tool_bar"
             layout="@layout/tool_bar" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_below="@+id/tool_bar"
+            android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
@@ -25,7 +27,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/otp_screen"
-                android:tint="@color/colorPrimary" />
+                app:tint="@color/colorPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,33 +48,38 @@
 
             <EditText
                 android:id="@+id/edt_otp"
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_45dp"
                 android:layout_marginStart="@dimen/margin_15dp"
                 android:layout_marginTop="@dimen/margin_30dp"
                 android:layout_marginEnd="@dimen/margin_15dp"
-                android:background="@drawable/verify_otp_border"
-                android:fontFamily="@font/lato_medium"
-                android:hint="Enter your OTP"
                 android:gravity="center"
+                android:hint="Enter your OTP"
                 android:inputType="number"
+                android:maxLength="4"
                 android:maxLines="1"
-                android:singleLine="true"
-                android:textSize="@dimen/text_size_16sp" />
+                android:singleLine="true" />
 
             <Button
+
                 android:id="@+id/btn_verify_otp"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_45dp"
+                android:layout_height="?actionBarSize"
                 android:layout_marginStart="@dimen/margin_15dp"
-                android:layout_marginEnd="@dimen/margin_15dp"
                 android:layout_marginTop="@dimen/margin_30dp"
-                android:background="@drawable/gradient_btn"
-                android:fontFamily="@font/lato_bold"
+                android:layout_marginEnd="@dimen/margin_15dp"
                 android:text="@string/verify"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/text_18sp" />
+                android:textAllCaps="false" />
+
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_30dp"
+                android:visibility="gone" />
         </LinearLayout>
 
 

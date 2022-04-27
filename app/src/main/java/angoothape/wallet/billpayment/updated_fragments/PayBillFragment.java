@@ -16,11 +16,7 @@ public class PayBillFragment extends BaseFragment<PayBillFragmentLayoutBinding> 
     String transaction_date_time, paymentstatus, payeemobileno, bbps_ref_no, transactionrefno, source_ref_no, partial_pay,
             partial_payment, paymentamount_validation;
 
-    // BankTransferViewModel viewModel;
     BillPaymentViewModel viewModel;
-
-    String customerid;
-
     @Override
     protected void injectView() {
 
@@ -76,16 +72,12 @@ public class PayBillFragment extends BaseFragment<PayBillFragmentLayoutBinding> 
             binding.bbpsRefNo.setText(bbps_ref_no);
             binding.transactionrefno.setText(transactionrefno);
             binding.sourceRefNo.setText(source_ref_no);
-            //  binding.billAmount.setText(billamount);
-            //binding.billerId.setText(billerid);
-
             if (partial_pay.equals("Y")) {
                 binding.billAmount.setText(partial_payment);
-                binding.billerId.setText(billerid);
             } else {
                 binding.billAmount.setText(billamount);
-                binding.billerId.setText(billerid);
             }
+            binding.billerId.setText(billerid);
         }
 
 

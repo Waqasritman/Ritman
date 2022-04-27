@@ -81,7 +81,8 @@ public class RefundHistoryFragment extends BaseFragment<FragmentRefundHistoryBin
                             if (response.resource.responseCode.equals(101)) {
                                 onGetHistoryList(response.resource.data);
                             } else {
-                                onError(response.resource.description);
+                                onGetHistoryList(new ArrayList<>());
+                               // onError(response.resource.description);
                             }
                         } else if (response.status == Status.UNSUCCESS) {
                             onError(response.resource.description);
@@ -118,6 +119,7 @@ public class RefundHistoryFragment extends BaseFragment<FragmentRefundHistoryBin
         responseList.addAll(historyList);
         filteredList.addAll(historyList);
         adapter.notifyDataSetChanged();
+        binding.recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override

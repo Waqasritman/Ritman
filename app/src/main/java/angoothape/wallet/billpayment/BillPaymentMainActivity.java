@@ -21,7 +21,7 @@ import angoothape.wallet.di.XMLdi.RequestHelper.WRPayBillRequest;
 public class BillPaymentMainActivity extends RitmanBaseActivity<ActivityBillMainBinding> {
 
     private NavController navController;
-    public WRBillerPlansRequest plansRequest;
+    //public WRBillerPlansRequest plansRequest;
     public WRPayBillRequest payBillRequest;
 
     public BillPaymentViewModel viewModel;
@@ -41,7 +41,7 @@ public class BillPaymentMainActivity extends RitmanBaseActivity<ActivityBillMain
         navController = Navigation.findNavController(this, R.id.dashboard);
         viewModel = new ViewModelProvider(this).get(BillPaymentViewModel.class);
         binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
-        plansRequest = new WRBillerPlansRequest();
+//        plansRequest = new WRBillerPlansRequest();
         payBillRequest = new WRPayBillRequest();
         request = new GetWRBillerFieldsRequestN();
         BillDetailRequest = new GetWRBillDetailRequestN();

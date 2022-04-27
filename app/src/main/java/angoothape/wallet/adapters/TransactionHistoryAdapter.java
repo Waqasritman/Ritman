@@ -15,6 +15,8 @@ import angoothape.wallet.databinding.EmptyViewBeneBinding;
 import angoothape.wallet.databinding.TransactionHistoryDesignBinding;
 import angoothape.wallet.di.XMLdi.ResponseHelper.TransactionHistoryResponse;
 import angoothape.wallet.interfaces.OnSelectTransaction;
+import angoothape.wallet.utils.Utils;
+import okhttp3.internal.Util;
 
 import java.util.List;
 
@@ -64,8 +66,14 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<RecyclerView
             TransactionHistoryResponse response = beneficiaryListResponses.get(position);
             ((TransactionHistoryListHolder) holder).binding.beneficairyName.setText(response.receiverName);
             ((TransactionHistoryListHolder) holder).binding.paymentType.setText(response.paymentType);
-            ((TransactionHistoryListHolder) holder).binding.txnDateTime.setText(response.transactionDate);
+            if (response.paymentType == null) {
+                ((TransactionHistoryListHolder) holder).binding.paymentTypeLayout.setVisibility(View.GONE);
+            } else {
+                ((TransactionHistoryListHolder) holder).binding.paymentTypeLayout.setVisibility(View.VISIBLE);
+            }
 
+            String timeDate = response.transactionDate.concat("Z");
+            ((TransactionHistoryListHolder) holder).binding.txnDateTime.setText(Utils.getDateFromServerTime(timeDate));
             ((TransactionHistoryListHolder) holder).binding.sendingAmount.setText(
                     ((response.sendingAmount != null) ? response.sendingAmount : "0.00").concat(" ").concat(response.currency));
             ((TransactionHistoryListHolder) holder).binding.status.setText(response.status);
@@ -112,7 +120,7 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<RecyclerView
         return super.getItemViewType(position);
     }
 
-    public class TransactionHistoryListHolder extends RecyclerView.ViewHolder {
+    public static class TransactionHistoryListHolder extends RecyclerView.ViewHolder {
         public TransactionHistoryDesignBinding binding;
 
         public TransactionHistoryListHolder(@NonNull TransactionHistoryDesignBinding itemView) {

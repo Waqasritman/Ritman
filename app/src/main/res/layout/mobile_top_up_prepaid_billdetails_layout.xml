@@ -5,23 +5,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/bill_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/margin_10dp"
             android:fontFamily="@font/lato_semibold"
             android:text="@string/bill_details"
             android:textColor="@color/black"
-            android:layout_margin="@dimen/margin_10dp"
-            android:layout_centerHorizontal="true"
             android:textSize="@dimen/text_size_20sp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/first_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_below="@+id/bill_details"
+            android:layout_margin="10dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="12dp">
 
@@ -53,10 +54,10 @@
                         android:layout_height="@dimen/margin_60dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:visibility="gone"
                         android:layout_marginStart="@dimen/margin_10dp"
                         android:layout_marginEnd="@dimen/margin_10dp"
-                        android:src="@drawable/bbps_horizontal_1" />
+                        android:src="@drawable/bbps_horizontal_1"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -105,8 +106,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:text="@string/billerid"
                             android:layout_marginRight="42dp"
+                            android:text="@string/billerid"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14sp" />
 
@@ -115,17 +116,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_5dp"
-                            android:textColor="@color/grey_40"
                             android:background="@android:color/transparent"
                             android:hint="NA"
+                            android:textColor="@color/grey_40"
                             android:textSize="@dimen/text_size_12sp" />
                     </LinearLayout>
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_10dp"
-                    android:background="@color/gray_lite"
-                    android:layout_height="1dp" />
+                    android:background="@color/gray_lite" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -171,8 +173,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:text="@string/bill_date"
                             android:layout_marginRight="18dp"
+                            android:text="@string/bill_date"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14sp" />
 
@@ -185,11 +187,12 @@
                             android:textSize="@dimen/text_size_12sp" />
                     </LinearLayout>
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_10dp"
-                    android:background="@color/gray_lite"
-                    android:layout_height="1dp" />
+                    android:background="@color/gray_lite" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -234,8 +237,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:text="@string/bill_status"
                             android:layout_marginRight="@dimen/margin_15dp"
+                            android:text="@string/bill_status"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14sp" />
 
@@ -248,11 +251,12 @@
                             android:textSize="@dimen/text_size_12sp" />
                     </LinearLayout>
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_10dp"
-                    android:background="@color/gray_lite"
-                    android:layout_height="1dp" />
+                    android:background="@color/gray_lite" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -319,50 +323,49 @@
             android:id="@+id/plans_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/grey_10"
+            android:layout_below="@+id/bill_details"
             android:layout_margin="@dimen/margin_10dp"
-            android:visibility="gone"
-            android:layout_below="@+id/bill_details" />
+            android:background="@color/grey_10"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/getIPAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/plans_recycler"
             android:text=""
-            android:visibility="gone"
+            android:textSize="25sp"
             android:textStyle="bold"
-            android:textSize="25sp" />
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/iemi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/plans_recycler"
-            android:text="IP address of your Device"
-            android:layout_marginTop="50dp"
-            android:visibility="gone"
             android:layout_margin="10dp"
+            android:layout_marginTop="50dp"
+            android:text="IP address of your Device"
+            android:textSize="25sp"
             android:textStyle="bold"
-            android:textSize="25sp" />
+            android:visibility="gone" />
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/_10sdp" />
+            android:layout_marginTop="@dimen/_10sdp"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/Proceed_to_pay"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_button"
-            android:text="@string/proceed_to_pay"
-            android:layout_margin="@dimen/margin_10dp"
-            android:visibility="visible"
+            android:layout_height="?actionBarSize"
             android:layout_alignParentBottom="true"
-
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_15sp" />
+            android:layout_margin="@dimen/margin_10dp"
+            android:text="@string/proceed_to_pay"
+            android:visibility="visible" />
     </RelativeLayout>
 </layout>

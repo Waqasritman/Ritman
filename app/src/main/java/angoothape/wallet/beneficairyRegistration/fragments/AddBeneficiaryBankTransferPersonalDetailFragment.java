@@ -305,7 +305,7 @@ public class AddBeneficiaryBankTransferPersonalDetailFragment
         String body = RestClient.makeGSONString(request);
         AERequest aeRequest = new AERequest();
         aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
-        Call<AEResponse> call = RestClient.getREST().getBanks(RestClient.makeGSONRequestBody(aeRequest)
+        Call<AEResponse> call = RestClient.getEKYC().getBanks(RestClient.makeGSONRequestBody(aeRequest)
                 , KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
                         .getKey(getSessionManager().getMerchantName())).trim());
         call.enqueue(new retrofit2.Callback<AEResponse>() {

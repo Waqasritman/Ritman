@@ -2,9 +2,9 @@
 <layout xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/parent_relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/parent_relativeLayout"
         android:orientation="vertical"
         tools:context=".personal_loan.fragment.Personal_Two_Fragment">
 
@@ -12,18 +12,19 @@
             android:id="@+id/txt_personal_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
             android:text="@string/personal_info"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:layout_centerHorizontal="true"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/txt_personal_info"
             android:layout_marginTop="10dp"
             android:fillViewport="true"
-            android:layout_below="@+id/txt_personal_info"
             android:paddingBottom="@dimen/width_100dp"
             android:scrollbars="none">
 
@@ -47,65 +48,62 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@string/residing"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:text="@string/residing" />
 
-                            <TextView
-                                android:singleLine="true"
-                                android:id="@+id/txt_residing_with"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:drawableEnd="@drawable/dropdown_arrow"
-                                android:drawableTint="@color/posBlue"
-                                android:gravity="center_vertical"
-                                android:hint="Select residing with"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                        <TextView
+                            android:id="@+id/txt_residing_with"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:drawableEnd="@drawable/dropdown_arrow"
+                            android:drawableTint="@color/posBlue"
+                            android:gravity="center_vertical"
+                            android:hint="Select residing with"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
 
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@string/no_of_yr"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:text="@string/no_of_yr" />
 
-                            <TextView
-                                android:singleLine="true"
-                                android:id="@+id/txt_number_of_years_at_current_addressr"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:drawableEnd="@drawable/dropdown_arrow"
-                                android:drawableTint="@color/posBlue"
-                                android:gravity="center_vertical"
-                                android:hint="Select no. of years"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
-
-                          <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/marite"
-                            android:textSize="@dimen/text_size_14sp" />
-
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/txt_number_of_years_at_current_addressr"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_beneficiary_registeration"
+                            android:drawableEnd="@drawable/dropdown_arrow"
+                            android:drawableTint="@color/posBlue"
+                            android:gravity="center_vertical"
+                            android:hint="Select no. of years"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
+
+                        <TextView
+                            style="@style/TitleStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/marite" />
+
+                        <LinearLayout
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:orientation="horizontal">
 
 
@@ -123,9 +121,9 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:paddingLeft="@dimen/_5sdp"
-                                    android:checked="true"
                                     android:buttonTint="@color/posBlue"
+                                    android:checked="true"
+                                    android:paddingLeft="@dimen/_5sdp"
                                     android:text="@string/married"
                                     android:textSize="@dimen/_12ssp" />
 
@@ -141,54 +139,59 @@
                             </RadioGroup>
                         </LinearLayout>
 
-                       <TextView
+                        <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@string/spouse_employment_status"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:text="@string/spouse_employment_status" />
 
-                        <androidx.appcompat.widget.AppCompatSpinner
+                        <LinearLayout
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
                                 android:id="@+id/spouse_employment_status"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/height_50dp"
                                 android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
+
                                 android:drawableEnd="@drawable/dropdown_arrow"
                                 android:drawableTint="@color/posBlue"
                                 android:gravity="center_vertical"
                                 android:hint="Spouse employment status"
+                                android:paddingLeft="@dimen/margin_10dp"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/text_size_16sp" />
 
+                        </LinearLayout>
+
+
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@string/number_of_kids"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:text="@string/number_of_kids" />
 
-                            <TextView
-                                android:singleLine="true"
-                                android:id="@+id/txt_no_of_kids"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:drawableEnd="@drawable/dropdown_arrow"
-                                android:drawableTint="@color/posBlue"
-                                android:gravity="center_vertical"
-                                android:hint="Select no. of kids"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                        <TextView
+                            android:id="@+id/txt_no_of_kids"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            style="@style/EditTextStyle"
+                            android:drawableEnd="@drawable/dropdown_arrow"
+                            android:drawableTint="@color/posBlue"
+                            android:gravity="center_vertical"
+                            android:hint="Select no. of kids"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
 
 
                     </LinearLayout>
-
 
 
                 </LinearLayout>
@@ -199,19 +202,14 @@
 
         <Button
             android:id="@+id/personal_next"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_50dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="@dimen/margin_10dp"
             android:layout_marginEnd="@dimen/margin_10dp"
             android:layout_marginBottom="@dimen/margin_20dp"
-            android:background="@drawable/background_button"
-
-            android:fontFamily="@font/lato_bold"
-            android:text="Next"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_18sp" />
+            android:text="Next" />
     </RelativeLayout>
 
 </layout>

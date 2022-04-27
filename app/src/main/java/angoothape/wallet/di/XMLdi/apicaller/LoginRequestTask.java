@@ -7,7 +7,7 @@ import android.util.Log;
 import angoothape.wallet.R;
 import angoothape.wallet.di.XMLdi.ApiHelper;
 import angoothape.wallet.di.XMLdi.HTTPHelper;
-import angoothape.wallet.di.XMLdi.RequestHelper.LoginRequest;
+import angoothape.wallet.di.JSONdi.restRequest.LoginRequest;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;
 import angoothape.wallet.interfaces.OnSuccessLogin;
 import angoothape.wallet.utils.ProgressBar;
@@ -79,10 +79,7 @@ public class LoginRequestTask extends AsyncTask<LoginRequest, Void, String> {
 
     @Override
     protected String doInBackground(LoginRequest... loginRequestTasks) {
-        Log.e("XML: ", loginRequestTasks[0].getXML());
-
-        String responseString = HTTPHelper.getResponse(loginRequestTasks[0]
-                        .getXML(),
+        String responseString = HTTPHelper.getResponse("",
                 SoapActionHelper.ACTION_GET_LOGIN
                 , ApiHelper.METHOD_POST);
         XmlToJson xmlToJson = new XmlToJson.Builder(responseString).build();

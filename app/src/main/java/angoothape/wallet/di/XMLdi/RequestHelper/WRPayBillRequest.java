@@ -81,38 +81,38 @@ public class WRPayBillRequest implements Parcelable {
             return new WRPayBillRequest[size];
         }
     };
-
-    public String getXML() {
-        return Params.ENVELOP_OPENER
-                + Params.HEADER_EMPTY +
-                Params.BODY_OPEN +
-                "<tpay:WRPayBill>" +
-                "<tpay:Req>" +
-                "<tpay:Credentials>" +
-                "<tpay:PartnerCode>" + StaticHelper.PARTNER_CODE_VALUE + "</tpay:PartnerCode>" +
-                "<tpay:UserName>" + StaticHelper.USER_NAME_VALUE + "</tpay:UserName>" +
-                "<tpay:UserPassword>" + StaticHelper.USER_PASSWORD_VALUE + "</tpay:UserPassword>" +
-                "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
-                "</tpay:Credentials>" +
-                "<tpay:CustomerNo>" + customerNo + "</tpay:CustomerNo>" +
-                "<tpay:PayOutCurrency>" + payoutCurrency + "</tpay:PayOutCurrency>" +
-                "<tpay:PayOutAmount>" + payOutAmount + "</tpay:PayOutAmount>" +
-                "<tpay:PayinCurrency>" + payInCurrency + "</tpay:PayinCurrency>" +
-                "<tpay:countryCode>" + countryCode + "</tpay:countryCode>" +
-                "<tpay:BillerID>" + billerID + "</tpay:BillerID>" +
-                "<tpay:SkuID>" + skuID + "</tpay:SkuID>" +
-                "<tpay:Mob_Acc_No>" + mobileAccount + "</tpay:Mob_Acc_No>" +
-                "<tpay:Mob_Acc_No1>" + mobileAccount2 + "</tpay:Mob_Acc_No1>" +
-                "<tpay:Mob_Acc_No2>" + mobileAccount3 + "</tpay:Mob_Acc_No2>" +
-                "<tpay:Payment_TypeID>" + paymentTypeId + "</tpay:Payment_TypeID>" +
-                "<tpay:Card_Number>" + cardNumber + "</tpay:Card_Number>" +
-                "<tpay:ExpiryDate>" + expireDate + "</tpay:ExpiryDate>" +
-                "<tpay:SecurityCode>" + securityCode + "</tpay:SecurityCode>" +
-                "</tpay:Req>" +
-                "</tpay:WRPayBill>" +
-                Params.BODY_CLOSE +
-                Params.ENVELOP_CLOSER;
-    }
-
+//
+//    public String getXML() {
+//        return Params.ENVELOP_OPENER
+//                + Params.HEADER_EMPTY +
+//                Params.BODY_OPEN +
+//                "<tpay:WRPayBill>" +
+//                "<tpay:Req>" +
+//                "<tpay:Credentials>" +
+//                "<tpay:PartnerCode>" + StaticHelper.PARTNER_CODE_VALUE + "</tpay:PartnerCode>" +
+//                "<tpay:UserName>" + StaticHelper.USER_NAME_VALUE + "</tpay:UserName>" +
+//                "<tpay:UserPassword>" + StaticHelper.USER_PASSWORD_VALUE + "</tpay:UserPassword>" +
+//                "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
+//                "</tpay:Credentials>" +
+//                "<tpay:CustomerNo>" + customerNo + "</tpay:CustomerNo>" +
+//                "<tpay:PayOutCurrency>" + payoutCurrency + "</tpay:PayOutCurrency>" +
+//                "<tpay:PayOutAmount>" + payOutAmount + "</tpay:PayOutAmount>" +
+//                "<tpay:PayinCurrency>" + payInCurrency + "</tpay:PayinCurrency>" +
+//                "<tpay:countryCode>" + countryCode + "</tpay:countryCode>" +
+//                "<tpay:BillerID>" + billerID + "</tpay:BillerID>" +
+//                "<tpay:SkuID>" + skuID + "</tpay:SkuID>" +
+//                "<tpay:Mob_Acc_No>" + mobileAccount + "</tpay:Mob_Acc_No>" +
+//                "<tpay:Mob_Acc_No1>" + mobileAccount2 + "</tpay:Mob_Acc_No1>" +
+//                "<tpay:Mob_Acc_No2>" + mobileAccount3 + "</tpay:Mob_Acc_No2>" +
+//                "<tpay:Payment_TypeID>" + paymentTypeId + "</tpay:Payment_TypeID>" +
+//                "<tpay:Card_Number>" + cardNumber + "</tpay:Card_Number>" +
+//                "<tpay:ExpiryDate>" + expireDate + "</tpay:ExpiryDate>" +
+//                "<tpay:SecurityCode>" + securityCode + "</tpay:SecurityCode>" +
+//                "</tpay:Req>" +
+//                "</tpay:WRPayBill>" +
+//                Params.BODY_CLOSE +
+//                Params.ENVELOP_CLOSER;
+//    }
+//
 
 }

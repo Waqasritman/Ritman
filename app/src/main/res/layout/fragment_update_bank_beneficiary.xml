@@ -27,6 +27,7 @@
                     android:textSize="@dimen/_15sdp" />
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -38,12 +39,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/background_select_mood"
-                    android:hint="Full name"
+                    style="@style/EditTextStyle" android:hint="Full name"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black" />
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -55,8 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/background_select_mood"
-
+                    style="@style/EditTextStyle"
                     android:drawableRight="@drawable/dropdown_arrow"
                     android:drawablePadding="@dimen/_5sdp"
                     android:padding="@dimen/_10sdp"
@@ -64,6 +64,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -75,8 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/background_select_mood"
-                    android:drawableRight="@drawable/dropdown_arrow"
+                    style="@style/EditTextStyle" android:drawableRight="@drawable/dropdown_arrow"
                     android:drawablePadding="@dimen/_5sdp"
                     android:padding="@dimen/_10sdp"
                     android:hint="Select the relation"

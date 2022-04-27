@@ -1,6 +1,7 @@
 package angoothape.wallet.di.JSONdi.retrofit;
 
 
+import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restResponse.AEResponse;
 import angoothape.wallet.di.JSONdi.restResponse.BusBlockTicketResponse;
 import angoothape.wallet.di.JSONdi.restResponse.BusBookingCancelResponse;
@@ -145,9 +146,15 @@ public interface RestApi {
     Call<SimpleResponse> uploadCustomerImage(@Body UploadUserImageRequest request);
 
 
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/Auth/LoginUserByToken")
+    Call<AEResponse> loginTokenUser(@Body RequestBody model,
+                                             @Header("key") String key, @Header("secretkey") String sKey);
+
+
     @POST("RitmanPay/Auth/LoginUser")
-    Call<SimpleResponse> createMerchant(@Body SimpleRequest credentials,
-                                        @Header("Username") String Username, @Header("UserPassword") String UserPassword);
+    Call<SimpleResponse> loginUser(@Body SimpleRequest credentials,
+                                   @Header("Username") String Username, @Header("UserPassword") String UserPassword);
 
     @POST("RitmanPay/Auth/VerifyOTP")
     Call<SimpleResponse> createotp(@Body OtpRequest credentials,

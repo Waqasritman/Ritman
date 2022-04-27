@@ -340,6 +340,7 @@
                             android:layout_weight="1"
                             android:background="?attr/selectableItemBackground"
                             android:padding="@dimen/_5sdp"
+                            android:visibility="gone"
                             app:cardCornerRadius="@dimen/_10sdp">
 
                             <LinearLayout
@@ -366,6 +367,44 @@
                                     android:text="@string/pl"
                                     android:textColor="@color/colorWhite"
                                     android:textSize="@dimen/_10sdp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/ledger_history"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_7dp"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackground"
+                            android:padding="@dimen/_5sdp"
+                            app:cardCornerRadius="@dimen/_10sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/width_100dp"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5sdp">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="25dp"
+                                    android:layout_margin="@dimen/_5sdp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/history"
+                                    app:tint="@color/colorWhite" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:gravity="center"
+                                    android:text="@string/ledger_history_txt_home"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/_10sdp" />
+
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -488,7 +527,7 @@
                                     android:gravity="center"
                                     android:text="@string/upload_cash_details"
                                     android:textColor="@color/colorWhite"
-                                    android:textSize="@dimen/_9sdp" />
+                                    android:textSize="@dimen/_10sdp"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -530,54 +569,6 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/ledger_history"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/margin_7dp"
-                            android:layout_weight="1"
-                            android:background="?attr/selectableItemBackground"
-                            android:padding="@dimen/_5sdp"
-                            app:cardCornerRadius="@dimen/_10sdp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/width_100dp"
-                                android:background="@color/colorPrimary"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_5sdp">
-
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="25dp"
-                                    android:layout_margin="@dimen/_5sdp"
-                                    android:adjustViewBounds="true"
-                                    android:src="@drawable/history"
-                                    app:tint="@color/colorWhite" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:gravity="center"
-                                    android:text="@string/ledger_history_txt_home"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="@dimen/_10sdp" />
-
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-                        <androidx.cardview.widget.CardView
                             android:id="@+id/ekyc"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -613,6 +604,18 @@
                                     android:textSize="@dimen/_10sdp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
 
                         <androidx.cardview.widget.CardView
 
@@ -654,7 +657,6 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            android:visibility="gone"
                             android:id="@+id/insurance"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -662,6 +664,7 @@
                             android:layout_weight="1"
                             android:background="?attr/selectableItemBackground"
                             android:padding="@dimen/_5sdp"
+                            android:visibility="gone"
                             app:cardCornerRadius="@dimen/_10sdp">
 
                             <LinearLayout

@@ -178,11 +178,10 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     private Serializer serializer = null;
     private ArrayList<String> positions;
     String amount_a, iin_, txn_code_, customer_consent_, BankName_;
-    // String[] columns_;
-    // DataTable dataTable;
-    // String typeMini;
+
     Bitmap bitmap;
-    String PDF_Name, PDF_Type, PDF_Date;
+    String PDF_Name;
+    String PDF_Type;
 
 
     public static final String PATH = "/AEPA/AEPA_Reciept/";
@@ -310,15 +309,22 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         } else {
             binding.aepsStatus.setText("Successful" + " (" + getAEPSTransactionResponse.responseCode + ")");
         }
-        float actualAmount = 0;
-        try {
-            float parsed = Float.parseFloat(getAEPSTransactionResponse.decrypted_Response.balanceAmountActual);
-            actualAmount = parsed / 100;
-        } catch (Exception e) {
-            Toast.makeText(this, String.valueOf(e.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
+
+
+        if (getAEPSTransactionResponse.decrypted_Response.balanceAmountActual.equalsIgnoreCase("na")) {
+            float actualAmount = 0;
+            try {
+                float parsed = Float.parseFloat(getAEPSTransactionResponse.decrypted_Response.balanceAmountActual);
+                actualAmount = parsed / 100;
+            } catch (Exception e) {
+                //   Toast.makeText(this, String.valueOf(e.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
+            }
+
+            binding.acBalanceAeps.setText("₹ " + String.valueOf(actualAmount));
+        } else {
+            binding.acBalanceAeps.setText("NA");
         }
 
-        binding.acBalanceAeps.setText("₹ " + String.valueOf(actualAmount));
 
         binding.timeAeps.setText(getTime());
         binding.dateAeps.setText(getDate());
@@ -750,109 +756,167 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
 
 
         if (mainResult != null) {
-            Utils.showCustomProgressDialog(AEPSActivity.this, false);
-            GetAEPSTransaction request = new GetAEPSTransaction();
-            request.aadhar_number_ = binding.edtxAdharNo.getText().toString();
-            request.iin_ = iin_;
-            request.amount_ = amount_a;
-            request.biometric_data_ = "<PidData" + mainResult.split("PidData")[1] + "PidData>";
-            request.txn_code_ = txn_code_;
-            request.customer_consent_ = customer_consent_;
-            request.txn_latitude_ = "0.0";
-            request.txn_longitude_ = "0.0";
-            request.terminal_IP_address_ = "10.0.0.1";
 
+            if (mainResult.length() >= 1) {
+                Utils.showCustomProgressDialog(AEPSActivity.this, false);
+                GetAEPSTransaction request = new GetAEPSTransaction();
+                request.aadhar_number_ = binding.edtxAdharNo.getText().toString();
+                request.iin_ = iin_;
+                request.amount_ = amount_a;
 
-            String gKey = KeyHelper.getKey(sessionManager.getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-                    .getKey(sessionManager.getMerchantName())).trim();
+                try {
+                    request.biometric_data_ = "<PidData" + mainResult.split("PidData")[1] + "PidData>";
+                } catch (IndexOutOfBoundsException e) {
+                    request.biometric_data_ = "";
+                }
 
+                request.txn_code_ = txn_code_;
+                request.customer_consent_ = customer_consent_;
+                request.txn_latitude_ = "0.0";
+                request.txn_longitude_ = "0.0";
+                request.terminal_IP_address_ = "10.0.0.1";
 
-            String body = RestClient.makeGSONString(request);
+                String gKey = KeyHelper.getKey(sessionManager.getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                        .getKey(sessionManager.getMerchantName())).trim();
 
-            AERequest aeRequest = new AERequest();
-            aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
+                String body = RestClient.makeGSONString(request);
+                AERequest aeRequest = new AERequest();
+                aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
-
-            viewModel.getAEPSData(aeRequest, KeyHelper.getKey(sessionManager.getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
-                    .getKey(sessionManager.getMerchantName())).trim()).observe(this
-                    , response -> {
-                        Utils.hideCustomProgressDialog();
-                        if (response.status == Status.ERROR) {
-                            onError(getString(response.messageResourceId));
-                        } else {
-                            assert response.resource != null;
-                            if (response.resource.responseCode.equals(101)) {
-                                Toast.makeText(this, response.resource.description, Toast.LENGTH_SHORT).show();
-                                binding.activityMain.setVisibility(View.INVISIBLE);
-                                binding.relativeReciept.setVisibility(View.VISIBLE);
-                                String bodyy = AESHelper.decrypt(response.resource.data.body
-                                        , gKey);
-                                try {
-
-                                    if (txn_code_.equals("31") || txn_code_.equals("01")) {
-                                        Gson gson = new Gson();
-                                        Type type = new TypeToken<AEPSTransactionResponseOne>() {
-                                        }.getType();
-                                        AEPSTransactionResponseOne data = gson.fromJson(bodyy, type);
-                                        getTransactionData(data);
-                                        binding.bcName.setText(data.bC_Name);
-                                        binding.agentId.setText(data.agent_ID);
-
-                                    } else if (txn_code_.equals("07")) {
-                                        binding.acBalanceLinear.setVisibility(View.GONE);
-                                        binding.transAmountLinear.setVisibility(View.GONE);
-                                        binding.activityMain.setVisibility(View.GONE);
+                viewModel.getAEPSData(aeRequest, KeyHelper.getKey(sessionManager.getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
+                        .getKey(sessionManager.getMerchantName())).trim()).observe(this
+                        , response -> {
+                            Utils.hideCustomProgressDialog();
+                            if (response != null) {
+                                if (response.status == Status.ERROR) {
+                                    onError(getString(response.messageResourceId));
+                                } else {
+                                    assert response.resource != null;
+                                    if (response.resource.responseCode.equals(101)) {
+                                        binding.activityMain.setVisibility(View.INVISIBLE);
                                         binding.relativeReciept.setVisibility(View.VISIBLE);
-                                        binding.titleService.setText("Mini Statement");
-                                        PDF_Type = "Mini_Statement";
-                                        try {
-                                            //if error is not there on mini
-                                            Gson gson1 = new Gson();
-                                            Type type1 = new TypeToken<AEPS_Trans_Response>() {
-                                            }.getType();
 
-                                            AEPS_Trans_Response data1 = gson1.fromJson(bodyy, type1);
-                                            binding.bcName.setText(data1.bC_Name);
-                                            binding.agentId.setText(data1.agent_ID);
-                                            getColomData(data1);
+                                        if (response.resource.data != null) {
+                                            if (response.resource.data.body != null) {
+                                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                                        , gKey);
+                                                if (bodyy != null) {
+                                                    try {
+                                                        if (txn_code_.equals("31") || txn_code_.equals("01")) {
+                                                            Gson gson = new Gson();
+                                                            Type type = new TypeToken<AEPSTransactionResponseOne>() {
+                                                            }.getType();
+                                                            AEPSTransactionResponseOne data = gson.fromJson(bodyy, type);
+                                                            if (data != null) {
+                                                                getTransactionData(data);
+                                                                binding.bcName.setText(data.bC_Name);
+                                                                binding.agentId.setText(data.agent_ID);
+                                                            } else {
+                                                                Toast.makeText(this, "Transaction is null", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        } else if (txn_code_.equals("07")) {
+                                                            binding.acBalanceLinear.setVisibility(View.GONE);
+                                                            binding.transAmountLinear.setVisibility(View.GONE);
+                                                            binding.activityMain.setVisibility(View.GONE);
+                                                            binding.relativeReciept.setVisibility(View.VISIBLE);
+                                                            binding.titleService.setText("Mini Statement");
+                                                            PDF_Type = "Mini_Statement";
+                                                            try {
+                                                                //if error is not there on mini
+                                                                Gson gson1 = new Gson();
+                                                                Type type1 = new TypeToken<AEPS_Trans_Response>() {
+                                                                }.getType();
 
-                                        } catch (Exception e1) {
-                                            e1.printStackTrace();
-                                            try {
-                                                Gson gson1 = new Gson();
-                                                Type type1 = new TypeToken<AEPSTransactionResponseOne>() {
-                                                }.getType();
-                                                AEPSTransactionResponseOne data1 = gson1.fromJson(bodyy, type1);
-                                                showPopup(data1.miniStatementError.error, "Error", true);
-                                            } catch (Exception e2) {
-                                                e2.printStackTrace();
+                                                                AEPS_Trans_Response data1 = gson1.fromJson(bodyy, type1);
+                                                                if (data1 != null) {
+                                                                    binding.bcName.setText(data1.bC_Name);
+                                                                    binding.agentId.setText(data1.agent_ID);
+                                                                    getColomData(data1);
+                                                                }
+                                                            } catch (Exception e1) {
+                                                                e1.printStackTrace();
+                                                                onError("Please Contact to admin");
+//                                                        try {
+//                                                            Gson gson1 = new Gson();
+//                                                            Type type1 = new TypeToken<AEPSTransactionResponseOne>() {
+//                                                            }.getType();
+//                                                            AEPSTransactionResponseOne data1 = gson1.fromJson(bodyy, type1);
+//                                                            if (data1 != null) {
+//                                                                if (data1.miniStatementError != null) {
+//                                                                    if (data1.miniStatementError.error != null) {
+//                                                                        showPopup(data1.miniStatementError.error, "Error", true);
+//
+//                                                                    } else {
+//                                                                        Toast.makeText(this, "Message is null", Toast.LENGTH_SHORT).show();
+//                                                                    }
+//                                                                } else {
+//                                                                    Toast.makeText(this, "Mini Error is Null", Toast.LENGTH_SHORT).show();
+//                                                                }
+//
+//                                                            } else {
+//                                                                Toast.makeText(this, "Error is null", Toast.LENGTH_SHORT).show();
+//                                                            }
+//                                                        } catch (Exception e2) {
+//                                                            e2.printStackTrace();
+//                                                        }
+                                                            }
+                                                        }
+
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
                                             }
+                                        } else {
+                                            onError(response.resource.description);
                                         }
+                                    } else {
+                                        if (response.resource.data != null) {
+                                            if (response.resource.data.body != null) {
+                                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                                        , gKey);
+                                                if (bodyy != null) {
+                                                    onError(bodyy);
+                                                } else {
+                                                    onError(response.resource.description);
+                                                }
+//                                        if (bodyy != null) {
+//                                            try {
+//                                                Gson gson = new Gson();
+//                                                Type type = new TypeToken<AEPSErrorResponse>() {
+//                                                }.getType();
+//                                                AEPSErrorResponse data = gson.fromJson(bodyy, type);
+//                                                if (data != null) {
+//                                                    if (data.message != null) {
+//                                                        onError(data.message);
+//                                                    } else {
+//                                                        Toast.makeText(this, "Data message is null", Toast.LENGTH_SHORT).show();
+//                                                    }
+//                                                } else {
+//                                                    Toast.makeText(this, "Error message is null", Toast.LENGTH_SHORT).show();
+//                                                }
+//
+//                                            } catch (Exception e) {
+//                                                onError(response.resource.description);
+//                                            }
+//                                        }
+                                            } else {
+                                                onError(response.resource.description);
+                                            }
+                                        } else {
+                                            onError(response.resource.description);
+                                        }
+
+
                                     }
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-
                                 }
                             } else {
-                                String bodyy = AESHelper.decrypt(response.resource.data.body
-                                        , gKey);
-                                try {
-
-                                    Gson gson = new Gson();
-                                    Type type = new TypeToken<AEPSErrorResponse>() {
-                                    }.getType();
-                                    AEPSErrorResponse data = gson.fromJson(bodyy, type);
-
-
-                                    onError(data.message);
-                                } catch (Exception e) {
-                                    onError(response.resource.description);
-                                }
-
+                                onError("Response is null");
                             }
-                        }
-                    });
+                        });
+            }
+
+
         } else {
             onError("Biometric data is not found Please Rescan");
         }
@@ -910,16 +974,19 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         } else {
             binding.aepsStatus.setText("Successful" + " (" + getAEPSTransactionResponse.responseCode + ")");
         }
-        float actualAmount = 0;
-        try {
-            float parsed = Float.parseFloat(getAEPSTransactionResponse.decrypted_Response.balanceAmountActual);
-            actualAmount = parsed / 100;
-        } catch (Exception e) {
-            Toast.makeText(this, String.valueOf(e.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
-        }
 
-        binding.acBalanceAeps.setText("₹ " + String.valueOf(actualAmount));
-        //  binding.transAmountAeps.setText("INR " + getAEPSTransactionResponse.balanceAmount);
+        if (getAEPSTransactionResponse.decrypted_Response.balanceAmountActual.equalsIgnoreCase("NA")) {
+            float actualAmount = 0;
+            try {
+                float parsed = Float.parseFloat(getAEPSTransactionResponse.decrypted_Response.balanceAmountActual);
+                actualAmount = parsed / 100;
+            } catch (Exception e) {
+                //Toast.makeText(this, String.valueOf(e.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
+            }
+            binding.acBalanceAeps.setText("₹ " + String.valueOf(actualAmount));
+        } else {
+            binding.acBalanceAeps.setText("NA");
+        }
 
 
         binding.timeAeps.setText(getTime());

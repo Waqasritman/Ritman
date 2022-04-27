@@ -16,9 +16,7 @@
             android:layout_below="@id/tool_bar"
             android:orientation="vertical"
             android:visibility="visible">
-            <!--            <include-->
-            <!--                android:id="@+id/tool_bar"-->
-            <!--                layout="@layout/tool_bar"/>-->
+
             <fragment
                 android:id="@+id/dashboard"
                 android:name="androidx.navigation.fragment.NavHostFragment"

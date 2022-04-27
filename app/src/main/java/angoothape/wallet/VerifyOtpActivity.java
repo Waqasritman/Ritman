@@ -3,6 +3,7 @@ package angoothape.wallet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
@@ -22,7 +23,6 @@ import angoothape.wallet.home_module.NewDashboardActivity;
 
 public class VerifyOtpActivity extends RitmanBaseActivity<ActivityVerifyOtpBinding> {
 
-
     String userName = "";
 
     @Override
@@ -32,46 +32,56 @@ public class VerifyOtpActivity extends RitmanBaseActivity<ActivityVerifyOtpBindi
 
     @Override
     protected void initUi(Bundle savedInstanceState) {
-
         userName = getIntent().getExtras().getString("userName", "");
+        binding.toolBar.titleTxt.setText("Verify OTP");
+
+        binding.btnVerifyOtp.setOnClickListener(v -> {
+            validate();
+        });
 
 
-        binding.btnVerifyOtp.setOnClickListener(v -> validate());
+        binding.toolBar.backBtn.setOnClickListener(v -> {
+            finish();
+        });
+        binding.toolBar.crossBtn.setVisibility(View.GONE);
     }
 
 
     public void validate() {
         if (binding.edtOtp.getText().toString().equals("")) {
             onMessage("Please Enter your OTP");
+        } else if (binding.edtOtp.getText().toString().length() < 4) {
+            onMessage("Please Enter your Four digit OTP");
         } else {
             getOtp();
         }
     }
 
     public void getOtp() {
-        Utils.showCustomProgressDialog(this , false);
+        binding.btnVerifyOtp.setEnabled(false);
+        showProgress();
         OtpRequest otpRequest = new OtpRequest();
         otpRequest.otp = binding.edtOtp.getText().toString();
         Call<SimpleResponse> call = RestClient.get().createotp(otpRequest, sessionManager.getMerchantName());
         call.enqueue(new Callback<SimpleResponse>() {
             @Override
             public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
-
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     if (response.body().responseCode.equals(101)) {
                         checkVerifiedEKYC();
                     } else {
-                        Utils.hideCustomProgressDialog();
+                        binding.btnVerifyOtp.setEnabled(true);
+                        hideProgress();
                         onError(response.body().description);
-                        // binding.edtOtp.getText().clear();
-
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<SimpleResponse> call, Throwable t) {
+                binding.btnVerifyOtp.setEnabled(true);
+                hideProgress();
                 Log.e("TAG", "onFailure: " + t.getLocalizedMessage());
             }
         });
@@ -96,7 +106,7 @@ public class VerifyOtpActivity extends RitmanBaseActivity<ActivityVerifyOtpBindi
         call.enqueue(new Callback<AEResponse>() {
             @Override
             public void onResponse(Call<AEResponse> call, Response<AEResponse> response) {
-                Utils.hideCustomProgressDialog();
+
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     if (response.body().responseCode.equals(101)) {
@@ -111,6 +121,7 @@ public class VerifyOtpActivity extends RitmanBaseActivity<ActivityVerifyOtpBindi
                         startActivity(new Intent(VerifyOtpActivity.this,
                                 NewDashboardActivity.class));
                     } else {
+                        binding.btnVerifyOtp.setEnabled(true);
                         Utils.hideCustomProgressDialog();
                         if (response.body().data != null) {
                             String bodyy = AESHelper.decrypt(response.body().data.body
@@ -125,14 +136,29 @@ public class VerifyOtpActivity extends RitmanBaseActivity<ActivityVerifyOtpBindi
                         }
                     }
                 }
+                hideProgress();
             }
 
             @Override
             public void onFailure(Call<AEResponse> call, Throwable t) {
-                Utils.hideCustomProgressDialog();
+                hideProgress();
                 Log.e("TAG", "onFailure: " + t.getLocalizedMessage());
             }
         });
     }
 
+    @Override
+    public void showProgress() {
+        super.showProgress();
+        binding.btnVerifyOtp.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+
+    @Override
+    public void hideProgress() {
+        super.hideProgress();
+        binding.btnVerifyOtp.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.GONE);
+    }
 }

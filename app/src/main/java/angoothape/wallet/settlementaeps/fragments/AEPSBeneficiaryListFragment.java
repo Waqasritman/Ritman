@@ -47,7 +47,7 @@ public class AEPSBeneficiaryListFragment extends BaseFragment<ActivitySelectBene
     @Override
     protected void setUp(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(AEPSSettlementViewModel.class);
-        binding.backBtn.setVisibility(View.GONE);
+        binding.toolBarFinal.setVisibility(View.GONE);
         binding.searchViw.setVisibility(View.GONE);
         binding.dailyLimit.setVisibility(View.GONE);
         setAccountsRecyclerView();

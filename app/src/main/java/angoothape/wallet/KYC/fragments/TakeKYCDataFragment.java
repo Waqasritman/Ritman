@@ -337,28 +337,28 @@ public class TakeKYCDataFragment extends BaseFragment<FragmentTakeKycDataBinding
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        if (isIssueDateSelect) {
-           // request.idIssueDate = DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth);
-            binding.idIssueDate.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
-        }
-
-        if (!isDateOfBirth && !isIssueDateSelect) {
-         //   request.idExpireDate = DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth);
-            binding.idExpireDate.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
-        }
-
-
-        if (isDateOfBirth) {
-            Calendar userAge = new GregorianCalendar(year, monthOfYear, dayOfMonth);
-            Calendar minAdultAge = new GregorianCalendar();
-            minAdultAge.add(Calendar.YEAR, -18);
-            if (minAdultAge.before(userAge)) {
-                onMessage(getString(R.string.must_be_18_year_old));
-            } else {
-                binding.dateOfBirth.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
-                request.customer.dob = binding.dateOfBirth.getText().toString();
-            }
-        }
+//        if (isIssueDateSelect) {
+//           // request.idIssueDate = DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth);
+//            binding.idIssueDate.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
+//        }
+//
+//        if (!isDateOfBirth && !isIssueDateSelect) {
+//         //   request.idExpireDate = DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth);
+//            binding.idExpireDate.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
+//        }
+//
+//
+//        if (isDateOfBirth) {
+//            Calendar userAge = new GregorianCalendar(year, monthOfYear, dayOfMonth);
+//            Calendar minAdultAge = new GregorianCalendar();
+//            minAdultAge.add(Calendar.YEAR, -18);
+//            if (minAdultAge.before(userAge)) {
+//                onMessage(getString(R.string.must_be_18_year_old));
+//            } else {
+//                binding.dateOfBirth.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
+//                request.customer.dob = binding.dateOfBirth.getText().toString();
+//            }
+//        }
     }
 
     @Override

@@ -107,6 +107,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
         Constants.hideKeyboard(getBaseActivity());
         Snackbar snackbar = Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT);
         snackbar.setAction(getString(R.string.cancel), v -> snackbar.dismiss());
+        snackbar.setActionTextColor(getResources().getColor(R.color.white));
         snackbar.show();
     }
 
@@ -114,6 +115,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
         Constants.hideKeyboard(getBaseActivity());
         Snackbar snackbar = Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT);
         snackbar.setAction(getString(R.string.cancel), v -> snackbar.dismiss());
+        snackbar.setActionTextColor(getResources().getColor(R.color.white));
         snackbar.show();
     }
 
@@ -128,7 +130,6 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
         }, 400);
 
 
-
     }
 
     private void showPOPUP(String message) {
@@ -140,7 +141,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             dialog.show(transaction, "");
         } catch (IllegalStateException e) {
-            
+
         }
 
     }

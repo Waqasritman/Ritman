@@ -23,29 +23,24 @@ public class CreateCustomerFragment extends BaseFragment<CreateCustomerFragmentL
         setZoomInAnimation(binding.cardCustomerRegistration);
         setZoomInAnimation(binding.linearUploadDocuments);
 
-        binding.cardCustomerRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id
-                        .action_createCustomerFragment_to_personal_ZeroFragment);
-            }
-        });
+        binding.cardCustomerRegistration.setOnClickListener(v -> Navigation.findNavController(binding.getRoot()).navigate(R.id
+                .action_createCustomerFragment_to_personal_ZeroFragment));
 
-        binding.cardCheckCustomerStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id
-                        .action_createCustomerFragment_to_checkCustomerStatusFragment);
-            }
-        });
+        binding.cardCheckCustomerStatus.setOnClickListener(v -> Navigation.findNavController(binding.getRoot()).navigate(R.id
+                .action_createCustomerFragment_to_checkCustomerStatusFragment));
 
-        binding.linearUploadDocuments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id
-                        .action_createCustomerFragment_to_uploadDocumentFragment);
-            }
-        });
+        binding.linearUploadDocuments.setOnClickListener(v -> Navigation.findNavController(binding.getRoot()).navigate(R.id
+                .action_createCustomerFragment_to_uploadDocumentFragment));
+
+
+        binding.create.setOnClickListener(v -> Navigation.findNavController(binding.getRoot()).navigate(R.id
+                .action_createCustomerFragment_to_personal_ZeroFragment));
+
+        binding.check.setOnClickListener(v -> Navigation.findNavController(binding.getRoot()).navigate(R.id
+                .action_createCustomerFragment_to_checkCustomerStatusFragment));
+
+        binding.upload.setOnClickListener(v -> Navigation.findNavController(binding.getRoot()).navigate(R.id
+                .action_createCustomerFragment_to_uploadDocumentFragment));
     }
 
     @Override

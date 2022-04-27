@@ -8,17 +8,17 @@
 
 
         <LinearLayout
-            android:layout_marginTop="@dimen/margin_10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/width_100dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/margin_10dp"
                 android:fontFamily="@font/lato_semibold"
                 android:text="Name:"
@@ -27,10 +27,10 @@
                 android:textSize="@dimen/text_size_12sp" />
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:fontFamily="@font/montserrat_medium"
                 android:textAllCaps="true"
@@ -40,17 +40,17 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/margin_10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/width_100dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/margin_10dp"
                 android:fontFamily="@font/lato_semibold"
                 android:text="Contact no:"
@@ -59,10 +59,10 @@
                 android:textSize="@dimen/text_size_12sp" />
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:id="@+id/contact_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:fontFamily="@font/montserrat_medium"
                 android:textAllCaps="true"
@@ -72,29 +72,29 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/margin_10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/width_100dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/margin_10dp"
                 android:fontFamily="@font/lato_semibold"
-                android:text="Email id:"
+                android:text="EMAIL ID:"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_12sp" />
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:id="@+id/email_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:fontFamily="@font/montserrat_medium"
                 android:textAllCaps="false"

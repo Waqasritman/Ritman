@@ -42,753 +42,721 @@
             android:paddingBottom="@dimen/width_100dp"
             android:scrollbars="none">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_12dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/above_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="@dimen/margin_10dp"
-                    android:layout_marginRight="@dimen/margin_10dp"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/nominee_name" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_nominee_name"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/nominee_name"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/Percentage_Share" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_Percentage_Share"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/Percentage_Share"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/nominee_dob_text" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_dob"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:hint="Nominee DOB"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:singleLine="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:text="@string/Relationship_with_Member" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spin_member_relationship"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+                        android:gravity="center_vertical"
+                        android:hint="Select Option"
+                        android:paddingLeft="@dimen/margin_10dp"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/dogh_flag" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_dogh_flag"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/dogh_flag"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/otp_consent_flag" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_otp_consent_flag"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/otp_consent_flag"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/OTP_Consent_Date_Time_Stamp" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_OTP_Consent_Date_Time_Stamp"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:hint="@string/OTP_Consent_Date_Time_Stamp"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/Source" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_Source"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/Source"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/mph_name" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_mph_name"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/mph_name"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/date_time_of_insertion" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_date_time_of_insertion"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:hint="@string/date_time_of_insertion"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/Product_Type" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_Product_Type"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/Product_Type"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/emailId" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_email_id"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="Email Id"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="30"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/Appointee_Name" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_Appointee_Name"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/Appointee_Name"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:text="@string/Relationship_with_Nominee" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spin_relationship_with_nominee"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+
+                        android:gravity="center_vertical"
+                        android:hint="Select Option"
+                        android:paddingLeft="@dimen/margin_10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/Appointee_DOB" />
+
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/Red"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_appointee_dob"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="@dimen/height_50dp"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:hint="@string/Appointee_DOB"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:singleLine="true" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/nominee_name"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_nominee_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="@string/nominee_name"
-                            android:inputType="text"
-                            android:maxLength="100"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/Percentage_Share"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_Percentage_Share"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="@string/Percentage_Share"
-                            android:inputType="text"
-                            android:maxLength="100"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/nominee_dob_text"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_10dp"
-                                android:layout_marginBottom="@dimen/margin_10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_dob"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:focusable="false"
-                            android:gravity="center_vertical"
-                            android:hint="Nominee DOB"
-                            android:inputType="number"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_10dp"
-                                android:layout_marginBottom="@dimen/margin_10dp"
-                                android:text="@string/Relationship_with_Member"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_10dp"
-                                android:layout_marginBottom="@dimen/margin_10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                        </LinearLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/spin_member_relationship"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_beneficiary_registeration"
-                            android:drawableTint="@color/posGreen"
-                            android:gravity="center_vertical"
-                            android:hint="Select Option"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/dogh_flag"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_dogh_flag"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="@string/dogh_flag"
-                            android:inputType="text"
-                            android:maxLength="100"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp"
-                            android:visibility="gone" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/otp_consent_flag"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_otp_consent_flag"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="@string/otp_consent_flag"
-                            android:inputType="text"
-                            android:maxLength="100"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp"
-                            android:visibility="gone" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/OTP_Consent_Date_Time_Stamp"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_10dp"
-                                android:layout_marginBottom="@dimen/margin_10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_OTP_Consent_Date_Time_Stamp"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:focusable="false"
-                            android:gravity="center_vertical"
-                            android:hint="@string/OTP_Consent_Date_Time_Stamp"
-                            android:inputType="number"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp"
-                            android:visibility="gone" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/Source"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_Source"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="@string/Source"
-                            android:inputType="text"
-                            android:maxLength="100"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp"
-                            android:visibility="gone" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/mph_name"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_mph_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="@string/mph_name"
-                            android:inputType="text"
-                            android:maxLength="100"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp"
-                            android:visibility="gone" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/date_time_of_insertion"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_10dp"
-                                android:layout_marginBottom="@dimen/margin_10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_date_time_of_insertion"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:focusable="false"
-                            android:gravity="center_vertical"
-                            android:hint="@string/date_time_of_insertion"
-                            android:inputType="number"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp"
-                            android:visibility="gone" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/Product_Type"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_Product_Type"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="@string/Product_Type"
-                            android:inputType="text"
-                            android:maxLength="100"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp"
-                            android:visibility="gone" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/emailId"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_email_id"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="Email Id"
-                            android:inputType="textEmailAddress"
-                            android:maxLength="30"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/Appointee_Name"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp"
-                                android:visibility="gone" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_Appointee_Name"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="@string/Appointee_Name"
-                            android:inputType="text"
-                            android:maxLength="100"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_10dp"
-                                android:layout_marginBottom="@dimen/margin_10dp"
-                                android:text="@string/Relationship_with_Nominee"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_10dp"
-                                android:layout_marginBottom="@dimen/margin_10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp"
-                                android:visibility="gone" />
-
-                        </LinearLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/spin_relationship_with_nominee"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_beneficiary_registeration"
-                            android:drawableTint="@color/posGreen"
-                            android:gravity="center_vertical"
-                            android:hint="Select Option"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/Appointee_DOB"
-                                android:textSize="@dimen/text_size_14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_10dp"
-                                android:layout_marginBottom="@dimen/margin_10dp"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp"
-                                android:visibility="gone" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/edt_appointee_dob"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
-                            android:focusable="false"
-                            android:gravity="center_vertical"
-                            android:hint="@string/Appointee_DOB"
-                            android:inputType="number"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_10dp">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:visibility="visible">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:text="@string/good_health_declaration"
-                                    android:textSize="@dimen/text_size_14sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:text="@string/asterisk"
-                                    android:textColor="@color/Red"
-                                    android:textSize="@dimen/text_size_14sp" />
-
-                            </LinearLayout>
-                            <CheckBox
-                                android:id="@+id/check_good_health_declaration"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:layout_alignParentEnd="true"/>
-                        </RelativeLayout>
-
-                        <RelativeLayout
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:visibility="visible">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/good_health_declaration" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:text="@string/covid_questionnaire"
-                                    android:textSize="@dimen/text_size_14sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:text="@string/asterisk"
-                                    android:textColor="@color/Red"
-                                    android:textSize="@dimen/text_size_14sp" />
-
-                            </LinearLayout>
-                            <CheckBox
-                                android:id="@+id/check_covid_questionnaire"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:layout_alignParentEnd="true"/>
-                        </RelativeLayout>
-
-
-                        <RelativeLayout
+                        <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:visibility="visible">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:text="@string/terms_condition"
-                                    android:textSize="@dimen/text_size_14sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:text="@string/asterisk"
-                                    android:textColor="@color/Red"
-                                    android:textSize="@dimen/text_size_14sp" />
-
-                            </LinearLayout>
-                            <CheckBox
-                                android:id="@+id/check_terms_condition"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:layout_alignParentEnd="true"/>
-                        </RelativeLayout>
-
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/asterisk"
+                            android:textColor="@color/Red" />
 
                     </LinearLayout>
 
-                </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/check_good_health_declaration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp" />
+                </RelativeLayout>
 
-            </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            style="@style/TitleStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/covid_questionnaire" />
+
+                        <TextView
+                            style="@style/TitleStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/asterisk"
+                            android:textColor="@color/Red" />
+
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/check_covid_questionnaire"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            style="@style/TitleStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/terms_condition" />
+
+                        <TextView
+                            style="@style/TitleStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/asterisk"
+                            android:textColor="@color/Red" />
+
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/check_terms_condition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
         <Button
             android:id="@+id/btn_next"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_50dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="@dimen/margin_10dp"
             android:layout_marginEnd="@dimen/margin_10dp"
             android:layout_marginBottom="@dimen/margin_20dp"
-            android:background="@drawable/background_button"
-            android:fontFamily="@font/lato_bold"
             android:text="Submit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_18sp"
             android:visibility="visible" />
     </RelativeLayout>
 

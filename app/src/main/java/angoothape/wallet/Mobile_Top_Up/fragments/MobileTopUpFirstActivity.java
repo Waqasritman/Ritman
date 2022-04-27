@@ -156,7 +156,10 @@ public class MobileTopUpFirstActivity extends BaseFragment<ActivityMobileTopUpFi
                                 }
 
 
-                            } else {
+                            } else if (response.resource.responseCode.equals(305)) {
+                                onMessage(response.resource.description + "\nTry again later");
+                                Navigation.findNavController(binding.getRoot()).navigateUp();
+                            }else {
                                 Utils.hideCustomProgressDialog();
                                 if (response.resource.data != null) {
                                     String bodyy = AESHelper.decrypt(response.resource.data.body

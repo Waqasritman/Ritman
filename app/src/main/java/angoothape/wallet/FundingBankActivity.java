@@ -42,7 +42,10 @@ public class FundingBankActivity extends RitmanBaseActivity<ActivityFundingBankB
     @Override
     protected void initUi(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(CustomerServiceViewModel.class);
-
+        binding.toolBar.titleTxt.setText("Funding Banks");
+        binding.toolBar.crossBtn.setOnClickListener(v -> {
+            onClose();
+        });
         binding.toolBar.backBtn.setOnClickListener(v -> {
             onBackPressed();
         });

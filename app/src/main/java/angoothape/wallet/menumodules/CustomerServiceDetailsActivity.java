@@ -43,7 +43,10 @@ public class CustomerServiceDetailsActivity extends RitmanBaseActivity<ActivityC
     @Override
     protected void initUi(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(CustomerServiceViewModel.class);
-
+        binding.toolBarFinal.titleTxt.setText("Customer Service");
+        binding.toolBarFinal.crossBtn.setOnClickListener(v -> {
+            onClose();
+        });
         binding.toolBarFinal.backBtn.setOnClickListener(v -> {
             onBackPressed();
         });

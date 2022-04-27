@@ -38,22 +38,20 @@
 
                 <TextView
                     android:id="@+id/old_pin_txt"
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:fontFamily="@font/lato_medium"
-                    android:text="@string/old_pin"
-                    android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_15sp" />
+                    android:text="@string/old_pin" />
 
 
                 <EditText
                     android:id="@+id/old_pin"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_45dp"
                     android:layout_marginTop="@dimen/margin_5dp"
-                    android:background="@drawable/edittext_grey"
-                    android:fontFamily="@font/lato_medium"
                     android:gravity="center_vertical"
                     android:hint="@string/pinhint"
                     android:inputType="textPassword"
@@ -63,22 +61,20 @@
                     android:textSize="@dimen/text_size_14sp" />
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:fontFamily="@font/lato_medium"
-                    android:text="@string/new_pin"
-                    android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_15sp" />
+                    android:text="@string/new_pin" />
 
 
                 <EditText
                     android:id="@+id/new_pin"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_45dp"
                     android:layout_marginTop="@dimen/margin_5dp"
-                    android:background="@drawable/edittext_grey"
-                    android:fontFamily="@font/lato_medium"
                     android:gravity="center_vertical"
                     android:hint="@string/pinhint"
                     android:inputType="textPassword"
@@ -88,22 +84,20 @@
                     android:textSize="@dimen/text_size_14sp" />
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:fontFamily="@font/lato_medium"
-                    android:text="@string/confirm_pin"
-                    android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_15sp" />
+                    android:text="@string/confirm_pin" />
 
 
                 <EditText
                     android:id="@+id/confirm_pin"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_45dp"
                     android:layout_marginTop="@dimen/margin_5dp"
-                    android:background="@drawable/edittext_grey"
-                    android:fontFamily="@font/lato_medium"
                     android:gravity="center_vertical"
                     android:hint="@string/pinhint"
                     android:inputType="textPassword"
@@ -115,15 +109,12 @@
 
                 <Button
                     android:id="@+id/change_pin"
+                    style="@style/ButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="@dimen/margin_15dp"
-                    android:background="@drawable/button_design"
-                    android:text="@string/change_pin"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_18sp" />
+                    android:text="@string/change_pin" />
 
 
             </LinearLayout>

@@ -978,11 +978,11 @@
 
 
                     <TextView
+                        style="@style/TitleStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:text="@string/adhaar_no_virtu"
-                        android:textSize="@dimen/_12ssp" />
+                        android:text="@string/adhaar_no_virtu" />
 
                     <Button
                         android:id="@+id/testu"
@@ -1001,18 +1001,16 @@
 
                         <EditText
                             android:id="@+id/edtxAdharNo"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/border_background_green_colour"
                             android:gravity="center_vertical"
                             android:hint="00000000000"
                             android:imeOptions="actionDone"
                             android:inputType="phone"
                             android:paddingStart="@dimen/margin_10dp"
-                            android:paddingEnd="@dimen/margin_10dp"
-                            android:textColor="@android:color/black"
-                            android:textSize="@dimen/_14sdp" />
+                            android:paddingEnd="@dimen/margin_10dp" />
 
                     </LinearLayout>
 
@@ -1024,7 +1022,8 @@
                         android:visibility="gone">
 
                         <TextView
-                            style="@style/lblTitleLight"
+
+                            style="@style/TitleStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
@@ -1032,6 +1031,7 @@
 
                         <Spinner
                             android:id="@+id/spinnerFingerType"
+                            style="@style/EditTextStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_marginTop="@dimen/_5sdp"
@@ -1111,7 +1111,7 @@
                         android:orientation="vertical">
 
                         <TextView
-
+                            style="@style/TitleStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
@@ -1122,8 +1122,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:background="@drawable/border_background_green_colour"
-                            android:drawableEnd="@drawable/dropdown_arrow"
                             android:entries="@array/deviceType"
                             android:spinnerMode="dropdown" />
 
@@ -1147,23 +1145,21 @@
 
                         <Button
                             android:id="@+id/btnCapture"
-                            style="@style/btn1"
+                            style="@style/ButtonStyle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/_2sdp"
                             android:layout_weight="1"
-                            android:background="@color/posGreen"
                             android:text="Capture" />
 
 
                         <Button
                             android:id="@+id/btnSubmit"
-                            style="@style/btn1"
+                            style="@style/ButtonStyle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/_2sdp"
                             android:layout_weight="1"
-                            android:background="@color/posGreen"
                             android:text="Submit" />
                     </LinearLayout>
 

@@ -3,8 +3,7 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/grey_10">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/txt_title"
@@ -15,40 +14,41 @@
             android:text="@string/select_option"
             android:textColor="@color/black"
             android:textSize="@dimen/_15sdp" />
+
         <LinearLayout
             android:id="@+id/card_customer_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_title"
             android:layout_gravity="center"
             android:layout_margin="@dimen/_10sdp"
-            android:backgroundTint="@color/colorPrimary"
-            android:layout_below="@+id/txt_title"
             android:background="@drawable/background_bill_payment"
+            android:backgroundTint="@color/colorPrimary"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="@dimen/_8sdp"
-            android:weightSum="3.5">
+            android:padding="@dimen/margin_10dp">
+
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/user"
+                app:tint="@color/colorWhite" />
 
             <TextView
+                android:id="@+id/create"
+                style="@style/ButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="3"
-                app:drawableTint="@color/white"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/arrow_menu"
                 android:drawablePadding="@dimen/_10sdp"
-                android:fontFamily="@font/lato_regular"
+                android:drawableTint="@color/white"
                 android:gravity="start|center_vertical"
-                android:text="@string/customer_registration"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp"
-                app:drawableStartCompat="@drawable/user" />
+                android:text="@string/customer_registration" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:tint="@color/colorWhite"
-                android:src="@drawable/arrow_menu" />
 
         </LinearLayout>
 
@@ -57,36 +57,36 @@
             android:id="@+id/card_check_customer_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/card_customer_registration"
+
             android:layout_gravity="center"
             android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/background_bill_payment"
             android:backgroundTint="@color/colorPrimary"
-            android:background="@drawable/background_select_mood"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_below="@+id/card_customer_registration"
-            android:padding="@dimen/_8sdp"
-            android:weightSum="3.5">
+            android:padding="@dimen/margin_10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/user"
+                app:tint="@color/colorWhite" />
 
             <TextView
-                app:drawableTint="@color/white"
+                android:id="@+id/check"
+                style="@style/ButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="3"
-                android:drawableStart="@drawable/user"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/arrow_menu"
                 android:drawablePadding="@dimen/_10sdp"
-                android:fontFamily="@font/lato_regular"
+                android:drawableTint="@color/white"
                 android:gravity="start|center_vertical"
-                android:text="@string/check_customer_status"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp" />
+                android:text="@string/check_customer_status" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:tint="@color/colorWhite"
-                android:src="@drawable/arrow_menu" />
 
         </LinearLayout>
 
@@ -94,36 +94,37 @@
             android:id="@+id/linear_upload_documents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/card_check_customer_status"
             android:layout_gravity="center"
             android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/background_bill_payment"
             android:backgroundTint="@color/colorPrimary"
-            android:background="@drawable/background_select_mood"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_below="@+id/card_check_customer_status"
-            android:padding="@dimen/_8sdp"
-            android:weightSum="3.5">
+            android:padding="@dimen/margin_10dp">
+
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/file"
+                app:tint="@color/colorWhite" />
 
             <TextView
-                app:drawableTint="@color/white"
+                android:id="@+id/upload"
+                style="@style/ButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="3"
-                android:drawableStart="@drawable/file"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/arrow_menu"
                 android:drawablePadding="@dimen/_10sdp"
                 android:fontFamily="@font/lato_regular"
                 android:gravity="start|center_vertical"
                 android:text="@string/upload_documents"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp" />
+                app:drawableTint="@color/white" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:tint="@color/colorWhite"
-                android:src="@drawable/arrow_menu" />
 
         </LinearLayout>
     </RelativeLayout>

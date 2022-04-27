@@ -13,6 +13,7 @@
             android:background="@drawable/no_bene" />
 
         <TextView
+            android:layout_marginTop="@dimen/margin_15dp"
             android:id="@+id/error_empty"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/pay_icon"

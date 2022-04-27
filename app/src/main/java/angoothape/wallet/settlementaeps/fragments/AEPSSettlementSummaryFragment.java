@@ -54,10 +54,7 @@ public class AEPSSettlementSummaryFragment extends BaseFragment<FragmentAepsSett
         settlementTransactionRequest.Beneficiary_ID = getArguments().getString("beneid");
         settlementTransactionRequest.Payment_ID = commissionRequest.Payment_Id;
         settlementTransactionRequest.amount_ = commissionRequest.Transfer_Amount;
-
         getCommission();
-
-
         binding.confirmBtn.setOnClickListener(v -> aepsSettlement());
     }
 
@@ -86,8 +83,6 @@ public class AEPSSettlementSummaryFragment extends BaseFragment<FragmentAepsSett
                     } else {
                         assert response.resource != null;
                         if (response.resource.responseCode.equals(101)) {
-                            //    onMessage(response.resource.description);
-
                             String bodyy = AESHelper.decrypt(response.resource.data.body
                                     , gKey);
                             try {

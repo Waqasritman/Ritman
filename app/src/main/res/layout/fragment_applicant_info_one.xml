@@ -2,9 +2,9 @@
 <layout xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/parent_relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/parent_relativeLayout"
         android:orientation="vertical"
         tools:context=".personal_loan.fragment.ApplicantInfoOneFragment">
 
@@ -12,242 +12,200 @@
             android:id="@+id/txt_applicant_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
             android:text="@string/applicant_info"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:layout_centerHorizontal="true"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:fillViewport="true"
             android:layout_below="@id/txt_applicant_info"
+            android:fillViewport="true"
             android:paddingBottom="@dimen/width_100dp"
             android:scrollbars="none">
 
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_15dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/above_layout"
+                <TextView
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="@dimen/margin_10dp"
-                    android:layout_marginRight="@dimen/margin_10dp"
-                    android:orientation="vertical">
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/company_name" />
+
+                <EditText
+                    android:id="@+id/edt_company_name"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:hint="Company Name"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
 
 
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/office_phone_no_text" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                       <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/company_name"
-                            android:textSize="@dimen/text_size_14sp" />
-
-                            <EditText
-                                android:singleLine="true"
-                                android:id="@+id/edt_company_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:gravity="center_vertical"
-                                android:hint="Company Name"
-                                android:inputType="text"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                <EditText
+                    android:id="@+id/edt_office_phone_no"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:hint="Office Phone No."
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
 
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/office_phone_no_text"
-                            android:textSize="@dimen/text_size_14sp" />
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/designation_text" />
 
-                            <EditText
-                                android:singleLine="true"
-                                android:id="@+id/edt_office_phone_no"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:gravity="center_vertical"
-                                android:hint="Office Phone No."
-                                android:inputType="number"
-                                android:maxLength="11"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp"/>
+                <TextView
+                    android:id="@+id/txt_designation"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:drawableEnd="@drawable/dropdown_arrow"
+                    android:gravity="center_vertical"
+                    android:hint="Select designation"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
 
 
-                       <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/designation_text"
-                            android:textSize="@dimen/text_size_14sp" />
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/monthly_income" />
 
-                            <TextView
-                                android:singleLine="true"
-                                android:id="@+id/txt_designation"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:drawableEnd="@drawable/dropdown_arrow"
-                                android:gravity="center_vertical"
-                                android:hint="Select designation"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                <EditText
+                    android:id="@+id/edt_monthly_income"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:hint="Monthly Income"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
 
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/loan_amount" />
 
-
-                          <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/monthly_income"
-                            android:textSize="@dimen/text_size_14sp" />
-
-                            <EditText
-                                android:singleLine="true"
-                                android:id="@+id/edt_monthly_income"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:gravity="center_vertical"
-                                android:hint="Monthly Income"
-                                android:inputType="number"
-                                android:maxLength="6"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/loan_amount"
-                            android:textSize="@dimen/text_size_14sp" />
-
-                        <EditText
-                            android:singleLine="true"
-                            android:id="@+id/edt_loan_amount"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:background="@drawable/background_beneficiary_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="Loan Amount"
-                            android:inputType="number"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                <EditText
+                    android:id="@+id/edt_loan_amount"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:hint="Loan Amount"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
 
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/years_in_current_work"
-                            android:textSize="@dimen/text_size_14sp" />
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/years_in_current_work" />
 
-                            <EditText
-                                android:singleLine="true"
-                                android:id="@+id/edt_no_of_years_in_current_work"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:gravity="center_vertical"
-                                android:hint="No. of years in Current Work"
-                                android:inputType="number"
-                                android:maxLength="2"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                <EditText
+                    android:id="@+id/edt_no_of_years_in_current_work"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:hint="No. of years in Current Work"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
 
 
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/official_email" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/official_email"
-                            android:textSize="@dimen/text_size_14sp" />
-
-                            <EditText
-                                android:singleLine="true"
-                                android:id="@+id/edt_official_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:gravity="center_vertical"
-                                android:hint="Official Email"
-                                android:inputType="textEmailAddress"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                <EditText
+                    android:id="@+id/edt_official_email"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:hint="Official Email"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
 
 
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/office_address_1" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/office_address_1"
-                            android:textSize="@dimen/text_size_14sp" />
-
-                            <EditText
-                                android:singleLine="true"
-                                android:id="@+id/edt_office_address_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:gravity="center_vertical"
-                                android:hint="Office Address 1"
-                                android:inputType="textEmailAddress"
-                                android:maxLength="512"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                <EditText
+                    android:id="@+id/edt_office_address_1"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:hint="Office Address 1"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="512"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:singleLine="true" />
 
 
+            </LinearLayout>
 
-                    </LinearLayout>
-
-
-
-                </LinearLayout>
-
-
-            </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
 
         <Button

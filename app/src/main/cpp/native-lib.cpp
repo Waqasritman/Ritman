@@ -1,7 +1,3 @@
-//
-// Created by Mohammad Waqas on 4/25/21.
-
-//
 
 #include <jni.h>
 #include <string>
@@ -14,23 +10,22 @@ Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_RitpayDomesticlivebaseurl(
     std::string baseURL = "https://payinapi.angoothape.com/";
     return env->NewStringUTF(baseURL.c_str());
 }
-
+//https://122.187.215.20/RitpayDomesticRestAPIUAT/
+//https://restpayinapi.angoothape.com/
 
 extern "C"
 jstring
-Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_RitpayRestlivebaseurl(
+Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_EKYC(
         JNIEnv *env,
         jclass clazz) {
     std::string baseURL = "https://restpayinapi.angoothape.com/";
     return env->NewStringUTF(baseURL.c_str());
 }
 
-
-
 extern "C"
 jstring
 Java_angoothape_wallet_di_JSONdi_retrofit_KeyHelper_getKey(
-        JNIEnv* env,
+        JNIEnv *env,
         jclass clazz) {
     std::string baseURL = "167114|RITMANPAYAPIUSER|BK61MNITO9!";
     return env->NewStringUTF(baseURL.c_str());
@@ -61,33 +56,6 @@ Java_angoothape_wallet_di_JSONdi_restRequest_Credentials_getPassword(
         JNIEnv *env,
         jclass clazz) {
     std::string baseURL = "BK61MNITO9!";
-    return env->NewStringUTF(baseURL.c_str());
-}
-
-
-extern "C"
-jstring
-Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_IndiaFirsturl(
-        JNIEnv *env,
-        jclass clazz) {
-    std::string baseURL = "https://122.187.215.20/RitpayDomesticRestAPIUAT/";
-    return env->NewStringUTF(baseURL.c_str());
-}
-
-
-extern "C"
-jstring
-Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_EKYC(
-        JNIEnv *env,
-        jclass clazz) {
-    std::string baseURL = "https://restpayinapi.angoothape.com/";
-    return env->NewStringUTF(baseURL.c_str());
-}
-
-extern "C"
-JNIEXPORT jstring JNICALL
-Java_angoothape_wallet_di_JSONdi_retrofit_RestClient_RitpayDomesticbaseurl(JNIEnv *env, jclass clazz) {
-    std::string baseURL = "https://122.187.215.20/RitpayDomesticRestAPIUAT/RPAY/";
     return env->NewStringUTF(baseURL.c_str());
 }
 

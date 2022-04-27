@@ -38,7 +38,7 @@
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="@dimen/margin_15dp"
-                        android:src="@drawable/ic_logo" />
+                        android:src="@mipmap/icon" />
 
 
                     <androidx.cardview.widget.CardView

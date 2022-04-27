@@ -1,109 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_5sdp"
+        android:scrollbars="none">
 
-        <!-- TODO: Update blank fragment layout -->
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/_5sdp"
-            android:scrollbars="none">
+            android:orientation="vertical">
+
 
             <LinearLayout
+                android:id="@+id/closing_view_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/_5sdp"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:id="@+id/closing_view_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:visibility="gone"
-                    android:weightSum="2">
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:text="Closing Balance"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/text_size_16sp" />
-
-                    <TextView
-                        android:id="@+id/closing_balance"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:gravity="end"
-                        android:text="INR 1000"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/text_size_16sp" />
-                </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="2">
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10dp"
-                    android:layout_marginBottom="@dimen/margin_10dp"
-                    android:text="@string/sending_amount_m"
-                    android:textSize="@dimen/text_size_14sp" />
-
-                <EditText
-                    android:id="@+id/sending_amount_field"
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/background_select_mood"
-                    android:fontFamily="@font/lato_semibold"
-                    android:hint="@string/amount_hint"
-                    android:inputType="numberDecimal"
-                    android:padding="@dimen/_10sdp"
-                    android:textSize="@dimen/text_size_16sp" />
+                    android:text="Closing Balance" />
 
                 <TextView
+                    android:id="@+id/closing_balance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10dp"
-                    android:layout_marginBottom="@dimen/margin_10dp"
-                    android:text="Payment mode*"
-                    android:textSize="@dimen/text_size_14sp" />
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="end"
+                    android:text="INR 1000"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_16sp" />
+            </LinearLayout>
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:text="@string/sending_amount_m" />
+
+            <EditText
+                android:id="@+id/sending_amount_field"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/lato_semibold"
+                android:hint="@string/amount_hint"
+                android:inputType="numberDecimal"
+                android:padding="@dimen/_10sdp" />
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:text="Payment mode*" />
+
+
+            <LinearLayout
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/payment_modes_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_50dp"
-                    android:autofillHints="Payment mode"
-                    android:background="@drawable/background_beneficiary_registeration"
-                    android:drawableEnd="@drawable/dropdown_arrow"
                     android:spinnerMode="dropdown" />
-
-
-                <Button
-                    android:id="@+id/processed_to_pay"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="@dimen/margin_15dp"
-                    android:background="@drawable/background_button"
-
-                    android:padding="@dimen/_3sdp"
-                    android:text="@string/proceed_text"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_15sdp" />
 
             </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
-    </RelativeLayout>
+
+            <Button
+                android:id="@+id/processed_to_pay"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:padding="@dimen/_3sdp"
+                android:text="@string/proceed_text" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </layout>

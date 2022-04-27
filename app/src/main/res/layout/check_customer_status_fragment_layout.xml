@@ -21,71 +21,63 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="@dimen/margin_15dp"
-                android:layout_marginEnd="@dimen/margin_15dp"
-                android:layout_marginStart="@dimen/margin_15dp"
+                style="@style/TitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enter Partner Customer ID*"
-                android:textSize="@dimen/text_size_16sp" />
+                android:layout_marginStart="@dimen/margin_15dp"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:layout_marginEnd="@dimen/margin_15dp"
+                android:text="Enter Partner Customer ID*" />
 
             <EditText
-                android:layout_marginTop="@dimen/margin_10dp"
                 android:id="@+id/edt_partner_customer_id"
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_45dp"
-                android:background="@drawable/background_beneficiary_registeration"
+                android:layout_marginStart="@dimen/margin_15dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginEnd="@dimen/margin_15dp"
                 android:hint="1723119"
                 android:inputType="phone"
                 android:padding="@dimen/margin_10dp"
-                android:layout_marginEnd="@dimen/margin_15dp"
-                android:layout_marginStart="@dimen/margin_15dp"
                 android:singleLine="true" />
 
             <Button
                 android:id="@+id/btn_check_status"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/margin_20dp"
-                android:background="@drawable/background_button"
-
-                android:padding="@dimen/_2sdp"
-                android:text="CheckStatus"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:layout_margin="@dimen/margin_15dp"
+                android:text="Check Status" />
         </LinearLayout>
 
 
         <RelativeLayout
-            android:layout_below="@id/search_viw"
             android:id="@+id/main_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/search_viw"
             android:visibility="gone">
 
 
             <EditText
+                style="@style/EditTextStyle"
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_50dp"
                 android:layout_marginStart="@dimen/margin_20dp"
                 android:layout_marginTop="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_20dp"
-                android:background="@android:color/transparent"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                 android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:drawableStart="@drawable/ic_search_icon"
                 android:drawablePadding="@dimen/margin_10dp"
-                android:fontFamily="@font/lato_regular"
                 android:hint="@string/search"
                 android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_size_20sp"
                 android:visibility="visible" />
 
 
             <TextView
-
                 android:id="@+id/title_slect_bene"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -108,16 +100,15 @@
 
             <Button
                 android:id="@+id/add_bene"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/margin_20dp"
+                android:layout_margin="@dimen/margin_15dp"
                 android:background="@drawable/background_button"
-
                 android:padding="@dimen/_2sdp"
                 android:text="@string/add_beneficiary"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:textAllCaps="false" />
 
         </RelativeLayout>
 

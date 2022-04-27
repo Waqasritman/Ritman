@@ -70,6 +70,9 @@ public class AEPSSettlementTransferRate extends BaseFragment<FragmentAepsSettlem
         if (TextUtils.isEmpty(binding.sendingAmountField.getText().toString())) {
             onMessage(getString(R.string.please_enter_amount));
             return false;
+        } else if (Double.parseDouble(binding.sendingAmountField.getText().toString()) <= 0) {
+            onMessage("Please enter valid amount");
+            return false;
         }
         return true;
     }

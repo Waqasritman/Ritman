@@ -109,12 +109,7 @@ public class SingleButtonMessageDialog extends BaseDialogFragment<AlertDialogLay
 
         binding.cancelButton.setOnClickListener(v -> {
             cancelUpload();
-            if (isError) {
-                onCancel(true);
-            } else {
-                onCancel(false);
-            }
-
+            onCancel(isError);
         });
 
 

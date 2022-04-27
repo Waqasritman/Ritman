@@ -62,10 +62,12 @@ public class MerchantLedgerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 double creditBalance = Double.parseDouble(account.credit_INR);
 
                 if (creditBalance > 0) {
+                    ((MerchantLedgerViewHolder) holder).binding.amountType.setText("Credit");
                     ((MerchantLedgerViewHolder) holder).binding.crDrIcon.setImageResource(R.drawable.ic_arrow_down_green);
                     ((MerchantLedgerViewHolder) holder).binding.sendingAmount.setTextColor(ContextCompat.getColor(context, R.color.Green));
                     ((MerchantLedgerViewHolder) holder).binding.sendingAmount.setText("₹ " + account.credit_INR);
                 } else {
+                    ((MerchantLedgerViewHolder) holder).binding.amountType.setText("Debit");
                     ((MerchantLedgerViewHolder) holder).binding.crDrIcon.setImageResource(R.drawable.ic_arrow_up_red);
                     ((MerchantLedgerViewHolder) holder).binding.sendingAmount.setTextColor(ContextCompat.getColor(context, R.color.Red));
                     ((MerchantLedgerViewHolder) holder).binding.sendingAmount.setText("₹ " + account.debit_INR);

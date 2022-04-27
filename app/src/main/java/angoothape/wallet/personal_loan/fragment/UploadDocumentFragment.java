@@ -557,36 +557,34 @@ public class UploadDocumentFragment extends BaseFragment<UploadDocumentFragmentB
         } else if (requestCode == REQUEST_PDF1) {
             SelectedImageType1 = "";
             assert data != null;
-            ImageOne = getStringPdf(data.getData());
-            String uriString = data.getData().toString();
-            File myFile = new File(uriString);
-            path = myFile.getAbsolutePath();
-            displayName = null;
-            // String[] pathArr = myFile.getAbsolutePath().split(":/");
-            // path = pathArr[pathArr.length - 1];
-            if (uriString.startsWith("content://")) {
-                cursor = null;
-                try {
-                    cursor = getActivity().getContentResolver().query(data.getData(), null, null, null, null);
-                    if (cursor != null && cursor.moveToFirst()) {
-                        SelectedImageType1 = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                        // binding.imgAddressProof.setBackgroundDrawable(getContext().getResources().getDrawable(R.drawable.pdf_img));
-                        binding.imgAddressProof.setImageResource(R.drawable.pdf_img);
+            if (data.getData() != null) {
+                ImageOne = getStringPdf(data.getData());
+                String uriString = data.getData().toString();
+                File myFile = new File(uriString);
+                path = myFile.getAbsolutePath();
+                displayName = null;
+                // String[] pathArr = myFile.getAbsolutePath().split(":/");
+                // path = pathArr[pathArr.length - 1];
+                if (uriString.startsWith("content://")) {
+                    cursor = null;
+                    try {
+                        cursor = getActivity().getContentResolver().query(data.getData(), null, null, null, null);
+                        if (cursor != null && cursor.moveToFirst()) {
+                            SelectedImageType1 = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                            // binding.imgAddressProof.setBackgroundDrawable(getContext().getResources().getDrawable(R.drawable.pdf_img));
+                            binding.imgAddressProof.setImageResource(R.drawable.pdf_img);
+
+                        }
+                    } catch (Exception e) {
+
+                    } finally {
+                        if (cursor != null) {
+                            cursor.close();
+                        }
 
                     }
-                } catch (Exception e) {
-
-                } finally {
-                    if (cursor != null) {
-                        cursor.close();
-                    }
-
                 }
             }
-
-            // binding.addproofImg.getResources().getDrawable(R.drawable.pdf_img);
-
-
         } else if (requestCode == REQUEST_IMAGE2) {
             if (resultCode == RESULT_OK) {
                 assert data != null;

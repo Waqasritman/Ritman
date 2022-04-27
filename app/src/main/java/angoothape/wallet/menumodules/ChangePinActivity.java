@@ -46,6 +46,10 @@ public class ChangePinActivity extends RitmanBaseActivity<ActivityChangePinBindi
 
     @Override
     protected void initUi(Bundle savedInstanceState) {
+        binding.toolBarFinal.titleTxt.setText("Change Password");
+        binding.toolBarFinal.crossBtn.setOnClickListener(v -> {
+            onClose();
+        });
         binding.changePin.setOnClickListener(v -> {
             Constants.hideKeyboard(this);
             if (isValidate()) {

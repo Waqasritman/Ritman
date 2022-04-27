@@ -6,10 +6,18 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import angoothape.wallet.R;
 
@@ -17,6 +25,7 @@ public class Utils {
     private static Dialog dialog;
     private static CustomCircularProgressView ivProgressBar;
 
+    public static final String DATE_TIME_FORMAT_WEB = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     public static void showCustomProgressDialog(Context context, boolean isCancel) {
         if (dialog != null && dialog.isShowing()) {
@@ -49,7 +58,6 @@ public class Utils {
     }
 
 
-
     public static void hideCustomProgressDialog() {
         try {
             if (dialog != null && ivProgressBar != null) {
@@ -60,4 +68,30 @@ public class Utils {
         }
     }
 
+
+    public static String getDateFromServerTime(String serverTime) {
+        Date date = null;
+        TimeZone timeZone = TimeZone.getTimeZone("Asia/Kolkata");
+        Calendar serverTimeCalendar = Calendar.getInstance(timeZone);
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_TIME_FORMAT_WEB, Locale.US);
+            //   date = simpleDateFormat.parse(serverTime);
+            serverTimeCalendar.setTime(simpleDateFormat.parse(serverTime));
+
+        } catch (ParseException e) {
+            Log.e(Utils.class.getName(), e.getLocalizedMessage());
+        }
+
+        return getFormatTime(serverTimeCalendar.getTime());
+    }
+
+    public static String convertServerTime(String serverTime) {
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a 'on' MMMM dd, yyyy");
+        return sdf.format(serverTime);
+    }
+
+    public static String getFormatTime(Date time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
+        return sdf.format(time);
+    }
 }

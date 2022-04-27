@@ -39,7 +39,8 @@ public class AESHelper {
             IvParameterSpec ivparameterspec = new IvParameterSpec(keyBytes);
             cipher.init(Cipher.DECRYPT_MODE, secretKey, ivparameterspec);
 
-            byte[] cipherText = android.util.Base64.decode(plainText.getBytes("UTF8"), android.util.Base64.DEFAULT);
+            byte[] cipherText = android.util.Base64.decode(plainText.getBytes("UTF8"),
+                    android.util.Base64.DEFAULT);
 
             return new String(cipher.doFinal(cipherText), "UTF-8");
 

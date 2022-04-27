@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -136,6 +137,9 @@ public class MobileTopUpPrepaidBillPaymentFragment extends BaseFragment<MobileTo
                             }
 
 
+                        } else if (response.resource.responseCode.equals(305)) {
+                            onMessage(response.resource.description + "\nTry again later");
+                            Navigation.findNavController(binding.getRoot()).navigateUp();
                         } else {
                             // binding.progressBar.setVisibility(View.GONE);
                             Utils.hideCustomProgressDialog();

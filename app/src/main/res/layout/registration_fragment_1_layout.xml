@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
+        android:id="@+id/parent_relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/parent_relativeLayout"
         android:orientation="vertical"
         tools:context=".personal_loan.fragment.Personal_One_Fragment">
+
         <LinearLayout
             android:id="@+id/linear_instruction"
             android:layout_width="wrap_content"
@@ -33,12 +34,13 @@
                 android:textSize="14sp" />
 
         </LinearLayout>
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/linear_instruction"
             android:layout_marginTop="10dp"
             android:fillViewport="true"
-            android:layout_below="@+id/linear_instruction"
             android:paddingBottom="@dimen/width_100dp"
             android:scrollbars="none">
 
@@ -52,11 +54,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_marginLeft="@dimen/margin_10dp"
+                    android:layout_marginTop="@dimen/margin_10dp"
                     android:layout_marginRight="@dimen/margin_10dp"
                     android:orientation="vertical">
-
 
 
                     <LinearLayout
@@ -65,48 +66,42 @@
                         android:orientation="vertical">
 
 
-
-
-
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="@string/pincode_text"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/pincode_text" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:textColor="@color/Red"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/edt_pincode"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
                             android:gravity="center_vertical"
                             android:hint="Pincode No."
                             android:inputType="number"
                             android:maxLength="6"
                             android:paddingLeft="@dimen/margin_10dp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:singleLine="true" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -114,38 +109,37 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="@string/addre_city"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/addre_city" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/edt_city"
-                            android:singleLine="true"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:background="@drawable/background_customer_registeration"
+                            android:focusable="false"
+
                             android:gravity="center_vertical"
                             android:hint="City"
-                            android:maxLength="30"
                             android:inputType="text"
-                            android:focusable="false"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:maxLength="30"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -153,75 +147,75 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="@string/addre_state"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/addre_state" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/edt_state"
-                            android:singleLine="true"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:background="@drawable/background_customer_registeration"
+                            android:focusable="false"
+
                             android:gravity="center_vertical"
                             android:hint="State"
-                            android:maxLength="30"
                             android:inputType="text"
-                            android:focusable="false"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:maxLength="30"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/mobile_number"
-                                android:textSize="@dimen/text_size_14sp" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/mobile_number" />
+
+                            <TextView
+                                style="@style/TitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
 
                         </LinearLayout>
+
                         <EditText
                             android:id="@+id/edt_mobile_number"
-                            android:singleLine="true"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:background="@drawable/background_customer_registeration"
                             android:gravity="center_vertical"
+
                             android:hint="Mobile Number"
                             android:inputType="number"
                             android:maxLength="10"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -229,37 +223,36 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="@string/sum_assured"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/sum_assured" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
                                 android:layout_marginTop="@dimen/margin_10dp"
                                 android:layout_marginBottom="@dimen/margin_10dp"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
 
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/edt_sum_assured"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
                             android:gravity="center_vertical"
                             android:hint="Sum Assured"
                             android:inputType="number"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:singleLine="true" />
 
 
                         <LinearLayout
@@ -268,37 +261,36 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="@string/no_of_hospital_cash_benefit"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/no_of_hospital_cash_benefit" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
                                 android:layout_marginTop="@dimen/margin_10dp"
                                 android:layout_marginBottom="@dimen/margin_10dp"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
 
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/edt_no_of_hospital_cash_benefit"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
                             android:gravity="center_vertical"
                             android:hint="No of Hospital Cash Benefit"
                             android:inputType="number"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:singleLine="true" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -306,37 +298,36 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="@string/hospital_cash_benefit"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/hospital_cash_benefit" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
                                 android:layout_marginTop="@dimen/margin_10dp"
                                 android:layout_marginBottom="@dimen/margin_10dp"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
 
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/edt_hospital_cash_benefit"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
                             android:gravity="center_vertical"
                             android:hint="@string/hospital_cash_benefit"
                             android:inputType="number"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:singleLine="true" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -344,38 +335,37 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="@string/Premium_Payment_Frequency"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/Premium_Payment_Frequency" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
                                 android:layout_marginTop="@dimen/margin_10dp"
                                 android:layout_marginBottom="@dimen/margin_10dp"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
 
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/edt_premium_payment_frequency"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
                             android:gravity="center_vertical"
                             android:hint="@string/Premium_Payment_Frequency"
                             android:inputType="number"
                             android:maxLength="20"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:singleLine="true" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -383,39 +373,37 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="@string/Instalment_Premium"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/Instalment_Premium" />
 
                             <TextView
+                                style="@style/TitleStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/asterisk"
-                                android:textColor="@color/Red"
                                 android:layout_marginTop="@dimen/margin_10dp"
                                 android:layout_marginBottom="@dimen/margin_10dp"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:text="@string/asterisk"
+                                android:textColor="@color/Red" />
 
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/edt_Instalment_Premium"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_customer_registeration"
                             android:gravity="center_vertical"
                             android:hint="@string/Instalment_Premium"
                             android:inputType="number"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                            android:singleLine="true" />
                     </LinearLayout>
-
 
 
                 </LinearLayout>
@@ -426,18 +414,15 @@
 
         <Button
             android:id="@+id/personal_next"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_50dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="@dimen/margin_10dp"
             android:layout_marginEnd="@dimen/margin_10dp"
+
             android:layout_marginBottom="@dimen/margin_20dp"
-            android:background="@drawable/background_button"
-            android:fontFamily="@font/lato_bold"
-            android:text="Next"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_18sp" />
+            android:text="Next" />
     </RelativeLayout>
 
 </layout>

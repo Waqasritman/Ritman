@@ -47,7 +47,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_textview"
 
-                android:padding="5dp"
+                android:padding="15dp"
                 android:text="@string/search_bank"
                 android:textColor="@color/colorWhite"
                 android:textSize="12sp"
@@ -59,7 +59,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/linear_layout"
-            android:layout_marginTop="10dp"
             android:fillViewport="true"
             android:scrollbars="none">
 
@@ -83,74 +82,68 @@
                         android:orientation="vertical"
                         android:visibility="visible">
 
-                         <TextView
+                        <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@string/existing_bank"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:text="@string/existing_bank" />
 
-                            <EditText
-                                android:id="@+id/edt_existing_bank"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:gravity="center_vertical"
-                                android:hint="Existing Bank"
-                                android:inputType="text"
-                                android:singleLine="true"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                        <EditText
+                            android:id="@+id/edt_existing_bank"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:hint="Existing Bank"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
 
 
-                         <TextView
+                        <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@string/branch_name_txt"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:text="@string/branch_name_txt" />
 
-                            <EditText
-                                android:id="@+id/edt_branch_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:gravity="center_vertical"
-                                android:hint="Branch Name"
-                                android:inputType="text"
-                                android:singleLine="true"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                        <EditText
+                            android:id="@+id/edt_branch_name"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:hint="Branch Name"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
 
 
-                       <TextView
+                        <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@string/ifsc_code"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:text="@string/ifsc_code" />
 
-                            <EditText
-                                android:id="@+id/edt_ifsc_code"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/height_50dp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:paddingLeft="@dimen/margin_10dp"
-                                android:background="@drawable/background_beneficiary_registeration"
-                                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                                android:gravity="center_vertical"
-                                android:hint="IFSC Code/IBAN No"
-                                android:inputType="text"
-                                android:singleLine="true"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_16sp" />
+                        <EditText
+                            android:id="@+id/edt_ifsc_code"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_50dp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                            android:gravity="center_vertical"
+                            android:hint="IFSC Code/IBAN No"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:singleLine="true" />
 
 
                     </LinearLayout>
@@ -168,6 +161,7 @@
 
                             <EditText
                                 android:id="@+id/ifsc_code1"
+                                style="@style/TitleStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/height_50dp"
                                 android:layout_marginRight="@dimen/_5sdp"
@@ -179,8 +173,7 @@
                                 android:paddingLeft="@dimen/_5sdp"
                                 android:singleLine="true"
                                 android:text=""
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:textColor="@color/colorBlack" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -189,6 +182,7 @@
 
                             <EditText
                                 android:id="@+id/existing_bank1"
+                                style="@style/TitleStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/height_50dp"
                                 android:layout_marginRight="@dimen/_5sdp"
@@ -200,8 +194,7 @@
                                 android:paddingLeft="@dimen/_5sdp"
                                 android:singleLine="true"
                                 android:text=""
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:textColor="@color/colorBlack" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -210,6 +203,7 @@
 
                             <EditText
                                 android:id="@+id/branch_name1"
+                                style="@style/TitleStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/height_50dp"
                                 android:layout_marginRight="@dimen/_5sdp"
@@ -221,8 +215,7 @@
                                 android:paddingLeft="@dimen/_5sdp"
                                 android:singleLine="true"
                                 android:text=""
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/text_size_14sp" />
+                                android:textColor="@color/colorBlack" />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -257,96 +250,83 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/above_layout"
-                    android:orientation="vertical"
                     android:layout_marginLeft="@dimen/margin_10dp"
                     android:layout_marginRight="@dimen/margin_10dp"
+                    android:orientation="vertical"
                     android:visibility="visible">
 
                     <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/acount_number"
-                            android:textSize="@dimen/text_size_14sp" />
+                        style="@style/TitleStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/acount_number" />
 
-                        <EditText
-                            android:id="@+id/edt_ac_no"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:background="@drawable/background_beneficiary_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="Account number"
-                            android:inputType="number"
-                            android:maxLength="18"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                    <EditText
+                        android:id="@+id/edt_ac_no"
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:hint="Account number"
+                        android:inputType="number"
+                        android:maxLength="18"
+                        android:paddingLeft="@dimen/margin_10dp"
+                        android:singleLine="true" />
 
 
                     <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/confirm_account_no"
-                            android:textSize="@dimen/text_size_14sp" />
+                        style="@style/TitleStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/confirm_account_no" />
 
-                        <EditText
-                            android:id="@+id/edt_re_enter_account_number"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:background="@drawable/background_beneficiary_registeration"
-                            android:gravity="center_vertical"
-                            android:hint="Confirm account number"
-                            android:inputType="number"
-                            android:maxLength="18"
-                            android:singleLine="true"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_16sp" />
+                    <EditText
+                        android:id="@+id/edt_re_enter_account_number"
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:hint="Confirm account number"
+                        android:inputType="number"
+                        android:maxLength="18"
+                        android:paddingLeft="@dimen/margin_10dp"
+                        android:singleLine="true" />
 
-                     <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/remark"
-                            android:textSize="@dimen/text_size_14sp" />
+                    <TextView
+                        style="@style/TitleStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/remark" />
 
-                        <EditText
-                            android:id="@+id/edt_remark"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/height_50dp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/margin_10dp"
-                            android:background="@drawable/background_beneficiary_registeration"                            android:gravity="center_vertical"
-                            android:hint="Remark"
-                            android:inputType="text"
-                            android:maxLength="25"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_16sp" />
+                    <EditText
+                        android:id="@+id/edt_remark"
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:hint="Remark"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:paddingLeft="@dimen/margin_10dp"
+                        android:singleLine="true" />
 
                     <Button
                         android:id="@+id/personal_next"
+                        style="@style/ButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="@dimen/margin_10dp"
                         android:layout_marginTop="@dimen/margin_30dp"
-                        android:layout_marginEnd="@dimen/margin_10dp"
-                        android:layout_marginBottom="@dimen/margin_20dp"
-                        android:background="@drawable/background_button"
-
-                        android:fontFamily="@font/lato_bold"
                         android:text="Next"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18sp"
                         android:visibility="visible" />
                 </LinearLayout>
 

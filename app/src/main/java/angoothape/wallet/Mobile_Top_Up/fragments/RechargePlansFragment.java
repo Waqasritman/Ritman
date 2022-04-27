@@ -35,6 +35,7 @@ import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.BillDetailRequest;
 import angoothape.wallet.di.JSONdi.restRequest.RechargePlansRequest;
 import angoothape.wallet.di.JSONdi.restResponse.BillDetailResponse;
+import angoothape.wallet.di.JSONdi.restResponse.BillDetailsErrorResponse;
 import angoothape.wallet.di.JSONdi.restResponse.BillDetailsMainResponse;
 import angoothape.wallet.di.JSONdi.restResponse.PlanCategoriesResponse;
 import angoothape.wallet.di.JSONdi.restResponse.RechargePlansResponse;
@@ -49,7 +50,7 @@ import static android.content.Context.WIFI_SERVICE;
 
 public class RechargePlansFragment extends BaseFragment<RechargePlansFragmentLayoutBinding> implements RechargePlanName {
     String billerid, circle_name, PlanCategory, MobileNumber, Field1Name, Field2Name, billerlogo,
-            Field3Name, planid, Field3, IMEINumber, ipAddress;
+            Field3Name, planid, Field3, IMEINumber = "", ipAddress = "";
     MobileTopUpViewModel viewModel;
 
     List<RechargePlansResponse> rechargePlansResponses;
@@ -134,7 +135,7 @@ public class RechargePlansFragment extends BaseFragment<RechargePlansFragmentLay
                             if (response.resource.responseCode.equals(101)) {
                                 String bodyy = AESHelper.decrypt(response.resource.data.body
                                         , gKey);
-                                Log.e("getPlanName: ",bodyy );
+                                Log.e("getPlanName: ", bodyy);
                                 try {
                                     Gson gson = new Gson();
                                     Type type = new TypeToken<List<RechargePlansResponse>>() {
@@ -145,6 +146,9 @@ public class RechargePlansFragment extends BaseFragment<RechargePlansFragmentLay
                                     e.printStackTrace();
                                 }
 
+                            } else if (response.resource.responseCode.equals(305)) {
+                                onMessage(response.resource.description + "\nTry again later");
+                                Navigation.findNavController(binding.getRoot()).navigateUp();
                             } else {
 
                                 Utils.hideCustomProgressDialog();
@@ -231,6 +235,11 @@ public class RechargePlansFragment extends BaseFragment<RechargePlansFragmentLay
             request.Field3 = "";
         }
 
+        if (IMEINumber.isEmpty() || ipAddress.isEmpty()) {
+            IMEINumber = getDeviceId(getContext());
+            getIpAddressOfDevice();
+        }
+
         request.imei = IMEINumber;//"5468748458458454";
         request.ip = ipAddress;
         request.payment_amount = payment_amount;
@@ -253,10 +262,11 @@ public class RechargePlansFragment extends BaseFragment<RechargePlansFragmentLay
 
                             String bodyy = AESHelper.decrypt(response.resource.data.body
                                     , gKey);
-                            Log.e("getPlanName: ",bodyy );
+                            Log.e("getPlanName: ", bodyy);
                             try {
                                 Gson gson = new Gson();
-                                Type type = new TypeToken<BillDetailsMainResponse>() {}.getType();
+                                Type type = new TypeToken<BillDetailsMainResponse>() {
+                                }.getType();
                                 BillDetailsMainResponse data = gson.fromJson(bodyy, type);
                                 Bundle bundle = new Bundle();
                                 bundle.putString("billerid", billerid);
@@ -277,29 +287,34 @@ public class RechargePlansFragment extends BaseFragment<RechargePlansFragmentLay
 
                         } else if (response.resource.responseCode.equals(100)) {
                             Utils.hideCustomProgressDialog();
-                            String bodyy = AESHelper.decrypt(response.resource.data.body
-                                    , gKey);
-                            try {
-                                Gson gson = new Gson();
-                                Type type = new TypeToken<BillDetailsMainResponse>() {
-                                }.getType();
-                                BillDetailsMainResponse data = gson.fromJson(bodyy, type);
-                                onError(data.billDetailResponse.message);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                if (response.resource.data != null) {
+                            if (response.resource.data != null) {
+                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                        , gKey);
+                                Log.e("getBillDetails: ", bodyy);
 
-                                    Log.e("getBillDetails: ", bodyy);
-                                    if (!body.isEmpty()) {
-                                        onError(bodyy);
-                                    } else {
+                                if (!body.isEmpty()) {
+                                    try {
+                                        Gson gson = new Gson();
+                                        Type type = new TypeToken<BillDetailsErrorResponse>() {
+                                        }.getType();
+                                        BillDetailsErrorResponse data = gson.fromJson(bodyy, type);
+
+                                        onError(data.message.replace("ERR_1", ""));
+                                    } catch (Exception e) {
                                         onError(response.resource.description);
                                     }
                                 } else {
                                     onError(response.resource.description);
                                 }
+
+
+                            } else {
+                                onError(response.resource.description);
                             }
                             // binding.progressBar.setVisibility(View.GONE);
+                        } else if (response.resource.responseCode.equals(305)) {
+                            onMessage(response.resource.description + "\nTry again later");
+                            Navigation.findNavController(binding.getRoot()).navigateUp();
                         } else {
                             // binding.progressBar.setVisibility(View.GONE);
                             Utils.hideCustomProgressDialog();

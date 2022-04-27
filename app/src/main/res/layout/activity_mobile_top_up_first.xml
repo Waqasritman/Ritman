@@ -24,6 +24,7 @@
                     android:text="@string/mobile_top_up"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_20sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,25 +41,26 @@
 
 
                 <TextView
-                    android:visibility="gone"
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:text="@string/select_type"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_12ssp"
+                    android:visibility="gone" />
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/operator"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_45dp"
-                        android:background="@drawable/background_select_mood"
                         android:drawableRight="@drawable/dropdown_arrow"
                         android:drawablePadding="@dimen/_5sdp"
                         android:gravity="center_vertical"
@@ -71,13 +73,14 @@
 
 
                 <LinearLayout
-                    android:visibility="gone"
-                    android:orientation="vertical"
                     android:id="@+id/postpaid_plan_decide_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <TextView
+                        style="@style/TitleStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
@@ -92,9 +95,9 @@
 
                         <TextView
                             android:id="@+id/select_category"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_45dp"
-                            android:background="@drawable/background_select_mood"
                             android:drawableEnd="@drawable/dropdown_arrow"
                             android:drawablePadding="@dimen/_5sdp"
                             android:gravity="center_vertical"
@@ -106,6 +109,7 @@
                     </LinearLayout>
 
                     <TextView
+                        style="@style/TitleStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
@@ -120,9 +124,9 @@
 
                         <TextView
                             android:id="@+id/select_operator"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_45dp"
-                            android:background="@drawable/background_select_mood"
                             android:drawableEnd="@drawable/dropdown_arrow"
                             android:drawablePadding="@dimen/_5sdp"
                             android:gravity="center_vertical"
@@ -136,12 +140,14 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:id="@+id/prepaid_operator_layout"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
                     <TextView
+                        style="@style/TitleStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
@@ -158,8 +164,7 @@
                             android:id="@+id/prepaid_operator"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_45dp"
-                            android:background="@drawable/background_select_mood"
-                            android:drawableEnd="@drawable/dropdown_arrow"
+                            style="@style/EditTextStyle" android:drawableEnd="@drawable/dropdown_arrow"
                             android:drawablePadding="@dimen/_5sdp"
                             android:gravity="center_vertical"
                             android:hint="@string/select_operator"
@@ -172,28 +177,14 @@
                 </LinearLayout>
 
 
-
-
-                <LinearLayout
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/next_layout"
+                    style="@style/ButtonStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:background="@drawable/background_button"
-
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:drawableLeft="@drawable/ic_white_send"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:padding="@dimen/_3sdp"
-                        android:text="@string/get_plans_txt"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                    android:layout_height="?actionBarSize"
+                    android:layout_marginTop="@dimen/margin_15dp"
+                    android:elevation="0dp"
+                    android:text="@string/get_plans_txt" />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

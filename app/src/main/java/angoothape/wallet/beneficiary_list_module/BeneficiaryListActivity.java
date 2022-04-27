@@ -48,7 +48,6 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
     RegisterBeneficiaryViewModel viewModel;
     String customerN0;
 
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_select_beneficialy;
@@ -57,11 +56,8 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
     @Override
     protected void initUi(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(RegisterBeneficiaryViewModel.class);
-
         list = new ArrayList<>();
         setAccountsRecyclerView();
-
-
         binding.addBene.setVisibility(View.GONE);
 
         binding.searchBtn.setOnClickListener(v -> {
@@ -92,6 +88,9 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
         binding.backBtn.setOnClickListener(v -> {
             onBackPressed();
         });
+        binding.crossBtn.setVisibility(View.GONE);
+
+        binding.titleTxt.setText("Activate Beneficiary");
     }
 
     private void getBeneficiary() {
@@ -105,10 +104,10 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
 
         AERequest aeRequest = new AERequest();
         aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
-        Log.e("getBeneficiary: ",body );
+        Log.e("getBeneficiary: ", body);
         viewModel.getDeActiveBenficiary(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
                 KeyHelper.getSKey(KeyHelper
-                .getKey(getSessionManager().getMerchantName())).trim())
+                        .getKey(getSessionManager().getMerchantName())).trim())
                 .observe(this, response -> {
                     Utils.hideCustomProgressDialog();
                     if (response.status == Status.ERROR) {
@@ -120,7 +119,6 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
                             binding.mainView.setVisibility(View.VISIBLE);
                             onMessage(response.resource.description);
                             list.clear();
-
 
                             String bodyy = AESHelper.decrypt(response.resource.data.body
                                     , gKey);
@@ -189,7 +187,6 @@ public class BeneficiaryListActivity extends RitmanBaseActivity<ActivitySelectBe
      * setup the recycler view when screen load after that just notify the adapter
      */
     private void setAccountsRecyclerView() {
-
         adapter = new
                 DeActiveBeneAdapter(list, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);

@@ -25,7 +25,7 @@ import retrofit2.Response;
 public class CustomerServiceViewModel extends ViewModel {
 
     RestApi restApi = RestClient.getEKYC();
-    RestApi restApii = RestClient.getREST();
+    RestApi restApii = RestClient.getEKYC();
     AppExecutors appExecutors = new AppExecutors();
 
 

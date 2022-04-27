@@ -21,7 +21,7 @@ import angoothape.wallet.di.XMLdi.ResponseHelper.GetBeneficiaryListResponse;
 import angoothape.wallet.interfaces.OnSelectBeneficiary;
 import angoothape.wallet.utils.SessionManager;
 
-public class DeActiveBeneAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public class DeActiveBeneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements Filterable {
     private final int EMPTY_VIEW = 1;
     private final int ITEM = 0;
@@ -81,7 +81,7 @@ public class DeActiveBeneAdapter  extends RecyclerView.Adapter<RecyclerView.View
                     onSelectBeneficiary.onChangeTheStatusOfBeneficiary(response, 1, position);
                 }
             });
-
+            ((BeneficiaryListViewHolder) holder).binding.deActiveBene.setChecked(false);
         } else if (holder instanceof EmptyBeneficiaryListViewHolder) {
 
         }
@@ -150,7 +150,7 @@ public class DeActiveBeneAdapter  extends RecyclerView.Adapter<RecyclerView.View
         };
     }
 
-    public static class BeneficiaryListViewHolder  extends RecyclerView.ViewHolder {
+    public static class BeneficiaryListViewHolder extends RecyclerView.ViewHolder {
         public BeneDeActiveDesignBinding binding;
 
         public BeneficiaryListViewHolder(@NonNull BeneDeActiveDesignBinding itemView) {

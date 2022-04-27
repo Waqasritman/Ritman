@@ -155,14 +155,14 @@
     <string name="source_income">Source of income</string>
     <string name="availiable_agents">Available agents</string>
     <string name="country">Country</string>
-    <string name="customer_details">Customer details</string>
+    <string name="customer_details">Customer Details</string>
     <string name="customer_code_or_crm">Customer <Cod></Cod>e</string>
     <string name="sending_amount">Sending amount</string>
     <string name="exchange_rate">Exchange rate</string>
     <string name="id_number">ID number</string>
     <string name="_91">+91</string>
     <string name="todo">TODO</string>
-    <string name="view_reciept">View receipt</string>
+    <string name="view_reciept">View Receipt</string>
     <string name="total_payable">Total payable</string>
     <string name="receiving_amount">Receiving amount</string>
     <string name="text_Referral">Referral code</string>
@@ -540,7 +540,7 @@
     <string name="exit">Exit</string>
     <string name="are_sure_exit">Are you sure you want to exit?</string>
     <string name="wallet_history">Wallet history</string>
-    <string name="transaction_history_txt">Transaction history</string>
+    <string name="transaction_history_txt">Transaction History</string>
     <string name="repeat_txt">Repeat</string>
     <string name="others_txt">Others</string>
     <string name="share_with_whatspp">Share via Whatsapp</string>
@@ -1168,7 +1168,7 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="verify_documentation1">Please verify your documents</string>
     <string name="otp_verification">OTP Verification</string>
     <string name="otp_verification_text">"Please enter your One Time Password (OTP)\n sent on your Mobile Number "</string>
-    <string name="enter_otp">Enter your OTP</string>
+    <string name="enter_otp">Enter your Valid OTP</string>
     <string name="update_available">Update Available</string>
     <string name="update">update</string>
     <string name="update_available_msg">Check out the latest version available of Angootha pe application!</string>
@@ -1260,6 +1260,11 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="aeps_settlement_home">AEPS \nSettlement</string>
     <string name="please_enter_customr_number">Please enter customer mobile number</string>
     <string name="please_enter_be">Please enter below details</string>
+    <string name="adhaar_no_hint">0000000000</string>
+    <string name="select_bank_name_m">Select Bank*</string>
+    <string name="amount_m">Amount*</string>
+    <string name="refer_no_m">Reference no*</string>
+    <string name="alert_txt">Alert</string>
 
     <string-array name="arrayFingerTypeThumb">
         <item>6~RightThumb</item>

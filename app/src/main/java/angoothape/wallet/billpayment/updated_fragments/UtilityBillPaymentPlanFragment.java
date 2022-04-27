@@ -49,23 +49,12 @@ import angoothape.wallet.utils.Utils;
 
 
 public class UtilityBillPaymentPlanFragment extends BaseFragment<UtilityPaymentPlansViewBinding>
-        implements OnWRCountryList, OnWRBillerType, OnWRBillerCategoryResponse, OnWRBillerNames {
+        implements OnWRBillerNames {
 
-
-    List<GetWRCountryListResponseC> countryList;
-    List<GetWRBillerTypeResponse> wrBillerTypeResponseList;
-    List<GetWRBillerCategoryResponseC> wrBillerCategoryList;
     List<GetWRBillerNamesResponseC> wrBillerOperatorsList;
     WRBillerOperatorAdapter adapter;
-
-    // BankTransferViewModel viewModel;
-    BillPaymentViewModel viewModel;
-
-    public String billerTypeId = "1";
     public String billerCategoryId = "";
-    public String countryCode = "";
-    public String billerId;
-    public String paymentamount_validation, currency, biller_logo, partial_pay, pay_after_duedate;
+    BillPaymentViewModel viewModel;
 
 
     @Override
@@ -77,12 +66,8 @@ public class UtilityBillPaymentPlanFragment extends BaseFragment<UtilityPaymentP
     protected void setUp(Bundle savedInstanceState) {
         viewModel = ((BillPaymentMainActivity) getBaseActivity()).viewModel;
 
-        countryList = new ArrayList<>();
-        wrBillerTypeResponseList = new ArrayList<>();
-        wrBillerCategoryList = new ArrayList<>();
         wrBillerOperatorsList = new ArrayList<>();
 
-        //coming from UtilityCategoryActivity
         assert getArguments() != null;
         {
             billerCategoryId = getArguments().getString("billerCategoryId");
@@ -93,183 +78,12 @@ public class UtilityBillPaymentPlanFragment extends BaseFragment<UtilityPaymentP
 
         setSearchView();
         setupRecyclerView();
-        getBillerName();
+        if (wrBillerOperatorsList.isEmpty()) {
+            getBillerName();
+        }
+
 
         binding.searchView.setVisibility(View.VISIBLE);
-
-        binding.countryLayout.setOnClickListener(v -> {
-            if (countryList.isEmpty()) {
-                if (IsNetworkConnection.checkNetworkConnection(getContext())) {
-                    Utils.showCustomProgressDialog(getContext(), false);
-                    GetWRCountryListRequestC requestc = new GetWRCountryListRequestC();
-                    String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-                            .getKey(getSessionManager().getMerchantName())).trim();
-                    String body = RestClient.makeGSONString(requestc);
-
-                    AERequest request = new AERequest();
-                    request.body = AESHelper.encrypt(body.trim(), gKey.trim());
-                    viewModel.GetCountryList(request, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
-                            KeyHelper.getSKey(KeyHelper
-                                    .getKey(getSessionManager().getMerchantName())))
-                            .observe(getViewLifecycleOwner(), response -> {
-                                if (response.status == Status.ERROR) {
-                                    onError(getString(response.messageResourceId));
-                                } else {
-                                    assert response.resource != null;
-                                    Utils.hideCustomProgressDialog();
-                                    if (response.resource.responseCode.equals(101)) {
-                                        String bodyy = AESHelper.decrypt(response.resource.data.body
-                                                , gKey);
-                                        try {
-                                            Gson gson = new Gson();
-                                            Type type = new TypeToken<List<GetWRCountryListResponseC>>() {
-                                            }.getType();
-                                            List<GetWRCountryListResponseC> data = gson.fromJson(bodyy, type);
-                                            onWRCountryList(data);
-
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                    } else {
-                                        Utils.hideCustomProgressDialog();
-                                        if (response.resource.data != null) {
-                                            String bodyy = AESHelper.decrypt(response.resource.data.body
-                                                    , gKey);
-                                            if (!body.isEmpty()) {
-                                                onError(bodyy);
-                                            } else {
-                                                onError(response.resource.description);
-                                            }
-                                        } else {
-                                            onError(response.resource.description);
-                                        }
-                                    }
-                                }
-                            });
-                } else {
-                    onMessage(getString(R.string.no_internet));
-                    Utils.hideCustomProgressDialog();
-                }
-            } else {
-                //showCountryListDialog();
-            }
-        });
-
-
-        binding.operator.setOnClickListener(v -> {
-
-            GetWRBillerTypeRequestNew requestc = new GetWRBillerTypeRequestNew();
-            requestc.CountryCode = countryCode;
-            String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-                    .getKey(getSessionManager().getMerchantName())).trim();
-            String body = RestClient.makeGSONString(requestc);
-
-            AERequest request = new AERequest();
-            request.body = AESHelper.encrypt(body.trim(), gKey.trim());
-            viewModel.GetWRBillerType(request, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
-                    KeyHelper.getSKey(KeyHelper
-                            .getKey(getSessionManager().getMerchantName())))
-                    .observe(getViewLifecycleOwner(), response -> {
-                        if (response.status == Status.ERROR) {
-                            onError(getString(response.messageResourceId));
-                        } else {
-                            assert response.resource != null;
-                            if (response.resource.responseCode.equals(101)) {
-                                String bodyy = AESHelper.decrypt(response.resource.data.body
-                                        , gKey);
-                                try {
-                                    Gson gson = new Gson();
-                                    Type type = new TypeToken<List<GetWRBillerTypeResponse>>() {
-                                    }.getType();
-                                    List<GetWRBillerTypeResponse> data = gson.fromJson(bodyy, type);
-                                    onBillerTypeList(data);
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            } else {
-                                Utils.hideCustomProgressDialog();
-                                if (response.resource.data != null) {
-                                    String bodyy = AESHelper.decrypt(response.resource.data.body
-                                            , gKey);
-                                    if (!body.isEmpty()) {
-                                        onError(bodyy);
-                                    } else {
-                                        onError(response.resource.description);
-                                    }
-                                } else {
-                                    onError(response.resource.description);
-                                }
-                            }
-                        }
-                    });
-
-        });
-
-
-        binding.selectCategory.setOnClickListener(v -> {
-            if (!billerTypeId.isEmpty()) {
-
-                Utils.showCustomProgressDialog(getContext(), false);
-                GetWRBillerCategoryRequestC requestc = new GetWRBillerCategoryRequestC();
-                requestc.CountryCode = countryCode;
-
-                //request.BillerTypeId=1;
-                requestc.BillerTypeId = Integer.valueOf(billerTypeId);
-                String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-                        .getKey(getSessionManager().getMerchantName())).trim();
-                String body = RestClient.makeGSONString(requestc);
-
-                AERequest request = new AERequest();
-                request.body = AESHelper.encrypt(body.trim(), gKey.trim());
-                viewModel.GetWRBillerCategory(request, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(),
-                        KeyHelper.getSKey(KeyHelper
-                                .getKey(getSessionManager().getMerchantName())))
-                        .observe(getViewLifecycleOwner(), response -> {
-                            if (response.status == Status.ERROR) {
-                                onError(getString(response.messageResourceId));
-                            } else {
-                                assert response.resource != null;
-                                if (response.resource.responseCode.equals(101)) {
-
-                                    String bodyy = AESHelper.decrypt(response.resource.data.body
-                                            , gKey);
-                                    try {
-                                        Gson gson = new Gson();
-                                        Type type = new TypeToken<List<GetWRBillerCategoryResponseC>>() {
-                                        }.getType();
-                                        List<GetWRBillerCategoryResponseC> data = gson.fromJson(bodyy, type);
-                                        onWRCategory(data);
-
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-
-
-                                } else {
-                                    Utils.hideCustomProgressDialog();
-                                    if (response.resource.data != null) {
-                                        String bodyy = AESHelper.decrypt(response.resource.data.body
-                                                , gKey);
-                                        if (!body.isEmpty()) {
-                                            onError(bodyy);
-                                        } else {
-                                            onError(response.resource.description);
-                                        }
-                                    } else {
-                                        onError(response.resource.description);
-                                    }
-                                }
-                            }
-                        });
-
-            } else {
-                onMessage(getString(R.string.select_utility_bill_type));
-            }
-
-
-        });
-
 
     }
 
@@ -304,23 +118,33 @@ public class UtilityBillPaymentPlanFragment extends BaseFragment<UtilityPaymentP
                                 Type type = new TypeToken<List<GetWRBillerNamesResponseC>>() {
                                 }.getType();
                                 List<GetWRBillerNamesResponseC> data = gson.fromJson(bodyy, type);
-
                                 onBillerNamesList(data);
-
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
 
+                        } else if (response.resource.responseCode.equals(305)) {
+                            onMessage(response.resource.description + "\nTry again later");
+                            Navigation.findNavController(binding.getRoot()).navigateUp();
                         } else {
                             Utils.hideCustomProgressDialog();
                             if (response.resource.data != null) {
                                 String bodyy = AESHelper.decrypt(response.resource.data.body
                                         , gKey);
-                                if (!body.isEmpty()) {
-                                    onError(bodyy);
-                                } else {
-                                    onError(response.resource.description);
+                                try {
+                                    Gson gson = new Gson();
+                                    Type type = new TypeToken<List<GetWRBillerNamesResponseC>>() {
+                                    }.getType();
+                                    List<GetWRBillerNamesResponseC> data = gson.fromJson(bodyy, type);
+                                    onBillerNamesList(data);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    if (!body.isEmpty()) {
+                                        onError(bodyy);
+                                    } else {
+                                        onError(response.resource.description);
+                                    }
                                 }
                             } else {
                                 onError(response.resource.description);
@@ -373,117 +197,28 @@ public class UtilityBillPaymentPlanFragment extends BaseFragment<UtilityPaymentP
         binding.recyBillername.setAdapter(adapter);
     }
 
-    void showBillerTypeDialog() {
-        WRBillerTypeDialog dialog = new WRBillerTypeDialog(wrBillerTypeResponseList
-                , this);
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        dialog.show(transaction, "");
-    }
 
-
-    void showCategoryListDialog() {
-        WRBillerCategoryDialog dialog = new WRBillerCategoryDialog(wrBillerCategoryList
-                , this);
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        dialog.show(transaction, "");
-    }
-
-
-    void showOperatorDialog() {
-        WRBillerOperatorsDialog dialog = new WRBillerOperatorsDialog(wrBillerOperatorsList
-                , this);
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        dialog.show(transaction, "");
-    }
-
-    @Override
-    public void onWRCategory(List<GetWRBillerCategoryResponseC> responseList) {
-        wrBillerCategoryList.clear();
-        wrBillerCategoryList.addAll(responseList);
-        showCategoryListDialog();
-    }
-
-    @Override
-    public void onSelectCategory(GetWRBillerCategoryResponseC category) {
-        billerCategoryId = String.valueOf(category.getID());
-        binding.selectCategory.setText(category.getName());
-        binding.selectOperator.setText("");
-    }
-
+    //this is angootha
     @Override
     public void onBillerNamesList(List<GetWRBillerNamesResponseC> billerNameList) {
         wrBillerOperatorsList.clear();
         wrBillerOperatorsList.addAll(billerNameList);
         adapter.notifyDataSetChanged();
-        // showOperatorDialog();
     }
 
+    //this is angootha
     @Override
     public void onSelectBillerName(GetWRBillerNamesResponseC billerName) {
-
-        billerId = billerName.Biller_ID;
-        paymentamount_validation = billerName.paymentamount_validation;
-        partial_pay = billerName.partial_pay;
-        pay_after_duedate = billerName.pay_after_duedate;
-        currency = billerName.getCurrency();
-        biller_logo = billerName.getBiller_logo();
-
-
         Bundle bundle = new Bundle();
-        bundle.putString("billerId", String.valueOf(billerId));
-        bundle.putString("paymentamount_validation", paymentamount_validation);
-        bundle.putString("partial_pay", partial_pay);
-        bundle.putString("pay_after_duedate", pay_after_duedate);
-        bundle.putString("currency", currency);
-        bundle.putString("biller_logo", biller_logo);
-        // bundle.putString("SkuId", String.valueOf(SkuId));
-
-
+        binding.searchView.setText("");
+        bundle.putString("billerId", String.valueOf(billerName.Biller_ID));
+        bundle.putString("paymentamount_validation", billerName.paymentamount_validation);
+        bundle.putString("partial_pay", billerName.partial_pay);
+        bundle.putString("pay_after_duedate", billerName.pay_after_duedate);
+        bundle.putString("currency", billerName.getCurrency());
+        bundle.putString("biller_logo", billerName.getBiller_logo());
         Navigation.findNavController(binding.getRoot()).navigate(R.id
                 .action_utilityBillPaymentPlanFragment_to_utilityPaymentAccountNoFragment, bundle);
-    }
-
-
-    @Override
-    public void onBillerTypeList(List<GetWRBillerTypeResponse> billerTypeList) {
-        wrBillerTypeResponseList.clear();
-        wrBillerTypeResponseList.addAll(billerTypeList);
-        showBillerTypeDialog();
-    }
-
-    @Override
-    public void onBillerTypeSelect(GetWRBillerTypeResponse billerType) {
-        binding.operator.setText(billerType.getName());
-        //  if (!billerTypeId.equalsIgnoreCase(billerType.id)) {
-        // wrBillerTypeResponseList.clear();
-        //   }
-        //   billerTypeId = billerType.getID();
-
-        billerTypeId = String.valueOf(billerType.getID());
-
-        binding.selectCategory.setText("");
-        binding.selectOperator.setText("");
-
-        ((BillPaymentMainActivity) getBaseActivity()).payBillRequest.billerID = billerType.getID();
-
-    }
-
-
-    @Override
-    public void onWRCountryList(List<GetWRCountryListResponseC> list) {
-        countryList.clear();
-        countryList.addAll(list);
-        //showCountryListDialog();
-    }
-
-    @Override
-    public void onWRSelectCountry(GetWRCountryListResponseC country) {
-        countryCode = country.getCountry_Code();
-        binding.countryCode.setText(country.getCountry_Name());
-        binding.selectOperator.setText("");
-        binding.selectCategory.setText("");
-        binding.operator.setText("");
-        ((BillPaymentMainActivity) getBaseActivity()).payBillRequest.payoutCurrency = country.getCountry_Currency();
     }
 
 
@@ -491,11 +226,4 @@ public class UtilityBillPaymentPlanFragment extends BaseFragment<UtilityPaymentP
     public void onResponseMessage(String message) {
         onMessage(message);
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-
 }

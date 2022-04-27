@@ -131,8 +131,8 @@ public class BillPaymentsTypeFragment extends BaseFragment<ActivityBillPaymentsB
 
     @Override
     public void onBillerTypeSelect(GetWRBillerTypeResponse billerType) {
-        ((BillPaymentMainActivity) getBaseActivity())
-                .plansRequest.billerTypeID = String.valueOf(billerType.getID());
+//        ((BillPaymentMainActivity) getBaseActivity())
+//                .plansRequest.billerTypeID = String.valueOf(billerType.getID());
     }
 
     @Override

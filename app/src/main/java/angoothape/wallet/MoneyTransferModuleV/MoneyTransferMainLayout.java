@@ -33,13 +33,13 @@ public class MoneyTransferMainLayout extends RitmanBaseActivity<ActivityMoneyTra
         bankTransferViewModel = new ViewModelProvider(this).get(BankTransferViewModel.class);
         viewModel = new ViewModelProvider(this).get(RegisterBeneficiaryViewModel.class);
 
-        binding.toolBar.titleTxt.setText(getString(R.string.app_name));
+        binding.toolBar.titleTxt.setText("DMT");
         binding.toolBar.backBtn.setOnClickListener(v -> onBackPressed());
-        binding.toolBar.toolBarFinal
-                .setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        binding.toolBar.backBtn
-                .setColorFilter(ContextCompat.getColor(this,
-                        R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
+//        binding.toolBar.toolBarFinal
+//                .setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+//        binding.toolBar.backBtn
+//                .setColorFilter(ContextCompat.getColor(this,
+//                        R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
         binding.toolBar.crossBtn.setOnClickListener(v -> {
             onClose();
         });

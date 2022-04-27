@@ -59,10 +59,13 @@ public class FundTransferToMerchantActivity extends RitmanBaseActivity<ActivityF
     protected void initUi(Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(FundTransferViewModel.class);
         request = new FundTransferToMerchantRequest();
-        binding.selectMerchantTxt.setOnClickListener(v -> {
+        binding.merhant.setOnClickListener(v -> {
             getMerchants();
         });
-
+        binding.toolBar.titleTxt.setText("Fund To Merchant");
+        binding.toolBar.crossBtn.setOnClickListener(v -> {
+            onClose();
+        });
         binding.toolBar.backBtn.setOnClickListener(v -> {
             onBackPressed();
         });

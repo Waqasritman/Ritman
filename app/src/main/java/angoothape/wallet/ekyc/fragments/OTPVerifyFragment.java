@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import androidx.navigation.Navigation;
+
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -117,12 +119,14 @@ public class OTPVerifyFragment extends BaseFragment<FragmentOTPVerifyBinding> {
                                         e.printStackTrace();
                                     }
 
+                                } else if (response.resource.responseCode.equals(305)) {
+                                    onMessage(response.resource.description + "\nTry again later");
+                                    Navigation.findNavController(binding.getRoot()).navigateUp();
                                 } else {
                                     Utils.hideCustomProgressDialog();
                                     String bodyy = AESHelper.decrypt(response.resource.data.body
                                             , gKey);
                                     try {
-
                                         Gson gson = new Gson();
                                         Type type = new TypeToken<BiometricKYCErrorResponse>() {
                                         }.getType();

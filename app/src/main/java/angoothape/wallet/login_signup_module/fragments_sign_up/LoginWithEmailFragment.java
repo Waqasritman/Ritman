@@ -16,7 +16,7 @@ import angoothape.wallet.R;
 import angoothape.wallet.databinding.EnterMobileLoginBinding;
 import angoothape.wallet.di.JSONdi.restRequest.GetCustomerProfileImageRequest;
 import angoothape.wallet.di.XMLdi.RequestHelper.GetCustomerProfileRequest;
-import angoothape.wallet.di.XMLdi.RequestHelper.LoginRequest;
+import angoothape.wallet.di.JSONdi.restRequest.LoginRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.CustomerProfile;
 import angoothape.wallet.di.XMLdi.apicaller.GetCustomerProfileTask;
 import angoothape.wallet.di.XMLdi.apicaller.LoginRequestTask;
@@ -144,10 +144,10 @@ public class LoginWithEmailFragment extends BaseFragment<EnterMobileLoginBinding
 
 
             LoginRequest loginRequest = new LoginRequest();
-            loginRequest.emailAddress = binding.mobilesignupb.getText().toString();
-            loginRequest.mobileNumber = "";
-            loginRequest.languageId = getSessionManager().getlanguageselection();
-            loginRequest.password = getCode();
+//            loginRequest.emailAddress = binding.mobilesignupb.getText().toString();
+//            loginRequest.mobileNumber = "";
+//            loginRequest.languageId = getSessionManager().getlanguageselection();
+//            loginRequest.password = getCode();
             progressBar.showProgressDialogWithTitle(getContext(), getString(R.string.getting_data_loading));
             LoginRequestTask task = new LoginRequestTask(getContext(), true, this);
             task.execute(loginRequest);

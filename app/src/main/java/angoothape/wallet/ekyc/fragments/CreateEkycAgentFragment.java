@@ -1,6 +1,7 @@
 package angoothape.wallet.ekyc.fragments;
 
-import android.app.DatePickerDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +12,9 @@ import androidx.navigation.Navigation;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -25,6 +26,7 @@ import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.YBCreateAgentRequest;
 import angoothape.wallet.di.JSONdi.restRequest.YBCreateCustomerRequest;
 import angoothape.wallet.di.JSONdi.restResponse.BiometricKYCErrorResponse;
+import angoothape.wallet.di.JSONdi.restResponse.CreateCustomerErrorResponse;
 import angoothape.wallet.di.JSONdi.restResponse.YBCreateAgentResponse;
 import angoothape.wallet.di.JSONdi.restResponse.YBCreateCustomerResponse;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
@@ -33,29 +35,64 @@ import angoothape.wallet.ekyc.EKYCMainActivity;
 import angoothape.wallet.ekyc.viewmodels.EKYCViewModel;
 import angoothape.wallet.fragments.BaseFragment;
 import angoothape.wallet.interfaces.OnDecisionMade;
+import angoothape.wallet.utils.DateAndTime;
 import angoothape.wallet.utils.Utils;
 
-import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
+public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgentBinding>
+        implements OnDecisionMade, DatePickerDialog.OnDateSetListener {
 
-public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgentBinding> implements OnDecisionMade {
-
-    private AwesomeValidation mAwesomeValidation;
+    //   private AwesomeValidation mAwesomeValidation;
     public EKYCViewModel viewModel;
-    final Calendar myCalendar = Calendar.getInstance();
-    int day, month, year;
-    Calendar mcalendar;
-    String gender = "M";
 
+    String gender = "M";
     String EmailID, Dateofbirth, Pan, Shop;
 
     @Override
     protected void injectView() {
     }
 
+
+    @Override
+    public boolean isValidate() {
+        if (binding.shopName.getText().toString().isEmpty()) {
+            onMessage(getResources().getString(R.string.please_enter_shop_name));
+            return false;
+        } else if (binding.dobEditTextRegi.getText().toString().isEmpty()) {
+            onMessage("Please select date of birth");
+            return false;
+        } else if (binding.panEkyc.getText().toString().isEmpty()) {
+            onMessage(getResources().getString(R.string.invalid_pan));
+            return false;
+        } else if (!binding.panEkyc.getText().toString().matches("[A-Z]{5}[0-9]{4}[A-Z]")) {
+            onMessage(getResources().getString(R.string.invalid_pan));
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isCustomerValidate() {
+        if (binding.shopName.getText().toString().isEmpty()) {
+            onMessage(getResources().getString(R.string.please_enter_customr_name));
+            return false;
+        } else if (binding.mobileNumber.getText().toString().isEmpty()) {
+            onMessage("Enter enter valid mobile number");
+            return false;
+        } else if (binding.dobEditTextRegi.getText().toString().isEmpty()) {
+            onMessage("Please select date of birth");
+            return false;
+        } else if (binding.panEkyc.getText().toString().isEmpty()) {
+            onMessage(getResources().getString(R.string.invalid_pan));
+            return false;
+        } else if (!binding.panEkyc.getText().toString().matches("[A-Z]{5}[0-9]{4}[A-Z]")) {
+            onMessage(getResources().getString(R.string.invalid_pan));
+            return false;
+        }
+        return true;
+    }
+
     @Override
     protected void setUp(Bundle savedInstanceState) {
-        // viewModel = new ViewModelProvider(this).get(EKYCViewModel.class);
         viewModel = ((EKYCMainActivity) getBaseActivity()).viewModel;
 
         if (((EKYCMainActivity) getBaseActivity()).isCustomer) {
@@ -65,76 +102,72 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
             binding.mobileNumber.setVisibility(View.VISIBLE);
             binding.genderTxt.setVisibility(View.GONE);
             binding.genderLayout.setVisibility(View.GONE);
+        } else {
+            binding.nameFleid.setText("Shop name*");
+            binding.shopName.setHint("Shop name");
         }
 
-        mcalendar = Calendar.getInstance();
-        day = mcalendar.get(Calendar.DAY_OF_MONTH);
-        year = mcalendar.get(Calendar.YEAR);
-        month = mcalendar.get(Calendar.MONTH);
         binding.dobEditTextRegi.setFocusable(false);
 
-        mAwesomeValidation = new AwesomeValidation(BASIC);
-
-        if (((EKYCMainActivity) getBaseActivity()).isCustomer) {
-            mAwesomeValidation.addValidation(binding.shopName, "[\\w\\s-,.]+$", getResources().getString(R.string.please_enter_customr_name));
-        } else {
-            mAwesomeValidation.addValidation(binding.shopName, "[\\w\\s-,.]+$", getResources().getString(R.string.please_enter_shop_name));
-        }
-
-     //   mAwesomeValidation.addValidation(binding.panEkyc, "[A-Z]{5}[0-9]{4}[A-Z]{1}", getResources().getString(R.string.invalid_pan));
         binding.maleFemaleRadioGroupRegi.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = group.findViewById(checkedId);
             gender = radioButton.getText().toString().substring(0, 1);
         });
 
-        DatePickerDialog.OnDateSetListener date = (view, year, monthOfYear, dayOfMonth) -> {
-            // TODO Auto-generated method stub
-            myCalendar.set(Calendar.YEAR, year);
-            myCalendar.set(Calendar.MONTH, monthOfYear);
-            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
-        };
-
         binding.dobEditTextRegi.setOnClickListener(v -> {
             binding.dobEditTextRegi.setFocusableInTouchMode(true);
             binding.dobEditTextRegi.setCursorVisible(false);
             binding.dobEditTextRegi.setShowSoftInputOnFocus(false);
-            // TODO Auto-generated method stub
-            new DatePickerDialog(getActivity(), date,
-                    myCalendar.get(Calendar.YEAR),
-                    myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            showPickerDialog();
         });
+
 
         binding.personalNext.setOnClickListener(v -> {
-            if (mAwesomeValidation.validate()) {
-                if (((EKYCMainActivity) getBaseActivity()).isCustomer) {
-                    if (binding.mobileNumber.getText().toString().isEmpty()) {
-                        onMessage("Enter customer mobile number");
-                    } else if (binding.mobileNumber.getText().toString().length() < 10) {
-                        onMessage("Enter enter valid mobile number");
-                    } else {
-                        YBCreateCustomer();
-                    }
-                } else {
+            if (((EKYCMainActivity) getBaseActivity()).isCustomer) {
+                if (isCustomerValidate()) {
+                    YBCreateCustomer();
+                }
+            } else {
+                if (isValidate()) {
                     YBCreateAgent();
                 }
-
             }
+
         });
+
     }
 
-    private void updateLabel() {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        binding.dobEditTextRegi.setText(sdf.format(myCalendar.getTime()));
+
+    /**
+     * dialog code for show date picker
+     */
+    private void showPickerDialog() {
+        Calendar calendar = Calendar.getInstance();
+
+
+        int Year = calendar.get(Calendar.YEAR);
+        int Month = calendar.get(Calendar.MONTH);
+        int Day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = DatePickerDialog
+                .newInstance(this, Year, Month, Day);
+
+        datePickerDialog.setThemeDark(false);
+        datePickerDialog.showYearPickerFirst(true);
+        datePickerDialog.setAccentColor(Color.parseColor("#342E78"));
+        datePickerDialog.setLocale(new Locale("en"));
+
+        datePickerDialog.setMaxDate(calendar);
+
+
+        datePickerDialog.setTitle("Select Date of Birth");
+        datePickerDialog.show(getParentFragmentManager(), "");
+        datePickerDialog.setOnCancelListener(DialogInterface::dismiss);
     }
+
 
     public void YBCreateAgent() {
         EmailID = binding.emailEditTextRegi.getText().toString();
-
         gender = gender;
-
         Dateofbirth = binding.dobEditTextRegi.getText().toString();
         Pan = binding.panEkyc.getText().toString();
         Shop = binding.shopName.getText().toString();
@@ -143,24 +176,16 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
         YBCreateAgentRequest request = new YBCreateAgentRequest();
         request.agent_date_of_birth = Dateofbirth;
         request.agent_gender = gender;
-        // request.agent_email_id = EmailID;
         request.agent_shop_name = Shop;
-
         request.agent_pan = Pan;
 
-        Log.e("merhcant: ", getSessionManager().getMerchantName().trim());
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() +
                 KeyHelper.getSKey(KeyHelper
                         .getKey(getSessionManager().getMerchantName())).trim();
 
         String body = RestClient.makeGSONString(request);
-        Log.e("body: ", body);
         AERequest aeRequest = new AERequest();
         aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
-
-        Log.e("gkey: ", gKey.trim());
-        Log.e("skey: ", KeyHelper.getSKey(KeyHelper
-                .getKey(getSessionManager().getMerchantName())));
 
         viewModel.YBCreateAgent(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
                 .getKey(getSessionManager().getMerchantName())).trim())
@@ -172,10 +197,8 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
                             } else {
                                 assert response.resource != null;
                                 if (response.resource.responseCode.equals(101)) {
-
                                     String bodyy = AESHelper.decrypt(response.resource.data.body
                                             , gKey);
-
                                     Log.e("YBCreateAgent: ", bodyy);
                                     try {
                                         Gson gson = new Gson();
@@ -191,20 +214,27 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
+                                } else if (response.resource.responseCode.equals(305)) {
+                                    onMessage(response.resource.description + "\nTry again later");
+                                    Navigation.findNavController(binding.getRoot()).navigateUp();
                                 } else {
                                     Utils.hideCustomProgressDialog();
                                     String bodyy = AESHelper.decrypt(response.resource.data.body
                                             , gKey);
-                                    try {
-
-                                        Gson gson = new Gson();
-                                        Type type = new TypeToken<BiometricKYCErrorResponse>() {
-                                        }.getType();
-                                        BiometricKYCErrorResponse data = gson.fromJson(bodyy, type);
-                                        onError(data.responseMessage);
-                                    } catch (Exception e) {
-                                        onError(response.resource.description);
+                                    if (bodyy != null) {
+                                        try {
+                                            Gson gson = new Gson();
+                                            Type type = new TypeToken<BiometricKYCErrorResponse>() {
+                                            }.getType();
+                                            BiometricKYCErrorResponse data = gson.fromJson(bodyy, type);
+                                            onError(data.responseMessage);
+                                        } catch (Exception e) {
+                                            onError(response.resource.description);
+                                        }
+                                    } else {
+                                        onError("Please contact admin body is null");
                                     }
+
                                 }
                             }
                         });
@@ -271,13 +301,31 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
+                                } else if (response.resource.responseCode.equals(305)) {
+                                    onMessage(response.resource.description + "\nTry again later");
+                                    Navigation.findNavController(binding.getRoot()).navigateUp();
                                 } else {
                                     Utils.hideCustomProgressDialog();
                                     if (response.resource.data != null) {
                                         String bodyy = AESHelper.decrypt(response.resource.data.body
                                                 , gKey);
                                         if (!body.isEmpty()) {
-                                            onError(bodyy);
+                                            //  onError(bodyy);
+
+                                            Log.e("YBCreateCustomer: ", bodyy);
+                                            try {
+                                                Gson gson = new Gson();
+                                                Type type = new TypeToken<CreateCustomerErrorResponse>() {
+                                                }.getType();
+
+                                                CreateCustomerErrorResponse data = gson.fromJson(bodyy, type);
+                                                onError(data.responseMessage);
+
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+
+
                                         } else {
                                             onError(response.resource.description);
                                         }
@@ -291,12 +339,10 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
 
     }
 
-
     @Override
     public int getLayoutId() {
         return R.layout.fragment_create_ekyc_agent;
     }
-
 
     @Override
     public void onProceed() {
@@ -305,6 +351,12 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
 
     @Override
     public void onCancel(boolean goBack) {
+
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        binding.dobEditTextRegi.setText(DateAndTime.setDateFormat(year, monthOfYear, dayOfMonth));
 
     }
 }

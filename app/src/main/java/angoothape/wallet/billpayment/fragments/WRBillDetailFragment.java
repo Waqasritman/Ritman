@@ -118,7 +118,7 @@ public class WRBillDetailFragment extends BaseFragment<ActivityBillPaymentCountr
 
     @Override
     public void onSelectBillerName(GetWRBillerNamesResponseC billerName) {
-        ((BillPaymentMainActivity) getBaseActivity()).plansRequest.billerID = billerName.Biller_ID;
+//        ((BillPaymentMainActivity) getBaseActivity()).plansRequest.billerID = billerName.Biller_ID;
 
     }
 

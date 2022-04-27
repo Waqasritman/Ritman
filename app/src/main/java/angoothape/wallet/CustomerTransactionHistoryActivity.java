@@ -49,9 +49,13 @@ public class CustomerTransactionHistoryActivity extends
         viewModel = new ViewModelProvider(this).get(TransactionHistoryViewModel.class);
         historyList = new ArrayList<>();
 
-        binding.backBtn.setOnClickListener(v->{
+        binding.toolBar.backBtn.setOnClickListener(v -> {
             onBackPressed();
         });
+
+        binding.toolBar.titleTxt.setText("Customer Transaction Histroy");
+        binding.toolBar.crossBtn.setVisibility(View.GONE);
+
         binding.searchBtn.setOnClickListener(v -> {
             if (TextUtils.isEmpty(binding.seachBene.getText().toString())) {
                 onMessage(getString(R.string.enter_beneficairy_number));

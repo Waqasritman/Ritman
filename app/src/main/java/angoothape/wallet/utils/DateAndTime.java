@@ -53,7 +53,7 @@ public class DateAndTime {
         Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
         calendar.set(year, monthOfYear, dayOfMonth);
 
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
 
         return format.format(calendar.getTime());
     }

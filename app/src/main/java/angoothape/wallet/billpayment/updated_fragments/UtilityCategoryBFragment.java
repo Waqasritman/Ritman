@@ -103,6 +103,9 @@ public class UtilityCategoryBFragment extends BaseFragment<TransferDialogPurpose
                                 e.printStackTrace();
                             }
 
+                        } else if (response.resource.responseCode.equals(305)) {
+                            onMessage(response.resource.description + "\nTry again later");
+                            Navigation.findNavController(binding.getRoot()).navigateUp();
                         } else {
                             Utils.hideCustomProgressDialog();
                             if (response.resource.data != null) {

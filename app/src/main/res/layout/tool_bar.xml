@@ -20,7 +20,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary">
 
                 <ImageView
                     android:id="@+id/back_btn"
@@ -29,7 +30,7 @@
                     android:layout_centerVertical="true"
                     android:scaleType="centerInside"
                     android:src="@drawable/back_white_icon"
-                    app:tint="@color/colorPrimary" />
+                    app:tint="@color/colorWhite" />
 
 
                 <TextView

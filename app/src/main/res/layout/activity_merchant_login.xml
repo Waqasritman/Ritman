@@ -141,14 +141,13 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSubmit"
-            style="@style/Text16spSemiBold"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:layout_below="@id/remember_me_check"
             android:layout_marginStart="@dimen/margin_15dp"
             android:layout_marginTop="@dimen/margin_20dp"
             android:layout_marginEnd="@dimen/margin_15dp"
-            android:background="@drawable/edt_round_fill"
             android:elevation="0dp"
             android:text="@string/login_text" />
 

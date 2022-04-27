@@ -538,12 +538,8 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:layout_margin="@dimen/margin_10dp"
-            android:background="@drawable/background_button"
-            android:backgroundTint="@color/posDarkBlue"
             android:text="@string/proceed_to_pay"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_15sp"
+            style="@style/ButtonStyle"
             android:visibility="gone" />
     </androidx.cardview.widget.CardView>
 

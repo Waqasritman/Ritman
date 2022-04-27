@@ -32,7 +32,7 @@ public class RegisterBeneficiaryViewModel extends ViewModel {
     public MutableLiveData<RegisterBeneficiaryRequest> beneRegister = new MutableLiveData<>();
 
     RestApi restApii = RestClient.get();
-    RestApi restApiii = RestClient.getREST();
+    RestApi restApiii = RestClient.getEKYC();
     AppExecutors appExecutors = new AppExecutors();
 
     public LiveData<NetworkResource<AEResponse>> createBeneficairyOTP(AERequest aeRequest, String key

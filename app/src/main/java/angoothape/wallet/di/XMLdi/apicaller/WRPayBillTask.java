@@ -48,9 +48,8 @@ public class WRPayBillTask extends AsyncTask<WRPayBillRequest, Void, String> {
 
     @Override
     protected String doInBackground(WRPayBillRequest... wrPayBillRequests) {
-        Log.e("XML: ",wrPayBillRequests[0].getXML() );
-        String responseString = HTTPHelper.getResponse(wrPayBillRequests[0]
-                        .getXML(),
+
+        String responseString = HTTPHelper.getResponse("",
                 SoapActionHelper.ACTION_WR_PAY_BILL
                 , ApiHelper.METHOD_POST);
         XmlToJson xmlToJson = new XmlToJson.Builder(responseString).build();

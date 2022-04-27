@@ -34,20 +34,16 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
         return R.layout.splash_login;
     }
 
-
     @Override
     protected void initUi(Bundle savedInstanceState) {
-
         mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mHandler.removeCallbacks(this);
                 getOsVersion();
-
             }
         }, 7000);
-      //  throw new RuntimeException("Test Crash"); // Force a crash
     }
 
     @Override
@@ -58,7 +54,7 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
 
 
     void startVideo() {
-        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.logo);
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.logoo);
         binding.videoView.setVideoURI(uri);
         binding.imgLogo.setVisibility(View.GONE);
         binding.videoView.setVisibility(View.VISIBLE);
@@ -94,7 +90,7 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     if (response.body().responseCode.equals(101)) {
-                        if (response.body().Force_Update && !response.body().Andriod_Version.equalsIgnoreCase(version)) {
+                        if (response.body().data.Force_Update && !response.body().data.Andriod_Version.equalsIgnoreCase(version)) {
                             updateAvailable();
                         } else {
                             getCountry();
@@ -173,7 +169,6 @@ public class NewSplash extends RitmanBaseActivity<SplashLoginBinding> {
     void goToNext() {
         startActivity(new Intent(getApplicationContext(), MerchantLoginActivity.class));
         finish();
-
     }
 
 

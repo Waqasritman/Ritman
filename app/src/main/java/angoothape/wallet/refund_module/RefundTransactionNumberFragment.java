@@ -38,6 +38,9 @@ public class RefundTransactionNumberFragment extends BaseFragment<RefundTransact
         if (binding.transactionNo.getText().toString().isEmpty()) {
             onMessage(getString(R.string.enter_transaction_no_txt));
             return false;
+        } else if (binding.transactionNo.getText().toString().length() < 13 || binding.transactionNo.getText().toString().length() > 16) {
+            onMessage("Transaction no should be between 13 and 16 digits");
+            return false;
         }
         return true;
     }
@@ -87,13 +90,20 @@ public class RefundTransactionNumberFragment extends BaseFragment<RefundTransact
                                     if (response.resource.data != null) {
                                         String bodyy = AESHelper.decrypt(response.resource.data.body
                                                 , gKey);
+                                        String error;
                                         if (!body.isEmpty()) {
-                                            onError(bodyy);
+                                            error = bodyy.replace("Txn_no", "Transaction number");
+                                            error = error.replace("The field", "");
                                         } else {
-                                            onError(response.resource.description);
+                                            error = response.resource.description.replace("Txn_no", "Transaction number");
+                                            error = error.replace("The field", "The");
                                         }
+                                        onError(error.replace(" a string or array type", ""));
                                     } else {
-                                        onError(response.resource.description);
+                                        String error = response.resource.description.replace("Txn_no", "Transaction number");
+                                        error = error.replace("The field", "The");
+
+                                        onError(error.replace(" a string or array type", ""));
                                     }
                                 }
 

@@ -31,7 +31,7 @@ import angoothape.wallet.interfaces.OnSelectBeneficiary;
 import angoothape.wallet.utils.BeneficiarySelector;
 import angoothape.wallet.utils.Utils;
 
-public class CheckBeneForAeps  extends BaseDialogFragment<ActivitySelectBeneficialyBinding>
+public class CheckBeneForAeps extends BaseDialogFragment<ActivitySelectBeneficialyBinding>
         implements OnSelectBeneficiary, OnDecisionMade {
 
     RegisterBeneficiaryViewModel viewModel;
@@ -54,6 +54,9 @@ public class CheckBeneForAeps  extends BaseDialogFragment<ActivitySelectBenefici
         binding.backBtn.setOnClickListener(v -> {
             getBaseActivity().onBackPressed();
         });
+
+        binding.titleTxt.setText("AEPS Beneficiary");
+        binding.crossBtn.setVisibility(View.GONE);
 
 
         ////
@@ -167,7 +170,7 @@ public class CheckBeneForAeps  extends BaseDialogFragment<ActivitySelectBenefici
     }
 
     @Override
-    public void onCancel(boolean goBack)  {
+    public void onCancel(boolean goBack) {
 
     }
 

@@ -20,9 +20,15 @@ public class AutoLogoutActivity extends RitmanBaseActivity<ActivityAutoLogoutBin
             finish();
         });
 
+        binding.toolBar.titleTxt.setText("App Closed");
+        binding.toolBar.crossBtn.setOnClickListener(v -> {
+            finish();
+        });
+
         binding.closeTalfie.setOnClickListener(v -> {
             finish();
         });
+
 
         binding.login.setOnClickListener(v -> {
             Intent intent = new Intent(this, NewSplash.class);

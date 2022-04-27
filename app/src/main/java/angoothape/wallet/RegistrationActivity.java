@@ -50,7 +50,6 @@ public class RegistrationActivity extends BaseFragment<ActivityRegistrationBindi
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
-        //     binding.toolBar.titleTxt.setText("Customer Registration");
         viewModel = new ViewModelProvider(this).get(RegisterBeneficiaryViewModel.class);
         if (getArguments() != null) {
             if (getArguments().getString("phone") != null) {
@@ -139,8 +138,7 @@ public class RegistrationActivity extends BaseFragment<ActivityRegistrationBindi
         AERequest request = new AERequest();
         request.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
-
-        Call<AEResponse> call = RestClient.getREST().createRegister(RestClient.makeGSONRequestBody(request)
+        Call<AEResponse> call = RestClient.getEKYC().createRegister(RestClient.makeGSONRequestBody(request)
                 , KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
                         .getKey(getSessionManager().getMerchantName())).trim());
 
@@ -193,30 +191,6 @@ public class RegistrationActivity extends BaseFragment<ActivityRegistrationBindi
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-//        Call<RegisterCustomerResponse> call = RestClient.get().createRegister(registerModel, getSessionManager().getMerchantName());
-//        call.enqueue(new retrofit2.Callback<RegisterCustomerResponse>() {
-//            @Override
-//            public void onResponse(Call<RegisterCustomerResponse> call, Response<RegisterCustomerResponse> response) {
-//                Utils.hideCustomProgressDialog();
-//                assert response.body() != null;
-//                if (response.body().responseCode.equals(101)) {
-//                    onMessage("Customer Registered Successfully");
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("customer_no", response.body().customerNo);
-//                    Navigation.findNavController(binding.getRoot())
-//                            .navigate(R.id.sendMoneyViaBankFirstActivity , bundle);
-//                } else {
-//                    onError(response.body().description);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<RegisterCustomerResponse> call, Throwable t) {
-//                Utils.hideCustomProgressDialog();
-//                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
 
     }

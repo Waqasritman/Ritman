@@ -48,6 +48,8 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
     List<StatementOfAccount> statementOfAccounts;
     List<StatementOfAccount> filteredStatementOfAccounts;
     boolean isStarting = false;
+    //0 , 1 , 2
+    int type = 0;
 
     @Override
     public int getLayoutId() {
@@ -96,7 +98,7 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
             filteredStatementOfAccounts.clear();
             filteredStatementOfAccounts.addAll(statementOfAccounts);
             adapter.notifyDataSetChanged();
-
+            type = 0;
             binding.topDebitView.setVisibility(View.GONE);
             binding.topCreditView.setVisibility(View.GONE);
             binding.allReceived.setVisibility(View.VISIBLE);
@@ -104,6 +106,7 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
 
         binding.credit.setOnClickListener(v -> {
             setCredit();
+            type = 1;
             binding.topDebitView.setVisibility(View.GONE);
             binding.topCreditView.setVisibility(View.VISIBLE);
             binding.allReceived.setVisibility(View.GONE);
@@ -111,6 +114,7 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
 
         binding.debitLayout.setOnClickListener(v -> {
             setDebit();
+            type = 2;
             binding.topDebitView.setVisibility(View.VISIBLE);
             binding.topCreditView.setVisibility(View.GONE);
             binding.allReceived.setVisibility(View.GONE);
@@ -160,7 +164,7 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
                                 this.filteredStatementOfAccounts.clear();
                             }
                         }
-                        setupRecyclerView();
+
                         try {
                             if (data.closing_Bal_data_.get(0).closingBalancesINR.contains("Dr") ||
                                     data.closing_Bal_data_.get(0).closingBalancesINR.contains("DR") ||
@@ -181,13 +185,11 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
                                 binding.closingBalance.setText("₹ " + bal);
                                 //binding.closingBalance.setTextColor(ContextCompat.getColor(this, R.color.cardview0));
                             }
-                            binding.topDebitView.setVisibility(View.GONE);
-                            binding.topCreditView.setVisibility(View.GONE);
-                            binding.allReceived.setVisibility(View.VISIBLE);
-                            binding.mainLayout.setVisibility(View.VISIBLE);
+
                         } catch (Exception e) {
                             Log.e("ex: ", e.getLocalizedMessage());
                         }
+                        setupRecyclerView();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -227,6 +229,15 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
                 MerchantLedgerAdapter(filteredStatementOfAccounts, this);
         binding.recyclerViewLedger.setLayoutManager(mLayoutManager);
         binding.recyclerViewLedger.setAdapter(adapter);
+
+
+        if (type == 0) {
+            binding.allLayout.performClick();
+        } else if (type == 1) {
+            binding.credit.performClick();
+        } else if (type == 2) {
+            binding.debitLayout.performClick();
+        }
     }
 
 
@@ -244,7 +255,10 @@ public class MerchantLedgerActivity extends RitmanBaseActivity<ActivityMerchantL
             }
 
         }
-        adapter.notifyDataSetChanged();
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
+
     }
 
 

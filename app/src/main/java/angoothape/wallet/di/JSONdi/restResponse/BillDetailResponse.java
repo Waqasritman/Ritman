@@ -1,5 +1,8 @@
 package angoothape.wallet.di.JSONdi.restResponse;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -7,7 +10,7 @@ import java.util.List;
 
 import angoothape.wallet.di.generic_response.ApiResponse;
 
-public class BillDetailResponse extends ApiResponse <BillDetailResponse>{
+public class BillDetailResponse extends ApiResponse<BillDetailResponse> implements Parcelable {
     @SerializedName("validationid")
     public String validationid;
 
@@ -31,6 +34,31 @@ public class BillDetailResponse extends ApiResponse <BillDetailResponse>{
     @SerializedName("message")
     public String message;
 
+    protected BillDetailResponse(Parcel in) {
+        validationid = in.readString();
+        objectid = in.readString();
+        billerid = in.readString();
+        biller_name = in.readString();
+        biller_category = in.readString();
+        payment_amount = in.readString();
+        currency = in.readString();
+        message = in.readString();
+        validation_date = in.readString();
+        valid_until = in.readString();
+    }
+
+    public static final Creator<BillDetailResponse> CREATOR = new Creator<BillDetailResponse>() {
+        @Override
+        public BillDetailResponse createFromParcel(Parcel in) {
+            return new BillDetailResponse(in);
+        }
+
+        @Override
+        public BillDetailResponse[] newArray(int size) {
+            return new BillDetailResponse[size];
+        }
+    };
+
     public String getMessage() {
         return message;
     }
@@ -38,7 +66,6 @@ public class BillDetailResponse extends ApiResponse <BillDetailResponse>{
     public void setMessage(String message) {
         this.message = message;
     }
-
 
 
     public List<BillDetailResponse.billlist> getBilllist() {
@@ -64,12 +91,31 @@ public class BillDetailResponse extends ApiResponse <BillDetailResponse>{
     public String valid_until;
 
     @SerializedName("billlist")
-   public List<billlist> billlist = new ArrayList<billlist>();
+    public List<billlist> billlist = new ArrayList<billlist>();
 
     @SerializedName("authenticators")
     public List<authenticators> authenticators = new ArrayList<authenticators>();
 
-    public static class billlist{
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(validationid);
+        dest.writeString(objectid);
+        dest.writeString(billerid);
+        dest.writeString(biller_name);
+        dest.writeString(biller_category);
+        dest.writeString(payment_amount);
+        dest.writeString(currency);
+        dest.writeString(message);
+        dest.writeString(validation_date);
+        dest.writeString(valid_until);
+    }
+
+    public static class billlist {
         public String getObjectid() {
             return objectid;
         }
@@ -160,10 +206,10 @@ public class BillDetailResponse extends ApiResponse <BillDetailResponse>{
         public String billstatus;
 
         @SerializedName("billnumber")
-        public String billnumber;
+        public String billnumber = "";
 
         @SerializedName("billperiod")
-        public String billperiod;
+        public String billperiod = "";
 
         @SerializedName("net_billamount")
         public String net_billamount;
@@ -181,15 +227,13 @@ public class BillDetailResponse extends ApiResponse <BillDetailResponse>{
         public String billduedate;
     }
 
-    public static class authenticators{
+    public static class authenticators {
         @SerializedName("parameter_name")
         public String parameter_name;
 
         @SerializedName("value")
         public String value;
     }
-
-
 
 
 }

@@ -41,7 +41,7 @@ import java.util.Locale;
 
 public abstract class RitmanBaseActivity<T extends ViewDataBinding>
         extends AppCompatActivity implements BaseFragment.Callback, SessionOutListener
-        , OnUserPin, OnCancelInterface , OnDecisionMade {
+        , OnUserPin, OnCancelInterface, OnDecisionMade {
 
     private static final String TAG = RitmanBaseActivity.class.getName();
     public T binding;
@@ -71,6 +71,7 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
     public SessionManager getSessionManager() {
         return sessionManager;
     }
+
     /**
      * Override for set view model
      *
@@ -93,10 +94,10 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //  if (BuildConfig.FLAVOR_country.equals("saudi") && "ar".equals(LanguageUtil.getSelectedLanguageFromSharedPreferences(this))) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
-         //       WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+        //       WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-          //      WindowManager.LayoutParams.FLAG_SECURE);
+        //      WindowManager.LayoutParams.FLAG_SECURE);
         //  } else {
         //      getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         //  }
@@ -129,6 +130,7 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
      */
     private void performDataBinding() {
         binding = DataBindingUtil.setContentView(this, getLayoutId());
+
         //    this.mViewModel = mViewModel == null ? getViewModel() : mViewModel;
     }
 
@@ -136,14 +138,15 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
         Constants.hideKeyboard(this);
         Snackbar snackbar = Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT);
         snackbar.setAction(getString(R.string.cancel), v -> snackbar.dismiss());
+        snackbar.setActionTextColor(getResources().getColor(R.color.white));
         snackbar.show();
     }
 
     @Override
     public void onUserInteraction() {
         super.onUserInteraction();
-       ((TotiWallet) getApplication()).startUserSession();
-       // TotiWallet.myAutoLogoutApp.touch();
+        ((TotiWallet) getApplication()).startUserSession();
+        // TotiWallet.myAutoLogoutApp.touch();
     }
 
     /**
@@ -271,7 +274,7 @@ public abstract class RitmanBaseActivity<T extends ViewDataBinding>
     public void onClose() {
         CloseDialog dialog = new CloseDialog(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        dialog.show(transaction , "");
+        dialog.show(transaction, "");
     }
 
 

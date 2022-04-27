@@ -2,9 +2,9 @@
 <layout xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/parent_relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/parent_relativeLayout"
         android:orientation="vertical"
         tools:context=".personal_loan.fragment.Personal_One_Fragment">
 
@@ -41,58 +41,60 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Pincode No."/>
+                            android:text="Pincode No." />
 
                         <EditText
-                            android:singleLine="true"
                             android:id="@+id/pincodeEditTextRegi"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+                            android:layout_marginTop="@dimen/margin_5dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_select_mood"
                             android:gravity="center_vertical"
                             android:hint="@string/pincode_text"
                             android:inputType="number"
                             android:maxLength="6"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:singleLine="true" />
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="City:"/>
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:text="City:" />
 
                         <EditText
-                            android:singleLine="true"
                             android:id="@+id/addr_city"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+                            android:layout_marginTop="@dimen/margin_5dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_select_mood"
                             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:gravity="center_vertical"
                             android:hint="@string/addre_city"
                             android:inputType="text"
                             android:maxLength="25"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:singleLine="true" />
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="State:"/>
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:text="State:" />
 
                         <EditText
-                            android:singleLine="true"
                             android:id="@+id/addr_state"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+                            android:layout_marginTop="@dimen/margin_5dp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:background="@drawable/background_select_mood"
                             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
@@ -101,104 +103,100 @@
                             android:inputType="text"
                             android:maxLength="25"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:singleLine="true" />
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Type of Accommodation:"/>
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:text="Type of Accommodation:" />
 
                         <EditText
-                            android:singleLine="true"
                             android:id="@+id/accommondation"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+                            android:layout_marginTop="@dimen/margin_5dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_select_mood"
                             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:gravity="center_vertical"
                             android:hint="@string/accommodation"
                             android:inputType="text"
                             android:maxLength="25"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:singleLine="true" />
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="PAN:"/>
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:text="PAN:" />
 
                         <EditText
-                            android:singleLine="true"
                             android:id="@+id/pan"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+                            android:layout_marginTop="@dimen/margin_5dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_select_mood"
                             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:gravity="center_vertical"
                             android:hint="@string/pan"
                             android:inputType="text"
                             android:maxLength="25"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:singleLine="true" />
 
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Aadhaar:"/>
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:text="Aadhaar:" />
 
                         <EditText
-                            android:singleLine="true"
                             android:id="@+id/adhaar"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+                            android:layout_marginTop="@dimen/margin_5dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_select_mood"
                             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:gravity="center_vertical"
                             android:hint="@string/adhar"
                             android:inputType="text"
                             android:maxLength="25"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_14sp" />
+                            android:singleLine="true" />
 
 
                         <TextView
+                            style="@style/TitleStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Highest Qualification:"/>
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:text="Highest Qualification:" />
 
                         <EditText
-                            android:singleLine="true"
                             android:id="@+id/qualification"
+                            style="@style/EditTextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/height_50dp"
+                            android:layout_marginTop="@dimen/margin_5dp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/background_select_mood"
                             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:gravity="center_vertical"
                             android:hint="@string/qualification"
                             android:inputType="text"
                             android:maxLength="25"
                             android:paddingLeft="@dimen/_5sdp"
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_14sp" />
-
+                            android:singleLine="true" />
 
 
                     </LinearLayout>
-
 
 
                 </LinearLayout>
@@ -209,18 +207,14 @@
 
         <Button
             android:id="@+id/personal_next"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_50dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="@dimen/margin_10dp"
             android:layout_marginEnd="@dimen/margin_10dp"
             android:layout_marginBottom="@dimen/margin_20dp"
-            android:background="@drawable/background_button"
-            android:fontFamily="@font/lato_bold"
-            android:text="Next"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_18sp" />
+            android:text="Next" />
     </RelativeLayout>
 
 </layout>

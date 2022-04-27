@@ -97,11 +97,11 @@ public class CashPaymentThirdActivity extends BaseFragment<ActivityCashPaymentTh
     @Override
     public void onResume() {
         super.onResume();
-        ((MoneyTransferMainLayout) getBaseActivity()).binding.toolBar.toolBarFinal
-                .setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        ((MoneyTransferMainLayout) getBaseActivity()).binding.toolBar.backBtn
-                .setColorFilter(ContextCompat.getColor(getContext(),
-                        R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
+//        ((MoneyTransferMainLayout) getBaseActivity()).binding.toolBar.toolBarFinal
+//                .setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+//        ((MoneyTransferMainLayout) getBaseActivity()).binding.toolBar.backBtn
+//                .setColorFilter(ContextCompat.getColor(getContext(),
+//                        R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
         ((MoneyTransferMainLayout) getBaseActivity()).binding.toolBar.titleTxt
                 .setText(getString(R.string.cash_transfer));
     }

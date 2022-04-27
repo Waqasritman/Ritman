@@ -128,8 +128,8 @@ public class UtilityPaymentCategoryFragment extends BaseFragment<ActivityBillPay
 
     @Override
     public void onSelectCategory(GetWRBillerCategoryResponseC category) {
-        ((BillPaymentMainActivity)getBaseActivity())
-                .plansRequest.billerCategoryId = String.valueOf(category.getID());
+//        ((BillPaymentMainActivity)getBaseActivity())
+//                .plansRequest.billerCategoryId = String.valueOf(category.getID());
 
     }
 

@@ -18,52 +18,37 @@
             android:fontFamily="@font/lato_semibold"
             android:text="@string/transfer_to_mer_txt"
             android:textColor="@color/black"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_15sdp"
+            android:visibility="gone" />
 
-        <LinearLayout
-            android:id="@+id/select_merchant_txt"
+
+        <TextView
+            android:id="@+id/merhant"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/background_select_mood"
-            android:backgroundTint="@color/colorPrimary"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/_8sdp"
-            android:weightSum="3.5">
-
-            <TextView
-                android:id="@+id/merhant"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:layout_weight="3"
-                android:drawableStart="@drawable/my_bene_icon"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableTint="@color/white"
-                android:fontFamily="@font/lato_regular"
-                android:gravity="start|center_vertical"
-                android:text="@string/select_mer_txt"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:src="@drawable/arrow_menu"
-                app:tint="@color/white" />
-
-        </LinearLayout>
+            android:layout_height="@dimen/height_50dp"
+            android:layout_marginStart="@dimen/margin_15dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:layout_marginEnd="@dimen/margin_15dp"
+            android:background="@drawable/background_beneficiary_registeration"
+            android:drawableStart="@drawable/my_bene_icon"
+            android:drawableEnd="@drawable/arrow_menu"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/lato_medium"
+            android:gravity="start|center_vertical"
+            android:hint="@string/select_mer_txt"
+            android:paddingStart="@dimen/margin_15dp"
+            android:paddingEnd="@dimen/margin_15dp" />
 
 
         <EditText
             android:id="@+id/amount_txt"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_50dp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/border_background"
+            android:layout_marginStart="@dimen/margin_15dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginEnd="@dimen/margin_15dp"
             android:hint="@string/amount_hint"
             android:inputType="numberDecimal"
             android:paddingStart="@dimen/margin_10dp"
@@ -72,11 +57,10 @@
 
         <Button
             android:id="@+id/tranfer_btn"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_10dp"
-            android:background="@drawable/background_select_mood"
-            android:backgroundTint="@color/colorPrimary"
             android:text="@string/send_now"
             android:textAllCaps="false"
             android:textColor="@color/white" />

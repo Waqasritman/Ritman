@@ -132,7 +132,7 @@ AdharBioKYCFragment extends BaseFragment<FragmentAdharBioKYCBinding> implements 
     @BindView(R.id.linearSelectPosition)
     LinearLayout linearSelectPosition;
     @BindView(R.id.edtxAdharNo)
-    MaskedEditText edtxAdharNo;
+    EditText edtxAdharNo;
     @BindView(R.id.linearAdharNo)
     LinearLayout linearAdharNo;
     @BindView(R.id.btnDeviceInfo)
