@@ -1,18 +1,29 @@
 package angoothape.wallet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
-public class HomeActivity extends AppCompatActivity {
-    String updatedbalance;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+import angoothape.wallet.base.RitmanBaseActivity;
+import angoothape.wallet.databinding.ActivityHomeBinding;
+import angoothape.wallet.home_module.fragments.HomeFragment;
 
-       // getUpdatedBalance();
+public class HomeActivity extends RitmanBaseActivity<ActivityHomeBinding> {
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_home;
     }
 
+    @Override
+    protected void initUi(Bundle savedInstanceState) {
+        moveToFragment(new DashBoardFragment());
+    }
+
+    public void moveToFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_frame, fragment).commit();
+    }
 
 }

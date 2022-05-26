@@ -21,7 +21,7 @@
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_toEndOf="@id/image_icon"
             android:fontFamily="@font/lato_regular"
-            android:textAllCaps="true"
+            android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_12sp" />
 

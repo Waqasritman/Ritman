@@ -26,7 +26,6 @@ import angoothape.wallet.R;
 import angoothape.wallet.adapters.CustomerBeneficiaryListAdapter;
 import angoothape.wallet.databinding.FragmentBeneficiaryListBinding;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.BeneficiaryListRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.GetBeneficiaryListResponse;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;

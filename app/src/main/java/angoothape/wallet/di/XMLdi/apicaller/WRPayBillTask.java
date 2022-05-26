@@ -2,7 +2,6 @@ package angoothape.wallet.di.XMLdi.apicaller;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,7 +9,6 @@ import org.json.JSONObject;
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import angoothape.wallet.R;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.WRPayBillRequest;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;
 import angoothape.wallet.interfaces.OnSuccessMessage;

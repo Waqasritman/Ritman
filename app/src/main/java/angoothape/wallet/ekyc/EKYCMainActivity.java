@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import java.util.Objects;
+
 import angoothape.wallet.R;
 import angoothape.wallet.base.RitmanBaseActivity;
 import angoothape.wallet.databinding.ActivityEKYCMainBinding;
@@ -37,7 +39,13 @@ public class EKYCMainActivity extends RitmanBaseActivity<ActivityEKYCMainBinding
                 .setColorFilter(ContextCompat.getColor(this,
                         R.color.colorWhite), android.graphics.PorterDuff.Mode.SRC_IN);
         binding.toolBar.toolBar.setBackgroundColor(getResources().getColor(R.color.posRed));
-        binding.toolBar.titleTxt.setText("EKYC");
+
+        if(isCustomer) {
+            binding.toolBar.titleTxt.setText("Customer EKYC");
+        } else {
+            binding.toolBar.titleTxt.setText("EKYC");
+        }
+
 
         binding.toolBar.backBtn.setOnClickListener((View.OnClickListener) v -> finish());
         binding.toolBar.crossBtn.setOnClickListener(v -> {
@@ -54,7 +62,7 @@ public class EKYCMainActivity extends RitmanBaseActivity<ActivityEKYCMainBinding
 
     @Override
     public void onBackPressed() {
-        if (navController.getCurrentDestination().getId() == R.id.createEkycAgentFragment) {
+        if (Objects.requireNonNull(navController.getCurrentDestination()).getId() == R.id.createEkycAgentFragment) {
             finish();
         } else {
             navController.navigateUp();

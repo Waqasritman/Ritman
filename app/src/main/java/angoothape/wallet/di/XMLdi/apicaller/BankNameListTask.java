@@ -13,7 +13,6 @@ import java.util.List;
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import angoothape.wallet.R;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.BankNameListRequest;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;
 import angoothape.wallet.interfaces.OnGetBankNameList;

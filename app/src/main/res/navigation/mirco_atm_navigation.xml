@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/microATMChooseFragment"
+    android:id="@+id/microATMChooseFragment">
+
+    <fragment
+        android:id="@+id/merchantCompanyDetailsFragment"
+        android:name="angoothape.wallet.credopay.createMerchant.MerchantCompanyDetailsFragment"
+        android:label="MobileTopUpFirstActivity"
+        tools:layout="@layout/fragment_merchant_company_details" />
+
+
+    <fragment
+        android:id="@+id/activateTerminal"
+        android:name="angoothape.wallet.credopay.activiteTerminal.ActivateTerminal"
+        android:label="MobileTopUpFirstActivity"
+        tools:layout="@layout/fragment_merchant_company_details" />
+
+    <fragment
+        android:id="@+id/merchantDetailsFragment"
+        android:name="angoothape.wallet.credopay.createMerchant.MerchantDetailsFragment"
+        android:label="MobileTopUpFirstActivity"
+        tools:layout="@layout/fragment_merchant_details" />
+
+
+    <fragment
+        android:id="@+id/microATMChooseFragment"
+        android:name="angoothape.wallet.credopay.createMerchant.MicroATMChooseFragment"
+        android:label="MobileTopUpFirstActivity"
+        tools:layout="@layout/fragment_micro_a_t_m_choose" />
+
+    <fragment
+        android:id="@+id/merchantDocumentsFragment"
+        android:name="angoothape.wallet.credopay.createMerchant.MerchantDocumentsFragment"
+        android:label="MobileTopUpFirstActivity"
+        tools:layout="@layout/fragment_merchant_documents" />
+
+
+    <fragment
+        android:id="@+id/merchantAddTerminalFragment"
+        android:name="angoothape.wallet.credopay.MerchantAddTerminalFragment"
+        android:label="MobileTopUpFirstActivity"
+        tools:layout="@layout/fragment_merchant_documents" />
+</navigation>

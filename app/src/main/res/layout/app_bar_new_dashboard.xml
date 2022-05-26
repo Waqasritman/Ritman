@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <FrameLayout
             android:id="@+id/fragment_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/margin_5dp"
@@ -27,11 +26,12 @@
                 android:layout_alignParentStart="true"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_menu" />
+                android:visibility="gone"
+                android:src="@drawable/ic_menu"
+                app:tint="@color/white" />
 
 
             <ImageView
-                android:visibility="gone"
                 android:id="@+id/refresh_balance"
                 android:layout_width="@dimen/margin_15dp"
                 android:layout_height="@dimen/margin_15dp"
@@ -39,10 +39,10 @@
                 android:layout_toStartOf="@id/notifiacaiton_btn"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_qr"
+                android:visibility="gone"
                 app:tint="@color/colorWhite" />
 
             <ImageView
-                android:visibility="gone"
                 android:id="@+id/notifiacaiton_btn"
                 android:layout_width="@dimen/height_50dp"
                 android:layout_height="@dimen/height_50dp"
@@ -50,23 +50,26 @@
                 android:layout_centerVertical="true"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_notification" />
+                android:src="@drawable/ic_notification"
+                android:visibility="visible"
+                app:tint="@color/white" />
+
         </RelativeLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/send"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/margin_25dp"
+            android:contentDescription="@string/hint_branch_code"
             android:scaleType="center"
-            android:src="@drawable/ic_send"
+            android:src="@drawable/ic_qr"
+            android:visibility="visible"
             app:backgroundTint="@color/white" />
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/bottom_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +77,9 @@
             android:background="@drawable/top_shadow"
             android:gravity="center"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:visibility="visible"
+            android:weightSum="5"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:id="@+id/home_layout"
@@ -90,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_home"
-                    app:tint="@color/colorWhite" />
+                    app:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/home_tv"
@@ -98,10 +103,35 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
                     android:text="Home"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_size_12sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/refund_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/refund_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cashback"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/refund_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Refund"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_12sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -112,20 +142,21 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_bank_unselected" />
+                    android:src="@drawable/ic_bank_unselected"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/quick_pay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_medium"
+                    android:fontFamily="@font/lato_bold"
                     android:gravity="bottom"
-                    android:text="@string/quick_pay"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/text_size_12sp" />
+                    android:text="@string/scan_qr_code"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_12sp"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
@@ -139,29 +170,49 @@
                 android:orientation="vertical">
 
                 <ImageView
-
                     android:id="@+id/history_img"
                     android:layout_width="@dimen/_15sdp"
                     android:layout_height="@dimen/_15sdp"
-                    android:src="@drawable/ic_history_unselected_icon" />
+                    android:src="@drawable/ic_history_unselected_icon"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/history_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
-                    android:text="@string/history"
-                    android:textColor="@color/colorWhite"
+                    android:text="History"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_size_12sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/account_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/account_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_settings_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/account_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Settings"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_12sp" />
+            </LinearLayout>
 
         </LinearLayout>
-
-
-
-
 
 
     </RelativeLayout>

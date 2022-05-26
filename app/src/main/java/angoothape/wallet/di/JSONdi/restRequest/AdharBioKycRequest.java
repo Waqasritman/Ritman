@@ -19,5 +19,6 @@ public class AdharBioKycRequest {
     public String captured_template;
     public String purpose;
     public String wadh_value;
+    public String For_customer_eKyc = "0";
 
 }

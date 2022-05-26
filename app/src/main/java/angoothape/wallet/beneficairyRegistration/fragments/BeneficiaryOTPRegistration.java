@@ -18,6 +18,7 @@ import angoothape.wallet.beneficairyRegistration.viewmodel.RegisterBeneficiaryVi
 import angoothape.wallet.databinding.GenerateOtpFragmentLayoutBinding;
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.Status;
+import angoothape.wallet.di.JSONdi.models.BeneRegistrationOTPErrorResponse;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
 import angoothape.wallet.di.JSONdi.restRequest.CreateBeneficiaryRequest;
 import angoothape.wallet.di.JSONdi.restRequest.RegisterBeneficiaryRequest;
@@ -127,12 +128,26 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
                             } else {
                                 Utils.hideCustomProgressDialog();
                                 if (response.resource.data != null) {
-                                    String bodyy = AESHelper.decrypt(response.resource.data.body
-                                            , gKey);
-                                    if (!body.isEmpty()) {
-                                        onError(bodyy);
-                                    } else {
-                                        onError(response.resource.description);
+                                    if (response.resource.data.body != null) {
+                                        String bodyy = AESHelper.decrypt(response.resource.data.body
+                                                , gKey);
+                                        try {
+                                            Gson gson = new Gson();
+                                            Type type = new TypeToken<BeneRegistrationOTPErrorResponse>() {
+                                            }.getType();
+                                            BeneRegistrationOTPErrorResponse list = gson.fromJson(bodyy, type);
+                                            if (list.errorList != null) {
+                                                onError(list.errorList.get(0).errorMessage);
+                                            }
+
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                            if (!body.isEmpty()) {
+                                                onError(bodyy);
+                                            } else {
+                                                onError(response.resource.description);
+                                            }
+                                        }
                                     }
                                 } else {
                                     onError(response.resource.description);
@@ -233,7 +248,7 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
         verifyBeneficiaryRequest.customerNo = customerNo;
         verifyBeneficiaryRequest.BeneficiaryNo = beneNo;
         String body = RestClient.makeGSONString(verifyBeneficiaryRequest);
-        Log.e("verifyBeneficiary: ",body );
+        Log.e("verifyBeneficiary: ", body);
         AERequest request = new AERequest();
         request.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
@@ -268,8 +283,8 @@ public class BeneficiaryOTPRegistration extends BaseFragment<GenerateOtpFragment
                             }
                         } else {
                             showSuccess(response.resource.description
-                             , "Error" , true);
-                         //   onMessage("Beneficiary verification failed");
+                                    , "Error", true);
+                            //   onMessage("Beneficiary verification failed");
                         }
                     }
                 });

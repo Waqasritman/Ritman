@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.BeneficiaryAddRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.AddBeneficiaryResponse;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;

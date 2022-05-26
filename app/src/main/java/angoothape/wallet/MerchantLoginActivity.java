@@ -139,84 +139,38 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
         });
     }
 
-    //
-    public void getMerchantLogin() {
-        Utils.showCustomProgressDialog(this, false);
-
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.UserPassword = binding.edtPassword.getText().toString();
-        loginRequest.Device_Token = token;
-        String gKey = KeyHelper.getKey(binding.edtUserName.getText().toString()).trim() + KeyHelper.getSKey(KeyHelper
-                .getKey(binding.edtUserName.getText().toString())).trim();
-
-        String body = RestClient.makeGSONString(loginRequest);
-        Log.e("getMerchantLogin: ", body);
-        AERequest aeRequest = new AERequest();
-        aeRequest.body = AESHelper.encrypt(body, gKey.trim());
-
-        Call<AEResponse> call = RestClient.getEKYC().loginTokenUser(RestClient.makeGSONRequestBody(aeRequest),
-                KeyHelper.getKey(binding.edtUserName.getText().toString()).trim(), KeyHelper.getSKey(KeyHelper
-                        .getKey(binding.edtUserName.getText().toString())).trim());
-        call.enqueue(new Callback<AEResponse>() {
-            @Override
-            public void onResponse(@NotNull Call<AEResponse> call, @NotNull Response<AEResponse> response) {
-                if (response.isSuccessful()) {
-                    sessionManager.merchantName(binding.edtUserName.getText().toString());
-                    assert response.body() != null;
-                    if (response.body().responseCode.equals(101)) {
-                        checkVerifiedEKYC();
-                    } else if (response.body().responseCode.equals(504)) {
-                        Utils.hideCustomProgressDialog();
-                        Intent intent = new Intent(MerchantLoginActivity.this,
-                                VerifyOtpActivity.class);
-                        intent.putExtra("userName", binding.edtUserName.getText().toString());
-                        startActivity(intent);
-//                        checkVerifiedEKYC();
-                    } else {
-                        Utils.hideCustomProgressDialog();
-                        onError(response.body().description);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(@NotNull Call<AEResponse> call, @NotNull Throwable t) {
-                Utils.hideCustomProgressDialog();
-                Log.e("TAG", "onFailure: " + t.getLocalizedMessage());
-            }
-        });
-    }
-//
-
 //    public void getMerchantLogin() {
 //        Utils.showCustomProgressDialog(this, false);
-//        Call<SimpleResponse> call = RestClient.get().loginUser(new SimpleRequest(),
-//                binding.edtUserName.getText().toString()
-//                , binding.edtPassword.getText().toString());
-//        call.enqueue(new Callback<SimpleResponse>() {
-//            @Override
-//            public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
-//                if (response.isSuccessful()) {
-//                    sessionManager
-//                            .merchantName(binding.edtUserName.getText().toString());
 //
+//        LoginRequest loginRequest = new LoginRequest();
+//        loginRequest.UserPassword = binding.edtPassword.getText().toString();
+//        loginRequest.Device_Token = token;
+//        String gKey = KeyHelper.getKey(binding.edtUserName.getText().toString()).trim() + KeyHelper.getSKey(KeyHelper
+//                .getKey(binding.edtUserName.getText().toString())).trim();
+//
+//        String body = RestClient.makeGSONString(loginRequest);
+//        Log.e("getMerchantLogin: ", body);
+//        AERequest aeRequest = new AERequest();
+//        aeRequest.body = AESHelper.encrypt(body, gKey.trim());
+//
+//        Call<AEResponse> call = RestClient.getEKYC().loginTokenUser(RestClient.makeGSONRequestBody(aeRequest),
+//                KeyHelper.getKey(binding.edtUserName.getText().toString()).trim(), KeyHelper.getSKey(KeyHelper
+//                        .getKey(binding.edtUserName.getText().toString())).trim());
+//        call.enqueue(new Callback<AEResponse>() {
+//            @Override
+//            public void onResponse(@NotNull Call<AEResponse> call, @NotNull Response<AEResponse> response) {
+//                if (response.isSuccessful()) {
+//                    sessionManager.merchantName(binding.edtUserName.getText().toString());
 //                    assert response.body() != null;
 //                    if (response.body().responseCode.equals(101)) {
-//                        // checkVerifiedEKYC();
-//
-//                        sessionManager.setIsVerified("true");
-//                        startActivity(new Intent(MerchantLoginActivity.this,
-//                                NewDashboardActivity.class));
-//
+//                        checkVerifiedEKYC();
 //                    } else if (response.body().responseCode.equals(504)) {
-////                        Intent intent = new Intent(MerchantLoginActivity.this,
-////                                VerifyOtpActivity.class);
-////                        intent.putExtra("userName", binding.edtUserName.getText().toString());
-////                        startActivity(intent);
-//
-//                        sessionManager.setIsVerified("true");
-//                        startActivity(new Intent(MerchantLoginActivity.this,
-//                                NewDashboardActivity.class));
+//                        Utils.hideCustomProgressDialog();
+//                        Intent intent = new Intent(MerchantLoginActivity.this,
+//                                VerifyOtpActivity.class);
+//                        intent.putExtra("userName", binding.edtUserName.getText().toString());
+//                        startActivity(intent);
+//                 //     checkVerifiedEKYC();
 //                    } else {
 //                        Utils.hideCustomProgressDialog();
 //                        onError(response.body().description);
@@ -225,14 +179,58 @@ public class MerchantLoginActivity extends RitmanBaseActivity<ActivityMerchantLo
 //            }
 //
 //            @Override
-//            public void onFailure(Call<SimpleResponse> call, Throwable t) {
+//            public void onFailure(@NotNull Call<AEResponse> call, @NotNull Throwable t) {
 //                Utils.hideCustomProgressDialog();
 //                Log.e("TAG", "onFailure: " + t.getLocalizedMessage());
 //            }
 //        });
-//
-//
 //    }
+
+    public void getMerchantLogin() {
+        Utils.showCustomProgressDialog(this, false);
+        Call<SimpleResponse> call = RestClient.get().loginUser(new SimpleRequest(),
+                binding.edtUserName.getText().toString()
+                , binding.edtPassword.getText().toString());
+        call.enqueue(new Callback<SimpleResponse>() {
+            @Override
+            public void onResponse(@NotNull Call<SimpleResponse> call, @NotNull Response<SimpleResponse> response) {
+                if (response.isSuccessful()) {
+                    sessionManager
+                            .merchantName(binding.edtUserName.getText().toString());
+
+                    assert response.body() != null;
+                    if (response.body().responseCode.equals(101)) {
+                        // checkVerifiedEKYC();
+
+                        sessionManager.setIsVerified("true");
+                        startActivity(new Intent(MerchantLoginActivity.this,
+                                NewDashboardActivity.class));
+
+                    } else if (response.body().responseCode.equals(504)) {
+//                        Intent intent = new Intent(MerchantLoginActivity.this,
+//                                VerifyOtpActivity.class);
+//                        intent.putExtra("userName", binding.edtUserName.getText().toString());
+//                        startActivity(intent);
+
+                        sessionManager.setIsVerified("true");
+                        startActivity(new Intent(MerchantLoginActivity.this,
+                                NewDashboardActivity.class));
+                    } else {
+                        Utils.hideCustomProgressDialog();
+                        onError(response.body().description);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<SimpleResponse> call, @NotNull Throwable t) {
+                Utils.hideCustomProgressDialog();
+                Log.e("TAG", "onFailure: " + t.getLocalizedMessage());
+            }
+        });
+
+
+    }
 
     void checkVerifiedEKYC() {
         String gKey = KeyHelper.getKey(binding.edtUserName.getText().toString()).trim() + KeyHelper.getSKey(KeyHelper

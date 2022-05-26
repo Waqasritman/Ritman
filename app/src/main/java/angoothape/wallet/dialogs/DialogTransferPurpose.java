@@ -13,7 +13,6 @@ import angoothape.wallet.R;
 import angoothape.wallet.base.BaseDialogFragment;
 import angoothape.wallet.databinding.TransferDialogPurposeBinding;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.PurposeOfTransferListRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.PurposeOfTransferListResponse;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;

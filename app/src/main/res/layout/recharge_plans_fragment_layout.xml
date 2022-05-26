@@ -11,16 +11,15 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
+            android:text="Plans are not Available for this number."
             android:textColor="@color/Red"
-            android:visibility="gone"
             android:textSize="@dimen/text_size_20sp"
-            android:text="Plans are not Available for this number." />
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recy_plan_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/grey_10"
             android:layout_below="@+id/txt_plan_name" />
 
     </RelativeLayout>

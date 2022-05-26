@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/enter_below_details"
+                android:textColor="@color/blakish"
+                android:textSize="@dimen/text_size_20sp" />
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/locality_" />
+
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/locality"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:autofillHints=""
+                android:hint="@string/punjab_txt"
+                android:inputType="text"
+                android:padding="@dimen/margin_10dp" />
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/merchant_city_txt" />
+
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/city"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:autofillHints=""
+                android:hint="@string/location_hint_"
+                android:inputType="text"
+                android:padding="@dimen/margin_10dp" />
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="@string/merchant_address_" />
+
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/address"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:autofillHints=""
+                android:hint="@string/address__hint"
+                android:inputType="textPostalAddress"
+                android:padding="@dimen/margin_10dp" />
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="@string/merchant_pin_code_" />
+
+
+            <TextView
+                android:id="@+id/pin_code"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:hint="@string/select_pin_code"
+                android:padding="@dimen/margin_10dp"
+                app:drawableEndCompat="@drawable/dropdown_arrow" />
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="@string/merchant_terminal_type" />
+
+
+            <TextView
+                android:id="@+id/terminal_type"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:clickable="true"
+                android:hint="@string/select_business_type"
+                android:padding="@dimen/margin_10dp"
+                app:drawableEndCompat="@drawable/dropdown_arrow" />
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="@string/device_model_txt" />
+
+
+            <TextView
+                android:id="@+id/device_model"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:hint="@string/select_device_txt"
+                android:padding="@dimen/margin_10dp"
+                app:drawableEndCompat="@drawable/dropdown_arrow" />
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/device_owned_txt"
+                android:textSize="@dimen/text_size_14sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:checkedButton="@id/maleRadioButtonProfile"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_5dp">
+
+                <RadioButton
+                    android:id="@+id/merchant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text="@string/mercant_txt"
+                    android:textSize="@dimen/_12ssp" />
+
+                <RadioButton
+                    android:id="@+id/provider"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text="@string/service_provider"
+                    android:textSize="@dimen/_12ssp" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/next_layout"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:text="@string/add_terminal_txt" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

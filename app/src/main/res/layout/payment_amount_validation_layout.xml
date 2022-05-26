@@ -288,6 +288,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_10dp"
@@ -353,6 +354,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_10dp"
@@ -419,6 +421,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_10dp"
@@ -483,6 +486,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_10dp"

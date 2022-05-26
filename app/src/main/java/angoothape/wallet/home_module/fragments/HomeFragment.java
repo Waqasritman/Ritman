@@ -11,8 +11,7 @@ import angoothape.wallet.FundTransferToMerchantActivity;
 import angoothape.wallet.LoyalityPointsActivity;
 import angoothape.wallet.MerchantLedgerActivity;
 import angoothape.wallet.UploadCashDetailsActivity;
-import angoothape.wallet.bill_desk.BillDeskMainActivity;
-import angoothape.wallet.bus_booking.BusBookingMainActivity;
+import angoothape.wallet.credopay.createMerchant.CreateCreadoMerchantActivity;
 import angoothape.wallet.refund_module.RefundActivity;
 import angoothape.wallet.settlementaeps.AEPSSettlementTransactionActivity;
 import retrofit2.Call;
@@ -22,8 +21,6 @@ import angoothape.wallet.Mobile_Top_Up.MobileTopUpMainActivity;
 import angoothape.wallet.MoneyTransferModuleV.MoneyTransferMainLayout;
 import angoothape.wallet.aeps.activity.SelectDeviceActivity;
 import angoothape.wallet.ekyc.EKYCMainActivity;
-import angoothape.wallet.insurance.InsuranceActivity;
-import angoothape.wallet.pancard.PanCardActivity;
 import angoothape.wallet.personal_loan.fragment.PLActivity;
 import angoothape.wallet.TransactionHistory.TransactionHistoryActivity;
 import angoothape.wallet.billpayment.BillPaymentMainActivity;
@@ -45,7 +42,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
 
     @Override
     protected void setUp(Bundle savedInstanceState) {
-     //   getUpdatedBalance();
+        //   getUpdatedBalance();
         binding.swipeRefresh.setOnRefreshListener(this::getUpdatedBalance);
 
         if (getSessionManager().getIsVerified()) {
@@ -66,6 +63,13 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
         binding.aepsSettlement.setOnClickListener(v -> {
             // startActivity(new Intent(getActivity(), LoyalityPointsActivity.class));
             Intent intent = new Intent(getActivity(), AEPSSettlementTransactionActivity.class);
+            //Intent intent = new Intent(getActivity(), CredoPayActivity.class);
+            startActivity(intent);
+        });
+
+
+        binding.microatm.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), CreateCreadoMerchantActivity.class);
             startActivity(intent);
         });
 
@@ -114,12 +118,10 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
         binding.pl.setOnClickListener(view ->
                 startActivity(new Intent(getActivity(), PLActivity.class))
         );
-        binding.insurance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
+        binding.insurance.setOnClickListener(v -> {
 //                startActivity(new Intent(getActivity(), InsuranceActivity.class));
-                startActivity(new Intent(getActivity(), LoyalityPointsActivity.class));
-            }
+            startActivity(new Intent(getActivity(), LoyalityPointsActivity.class));
         });
 
 

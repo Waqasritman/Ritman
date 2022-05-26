@@ -1265,6 +1265,63 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
     <string name="amount_m">Amount*</string>
     <string name="refer_no_m">Reference no*</string>
     <string name="alert_txt">Alert</string>
+    <string name="micro_atm">Micro \nATM</string>
+    <string name="company_name_legal_">Company legal name*</string>
+    <string name="company_name_">Company name</string>
+    <string name="company_brand_name">Company brand name*</string>
+    <string name="pan_code_hint">Pan</string>
+    <string name="company_pan_">Company pan*</string>
+    <string name="company_pin_code">Company pin code*</string>
+    <string name="select_pin_code">Select pin code</string>
+    <string name="company_business_type">Company business type*</string>
+    <string name="select_business_type">Select business type</string>
+    <string name="company_esti_year">Company established year*</string>
+    <string name="company_business_nature">Company business nature*</string>
+    <string name="busines_nature_hint">Grocery Store</string>
+    <string name="merchant_category_txt">Merchant category*</string>
+    <string name="merchant_type_txt">Merchant type*</string>
+    <string name="company_contact_name">Company contact name*</string>
+    <string name="company_contact_mobile">Company contact number*</string>
+    <string name="company_contact_email">Compant contact email*</string>
+    <string name="hint_email">ag@gmail.com</string>
+    <string name="enter_company_details">Please enter company details</string>
+    <string name="enter_merchant_details">Please enter merchant details</string>
+    <string name="title_m">Merchant Title*</string>
+    <string name="merchant_pin_code_">Merchant Pincode*</string>
+    <string name="pin_code">Pincode</string>
+    <string name="merchant_date_of_birth">Merchant DOB*</string>
+    <string name="merchant_tranx_txt">Merchant Transaction sets*</string>
+    <string name="select_txn_sets">Select Transaction</string>
+    <string name="house_txt">House*</string>
+    <string name="own_house">Own</string>
+    <string name="rented">Rented</string>
+    <string name="accept_inter_card">Accept international card*</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="create_merchant">Create Merchant</string>
+    <string name="register_txt">"Register "</string>
+    <string name="merchant_location_txt">Merchant location*</string>
+    <string name="location_hint_">e-g Delhi Gate India</string>
+    <string name="merchant_address_">Merchant address*</string>
+    <string name="locality_">Merchant Locality*</string>
+    <string name="punjab_txt">e-g Punjab</string>
+    <string name="merchant_city_txt">Merchant city*</string>
+    <string name="merchant_terminal_type">Merchant terminal Type*</string>
+    <string name="device_model_txt">Device model*</string>
+    <string name="device_owned_txt">Device owned*</string>
+    <string name="mercant_txt">Merchant</string>
+    <string name="add_terminal_txt">Add Terminal</string>
+    <string name="enter_below_details">Please enter below details</string>
+    <string name="select_device_txt">Select device</string>
+    <string name="micro_atm_paymnet">Micro ATM Payment</string>
+    <string name="scan_qr_code">QR Code</string>
+    <string name="company_regi_no_">Company registration no*</string>
+    <string name="company_regi_no_hint">000000000</string>
+    <string name="terminal_txt">Terminal*</string>
+    <string name="select_terminal_">Select Terminal</string>
+    <string name="serial_no_txt">Serial No*</string>
+    <string name="activite_terminal">Activate</string>
+    <string name="enter_terminal_details">Enter terminal details</string>
 
     <string-array name="arrayFingerTypeThumb">
         <item>6~RightThumb</item>
@@ -1278,6 +1335,15 @@ or telephone us at +44 - 7508084715. If you wish to make inquiries or complaints
         <item>Precision Device</item>
         <item>Secugen Device</item>
         <item>Mantra Device</item>
+    </string-array>
+
+    <string-array name="MicroType">
+        <item>Micro ATM</item>
+        <item>Balance Enquiry</item>
+        <item>Purchase</item>
+        <item>Cash at POS</item>
+        <item>VOID</item>
+        <item>UPI</item>
     </string-array>
 
     <string-array name="arrayFingerCount">

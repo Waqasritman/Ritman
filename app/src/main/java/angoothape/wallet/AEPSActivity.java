@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,10 +66,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import angoothape.wallet.adapters.AEPSMiniStatementAdapter;
-import angoothape.wallet.adapters.BusSeatingLayoutAdapter;
 import angoothape.wallet.di.AESHelper;
 import angoothape.wallet.di.JSONdi.restRequest.AERequest;
-import angoothape.wallet.di.JSONdi.restResponse.AEPSErrorResponse;
 import angoothape.wallet.di.JSONdi.restResponse.AEPSTransactionResponseOne;
 import angoothape.wallet.di.JSONdi.restResponse.AEPS_Trans_Response;
 import angoothape.wallet.di.JSONdi.retrofit.KeyHelper;
@@ -80,11 +77,6 @@ import angoothape.wallet.interfaces.OnDecisionMade;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import ir.androidexception.datatable.DataTable;
-import ir.androidexception.datatable.model.DataTableHeader;
-import ir.androidexception.datatable.model.DataTableRow;
-import angoothape.wallet.aeps.global.Verhoeff;
-import angoothape.wallet.aeps.maskedittext.MaskedEditText;
 import angoothape.wallet.di.model.DeviceInfo;
 import angoothape.wallet.di.model.Opts;
 import angoothape.wallet.di.model.PidData;
@@ -98,7 +90,6 @@ import angoothape.wallet.aeps.viewmodels.AEPSViewModel;
 import angoothape.wallet.base.RitmanBaseActivity;
 import angoothape.wallet.databinding.ActivityAEPSBinding;
 import angoothape.wallet.di.JSONdi.Status;
-import angoothape.wallet.di.JSONdi.restRequest.DecryptedResponse;
 import angoothape.wallet.di.JSONdi.restRequest.GetAEPSTransaction;
 import angoothape.wallet.dialogs.ShareDialog;
 import angoothape.wallet.interfaces.OnReceiptGenerator;
@@ -208,14 +199,12 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
             onClose();
         });
 
-        //   dataTable = findViewById(R.id.data_table);
+
         ButterKnife.bind(this);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         positions = new ArrayList<>();
         serializer = new Persister();
-
-        //   edtxAdharNo.setText("");
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -246,43 +235,11 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
             }
         });
 
-
-//        binding.testu.setOnClickListener(v -> {
-//            if (txn_code_.equals("31")) {
-//                binding.transAmountLinear.setVisibility(View.GONE);
-//                binding.activityMain.setVisibility(View.INVISIBLE);
-//                binding.relativeReciept.setVisibility(View.VISIBLE);
-//                // binding.titleService.setText("");
-//
-//            } else if (txn_code_.equals("07")) {
-//                binding.acBalanceLinear.setVisibility(View.GONE);
-//                binding.transAmountLinear.setVisibility(View.GONE);
-//                binding.activityMain.setVisibility(View.INVISIBLE);
-//                binding.relativeReciept.setVisibility(View.VISIBLE);
-//                binding.titleService.setText("Mini Statement");
-//            } else if (txn_code_.equals("01")) {
-//                binding.transAmountLinear.setVisibility(View.VISIBLE);
-//                binding.activityMain.setVisibility(View.INVISIBLE);
-//                binding.relativeReciept.setVisibility(View.VISIBLE);
-//                binding.titleService.setText("Mini Statement");
-//                getColomData();
-//                SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss ");
-//                String currentDateandTime1 = sdf1.format(new Date());
-//                binding.timeAeps.setText(currentDateandTime1);
-//                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//                String currentDateandTime = sdf.format(new Date());
-//                binding.dateAeps.setText(currentDateandTime);
-//                binding.inernAmount.setVisibility(View.GONE);
-//            }
-//        });
-
         binding.shareBtn.setOnClickListener(v -> {
             ShareDialog dialog = new ShareDialog(AEPSActivity.this);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             dialog.show(transaction, "");
         });
-
-
     }
 
     public void getColomData(AEPS_Trans_Response getAEPSTransactionResponse) {
@@ -305,13 +262,13 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         //  binding.adharTxt.setText(binding.edtxAdharNo.getText().toString());
         // binding.aepsStatus.setText(getAEPSTransactionResponse.responseCode);
         if (getAEPSTransactionResponse.decrypted_Response.responseCode == String.valueOf(68)) {
-            binding.aepsStatus.setText("Decline" + " (" + getAEPSTransactionResponse.responseCode + ")");
+            binding.aepsStatus.setText("Decline");
         } else {
-            binding.aepsStatus.setText("Successful" + " (" + getAEPSTransactionResponse.responseCode + ")");
+            binding.aepsStatus.setText("Successful");
         }
 
 
-        if (getAEPSTransactionResponse.decrypted_Response.balanceAmountActual.equalsIgnoreCase("na")) {
+        if (!getAEPSTransactionResponse.decrypted_Response.balanceAmountActual.equalsIgnoreCase("na")) {
             float actualAmount = 0;
             try {
                 float parsed = Float.parseFloat(getAEPSTransactionResponse.decrypted_Response.balanceAmountActual);
@@ -383,7 +340,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                             "</PidOptions>";*/
                         if (pidOption != null) {
                             //Log.e("PidOptions", pidOption);
-                            //    Toast.makeText(this, "Jumped to RDservice \n" + pidOption, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Device Attached", Toast.LENGTH_SHORT).show();
                             Intent intent2 = new Intent();
                             intent2.setAction("in.gov.uidai.rdservice.fp.CAPTURE");
                             intent2.putExtra("PID_OPTIONS", pidOption);
@@ -753,10 +710,7 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
     }
 
     void getBioData() {
-
-
         if (mainResult != null) {
-
             if (mainResult.length() >= 1) {
                 Utils.showCustomProgressDialog(AEPSActivity.this, false);
                 GetAEPSTransaction request = new GetAEPSTransaction();
@@ -795,7 +749,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                                     if (response.resource.responseCode.equals(101)) {
                                         binding.activityMain.setVisibility(View.INVISIBLE);
                                         binding.relativeReciept.setVisibility(View.VISIBLE);
-
                                         if (response.resource.data != null) {
                                             if (response.resource.data.body != null) {
                                                 String bodyy = AESHelper.decrypt(response.resource.data.body
@@ -836,29 +789,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                                                             } catch (Exception e1) {
                                                                 e1.printStackTrace();
                                                                 onError("Please Contact to admin");
-//                                                        try {
-//                                                            Gson gson1 = new Gson();
-//                                                            Type type1 = new TypeToken<AEPSTransactionResponseOne>() {
-//                                                            }.getType();
-//                                                            AEPSTransactionResponseOne data1 = gson1.fromJson(bodyy, type1);
-//                                                            if (data1 != null) {
-//                                                                if (data1.miniStatementError != null) {
-//                                                                    if (data1.miniStatementError.error != null) {
-//                                                                        showPopup(data1.miniStatementError.error, "Error", true);
-//
-//                                                                    } else {
-//                                                                        Toast.makeText(this, "Message is null", Toast.LENGTH_SHORT).show();
-//                                                                    }
-//                                                                } else {
-//                                                                    Toast.makeText(this, "Mini Error is Null", Toast.LENGTH_SHORT).show();
-//                                                                }
-//
-//                                                            } else {
-//                                                                Toast.makeText(this, "Error is null", Toast.LENGTH_SHORT).show();
-//                                                            }
-//                                                        } catch (Exception e2) {
-//                                                            e2.printStackTrace();
-//                                                        }
                                                             }
                                                         }
 
@@ -876,38 +806,20 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                                                 String bodyy = AESHelper.decrypt(response.resource.data.body
                                                         , gKey);
                                                 if (bodyy != null) {
-                                                    onError(bodyy);
+                                                    if (bodyy.isEmpty()) {
+                                                        onError("Please contact to administrator \nBody is Empty");
+                                                    } else {
+                                                        onError(bodyy);
+                                                    }
                                                 } else {
                                                     onError(response.resource.description);
                                                 }
-//                                        if (bodyy != null) {
-//                                            try {
-//                                                Gson gson = new Gson();
-//                                                Type type = new TypeToken<AEPSErrorResponse>() {
-//                                                }.getType();
-//                                                AEPSErrorResponse data = gson.fromJson(bodyy, type);
-//                                                if (data != null) {
-//                                                    if (data.message != null) {
-//                                                        onError(data.message);
-//                                                    } else {
-//                                                        Toast.makeText(this, "Data message is null", Toast.LENGTH_SHORT).show();
-//                                                    }
-//                                                } else {
-//                                                    Toast.makeText(this, "Error message is null", Toast.LENGTH_SHORT).show();
-//                                                }
-//
-//                                            } catch (Exception e) {
-//                                                onError(response.resource.description);
-//                                            }
-//                                        }
                                             } else {
                                                 onError(response.resource.description);
                                             }
                                         } else {
                                             onError(response.resource.description);
                                         }
-
-
                                     }
                                 }
                             } else {
@@ -915,8 +827,6 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
                             }
                         });
             }
-
-
         } else {
             onError("Biometric data is not found Please Rescan");
         }
@@ -970,12 +880,12 @@ public class AEPSActivity extends RitmanBaseActivity<ActivityAEPSBinding> /*impl
         //  binding.adharTxt.setText(binding.edtxAdharNo.getText().toString());
         // binding.aepsStatus.setText(getAEPSTransactionResponse.responseCode);
         if (getAEPSTransactionResponse.decrypted_Response.responseCode == String.valueOf(68)) {
-            binding.aepsStatus.setText("Decline" + " (" + getAEPSTransactionResponse.responseCode + ")");
+            binding.aepsStatus.setText("Decline");
         } else {
-            binding.aepsStatus.setText("Successful" + " (" + getAEPSTransactionResponse.responseCode + ")");
+            binding.aepsStatus.setText("Successful");
         }
 
-        if (getAEPSTransactionResponse.decrypted_Response.balanceAmountActual.equalsIgnoreCase("NA")) {
+        if (!getAEPSTransactionResponse.decrypted_Response.balanceAmountActual.equalsIgnoreCase("NA")) {
             float actualAmount = 0;
             try {
                 float parsed = Float.parseFloat(getAEPSTransactionResponse.decrypted_Response.balanceAmountActual);

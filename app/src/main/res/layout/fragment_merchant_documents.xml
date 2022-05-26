@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".upload_document.UploadDocumentActivity">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/image_view"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:fontFamily="@font/lato_semibold"
+                    android:text="@string/upload_documents"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:fontFamily="@font/lato_semibold"
+                        android:gravity="center"
+                        android:padding="@dimen/_8sdp"
+                        android:text="Merchant Pan Card"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10sdp">
+
+
+                    <ImageView
+                        android:id="@+id/img_pan_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_200dp"
+                        android:layout_marginStart="@dimen/margin_20dp"
+                        android:layout_marginEnd="@dimen/margin_20dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:background="@drawable/background_customer_registeration"
+
+                        android:padding="@dimen/_8sdp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="@dimen/margin_20dp"
+                        android:layout_marginEnd="@dimen/margin_20dp"
+                        android:background="@drawable/background_select_mood"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/pan_card_camera"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="center"
+                            android:padding="@dimen/margin_25dp"
+                            android:text="@string/open_camera"
+                            app:drawableTopCompat="@drawable/ic_camera" />
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:background="@color/black" />
+
+                        <TextView
+                            android:id="@+id/pan_card_gallery"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/ic_photo"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="center"
+                            android:padding="@dimen/margin_25dp"
+                            android:text="@string/choose_from_gallery" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:fontFamily="@font/lato_semibold"
+                        android:gravity="center"
+                        android:padding="@dimen/_8sdp"
+                        android:text="Merchant Adhaar Card"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:id="@+id/img_adhhar_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_200dp"
+                        android:layout_above="@id/layout"
+                        android:layout_marginStart="@dimen/margin_20dp"
+                        android:layout_marginEnd="@dimen/margin_20dp"
+                        android:layout_marginBottom="@dimen/margin_30dp"
+                        android:background="@drawable/background_customer_registeration"
+                        android:drawableTint="@color/colorPrimary"
+                        android:padding="@dimen/_8sdp" />
+
+
+                    <LinearLayout
+                        android:id="@+id/layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="@dimen/margin_20dp"
+                        android:layout_marginEnd="@dimen/margin_20dp"
+                        android:background="@drawable/background_select_mood"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/adhaar_card_camera"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/ic_camera"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:drawableTint="@color/colorPrimary"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="center"
+                            android:padding="@dimen/margin_25dp"
+                            android:text="@string/open_camera" />
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:background="@color/black" />
+
+                        <TextView
+                            android:id="@+id/addhar_card_gallery"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/ic_photo"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:drawableTint="@color/colorPrimary"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="center"
+                            android:padding="@dimen/margin_25dp"
+                            android:text="@string/choose_from_gallery" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:fontFamily="@font/lato_semibold"
+                        android:gravity="center"
+                        android:padding="@dimen/_8sdp"
+                        android:text="Merchant Cancelled Cheque"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:id="@+id/img_cancel_cheque"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_200dp"
+                        android:layout_above="@id/layout"
+                        android:layout_marginStart="@dimen/margin_20dp"
+                        android:layout_marginEnd="@dimen/margin_20dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:background="@drawable/background_customer_registeration"
+                        android:padding="@dimen/_8sdp" />
+
+
+                    <LinearLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="@dimen/margin_20dp"
+                        android:layout_marginEnd="@dimen/margin_20dp"
+                        android:background="@drawable/background_select_mood"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/cancel_cheque_camera"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/ic_camera"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:drawableTint="@color/colorPrimary"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="center"
+                            android:padding="@dimen/margin_25dp"
+                            android:text="@string/open_camera" />
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:background="@color/black" />
+
+                        <TextView
+                            android:id="@+id/cancel_cheque_gallery"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/ic_photo"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:drawableTint="@color/colorPrimary"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="center"
+                            android:padding="@dimen/margin_25dp"
+                            android:text="@string/choose_from_gallery" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/upload_image"
+                    style="@style/ButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="@dimen/margin_15dp"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:layout_marginEnd="@dimen/margin_15dp"
+                    android:layout_marginBottom="@dimen/margin_30dp"
+                    android:text="@string/register_txt" />
+
+
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/progress_bar"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>

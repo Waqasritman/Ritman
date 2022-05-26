@@ -35,7 +35,7 @@ import angoothape.wallet.utils.Utils;
 public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutBinding> {
     GetBeneficiaryListResponse benedetails;
     BankTransferViewModel viewModel;
-    String TransactionNumber, OptSend, Verify, customerNo;
+    // String TransactionNumber, OptSend, Verify, customerNo;
     Double PayInAmount;
 
     @Override
@@ -204,36 +204,6 @@ public class GenerateOtpFragment extends BaseFragment<GenerateOtpFragmentLayoutB
                         }
                     }
                 });
-//
-//        viewModel.getSummary(ritmanPaySendRequest, getSessionManager().getMerchantName()).observe(getViewLifecycleOwner()
-//                , response -> {
-//                    Utils.hideCustomProgressDialog();
-//                    if (response.status == Status.ERROR) {
-//                        onError(getString(response.messageResourceId));
-//                    } else {
-//                        assert response.resource != null;
-//                        if (response.resource.responseCode.equals(101)) {
-//                            TransactionNumber = response.resource.data.getTransactionNumber();
-//                            Handler mHandler;
-//                            mHandler = new Handler();
-//                            mHandler.postDelayed(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    mHandler.removeCallbacks(this);
-//                                    Intent i = new Intent(getActivity(), TransactionReceiptActivity.class);
-//                                    i.putExtra("TransactionNumber", response.resource.data.getTransactionNumber());
-//                                    startActivity(i);
-//                                    getBaseActivity().finish();
-//                                }
-//                            }, 200);
-//
-//                        } else {
-//                            onError(response.resource.description);
-//                        }
-//                    }
-//                });
-
-
     }
 
 }

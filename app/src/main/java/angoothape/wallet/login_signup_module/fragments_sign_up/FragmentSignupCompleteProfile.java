@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentTransaction;
 import angoothape.wallet.R;
 import angoothape.wallet.databinding.CompleteProfileNonb2Binding;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.GetCustomerProfileRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.CustomerProfile;
 import angoothape.wallet.di.XMLdi.ResponseHelper.GetCountryListResponse;

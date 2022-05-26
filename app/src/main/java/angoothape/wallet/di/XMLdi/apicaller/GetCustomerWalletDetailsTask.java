@@ -14,7 +14,6 @@ import java.util.List;
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import angoothape.wallet.R;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.GetCustomerWalletDetailsRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.GetCustomerWalletDetailsResponse;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;

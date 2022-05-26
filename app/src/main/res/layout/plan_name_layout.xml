@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardview"
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_margin="@dimen/margin_5dp"
+        android:elevation="@dimen/margin_10dp"
+        app:cardCornerRadius="@dimen/margin_10dp">
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_margin="@dimen/margin_5dp"
-            android:layout_height="@dimen/width_100dp"
-            android:elevation="@dimen/margin_10dp"
-            app:cardCornerRadius="@dimen/margin_10dp"
-            app:cardBackgroundColor="@color/colorPrimary">
+            android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/planname"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-               android:layout_marginTop="@dimen/margin_10dp"
-
-                android:text="Plan name"
-                android:textColor="@color/white"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_15dp"
                 android:elevation="@dimen/margin_5dp"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center"
+                android:text="Plan name"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
-        </androidx.cardview.widget.CardView>
 
 
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/margin_15dp"
+                android:src="@drawable/next_arrow"
+                app:tint="@color/black" />
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 </layout>

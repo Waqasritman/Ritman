@@ -50,11 +50,20 @@ public class DateAndTime {
     }
 
     public static String setDateFormat(int year, int monthOfYear, int dayOfMonth) {
+
+
         Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
         calendar.set(year, monthOfYear, dayOfMonth);
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
 
+        return format.format(calendar.getTime());
+    }
+
+    public static String setDateFormat(int year, int monthOfYear, int dayOfMonth , String pattern) {
+        Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
+        calendar.set(year, monthOfYear, dayOfMonth);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         return format.format(calendar.getTime());
     }
 

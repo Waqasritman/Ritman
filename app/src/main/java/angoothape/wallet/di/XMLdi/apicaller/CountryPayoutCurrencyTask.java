@@ -13,7 +13,6 @@ import java.util.List;
 
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.CountryPayOutCurrencyRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.GetSendRecCurrencyResponse;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;

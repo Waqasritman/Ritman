@@ -1,7 +1,5 @@
 package angoothape.wallet.utils;
 
-import org.apache.xml.security.utils.Base64;
-
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;

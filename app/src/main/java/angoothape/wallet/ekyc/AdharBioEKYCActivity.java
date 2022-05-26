@@ -84,13 +84,10 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
     LinearLayout linearFingerCount;
     @BindView(R.id.spinnerTotalFingerType)
     Spinner spinnerTotalFingerType;
-
     @BindView(R.id.spinnerFingerType)
     Spinner spinnerFingerType;
-
     @BindView(R.id.deviceType)
     Spinner spinnerdeviceType;
-
     @BindView(R.id.spinnerTotalFingerFormat)
     Spinner spinnerTotalFingerFormat;
     @BindView(R.id.linearFingerFormat)
@@ -188,6 +185,7 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
     DeviceInfo info;
     String mobile_no, kyc_token, wadh_value;
     ActivityAdharBioEKYCBinding binding;
+    boolean isCustomerEkyc = false;
 
     @Override
     public int getLayoutId() {
@@ -203,6 +201,7 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
         mobile_no = getIntent().getExtras().getString("mobile_no");
         kyc_token = getIntent().getExtras().getString("kyc_token");
         wadh_value = getIntent().getExtras().getString("wadh_value");
+        isCustomerEkyc = getIntent().getExtras().getBoolean("isCustomer", false);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         positions = new ArrayList<>();
@@ -340,8 +339,7 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
                             "</PidOptions>";*/
                         if (pidOption != null) {
                             Log.e("PidOptions", pidOption);
-
-
+                            Toast.makeText(this, "Device Attached", Toast.LENGTH_SHORT).show();
                             Intent intent2 = new Intent();
                             intent2.setAction("in.gov.uidai.rdservice.fp.CAPTURE");
                             intent2.putExtra("PID_OPTIONS", pidOption);
@@ -693,69 +691,89 @@ public class AdharBioEKYCActivity extends RitmanBaseActivity<ActivityAdharBioEKY
     }
 
     void getBioData() {
-        Utils.showCustomProgressDialog(this, false);
-        AdharBioKycRequest request = new AdharBioKycRequest();
-        request.mobile_no = mobile_no;//viewModel.mobile.getValue();
-        request.kyc_token = kyc_token;//viewModel.kycToken.getValue();
-        request.aadhaar_type = "0";
-        request.aadhaar_number = binding.edtxAdharNo.getText().toString();
-        request.cert_expiry_date = "";//optional
-        request.device_data_xml = mainResult;
-        request.finger_data = Thumb;
-        request.serial_number = "2051I011673";//"3782822";//morpho srno 2051I011673//"3782822";//
-        request.session_key = "";//optional
-        request.time_stamp = "";//optional
-        request.type = deviceTypeItem;// mantra "6";//deviceTypeItem;morpho 1
-        request.version_number = "1.1.5";// optional // mandatory for morpho device
-        request.consent = "Y";// default value
-        request.ekyc_type = "EKYC";// default value
-        request.captured_template = "null";// default value
-        request.purpose = "Authentication";// default value
-        request.wadh_value = wadh_value;//viewModel.wadh.getValue();
+        if (mainResult != null) {
+            if (mainResult.length() >= 1) {
+                Utils.showCustomProgressDialog(this, false);
+                AdharBioKycRequest request = new AdharBioKycRequest();
+                request.mobile_no = mobile_no;//viewModel.mobile.getValue();
+                request.kyc_token = kyc_token;//viewModel.kycToken.getValue();
+                request.aadhaar_type = "0";
+                request.aadhaar_number = binding.edtxAdharNo.getText().toString();
+                request.cert_expiry_date = "";//optional
+                request.device_data_xml = mainResult;
+                request.finger_data = Thumb;
+                request.serial_number = "2051I011673";//"3782822";//morpho srno 2051I011673//"3782822";//
+                request.session_key = "";//optional
+                request.time_stamp = "";//optional
+                request.type = deviceTypeItem;// mantra "6";//deviceTypeItem;morpho 1
+                request.version_number = "1.1.5";// optional // mandatory for morpho device
+                request.consent = "Y";// default value
+                request.ekyc_type = "EKYC";// default value
+                request.captured_template = "null";// default value
+                request.purpose = "Authentication";// default value
+                request.wadh_value = wadh_value;//viewModel.wadh.getValue();
+
+                if(isCustomerEkyc) {
+                    request.For_customer_eKyc = "1";
+                } else {
+                    request.For_customer_eKyc = "0";
+                }
 
 
-        String gKey = KeyHelper.getKey(sessionManager.getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
-                .getKey(sessionManager.getMerchantName())).trim();
+                String gKey = KeyHelper.getKey(sessionManager.getMerchantName()).trim() + KeyHelper.getSKey(KeyHelper
+                        .getKey(sessionManager.getMerchantName())).trim();
 
+                String body = RestClient.makeGSONString(request);
+                AERequest aeRequest = new AERequest();
+                aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
 
-        String body = RestClient.makeGSONString(request);
+                viewModel.YBAdharBioKYC(aeRequest, KeyHelper.getKey(sessionManager.getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
+                        .getKey(sessionManager.getMerchantName())).trim()).observe(this
+                        , response -> {
+                            Utils.hideCustomProgressDialog();
 
-        AERequest aeRequest = new AERequest();
-        aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
+                            if (response != null) {
+                                if (response.status == Status.ERROR) {
+                                    onError(getString(response.messageResourceId));
+                                } else {
+                                    assert response.resource != null;
+                                    if (response.resource.responseCode.equals(101)) {
+                                        showPopup(response.resource.description, "Successfully", false);
+                                    } else {
+                                        if (response.resource.data != null) {
+                                            if (response.resource.data.body != null) {
+                                                String bodyy = AESHelper.decrypt(response.resource.data.body
+                                                        , gKey);
+                                                if (bodyy != null) {
+                                                    if (bodyy.isEmpty()) {
+                                                        onError("Please contact to administrator \nBody is Empty");
+                                                    } else {
+                                                        onError(bodyy);
+                                                    }
+                                                } else {
+                                                    onError(response.resource.description);
+                                                }
+                                            } else {
+                                                onError(response.resource.description);
+                                            }
+                                        } else {
+                                            onError(response.resource.description);
+                                        }
 
-
-        viewModel.YBAdharBioKYC(aeRequest, KeyHelper.getKey(sessionManager.getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
-                .getKey(sessionManager.getMerchantName())).trim()).observe(this
-                , response -> {
-                    Utils.hideCustomProgressDialog();
-                    if (response.status == Status.ERROR) {
-                        onError(getString(response.messageResourceId));
-                    } else {
-                        assert response.resource != null;
-                        if (response.resource.responseCode.equals(101)) {
-                            showPopup(response.resource.description, "Successfully", true);
-                        } else {
-                            String bodyy = AESHelper.decrypt(response.resource.data.body
-                                    , gKey);
-                            if (bodyy != null) {
-                                try {
-
-                                    Gson gson = new Gson();
-                                    Type type = new TypeToken<BiometricKYCErrorResponse>() {
-                                    }.getType();
-                                    BiometricKYCErrorResponse data = gson.fromJson(bodyy, type);
-                                    showPopup(data.responseMessage, "Error", true);
-                                } catch (Exception e) {
-                                    showPopup(response.resource.description, "Error", true);
+                                    }
                                 }
                             } else {
-                                showPopup(response.resource.description, "Error", true);
+                                onError("Response is null");
                             }
 
 
-                        }
-                    }
-                });
+                        });
+            }
+        } else {
+            onError("Biometric data is not found Please Rescan");
+        }
+
+
     }
 
 

@@ -43,25 +43,25 @@ public class PlanNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((PlanNameViewHolder) holder).binding.planname.setText(list.get(position).PlanCategory);
-        if (position == 0) {
-            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview0));
-        }
-        if (position == 1) {
-            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview1));
-        }
-
-        if (position == 2) {
-            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview2));
-        }
-        if (position == 3) {
-            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview3));
-        }
-        if (position == 4) {
-            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview4));
-        }
-        if (position == 5) {
-            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview5));
-        }
+//        if (position == 0) {
+//            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview0));
+//        }
+//        if (position == 1) {
+//            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview1));
+//        }
+//
+//        if (position == 2) {
+//            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview2));
+//        }
+//        if (position == 3) {
+//            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview3));
+//        }
+//        if (position == 4) {
+//            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview4));
+//        }
+//        if (position == 5) {
+//            ((PlanNameViewHolder) holder).binding.cardview.setCardBackgroundColor(context.getColor(R.color.cardview5));
+//        }
 
 
 //        Random rnd = new Random();

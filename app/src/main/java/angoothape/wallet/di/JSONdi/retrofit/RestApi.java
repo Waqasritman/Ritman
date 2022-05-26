@@ -74,11 +74,47 @@ public interface RestApi {
                                            @Query("LanguageID") Integer languageId);
 
 
-
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Transfer/Confirm")
     Call<AEResponse> confirmRitmanPayTransfer(@Body RequestBody model,
-                                       @Header("key") String key, @Header("secretkey") String sKey);
+                                              @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/CredoPay/Create_Merchant")
+    Call<AEResponse> createCredoPayMerchant(@Body RequestBody model,
+                                            @Header("key") String key, @Header("secretkey") String sKey);
+
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/CredoPay/Merchant_Add_Terminal")
+    Call<AEResponse> addCredoPayMerchantTerminal(@Body RequestBody model,
+                                                 @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/CredoPay/Get_Api_Data")
+    Call<AEResponse> getCredoPayApiData(@Body RequestBody model,
+                                        @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/CredoPay/Get_Merchant_Terminals")
+    Call<AEResponse> getMerchantTerminals(@Body RequestBody model,
+                                        @Header("key") String key, @Header("secretkey") String sKey);
+
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("RitmanPay/CredoPay/Merchant_Terminal_Activation")
+    Call<AEResponse> activateMerchantTerminal(@Body RequestBody model,
+                                          @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("Ritmanpay/CredoPay/Get_Terminal_Credentials")
+    Call<AEResponse> getTerminalCredentials(@Body RequestBody model,
+                                              @Header("key") String key, @Header("secretkey") String sKey);
+
+    @Headers("Content-Type:application/json;charset=UTF-8")
+    @POST("Ritmanpay/CredoPay/Update_Terminal_Credentials")
+    Call<AEResponse> updateTerminalCredentials(@Body RequestBody model,
+                                            @Header("key") String key, @Header("secretkey") String sKey);
 
 
     @Headers("Content-Type:application/json;charset=UTF-8")
@@ -104,7 +140,7 @@ public interface RestApi {
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Agent/FundTransferToMerchant")
     Call<AEResponse> fundTransferToMerchant(@Body RequestBody model,
-                                                @Header("key") String key, @Header("secretkey") String sKey);
+                                            @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("BusBooking/GetServiceSeatingLayout")
@@ -139,7 +175,7 @@ public interface RestApi {
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Agent/GetDistributorMerchants")
     Call<AEResponse> getDistributorMerchants(@Body RequestBody model,
-                                                             @Header("key") String key, @Header("secretkey") String sKey);
+                                             @Header("key") String key, @Header("secretkey") String sKey);
 
 
     @POST("RitmanPay/AddCustomerImage")
@@ -149,7 +185,7 @@ public interface RestApi {
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Auth/LoginUserByToken")
     Call<AEResponse> loginTokenUser(@Body RequestBody model,
-                                             @Header("key") String key, @Header("secretkey") String sKey);
+                                    @Header("key") String key, @Header("secretkey") String sKey);
 
 
     @POST("RitmanPay/Auth/LoginUser")
@@ -320,7 +356,7 @@ public interface RestApi {
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/BillPayment/GetRechargePlans")
     Call<AEResponse> getPrepaidPlan(@Body RequestBody requestBody,
-                                             @Header("key") String key, @Header("secretkey") String sKey);
+                                    @Header("key") String key, @Header("secretkey") String sKey);
 
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/Transfer/TxnRefundHistoryWithFilter")
@@ -479,7 +515,7 @@ public interface RestApi {
     @Headers("Content-Type:application/json;charset=UTF-8")
     @POST("RitmanPay/BillPayment/GetRechargePlans")
     Call<AEResponse> getRechargePlanName(@Body RequestBody requestBody,
-                                                    @Header("key") String key, @Header("secretkey") String sKey);
+                                         @Header("key") String key, @Header("secretkey") String sKey);
 
 
     @Headers("Content-Type:application/json;charset=UTF-8")

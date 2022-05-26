@@ -6,7 +6,6 @@ import android.util.Log;
 
 import angoothape.wallet.R;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.TransactionHistoryRequest;
 import angoothape.wallet.di.XMLdi.ResponseHelper.TransactionHistoryResponse;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;

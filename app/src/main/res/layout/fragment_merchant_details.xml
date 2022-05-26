@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/enter_merchant_details"
+                android:textColor="@color/blakish"
+                android:textSize="@dimen/text_size_20sp" />
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/title_m" />
+
+
+            <LinearLayout
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/merchant_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45dp"
+                    android:drawableEnd="@drawable/dropdown_arrow"
+                    android:entries="@array/titleType"
+                    android:hint="@string/select_category"
+                    android:padding="@dimen/margin_10dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/merchant_category_txt" />
+
+            <TextView
+                android:id="@+id/merchant_category"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:drawableEnd="@drawable/dropdown_arrow"
+                android:hint="@string/select_category"
+                android:padding="@dimen/margin_10dp" />
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/merchant_type_txt" />
+
+            <TextView
+                android:id="@+id/merchant_type"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:drawableEnd="@drawable/dropdown_arrow"
+                android:hint="@string/select_type"
+                android:padding="@dimen/margin_10dp" />
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="@string/merchant_pin_code_" />
+
+
+            <TextView
+                android:id="@+id/merchant_pincode"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:drawableEnd="@drawable/dropdown_arrow"
+                android:hint="@string/select_pin_code"
+                android:padding="@dimen/margin_10dp" />
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:text="@string/merchant_date_of_birth" />
+
+
+            <TextView
+                android:id="@+id/dob"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:hint="@string/select_date_txt"
+                android:padding="@dimen/margin_10dp"
+                app:drawableEndCompat="@drawable/ic_calendar" />
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/merchant_tranx_txt" />
+
+            <TextView
+                android:id="@+id/merchant_txn_sets"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:hint="@string/select_txn_sets"
+                android:padding="@dimen/margin_10dp"
+                app:drawableEndCompat="@drawable/dropdown_arrow" />
+
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/house_txt"
+                android:textSize="@dimen/text_size_14sp" />
+
+            <RadioGroup
+                android:id="@+id/radio"
+                style="@style/EditTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45dp"
+                android:layout_gravity="center"
+                android:checkedButton="@id/maleRadioButtonProfile"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/own"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text="@string/own_house"
+                    android:textSize="@dimen/_12ssp" />
+
+                <RadioButton
+                    android:id="@+id/rented"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text="@string/rented"
+                    android:textSize="@dimen/_12ssp" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/next_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/margin_20dp"
+                android:background="@drawable/button_design"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_18sp" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

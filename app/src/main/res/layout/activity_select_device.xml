@@ -222,7 +222,7 @@
                     android:gravity="center_vertical"
                     android:hint="0"
                     android:imeOptions="actionDone"
-                    android:inputType="phone"
+                    android:inputType="numberDecimal"
                     android:paddingStart="@dimen/margin_10dp"
                     android:paddingEnd="@dimen/margin_10dp"
                     android:textColor="@android:color/black"

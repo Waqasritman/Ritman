@@ -12,11 +12,11 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class HTTPHelper {
+
     public static URLConnection getURL() {
-        String wsURL = ApiHelper.BASE_URL;
         URL url = null;
         try {
-            url = new URL(wsURL);
+            url = new URL("");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -50,7 +50,7 @@ public class HTTPHelper {
             e.printStackTrace();
         }
         byte[] b = bout.toByteArray();
-       // Set the appropriate HTTP parameters.
+        // Set the appropriate HTTP parameters.
         httpConn.setRequestProperty("Content-Length",
                 String.valueOf(b.length));
         httpConn.setRequestProperty("Content-Type", "text/xml; charset=utf-8");

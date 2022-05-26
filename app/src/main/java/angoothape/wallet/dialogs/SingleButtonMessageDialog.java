@@ -124,14 +124,13 @@ public class SingleButtonMessageDialog extends BaseDialogFragment<AlertDialogLay
     public void onStart() {
         super.onStart();
         Dialog dialog = getDialog();
+        assert dialog != null;
         dialog.setCanceledOnTouchOutside(isCancelable);
-        if (dialog != null) {
-            DisplayMetrics dm = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-            int width = dm.widthPixels;
-            int height = dm.heightPixels;
-            dialog.getWindow().setLayout((int) (width * .8), WindowManager.LayoutParams.WRAP_CONTENT);
-        }
+        DisplayMetrics dm = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        dialog.getWindow().setLayout((int) (width * .8), WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
     @Override

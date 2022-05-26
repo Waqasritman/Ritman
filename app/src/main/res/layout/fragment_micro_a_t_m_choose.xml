@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_10dp">
+
+        <TextView
+            android:id="@+id/create_mechant"
+            style="@style/EditTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45dp"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:padding="@dimen/margin_10dp"
+            android:text="@string/create_merchant"
+            app:drawableEndCompat="@drawable/arrow_menu" />
+
+        <TextView
+            android:id="@+id/addTermainal"
+            style="@style/EditTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:padding="@dimen/margin_10dp"
+            android:text="Add Terminal"
+            app:drawableEndCompat="@drawable/arrow_menu" />
+
+        <TextView
+            android:id="@+id/activateTerminal"
+            style="@style/EditTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:padding="@dimen/margin_10dp"
+            android:text="Activate Terminal"
+            app:drawableEndCompat="@drawable/arrow_menu" />
+
+        <TextView
+            android:id="@+id/payment"
+            style="@style/EditTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:padding="@dimen/margin_10dp"
+            android:text="@string/micro_atm_paymnet"
+            app:drawableEndCompat="@drawable/arrow_menu" />
+
+
+    </LinearLayout>
+</layout>

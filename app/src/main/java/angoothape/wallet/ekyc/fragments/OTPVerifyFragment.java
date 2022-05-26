@@ -109,7 +109,7 @@ public class OTPVerifyFragment extends BaseFragment<FragmentOTPVerifyBinding> {
                                                 i.putExtra("mobile_no", viewModel.mobile.getValue());
                                                 i.putExtra("kyc_token", data.kycToken_);
                                                 i.putExtra("wadh_value", data.wadh_);
-
+                                                i.putExtra("isCustomer", ((EKYCMainActivity) getBaseActivity()).isCustomer);
                                                 startActivity(i);
                                                 getBaseActivity().finish();
                                             }

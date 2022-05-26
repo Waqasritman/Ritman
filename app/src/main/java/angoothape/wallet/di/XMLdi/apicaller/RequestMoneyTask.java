@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import angoothape.wallet.R;
 import angoothape.wallet.di.XMLdi.ApiHelper;
-import angoothape.wallet.di.XMLdi.HTTPHelper;
 import angoothape.wallet.di.XMLdi.RequestHelper.RequestMoney;
 import angoothape.wallet.di.XMLdi.SoapActionHelper;
 import angoothape.wallet.interfaces.OnSuccessMessage;

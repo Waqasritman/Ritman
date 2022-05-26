@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mask="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            mask:layout_constraintEnd_toEndOf="parent"
+            mask:layout_constraintStart_toStartOf="parent"
+            mask:layout_constraintTop_toBottomOf="@+id/tool_bar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/margin_15dp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/spacing_large"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    mask:cardCornerRadius="6dp"
+                    mask:cardElevation="6dp">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:id="@+id/pdf_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fillViewport="true"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_6sdp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="70dp"
+                                android:src="@mipmap/icon" />
+
+                            <TextView
+                                android:id="@+id/title_service"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_margin="@dimen/spacing_middle"
+                                android:background="@drawable/line_dash_grey_20" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="DATE"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1" />
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="TIME"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/date_aeps"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1" />
+
+                                    <TextView
+                                        android:id="@+id/time_aeps"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Transaction ID"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1" />
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Receiver Registration no"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/transaction_no"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1" />
+
+                                    <TextView
+                                        android:id="@+id/rece_regi_no"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Card Number"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1" />
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Transaction Status"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/card_number"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1" />
+
+                                    <TextView
+                                        android:id="@+id/transaction_status"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_mlarge"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Approval Code of the Transaction"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <TextView
+                                        android:id="@+id/approval_code"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_mlarge"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Name of the Card Application"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <TextView
+                                        android:id="@+id/name_of_card"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_mlarge"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Card Holder Name"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <TextView
+                                        android:id="@+id/card_holder_name"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_mlarge"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Card Type"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <TextView
+                                        android:id="@+id/card_type"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_mlarge"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Balance Enquiry Account Balance"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <TextView
+                                        android:id="@+id/balance_enquiry"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_mlarge"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Transaction Status:"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <TextView
+                                        android:id="@+id/aeps_status"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/trans_amount_linear"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_mlarge"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/spacing_middle">
+
+                                <LinearLayout
+                                    android:id="@+id/inern_amount"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="Transaction Type"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                                        android:textColor="@color/grey_40" />
+
+                                    <TextView
+                                        android:id="@+id/trans_type"
+                                        style="@style/TitleStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                                        android:textColor="@color/grey_80"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:text="COMPLETED"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                    android:textColor="@color/grey_40"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.core.widget.NestedScrollView>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

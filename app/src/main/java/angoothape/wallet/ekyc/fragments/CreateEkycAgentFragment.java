@@ -243,6 +243,7 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
     }
 
     public void YBCreateCustomer() {
+        Utils.showCustomProgressDialog(getContext() , false);
         EmailID = binding.emailEditTextRegi.getText().toString();
 
         gender = gender;
@@ -258,19 +259,13 @@ public class CreateEkycAgentFragment extends BaseFragment<FragmentCreateEkycAgen
         request.customer_full_name = Shop;
         request.customer_pan = Pan;
 
-        Log.e("merhcant: ", getSessionManager().getMerchantName().trim());
         String gKey = KeyHelper.getKey(getSessionManager().getMerchantName()).trim() +
                 KeyHelper.getSKey(KeyHelper
                         .getKey(getSessionManager().getMerchantName())).trim();
 
         String body = RestClient.makeGSONString(request);
-        Log.e("body: ", body);
         AERequest aeRequest = new AERequest();
         aeRequest.body = AESHelper.encrypt(body.trim(), gKey.trim());
-
-        Log.e("gkey: ", gKey.trim());
-        Log.e("skey: ", KeyHelper.getSKey(KeyHelper
-                .getKey(getSessionManager().getMerchantName())));
 
         viewModel.YBCreateCustomer(aeRequest, KeyHelper.getKey(getSessionManager().getMerchantName()).trim(), KeyHelper.getSKey(KeyHelper
                 .getKey(getSessionManager().getMerchantName())).trim())
